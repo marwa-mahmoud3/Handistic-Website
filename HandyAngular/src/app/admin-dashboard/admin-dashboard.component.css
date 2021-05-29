@@ -7466,12 +7466,12 @@ sup {
   top: -.5em; }
 
 a {
-  color: orange;
+  color: #ffa6a8;
   text-decoration: none;
   background-color: transparent;
   -webkit-text-decoration-skip: objects; }
   a:hover {
-    color: orange;
+    color: #ffa6a8;
     text-decoration: underline; }
 
 a:not([href]):not([tabindex]) {
@@ -13148,7 +13148,7 @@ input:focus {
       .sidebar .nav .nav-item a.nav-link:hover {
         color: #3f4549; }
     .sidebar .nav .nav-item.active > .nav-link {
-      color: orange; }
+      color: #ffa6a8; }
     .sidebar .nav.sub-menu {
       padding-left: 2.5em; }
       .sidebar .nav.sub-menu .nav-item.active .nav-link {
@@ -13225,7 +13225,7 @@ input:focus {
     display: none; }
     .brand-logo h2{
       line-height: 40px;
-      color: orange;
+      color: #ffa6a8;
     }
 .navbar .navbar-menu-wrapper {
   transition: width .8s ease;
@@ -13436,7 +13436,7 @@ input[type="search"], input, .form-control {
   background: white; }
 
 .bg-primary-gradient, .navbar.navbar-default {
-  background: orange;
+  background: #ffa6a8;
  }
 
 .bg-success-gadient {
