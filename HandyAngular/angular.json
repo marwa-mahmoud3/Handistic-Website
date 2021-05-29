@@ -34,9 +34,7 @@
               "src/assets/css/flexslider.css",
               "src/assets/css/owl.carousel.css",
               "src/assets/css/owl.theme.default.css",
-              "src/assets/css/style.css",
-              "src/assets/AdminCss/font-awesome/css/font-awesome.min.css",
-              "src/assets/AdminCss/style.css"
+              "src/assets/css/style.css"  
             ],
             "scripts": [
               "src/assets/js/bootstrap.js",
