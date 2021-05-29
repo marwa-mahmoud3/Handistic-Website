@@ -12,6 +12,7 @@ import { FooterComponent } from './footer/footer.component';
 import { ResetPasswordComponent } from './authentication/reset-password/reset-password.component';
 import { ForgetpasswordComponent } from './authentication/forgetpassword/forgetpassword.component';
 import { EmailConfirmationComponent } from './authentication/email-confirmation/email-confirmation.component';
+import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { EmailConfirmationComponent } from './authentication/email-confirmation/
     FooterComponent,
     ResetPasswordComponent,
     ForgetpasswordComponent,
-    EmailConfirmationComponent
+    EmailConfirmationComponent,
+    AdminDashboardComponent
   ],
   imports: [
     BrowserModule,
