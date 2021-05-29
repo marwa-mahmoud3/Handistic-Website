@@ -1,0 +1,355 @@
+.content-blog {
+  margin: 0 0 80px 0 !important;
+  padding: 120px 0 70px 0;
+  .content-blog-right {
+    width: 100%;
+
+    .blog {
+      padding-bottom: 150px;
+      border-bottom: 1px solid #e6e6e6;
+    }
+
+    h2 {
+      font-size: 30px;
+      font-family: 'Raleway', sans-serif;
+    }
+
+    .content-center {
+      position: relative;
+      margin: 20px 0 50px 0;
+
+      i {
+        font-size: 40px;
+        color: #ffd5d6;
+        margin-left: 40px;
+      }
+
+      em {
+        position: absolute;
+        font-size: 15px;
+        top: 30%;
+        left: 8%;
+        color: #666666;
+      }
+    }
+
+    .card {
+      border: none;
+      margin-bottom: 20px;
+      border-radius: 0;
+
+      .card-body {
+        margin-top: 0;
+        padding: 0;
+        margin-left: 5%;
+
+        h5 {
+          font-size: 20px;
+        }
+
+        p {
+          font-size: 15px;
+          color: #666666;
+        }
+      }
+    }
+
+    .fas {
+      color: #666666;
+      font-size: 15px;
+    }
+
+    .post-comment {
+      h2 {
+        font-size: 30px;
+        margin: 50px 0;
+        font-weight: 600;
+      }
+
+      textarea {
+        width: 100%;
+        text-indent: 10px;
+        height: 150px;
+        margin-bottom: 20px;
+        border: 1px solid #cccccc;
+      }
+
+      input {
+        width: 100%;
+        text-indent: 10px;
+        margin-bottom: 20px;
+        padding: 13px 0;
+        line-height: 1;
+        border: 1px solid #cccccc;
+      }
+
+      input:focus, textarea:focus {
+        outline: none;
+      }
+
+      button {
+        background: #333333;
+        color: white;
+        padding: 10px 30px;
+        border-radius: 0;
+        border: 1px solid #333333;
+      }
+
+      button:hover {
+        color: #333333;
+        background: white;
+        border: 1px solid #333333;
+      }
+    }
+
+    .item-blog {
+      width: 100%;
+      padding: 0;
+
+      img {
+        max-width: 100%;
+        width: 100%;
+      }
+
+      a {
+        color: #666666;
+      }
+
+      a:hover {
+        text-decoration: none;
+      }
+
+      i:hover {
+        color: #ffa6a8;
+      }
+
+      .far {
+        margin: 20px 0;
+        color: #666666;
+      }
+
+      h1 {
+        font-size: 30px;
+        font-family: 'Raleway', sans-serif;
+      }
+
+      p {
+        width: 100%;
+        text-align: left;
+        font-size: 15px;
+        font-family: 'Raleway', sans-serif;
+        color: #666666;
+      }
+
+      button {
+        padding: 10px 20px;
+        border: 1px solid #999999;
+        border-radius: 0;
+      }
+
+      button:hover {
+        color: white;
+        background: #333333;
+      }
+
+      .float-left {
+        margin: 40px 0;
+        color: #666666;
+
+        span {
+          color: #666666;
+        }
+      }
+
+      .float-right {
+        margin: 40px 0;
+
+        td {
+          border: 1px solid #e6e6e6;
+        }
+
+        i {
+          padding: 10px;
+          line-height: 1;
+          color: #cccccc;
+        }
+
+        i:hover {
+          color: #ffa6a8;
+        }
+      }
+
+      .card {
+        margin: 60px 0 20px 0;
+        .no-gutters1 {
+          margin-bottom: 20px;
+        }
+      }
+    }
+  }
+}
+.control-slide-blog-single {
+  margin-bottom: 50px;
+  margin-top: 50px;
+  margin-left: 0 !important;
+  width: 100%;
+  padding: 20px;
+  background: #f7f7f7;
+
+  i {
+    margin: 0 auto;
+  }
+
+  .fa-th:before {
+    color: #ffa6a8;
+  }
+
+  a:hover {
+    text-decoration: none;
+  }
+}
+.slide-blog-single .card .card-body a:hover {
+  color: black;
+  text-decoration: none;
+}
+.slide-blog-single {
+  .card {
+    border-radius: 0;
+    padding-bottom: 40px;
+    position: relative;
+    img {
+      width: 100px !important;
+      height: 100px !important;
+      border-radius: 50%;
+    }
+    .card-body {
+      margin-left: 0 !important;
+      .card-title {
+        font-size: 17px;
+        line-height: 1;
+        padding-bottom: 0 !important;
+      }
+      p {
+        font-size: 15px;
+        color: #999999;
+      }
+      span {
+        margin-bottom: 35px;
+        padding-bottom: 35px;
+        color: #666666;
+      }
+    }
+    a {
+      position: absolute;
+      top: 0;
+      right: 0;
+      color: #666666;
+    }
+    a:hover {
+      color: #ffa6a8;
+    }
+  }
+  h2 {
+    margin-bottom: 20px;
+    font-size: 30px;
+  }
+
+}
+
+@media all and (max-width: 360px) {
+  .content-blog-right{
+      .content-center{
+        i{
+          margin-left: 0 !important;
+        }
+      }
+    .card{
+      img{
+        margin: 20px 0 !important;
+      }
+      .card-body{
+        margin-left: 0 !important;
+      }
+    }
+    .float-left{
+      margin: 20px 0 10px 0 !important;
+    }
+    .socials{
+      float: left !important;
+      margin: 10px 0 20px 0 !important;
+    }
+    .slide-blog-single{
+      .control-slide-blog-single{
+        .fas{
+          display: none;
+        }
+      }
+      h2{
+        line-height: 1;
+        margin: 0 !important;
+      }
+      .card{
+        margin: 20px 0 !important;
+        text-align: center !important;
+        .card-body{
+          text-align: left !important;
+        }
+      }
+    }
+  }
+}
+@media all and (min-width: 361px) and (max-width:767px ) {
+  .content-blog-right{
+    .content-center{
+      i{
+        margin-left: 0 !important;
+      }
+    }
+    .card{
+      img{
+        margin: 20px 0 !important;
+      }
+      .card-body{
+        margin-left: 0 !important;
+      }
+    }
+    .float-left{
+      margin: 20px 0 10px 0 !important;
+    }
+    .socials{
+      float: left !important;
+      margin: 10px 0 20px 0 !important;
+      width: 100%;
+    }
+    .slide-blog-single{
+      h2{
+        line-height: 1;
+        margin: 0 !important;
+      }
+      .card{
+        margin: 20px 0 !important;
+        text-align: center !important;
+        .card-body{
+          text-align: left !important;
+        }
+      }
+    }
+  }
+}
+@media all and (min-width: 768px) and (max-width: 1023px){
+  .content-blog-right{
+    .content-center{
+      i{
+        margin-left: 0 !important;
+      }
+    }
+    .card{
+      img{
+        margin: 20px 0 !important;
+      }
+      .card-body{
+        margin-left: 15px !important;
+      }
+    }
+  }
+}

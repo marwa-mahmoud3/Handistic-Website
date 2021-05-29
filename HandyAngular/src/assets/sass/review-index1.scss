@@ -1,0 +1,85 @@
+.review-homepage{
+  text-align: center;
+  margin-top: 65px;
+}
+
+.content-review-homepage {
+  width: 100%;
+  background: white;
+  margin-top: 250px;
+  position: relative;
+  img{
+    width: 150px;
+    height: 150px;
+    left: 43%;
+    position: absolute;
+    top: -30%;
+    border-radius: 50%;
+  }
+  h3{
+    padding-top: 80px;
+    padding-bottom: 10px;
+  }
+  p {
+    width: 90%;
+    margin: auto;
+  i{
+    margin-bottom: 30px;
+    color: #ffa6a8;
+  }}
+}
+.review-homepage .carousel-indicators li{
+  background: #999999 !important;
+  height: 10px !important;
+  width: 10px !important;
+  border: none !important;
+  border-radius: 50%;
+}
+.review-homepage .carousel-indicators li.active{
+  background: #999999 !important;
+  height: 12px !important;
+  width: 12px !important;
+  border: none !important;
+  border-radius: 50%;
+}
+
+@media all and (max-width: 360px){
+  .content-review-homepage{
+    img{
+      left: 30%;
+      top: -20%;
+    }
+  }
+}
+@media all and (min-width: 360px) and (max-width: 768px) and (orientation: landscape){
+  .content-review-homepage{
+    img{
+      left: 38% !important;
+      top: -20%;
+    }
+  }
+}
+@media all and (min-width: 361px) and (max-width: 767px){
+  .content-review-homepage{
+    img{
+      left: 32%;
+      top: -20%;
+    }
+  }
+}
+@media all and (min-width: 768px) and (max-width: 1023px){
+  .content-review-homepage{
+    img{
+      left: 40%;
+      top: -25%;
+    }
+  }
+}
+@media all and (min-width: 1024px) and (max-width: 1365px) {
+  .content-review-homepage{
+    img{
+      left: 43%;
+      top: -25%;
+    }
+  }
+}

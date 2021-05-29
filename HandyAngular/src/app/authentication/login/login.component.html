@@ -1,0 +1,108 @@
+
+
+<!--end header-->
+
+<!--title page-->
+<!-- <div class="title-page"
+     style="background-image: url('https://via.placeholder.com/1920x345.jpg/f5f2f2/e8e8e7');background-position: center center;background-size: cover;">
+    <div class="container">
+        <div class="row">
+            <div class=" col-md-6 inner-title-page">
+                <h1>Shop</h1>
+                <p><span>Home</span> / Shop / My account</p>
+            </div>
+        </div>
+    </div>
+</div> -->
+<!--end title page-->
+
+<!--content account-->
+<div class="container" >
+    <div class="row justify-content-center content-my-account">
+        <div class="col-md-6 col-sm-12 col-12 content-my-account-right">
+            <h2>Login</h2>
+            <form #loginForm="ngForm" (ngSubmit)="OnSubmit(loginForm)">
+              <div *ngIf="showError" class="alert alert-danger" role="alert">
+                {{errorMessage.error | json}}
+              </div>
+                <div class="form-holder">
+                    <p>Email address <span>*</span></p>
+                  <input type="text" class="form-control"  [class.is-invalid]="email.invalid && email.touched " [class.is-invalid]="email.invalid && email.touched " required #email="ngModel" [(ngModel)]="loginuser.email" name="email">
+                  <small class="text-danger"[class.d-none]="email.untouched || email.valid">Email Address is required</small>
+                </div>
+                <div class="form-holder">
+                    <p>Password<span>*</span></p>
+                  <input type="password" class="form-control"  [class.is-invalid]="password.invalid && password.touched " required #password="ngModel" [(ngModel)]="loginuser.password" name="password" >
+                  <small class="text-danger"[class.d-none]="password.untouched || password.valid">Password is required</small>
+                </div>
+                <button type="submit"  class="bt" [disabled]="!loginForm.valid" >Login</button>
+                <!-- <span><input type="checkbox" class="checkbox">&nbsp;&nbsp;Remember me</span> -->
+                <!-- <div style="margin-top: 20px;">
+                    <a href="javascript:void(0)" class="text-left lost-password">Lost your password?</a>
+                </div> -->
+                <br>
+                <div class="text-left">
+                  <a href="/forgetPassword" id="login" style="text-decoration: underline; color:rgb(61, 92, 179) ;padding-left: 10px;" > forget password</a>
+                </div>
+                <br>
+                <div class="text-center "><span>If you haven't account 
+                  <a href="/Register" id="login" style="text-decoration: underline; color:rgb(61, 92, 179) ;padding-left: 10px;" > Sign Up </a></span>
+                </div>
+              </form>
+        </div>
+    </div>
+</div>
+<!--end content account-->
+
+
+  <style>
+  
+  form {
+    width: 100%;
+    position: relative;
+    z-index: 9;
+    padding: 77px 61px 55px 66px ;
+    background: #fff;
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.2);
+    -webkit-box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.2);
+    -moz-box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.2);
+    -ms-box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.2);
+    -o-box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.2); }
+  
+    .form-control:focus {
+      border: 1px solid #ffa6a8; }
+  
+  button {
+    border: none;
+    width: 100%;
+    height: 49px;
+    margin-top: 40px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    background: #ffa6a8;
+    color: #fff;
+    text-transform: uppercase;
+    font-family: "Muli-SemiBold";
+    font-size: 15px;
+    letter-spacing: 2px;
+    transition: all 0.5s;
+    position: relative;
+    overflow: hidden; }
+  
+  @media (max-width: 767px) {
+    form {
+      padding: 35px;
+      box-shadow: none;
+      -webkit-box-shadow: none;
+      -moz-box-shadow: none;
+      -ms-box-shadow: none;
+      -o-box-shadow: none; }
+}
+    #login:hover{
+       opacity: .5;
+    }
+  </style>
+  

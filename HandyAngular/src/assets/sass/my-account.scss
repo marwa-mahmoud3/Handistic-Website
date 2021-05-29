@@ -1,0 +1,87 @@
+.content-my-account{
+  margin-top: 120px ;
+  margin-bottom: 80px;
+  padding-bottom: 80px;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+  border-bottom:1px solid #e6e6e6;
+  h2{
+    font-size: 35px;
+    font-family: 'Raleway', sans-serif;
+    font-weight: 600;
+  }
+  p{
+    font-family: 'Raleway', sans-serif;
+    font-size: 15px;
+    color: #999999;
+    margin-top: 20px;
+    span{
+      color: red;
+    }
+  }
+  input:focus{
+    outline: none;
+  }
+  input.text{
+    width: 100%;
+    height: 45px;
+    text-indent: 10px;
+  }
+  input.checkbox{
+    margin-left: 20px;
+  }
+  form{
+    margin: 30px 0 30px 0;
+    button{
+      padding: 15px 30px;
+      background-color: black;
+      font-family: 'Raleway', sans-serif;
+      font-size: 15px;
+      text-transform: uppercase;
+      line-height: 1;
+      margin-top: 40px;
+      color: white;
+      border: none;
+    }
+    button:hover{
+      background: #ffa6a8;
+    }
+  }
+  a{
+    color: red;
+    margin-top: 50px;
+  }
+  a:hover{
+    text-decoration: none;
+
+  }
+  .content-my-account-left{
+    padding-left: 0;
+  }
+  .content-my-account-right{
+    padding-right: 0;
+  }
+  .form-lost-password{
+    padding-left: 0;
+    display: none;
+  }
+}
+
+@media all and (max-width: 360px) {
+  .content-my-account{
+    margin-bottom: 50px !important;
+  }
+  .content-my-account-right{
+    margin-top: 0 !important;
+    padding-left: 0 !important;
+  }
+}
+@media all and (min-width: 361px) and (max-width: 767px) {
+  .content-my-account{
+    margin-bottom: 50px !important;
+  }
+  .content-my-account-right{
+    margin-top: 0 !important;
+    padding-left: 0 !important;
+  }
+}

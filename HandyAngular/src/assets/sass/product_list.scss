@@ -1,0 +1,64 @@
+.prodcut-list{
+  margin: 120px 0 50px 0;
+  padding-bottom: 60px;
+  border-bottom: 1px solid #e6e6e6;
+  .modal-dialog {
+    max-width: initial;
+
+    .product-single-detail {
+      padding: 0 !important;
+      margin-top: 0 !important;
+      text-align: left !important;
+    }
+  }
+  .header-show-list{
+    p{
+      font-family: 'Raleway', sans-serif;
+      font-size: 15px;
+      margin-top: 15px;
+    }
+    select{
+      font-family: 'Raleway', sans-serif;
+      font-size: 15px;
+      padding: 10px 40px 10px 20px;
+      height: 44px;
+      line-height: 1;
+      width: 220px;
+      option{
+        width: 100px !important;
+        max-width: 100px !important;
+        font-family: 'Raleway', sans-serif;
+        font-size: 15px;
+        outline: none;
+        border: none;
+      }
+    }
+    select:focus{
+      outline: none !important;
+      box-shadow: none !important;
+    }
+  }
+  .product{
+    margin-top: 50px !important;
+  }
+}
+.list-product{
+  .modal-dialog {
+    max-width: initial;
+
+    .product-single-detail {
+      padding: 0 !important;
+      margin-top: 0 !important;
+      text-align: left !important;
+    }
+  }
+}
+@media all and (max-width: 767px) {
+  .prodcut-list{
+    .header-show-list{
+      select{
+        float: left !important;
+      }
+    }
+  }
+}

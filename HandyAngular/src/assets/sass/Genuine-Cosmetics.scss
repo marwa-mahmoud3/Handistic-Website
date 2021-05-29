@@ -1,0 +1,141 @@
+.cosmetic {
+  margin-top: 150px;
+  margin-bottom: 120px;
+
+  .bg-cosmetic {
+    padding-right: 0 !important;
+
+    img {
+      max-width: 100%;
+    }
+  }
+
+  .inner-cosmetic {
+    width: 100%;
+    padding-left: 45px;
+
+    h2 {
+      font-size: 50px;
+      font-family: 'El Messiri', sans-serif;
+      margin-top: 10px;
+      line-height: 1;
+      margin-bottom: 30px;
+    }
+
+    h3{
+      color: #999999;
+      font-family: 'Raleway', sans-serif;
+      font-size: 25px;
+      margin-bottom: 60px ;
+      line-height: 1;
+    }
+
+    h4 {
+      font-family: 'Raleway', sans-serif;
+      font-size: 25px;
+      position: relative;
+      margin-bottom: 50px;
+    }
+
+    h4:before {
+      content: " ";
+      position: absolute;
+      height: 13px;
+      width: 70px;
+      display: block;
+      left: 0;
+      bottom: -20px;
+      background: #ffa6a8;
+      -webkit-mask: url(../../assets/imager/line-title2.svg) repeat left center;
+      mask: url(../../assets/imager/line-title2.svg) repeat left center;
+    }
+    p {
+      font-size: 15px;
+      font-family: 'Raleway', sans-serif;
+      color: #989898;
+      margin-bottom: 50px;
+    }
+  }
+}
+
+@media all and (max-width: 360px) {
+  .cosmetic {
+    margin: 50px 0;
+
+    .inner-cosmetic {
+      margin-top: 100px;
+      padding-left: 0;
+
+      h2 {
+        font-size: 32px;
+        line-height: 1;
+      }
+
+      span {
+        font-size: 20px;
+        line-height: 1;
+      }
+
+      h4 {
+        font-size: 20px;
+        margin-top: 20px;
+        margin-bottom: 40px;
+      }
+    }
+  }
+}
+
+@media all and (min-width: 361px) and (max-width: 767px) {
+  .cosmetic {
+    margin: 50px 0;
+
+    .inner-cosmetic {
+      margin-top: 100px;
+      padding-left: 0;
+
+      h2 {
+        font-size: 50px;
+        line-height: 1;
+      }
+
+      span {
+        font-size: 20px;
+        line-height: 1;
+      }
+    }
+  }
+}
+
+@media all and(min-width: 768px) and (max-width: 1023px) {
+  .cosmetic {
+    margin: 100px 0 100px 0;
+
+    .inner-cosmetic {
+      margin-top: 100px;
+      padding-left: 20px;
+
+      h2 {
+        font-size: 55px;
+        line-height: 1;
+      }
+
+      span {
+        font-size: 20px;
+        line-height: 1;
+      }
+
+      img {
+        margin-bottom: 20px;
+      }
+    }
+  }
+}
+
+@media all and(min-width: 1024px) and (max-width: 1366px) {
+  .inner-cosmetic {
+    h2 {
+      font-size: 40px !important;
+      line-height: 1;
+    }
+  }
+}

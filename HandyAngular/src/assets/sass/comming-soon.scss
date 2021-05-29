@@ -1,0 +1,229 @@
+.deal-day-comming {
+  background-image: url('../../assets/imager/CommingSoon.jpg');
+  background-size: cover;
+  background-position: center center;
+  height: 100vh;
+  text-align: center;
+  padding: 20px 0 200px 0;
+  .content-comming {
+    margin: 0 auto;
+  }
+  .content-comming .title {
+    h2 {
+      font-size: 100px;
+      font-family: 'El Messiri', sans-serif;
+      line-height: 1;
+      position: relative;
+      margin-bottom: 80px;
+      font-weight: normal;
+    }
+    h2:before {
+      content: " ";
+      position: absolute;
+      height: 13px;
+      width: 170px;
+      display: block;
+      left: 50%;
+      margin-left: -85px;
+      bottom: -30px;
+      background: white;
+      -webkit-mask: url(../../assets/imager/line-title2.svg) repeat left center;
+      mask: url(../../assets/imager/line-title2.svg) repeat left center;
+    }
+  }
+  .content-comming .title img {
+    margin-top: 20px;
+  }
+}
+
+@media all and (max-width: 360px) {
+  .content-comming {
+    .content-deal-day {
+      .title{
+        h2 {
+          font-size: 40px;
+          line-height: 1;
+        }
+      }
+      ul {
+        margin-bottom: 30px;
+        margin-top: 30px;
+
+        li {
+          width: 25%;
+          margin-right: 15px;
+          margin-bottom: 20px;
+
+          h2 {
+            font-size: 20px;
+          }
+
+          p {
+            font-size: 13px;
+            margin-top: 10px;
+            margin-bottom: 5px;
+            line-height: 1;
+          }
+        }
+      }
+
+      button {
+        margin-bottom: 50px;
+      }
+
+    }
+  }
+}
+
+@media all and (min-width: 361px) and (max-width: 767px) {
+  .content-comming {
+    .content-deal-day {
+      ul {
+        margin-bottom: 30px;
+        margin-top: 30px;
+
+        li {
+          width: 100px !important;
+          margin-right: 15px;
+          margin-bottom: 20px;
+
+          h2 {
+            font-size: 20px;
+          }
+
+          p {
+            font-size: 15px;
+            margin-top: 5px;
+            margin-bottom: 5px;
+          }
+        }
+      }
+
+      button {
+        margin-bottom: 50px;
+      }
+
+      .title {
+        h2 {
+          font-size: 60px !important;
+        }
+      }
+    }
+  }
+}
+
+@media all and (min-width: 361px) and (max-width: 767px) and (orientation: landscape) {
+  .content-comming {
+    .content-deal-day {
+      padding-top: 50px;
+      ul {
+        margin-bottom: 30px;
+        margin-top: 30px;
+
+        li {
+          width: 85px !important;
+          margin-right: 15px;
+          margin-bottom: 20px;
+
+          h2 {
+            font-size: 20px;
+          }
+
+          p {
+            font-size: 15px;
+            margin-top: 5px;
+            margin-bottom: 5px;
+          }
+        }
+      }
+
+      button {
+        margin-bottom: 50px;
+      }
+
+      .title {
+        h2 {
+          font-size: 60px !important;
+          padding: 0;
+          margin-top: 0 !important;
+        }
+      }
+    }
+  }
+}
+@media all and(min-width: 768px) and (max-width: 1023px) {
+  .content-comming{
+  .content-deal-day {
+    .title{
+      h2 {
+        font-size: 50px;
+        line-height: 1;
+        margin-top: 60px;
+      }
+    }
+
+    ul {
+      margin-bottom: 30px;
+
+      li {
+        width: 100px !important;
+        margin-right: 20px;
+
+        h2 {
+          font-size: 20px;
+          margin-top: 10px;
+        }
+
+        p {
+          font-size: 15px;
+          margin-top: 5px;
+          margin-bottom: 5px;
+        }
+      }
+    }
+
+    button {
+      margin-bottom: 50px;
+    }
+  }
+  }
+}
+@media all and(min-width: 768px) and (max-width: 1023px) and (orientation: landscape) {
+  .content-comming {
+    .content-deal-day {
+      padding-top: 50px;
+      .title{
+        h2 {
+          font-size: 60px !important;
+          line-height: 1;
+          margin-top: 0 !important;
+          margin-bottom: 50px !important;
+        }
+      }
+      ul {
+        margin-bottom: 30px;
+
+        li {
+          width: 100px !important;
+          margin-right: 20px;
+
+          h2 {
+            font-size: 20px;
+            margin-top: 10px;
+            margin-bottom: 0 !important;
+          }
+
+          p {
+            font-size: 15px;
+            margin-top: 5px;
+            margin-bottom: 5px;
+          }
+        }
+      }
+
+      button {
+        margin-bottom: 50px;
+      }
+    }
+  }
+}

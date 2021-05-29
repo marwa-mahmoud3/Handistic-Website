@@ -1,0 +1,120 @@
+.lastest{
+  margin-top: 90px;
+  text-align: center;
+  h2{
+    font-size: 60px;
+    font-family: 'El Messiri', sans-serif;
+    margin-top: 30px !important;
+    padding-bottom: 0 !important;
+    margin-bottom: 80px;
+  }
+  .card{
+    width: 100%;
+    border: none;
+    padding-bottom: 50px;
+    img{
+      margin-bottom: 0;
+      height: 90px;
+      width: 130px;
+      max-width: 100%;
+      border-radius: 0;
+    }
+    .card-title a{
+      font-size: 20px;
+      font-family: 'Raleway', sans-serif;
+      color:#333333 ;
+      font-weight: 600;
+    }
+    .card-body{
+      padding: 0;
+      text-align: left;
+      padding-left: 15px;
+      p{
+        margin: 0;
+        font-size: 15px;
+        color: #999999;
+        font-family: 'Raleway', sans-serif;
+        padding: 0;
+      }
+    }
+  }
+}
+.lastest .card a:hover{
+  text-decoration: none;
+}
+.lastest .card h5 a:hover{
+  color: #ffa6a8;
+}
+
+
+@media all and (max-width: 360px) {
+  .lastest{
+    h2{
+      font-size: 45px !important;
+    }
+    .card{
+      padding-bottom: 20px;
+      img{
+        margin-left: -15px;
+      }
+      .card-body{
+        padding-right: 0;
+        margin-left: 0;
+        padding-left: 0;
+      }
+      h5{
+          a{
+            font-size: 15px !important;
+          }
+      }
+      p{
+        font-size: 13px !important;
+      }
+    }
+  }
+}
+@media all and (min-width: 361px) and (max-width: 767px) {
+  .lastest{
+    .card{
+      padding-bottom: 20px;
+      img{
+        margin-left: -15px;
+      }
+      .card-body{
+        padding-right: 0;
+        margin-left: -15px;
+        padding-left: 0;
+      }
+      h5{
+        a{
+          font-size: 15px !important;
+        }
+      }
+      p{
+        font-size: 13px !important;
+      }
+    }
+  }
+}
+@media all and (min-width: 768px) and (max-width: 980px){
+  .lastest{
+    display: block;
+    .lastest-item{
+      padding-right: 0;
+      .card-body{
+        padding-left: 15px;
+        margin-left: 15px;
+        h5{
+          a{
+            font-size: 15px !important;
+          }
+        }
+        p{
+          font-size: 13px !important;
+        }
+      }
+
+    }
+  }
+
+}

@@ -1,0 +1,273 @@
+.content-cart {
+  font-family: 'Raleway', sans-serif;
+  padding-top: 120px;
+  padding-bottom: 80px;
+  margin-bottom: 80px;
+  margin-left: 0 !important;
+  border-bottom: 1px solid #e6e6e6;
+  margin-right: 0 !important;
+
+  table {
+    text-align: center;
+    width: 100%;
+
+    th {
+      border-bottom: 1px solid #dee2e6 !important;
+    }
+
+    td {
+      vertical-align: middle;
+      padding: 20px 0;
+
+      span {
+        color: #ffa6a8;
+        font-weight: 600;
+      }
+
+      img {
+        margin-left: 10%;
+      }
+
+      p {
+        margin-top: 20px;
+        margin-left: 20px;
+      }
+    }
+  }
+
+  .card-button {
+    width: 100%;
+    display: block;
+    font-size: 15px;
+    font-family: 'Raleway', sans-serif;
+    button:focus{
+      outline: none;
+      box-shadow: none;
+    }
+    .coupon {
+      background: none;
+      color: #999999;
+      padding: 15px 70px 15px 10px;
+      border: 1px solid #cccccc;
+      margin-right: 30px;
+      border-radius: 0;
+      line-height: 1;
+    }
+
+    .apply {
+      background: none;
+      color: black;
+      padding: 15px 30px;
+      border: 1px solid #999999;
+      border-radius: 0;
+      line-height: 1;
+    }
+
+    .update {
+      background: black;
+      color: white;
+      padding: 15px 30px;
+      border-radius: 0;
+      line-height: 1;
+      border: 1px solid black;
+    }
+
+    .clear-wishlist, .update-wishlist {
+      background: none;
+      padding: 15px 30px;
+      border: 1px solid #333333;
+      margin-right: 20px;
+      color: #333333;
+      line-height: 1;
+      border-radius: 0;
+    }
+
+    .go-shopping {
+      background: #333333;
+      padding: 15px 30px;
+      border: 1px solid #333333;
+      color: white;
+      line-height: 1;
+      border-radius: 0;
+    }
+
+    .clear-wishlist:hover, .update-wishlist:hover, .shop-now:hover {
+      color: white;
+      background: #333333;
+    }
+    .go-shopping:hover{
+      background: white;
+      color: #333333;
+      border: 1px solid #333333;
+    }
+  }
+
+  .rocart-total {
+    font-family: 'Raleway', sans-serif;
+    font-size: 15px;
+    width: 100%;
+    margin-top: 60px;
+    h2 {
+      margin-bottom: 40px;
+      line-height: 1;
+      font-size: 20px;
+      font-weight: 600;
+    }
+    ul {
+      width: 100%;
+      border-bottom: 1px solid #e6e6e6;
+
+      li {
+        width: 90px;
+
+        p {
+          font-weight: 600;
+        }
+      }
+    }
+
+    button {
+      background: none;
+      margin-top: 30px;
+      padding: 15px 30px;
+      border: 1px solid #999999;
+      line-height: 1;
+      border-radius: 0;
+    }
+    button:hover {
+      color: white;
+      background: #333333;
+    }
+  }
+}
+
+.content-cart table .btn-group button {
+  padding: 5px 10px;
+  background: none;
+  border: 1px solid #999999;
+  border-radius: 0;
+  width: 30px;
+}
+
+.content-cart table .btn-group .prev:hover, .content-cart table .btn-group .next:hover {
+  color: white;
+  background: #333333;
+}
+
+.content-cart table .btn-group button:focus {
+  box-shadow: none;
+  outline: none;
+}
+
+.content-cart .card-button .coupon:hover, .content-cart .card-button .apply:hover {
+  color: white;
+  background: #333333;
+}
+
+.content-cart .card-button .update:hover {
+  background: white;
+  color: #333333;
+  border: 1px solid #333333;
+}
+
+i {
+  color: #ffa6a8;
+}
+
+.cart-mobile{
+  width: 100%;
+  background: #f2f2f2;
+  margin-bottom: 30px;
+  position: relative;
+  span{
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+  tr{
+    border-bottom: 1px solid #dee2e6;
+    th{
+      border: none !important;
+      text-align: left;
+      padding-left: 15px;
+      padding-top:20px ;
+    }
+    td{
+      text-align: right;
+      padding-right: 15px;
+    }
+    td:first-child{
+      text-align: center;
+    }
+  }
+  tr:last-child{
+    border-bottom: none !important;
+  }
+}
+.shop-now {
+  background: none;
+  border: 1px solid #999999;
+  padding: 10px 20px;
+  line-height: 1;
+}
+
+.clear-wishlist:hover, .update-wishlist:hover, .shop-now:hover {
+  color: white;
+  background: #333333;
+}
+
+.go-shopping:hover {
+  color: #333333;
+  background: white;
+  border: 1px solid #333333;
+}
+@media all and (max-width: 399px) {
+  .content-cart {
+    .cart-desktop{
+      display: none;
+    }
+    .cart-mobile {
+      display: block !important;
+    }
+  }
+  .card-button{
+    button{
+      margin-bottom: 20px;
+    }
+    .update{
+      float: left !important;
+    }
+    .go-shopping{
+      float: left !important;
+    }
+  }
+}
+@media all and (min-width: 400px)and (max-width: 767px) {
+  .content-cart {
+    .cart-desktop{
+      display: none;
+    }
+    .cart-mobile {
+      display: block !important;
+    }
+  }
+  .card-button{
+    button{
+      margin-bottom: 20px;
+    }
+    .apply{
+      margin-right: 100px !important;
+    }
+    .update{
+      float: left !important;
+    }
+    .go-shopping{
+      float: left !important;
+    }
+  }
+}
+@media all and (min-width: 768px) {
+  .cart-mobile {
+    display: none;
+  }
+}

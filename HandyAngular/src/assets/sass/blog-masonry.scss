@@ -1,0 +1,146 @@
+.content-masonry {
+  margin: 120px 0 80px 0;
+  border-bottom: 1px solid #e6e6e6;
+  padding-bottom: 50px;
+
+  .card {
+    margin: 15px 0;
+    width: 100%;
+    border-radius: 0;
+    img {
+      padding: 15px;
+    }
+
+    .card-body {
+      text-align: center;
+      font-family: 'Raleway', sans-serif;
+      margin: 0;
+      padding-top: 0;
+      position: relative;
+      z-index: 1;
+      img{
+        padding: 0 0 20px 0 !important;
+      }
+      h5 {
+        position: relative;
+        margin-bottom: 40px;
+        a {
+          margin: 0;
+          font-size: 22px;
+          font-weight: 600;
+          color: #666666;
+        }
+        a:hover{
+          text-decoration: none;
+          padding: 0 !important;
+        }
+      }
+      h5:before{
+        content: " ";
+        position: absolute;
+        height: 13px;
+        width: 90px;
+        display: block;
+        left: 50%;
+        margin-left: -45px;
+        bottom: -20px;
+        background: #ffa6a8;
+        -webkit-mask: url(../../assets/imager/line-title2.svg) repeat left center;
+        mask: url(../../assets/imager/line-title2.svg) repeat left center;
+      }
+      p {
+        border-bottom: 1px solid #e6e6e6;
+        padding-bottom: 20px;
+        font-size: 15px;
+        color: #666666;
+      }
+      span {
+        padding: 0 30px;
+        border-right: 1px solid #e6e6e6;
+        font-size: 15px;
+        color: #666666;
+        z-index: 1;
+      }
+      .card-link{
+        padding: 0 30px;
+        font-size: 15px;
+        color: #666666;
+        background: white;
+        position: relative;
+      }
+      .icon-share{
+        position: absolute;
+        left: 5%;
+        top: 0;
+        width: 60%;
+        z-index: 3;
+        display: none;
+        background: white;
+        a{
+          margin: 0 10px;
+          color: #cccccc;
+          i{
+            color: #cccccc;
+          }
+        }
+        i:hover{
+          color: #ffa6a8;
+        }
+      }
+      .icon-share.active{
+        display: block;
+      }
+    }
+    .card-body.active .icon-share{
+      display: block;
+    }
+  }
+
+  ul {
+    margin-top: 30px;
+  }
+}
+.blog-homepage3{
+  background: #fcd1cf;
+  padding: 10px 0 10px 0;
+  .content-masonry{
+    border: none;
+    .carousel-indicators{
+      bottom: -100px;
+      li.active{
+        margin-top: -10px;
+      }
+    }
+  }
+}
+@media all and (max-width: 360px){
+  .icon-share{
+    left: 15% !important;
+  }
+}
+@media all and (min-width: 768px) and (max-width: 1023px) {
+    .content-masonry {
+      .card-body {
+        span{
+          padding: 0 10px !important;
+        }
+        .icon-share {
+          left: 10% !important;
+          width: 75% !important;
+        }
+      }
+  }
+}
+@media all and (min-width: 1024px) and (max-width: 1365px) {
+    .content-masonry {
+      .card-body {
+        span{
+          padding: 0 10px !important;
+        }
+        .icon-share {
+          left: 0 !important;
+          width: 70% !important;
+        }
+      }
+  }
+}

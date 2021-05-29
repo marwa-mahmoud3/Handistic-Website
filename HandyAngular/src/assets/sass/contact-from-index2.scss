@@ -1,0 +1,111 @@
+.contact-from{
+  background: #fadbd3;
+  padding: 130px 0 100px 0;
+  margin-top: 120px;
+
+  .content-contact-from{
+    margin: 0 auto;
+    width: 100%;
+    input{
+      width: 100%;
+      padding: 10px 0;
+      text-indent: 20px;
+      background: #fce2de;
+      border: 1px solid white;
+      margin-bottom: 20px;
+    }
+    input:focus{
+      outline: none;
+    }
+    textarea{
+      width: 100%;
+      text-indent: 20px;
+      background: #fce2de;
+      height: 220px;
+      border: 1px solid white;
+    }
+    textarea:focus{
+      outline: none;
+    }
+    .title-contact{
+      width: 100%;
+      text-align: center;
+      h2{
+        font-family: 'El Messiri', sans-serif;
+        font-size: 60px;
+        line-height: 1;
+        margin-bottom: 80px;
+        position: relative;
+      }
+      h2:before{
+        content: " ";
+        position: absolute;
+        height: 13px;
+        width: 190px;
+        display: block;
+        left: 50%;
+        margin-left: -95px;
+        bottom: -10px;
+        background: white;
+        -webkit-mask: url(../../assets/imager/line-title2.svg) repeat left center;
+        mask: url(../../assets/imager/line-title2.svg) repeat left center;
+      }
+    }
+    .submit-contact{
+      width: 100%;
+      text-align: center;
+      margin-top: 30px;
+      font-family: 'Raleway', sans-serif;
+      button{
+        background: white;
+        font-size: 15px;
+        padding: 15px 40px;
+        color: #333333;
+        line-height: 1;
+        border-radius: 0;
+      }
+      button:hover{
+        color: white;
+        background: #333333;
+      }
+
+
+    }
+  }
+}
+
+
+@media all and (max-width: 360px) {
+  .contact-from{
+    margin-top: 0 !important;
+    .input-left{
+      padding-right: 0 !important;
+    }
+    .input-right{
+      padding-left: 0 !important;
+    }
+    textarea{
+      height: 100px !important;
+    }
+    .title-contact{
+      h2{
+        font-size: 45px !important;
+      }
+    }
+  }
+}
+
+@media all and (min-width: 361px) and (max-width: 767px) {
+  .contact-from{
+    margin-top: 0 !important;
+    .input-left{
+      padding-right: 0 !important;
+    }
+    .input-right{
+      padding-left: 0 !important;
+    }
+    textarea{
+      height: 100px !important;
+    }
+  }
+}

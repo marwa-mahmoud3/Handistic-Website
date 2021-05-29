@@ -1,0 +1,63 @@
+.content-follow-insta {
+  margin: 100px 0 60px 0 !important;
+  border-bottom: 1px solid #e6e6e6;
+  padding: 0 0 80px 0;
+
+  .title-follow-insta {
+    text-align: center;
+    width: 100%;
+
+    h2 {
+      font-family: 'El Messiri', sans-serif;
+      font-size: 40px;
+    }
+
+    p {
+      font-family: 'Raleway', sans-serif;
+      font-size: 18px;
+      line-height: 1;
+      margin-bottom: 50px;
+    }
+  }
+
+
+    .owl-dots{
+      display: none;
+    }
+  .owl-nav{
+   display: none !important;
+  }
+    .item {
+      position: relative;
+      z-index: 2;
+    }
+
+    .item:before {
+      content: "";
+      position: absolute;
+      z-index: 3;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      right: 0;
+      background: white;
+      opacity: 0.5;
+      display: none;
+    }
+
+    .item:hover:before {
+      display: block;
+      cursor: pointer;
+    }
+}
+
+@media all and (max-width: 360px) {
+  .content-follow-insta {
+    ul {
+    padding-bottom: 50px !important;
+      li {
+        margin: 15px 8px !important;
+      }
+    }
+  }
+}

@@ -1,0 +1,120 @@
+.content-our-team{
+  margin: 150px 0 160px 0;
+  .item-our-team{
+      position: relative;
+      width: 100%;
+      margin: 0;
+    img{
+      width: 100%;
+    }
+    .content-item-our-team{
+      position: absolute;
+      right: 0;
+      bottom: -6%;
+      width: 85%;
+      padding-left: 30px;
+      padding-top: 20px;
+      background: white;
+      p{
+        margin: 0;
+        font-family: 'Raleway', sans-serif;
+        font-size: 22px;
+        font-weight: 600;
+      }
+      span{
+        font-family: 'Raleway', sans-serif;
+        font-size: 15px;
+      }
+      nav{
+        background: white;
+        position: absolute;
+        display: none;
+        right: 0;
+        z-index: 3;
+        width: 100%;
+        padding-left: 30px;
+        padding-top: 25px;
+        a{
+          margin-right: 20px;
+
+          i{
+            color: #CCCCCC;
+          }
+        }
+        a:hover i{
+          color: #ffa6a8;
+        }
+
+      }
+    }
+    .content-item-our-team:hover nav{
+      display:block;
+    }
+  }
+  .item-our-team:hover nav{
+    display: block;
+  }
+}
+.call-us{
+  position: relative;
+  width: 100%;
+  margin-bottom: 160px;
+  img{
+    width: 100%;
+    margin-left: 15px;
+  }
+  .call-us-content{
+    position: absolute;
+    top: 99%;
+    width: 100%;
+    left: 0;
+    text-align: center;
+    background: #333333;
+    padding-bottom: 20px;
+    margin-left: 15px;
+    p{
+      font-family: 'El Messiri', sans-serif;
+      font-size: 35px;
+      color: white;
+      line-height: 1;
+      margin-bottom: 0;
+      padding-top: 25px;
+    }
+    span{
+      text-transform: uppercase;
+      font-family: 'Raleway', sans-serif;
+      font-size: 13px;
+      color: #ffa6a8;
+
+    }
+  }
+}
+
+
+@media all and (max-width: 767px) {
+  .content-our-team{
+    margin-bottom: 100px;
+    margin-top: 100px !important;
+    .item-our-team{
+      margin: 40px 0;
+    }
+  }
+  .call-us{
+    img{
+      height: 100%;
+      margin-left: 15px;
+    }
+    .call-us-content{
+      margin-left: 15px;
+    }
+  }
+}
+@media all and (max-width: 1023px) and (min-width: 768px) {
+  .content-our-team{
+    .item-our-team{
+      margin: 40px 0;
+    }
+  }
+}
+
+

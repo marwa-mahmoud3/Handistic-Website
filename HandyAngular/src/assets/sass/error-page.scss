@@ -1,0 +1,128 @@
+.error {
+  background-image: url("../../assets/imager/404.jpg");
+  background-size: cover;
+  text-align: center;
+  background-position: center center;
+  background-repeat: no-repeat;
+  height: 100vh;
+  .content-error {
+    width: 100%;
+    text-align: center;
+    font-family: 'Raleway', sans-serif;
+    padding-top: 150px;
+
+    p {
+      font-weight: bold;
+      font-size: 250px;
+      line-height: 1;
+      position: relative;
+    }
+
+    p:before {
+      content: " ";
+      position: absolute;
+      height: 13px;
+      width: 130px;
+      display: block;
+      left: 50%;
+      margin-left: -65px;
+      bottom: 10px;
+      background: white;
+      -webkit-mask: url(../../assets/imager/line-title2.svg) repeat left center;
+      mask: url(../../assets/imager/line-title2.svg) repeat left center;
+    }
+
+    img {
+      margin-top: -90px;
+    }
+
+    h2 {
+      font-size: 25px;
+      font-weight: 600;
+      line-height: 1;
+    }
+
+    span {
+      font-size: 15px;
+      color: #666666;
+      margin-bottom: 60px;
+    }
+
+    .back-menu {
+      margin-top: 40px;
+    }
+
+    a {
+      text-transform: uppercase;
+      line-height: 1;
+      font-size: 15px;
+      padding: 15px 25px;
+      background: white;
+      color: #333333;
+    }
+
+    a:hover {
+      text-decoration: none;
+      color: white;
+      background: #333333;
+    }
+  }
+}
+
+@media all and (max-width: 360px) and (orientation: portrait){
+  .error {
+    .content-error {
+      p {
+        font-size: 180px !important;
+      }
+      p:before {
+        bottom: 5px !important;
+      }
+    }
+  }
+}
+@media all and (min-width: 361px) and (max-width: 767px) and (orientation: portrait){
+  .content-error {
+    p {
+      font-size: 210px !important;
+    }
+
+    p:before {
+      bottom: 5px !important;
+    }
+  }
+}
+@media all and (min-width: 768px) and (max-width: 1023px) and (orientation: portrait){
+  .content-error {
+    p:before {
+      bottom: 5px !important;
+    }
+  }
+}
+@media (min-width:320px) and (max-width:767px) and (orientation: landscape) {
+  .content-error{
+    padding-top: 0 !important;
+    p{
+      font-size: 150px !important;
+    }
+    p:before{
+      bottom: 5px !important;
+    }
+  }
+}
+@media (min-width:768px) and (max-width:1023px) and (orientation: landscape) {
+  .content-error{
+    padding-top: 30px !important;
+    p{
+      font-size: 190px !important;
+    }
+  }
+}
+@media all and (min-width: 1024px) and (max-width: 1365px) {
+  .content-error {
+    padding-top: 25% !important;
+    p:before {
+      bottom: 5px !important;
+    }
+  }
+}
