@@ -1,0 +1,100 @@
+<div class="app container-fluid app-signup p-0 h-100">
+  <div class="row g-0 app-auth-wrapper w-100 mx-0">
+    <div class="col-12 col-md-7 col-lg-6 auth-main-col text-center p-5">
+      <div class="d-flex flex-column justify-content-between">
+        <div class="app-auth-body mx-auto">
+          <div class="app-auth-branding mb-4">
+            <a class="app-logo" routerLink="/overview"
+              ><img
+                class="logo-icon mr-2"
+                src="assets/upwork_fav.svg"
+                alt="logo"
+            /></a>
+          </div>
+          <h2 class="auth-heading text-center mb-4">update to Upwork</h2>
+          <div class="auth-form-container text-left mx-auto">
+            <form
+              [formGroup]="editForm"
+              (ngSubmit)="onSubmit()"
+              novalidate
+            >
+              <div class="email mb-3">
+                <label>Name</label>
+                <input
+                  type="text"
+                  formControlName="name"
+                  class="form-control shadow-none"
+                  [class.is-valid]="editForm.controls['name'].valid"
+                />
+                <div [hidden]="editForm.controls['name'].valid || editForm.controls['name'].untouched"
+                class="alert alert-danger">Name must be at least 3 characters long</div>
+              </div>
+  
+              <div class="email mb-3">
+                <label>Phone</label>
+                <input
+                  type="text"
+                  formControlName="phone"
+                  class="form-control shadow-none"
+                  [class.is-valid]="editForm.controls['phone'].valid"
+                />
+                <div [hidden]="editForm.controls['phone'].valid || editForm.controls['phone'].untouched"
+                class="alert alert-danger">Phone must be 11 numbers only</div>
+              </div>
+     
+              <!-- <div class="email mb-3">
+                <label>imgUrl</label>
+                <input
+                  type="text"
+                  formControlName="ImgUrl"
+                  class="form-control shadow-none"
+                  required
+                />
+              </div> -->
+
+              <div class="extra mb-3">
+                <div class="form-check">
+                  <input
+                    class="form-check-input"
+                    type="checkbox"
+                    value=""
+                    id="RememberPassword"
+                  />
+                  <label class="form-check-label" for="RememberPassword">
+                    I agree to Portal's
+                    <a href="#" class="app-link">Terms of Service</a> and
+                    <a href="#" class="app-link">Privacy Policy</a>.
+                  </label>
+                </div>
+              </div>
+              <!--//extra-->
+
+              <div class="text-center">
+                <button
+                  type="submit"
+                  class="btn app-btn-primary btn-block theme-btn mx-auto"
+                  [disabled]="editForm.invalid"
+                >
+                  Sign Up
+                </button>
+              </div>
+            </form>
+            <!--//auth-form-->
+
+            <div class="auth-option text-center pt-5">
+              Already have an account?
+              <a class="text-link" routerLink="/signin">Log in</a>
+            </div>
+          </div>
+          <!--//auth-form-container-->
+        </div>
+        <!--//auth-body-->
+        <div class="app-auth-footer">
+          <app-footer></app-footer>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-12 col-md-5 col-lg-6 px-0 backgrounds"></div>
+  </div>
+</div>

@@ -1,0 +1,33 @@
+<form [formGroup]="adminForm" (ngSubmit)="onSubmit()" novalidate>
+    <div class="mb-3">
+      <label>Name</label>
+      <input type="text" formControlName="name" class="form-control" >
+    </div>
+  
+    <div class="mb-3">
+      <label>Email</label>
+      <input type="email" formControlName="email" class="form-control" >
+    </div>
+
+    <div class="mb-3">
+        <label>password</label>
+        <input type="text" formControlName="password" class="form-control" >
+    </div>
+  
+    <div class="mb-3">
+      <label>phone</label>
+      <input type="number" formControlName="phone" class="form-control" >
+    </div>
+
+    <div class="mb-3">
+      <label>Img URL</label>
+      <input type="file" formControlName="imgurl" class="form-control" (change)="onFileSelected($event)"
+      autocomplete="off" >
+    </div>
+
+    <div class="mb-3">
+      <button type="submit" class="btn btn-primary" [disabled]="!adminForm.valid">Create</button>
+    </div>
+
+
+  </form>

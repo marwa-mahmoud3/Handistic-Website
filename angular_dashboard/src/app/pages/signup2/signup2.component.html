@@ -1,0 +1,119 @@
+<div class="app container-fluid app-signup p-0 h-100">
+  <div class="row g-0 app-auth-wrapper w-100 mx-0">
+    <div class="col-12 col-md-7 col-lg-6 auth-main-col text-center p-5">
+      <div class="d-flex flex-column justify-content-between">
+        <div class="app-auth-body mx-auto">
+          <div class="app-auth-branding mb-4">
+            <a class="app-logo" routerLink="/overview"
+              ><img
+                class="logo-icon mr-2"
+                src="assets/upwork_fav.svg"
+                alt="logo"
+            /></a>
+          </div>
+          <h2 class="auth-heading text-center mb-4">Sign Up to Upwork</h2>
+          <div class="auth-form-container text-left mx-auto">
+            <form [formGroup]="adminForm" (ngSubmit)="onSubmit()" novalidate>
+              <div class="email mb-2">
+                <label>Full Name</label>
+                <input
+                  type="text"
+                  formControlName="name"
+                  class="form-control shadow-none"
+                  [class.is-valid]="adminForm.controls['name'].valid"
+                />
+                <div [hidden]="adminForm.controls['name'].valid || adminForm.controls['name'].untouched"
+                class="alert alert-danger">Name must be at least 3 characters long</div>
+              </div>
+
+              <div class="email mb-2">
+                <label>Email</label>
+                <input
+                  type="email"
+                  formControlName="email"
+                  class="form-control shadow-none"
+                  [class.is-valid]="adminForm.controls['email'].valid"
+                />
+                <div [hidden]="adminForm.controls['email'].valid || adminForm.controls['email'].untouched"
+                class="alert alert-danger">Email must be a valid email address</div>
+              </div>
+
+              <div class="email mb-2">
+                <label>Phone</label>
+                <input
+                  type="text"
+                  formControlName="phone"
+                  class="form-control shadow-none"
+                  [class.is-valid]="adminForm.controls['phone'].valid"
+                />
+                <div [hidden]="adminForm.controls['phone'].valid || adminForm.controls['phone'].untouched"
+                class="alert alert-danger">Phone must be 11 numbers only </div>
+              </div>
+
+              <div class="password mb-2">
+                <label>Password</label>
+                <input
+                  type="text"
+                  formControlName="password"
+                  class="form-control shadow-none"
+                  [class.is-valid]="adminForm.controls['password'].valid"
+                />
+                <div [hidden]="adminForm.controls['password'].valid || adminForm.controls['password'].untouched"
+                class="alert alert-danger">Password must be at least 9 characters and have special characters</div>
+              </div>
+
+
+              <div class="email mb-2">
+                <label>Img URL</label>
+                <input
+                  type="file"
+                  formControlName="imgurl"
+                  class="form-control shadow-none"
+                  (change)="onFileSelected($event)"
+                  accept=".png,.jpg"
+                  autocomplete="off"
+                />
+                <!-- <div [hidden]="adminForm.controls['imgurl'].valid || adminForm.controls['imgurl'].untouched"
+                class="alert alert-danger">Imgurl is required</div> -->
+              </div>
+
+
+              <div class="extra mb-2">
+                <div class="form-check">
+                  <input
+                    class="form-check-input"
+                    type="checkbox"
+                    value=""
+                    id="RememberPassword"
+                  />
+                  <label class="form-check-label" for="RememberPassword">
+                    I agree to Portal's
+                    <a href="#" class="app-link">Terms of Service</a> and
+                    <a href="#" class="app-link">Privacy Policy</a>.
+                  </label>
+                </div>
+              </div>
+              <!--//extra-->
+
+              <div class="text-center">
+                <button
+                  type="submit"
+                  class="btn app-btn-primary btn-block theme-btn mx-auto"
+                  [disabled]="adminForm.invalid"
+                >
+                  Sign Up
+                </button>
+              </div>
+            </form>
+            <!--//auth-form-->
+          </div>
+          <!--//auth-form-container-->
+        </div>
+        <!--//auth-body-->
+        
+      </div>
+    </div>
+
+    <div class="col-12 col-md-5 col-lg-6 px-0 backgrounds"></div>
+  </div>
+</div>
