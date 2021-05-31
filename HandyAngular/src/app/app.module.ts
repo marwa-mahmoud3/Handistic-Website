@@ -14,6 +14,8 @@ import { ForgetpasswordComponent } from './authentication/forgetpassword/forgetp
 import { EmailConfirmationComponent } from './authentication/email-confirmation/email-confirmation.component';
 import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
 import { ProductsComponent } from './products/products.component';
+import { ProductsListComponent } from './products/products-list/products-list.component';
+import { ProductDetailsComponent } from './products/product-details/product-details.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +28,9 @@ import { ProductsComponent } from './products/products.component';
     ForgetpasswordComponent,
     EmailConfirmationComponent,
     AdminDashboardComponent,
-    ProductsComponent
+    ProductsComponent,
+    ProductsListComponent,
+    ProductDetailsComponent
   ],
   imports: [
     BrowserModule,

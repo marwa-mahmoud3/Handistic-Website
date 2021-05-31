@@ -6,7 +6,9 @@ import { ForgetpasswordComponent } from './authentication/forgetpassword/forgetp
 import { LoginComponent } from './authentication/login/login.component';
 import { RegisterComponent } from './authentication/register/register.component';
 import { ResetPasswordComponent } from './authentication/reset-password/reset-password.component';
-import { ProductsComponent } from './products/products.component';
+import { ProductDetailsComponent } from './products/product-details/product-details.component';
+import { ProductsListComponent } from './products/products-list/products-list.component';
+
 
 const routes: Routes = [
   {path:"Register",component : RegisterComponent},
@@ -15,7 +17,9 @@ const routes: Routes = [
   {path:"forgetPassword",component:ForgetpasswordComponent},
   {path:"EmailConfirmation",component:EmailConfirmationComponent},
   {path:"AdminPanel",component:AdminDashboardComponent},
-  {path:"Products",component:ProductsComponent}
+  {path:"productDetails",component:ProductDetailsComponent},
+  {path:"productsList",component:ProductsListComponent}
+
 ];
 
 @NgModule({
