@@ -56,12 +56,12 @@ import { Signup2Component } from './pages/signup2/signup2.component';
 import { SpecialaccountComponent } from './pages/specialaccount/specialaccount.component';
 import { Profile1Component } from './components/profile1/profile1.component';
 import { ResetpassformComponent } from './pages/resetpassform/resetpassform.component';
-import { OrdersComponent } from './pages/orders/orders.component';
 import {
   AngularFireStorageModule,
   AngularFireStorageReference,
   AngularFireUploadTask,
 } from "@angular/fire/storage";
+import { CityComponent } from './pages/city/city.component';
 
 @NgModule({
   declarations: [
@@ -104,7 +104,6 @@ import {
     HeaderComponent,
     FooterComponent,
     SidebarComponent,
-    OrdersComponent,
     ClientListComponent,
     TalentListComponent,
     AddadminComponent,
@@ -114,6 +113,7 @@ import {
     SpecialaccountComponent,
     Profile1Component,
     ResetpassformComponent,
+    CityComponent,
   
   ],
   imports: [

@@ -1,0 +1,27 @@
+<!--content account-->
+<div class="container" style="padding-top: 120px; padding-bottom: 80px;">
+    <div class="row justify-content-center content-my-account">
+        <div class="col-md-6 col-sm-12 col-12 content-my-account-right">
+            <h2>City</h2>
+            <form #loginForm="" >
+              <!-- <div *ngIf="showError" class="alert alert-danger" role="alert">
+                {{errorMessage.error | json}}
+              </div> -->
+                <div class="form-holder">
+                    <p>City ID<span>*</span></p>
+                  <input type="text" class="form-control" >
+                  <!-- <small class="text-danger"[class.d-none]="email.untouched || email.valid">Email Address is required</small> -->
+                </div><br>
+                <div class="form-holder">
+                    <p>City Name<span>*</span></p>
+                  <input type="password" class="form-control"  >
+                  <!-- <small class="text-danger"[class.d-none]="password.untouched || password.valid">Password is required</small> -->
+                </div>
+                <button type="submit"  class="bt" [disabled]="!loginForm.valid" >Add</button>
+                <div class="text-center "><span>If you haven't account 
+                  <a href="/Register" id="login" style="text-decoration: underline; color:rgb(61, 92, 179) ;padding-left: 10px;" > Sign Up </a></span>
+                </div>
+              </form>
+        </div>
+    </div>
+</div>

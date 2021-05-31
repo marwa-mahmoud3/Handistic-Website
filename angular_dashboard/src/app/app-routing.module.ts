@@ -10,18 +10,18 @@ import { SignupComponent } from './pages/external/signup/signup.component';
 import { Signup2Component } from './pages/signup2/signup2.component';
 import { HelpComponent } from './pages/help/help.component';
 import { NotificationsComponent } from './pages/notifications/notifications.component';
-import { OrdersComponent } from './pages/orders/orders.component';
 import { OverviewComponent } from './pages/overview/overview.component';
 import { SettingsComponent } from './pages/settings/settings.component';
 import { SpecialaccountComponent } from './pages/specialaccount/specialaccount.component';
 import { ResetpassformComponent } from './pages/resetpassform/resetpassform.component';
 import { TalentListComponent } from './pages/talent-list/talent-list.component';
+import { CityComponent } from './pages/city/city.component';
 
 
 const routes: Routes = [
   { path: '', redirectTo: '/overview', pathMatch: 'full' },
   { path: 'overview', component: OverviewComponent, canActivate: [AuthGuard] },
-  { path: 'orders', component: OrdersComponent, canActivate: [AuthGuard] },
+  { path: 'city', component: CityComponent, canActivate: [AuthGuard] },
   { path: 'charts', component: ChartsComponent, canActivate: [AuthGuard] },
   { path: 'settings', component: SettingsComponent, canActivate: [AuthGuard] },
   {
