@@ -1,224 +1,89 @@
-<div id="app-sidepanel" class="app-sidepanel">
-  <!-- *ngIf="
-router.url !== '/signin' &&
-router.url !== '/signup' &&
-router.url !== '/resetpassword' &&
-router.url !== '/404error'
-" -->
-  <div id="sidepanel-drop" class="sidepanel-drop"></div>
-  <div class="sidepanel-inner d-flex flex-column">
-    <a href="#" id="sidepanel-close" class="sidepanel-close d-xl-none">&times;</a>
-    <div class="app-branding text-center">
-      <h2 class="app-logo" href="index.html" style="color: #ffa6a8;padding-right:25px ;">Handy</h2>
-    </div>
-    <!--//app-branding-->
-
-    <nav id="app-nav-main" class="app-nav app-nav-main flex-grow-1" style="background-color: #ebe6e686;">
-      <ul class="app-menu list-unstyled accordion" id="menu-accordion">
-        <li class="nav-item">
-          <!--//Bootstrap Icons: https://icons.getbootstrap.com/ -->
-          <a class="nav-link active" routerLink="/overview">
-            <span class="nav-icon">
-              <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-house-door" fill="currentColor"
-                xmlns="http://www.w3.org/2000/svg">
-                <path fill-rule="evenodd"
-                  d="M7.646 1.146a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 .146.354v7a.5.5 0 0 1-.5.5H9.5a.5.5 0 0 1-.5-.5v-4H7v4a.5.5 0 0 1-.5.5H2a.5.5 0 0 1-.5-.5v-7a.5.5 0 0 1 .146-.354l6-6zM2.5 7.707V14H6v-4a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 .5.5v4h3.5V7.707L8 2.207l-5.5 5.5z" />
-                <path fill-rule="evenodd" d="M13 2.5V6l-2-2V2.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5z" />
-              </svg>
-            </span>
-            <span class="nav-link-text">Overview</span>
+<div class="container-fluid" >
+  <div class="row row-offcanvas row-offcanvas-right">
+    <nav class="sidebar sidebar-offcanvas" id="sidebar"  style="background-color: rgba(241, 238, 238, 0.774);padding-top: 60px;height: 1000px">
+      <div class="user-info">
+        <img src="../../../assets/images/face.jpg" alt="">
+        <p class="name">Marwa</p>
+        <p class="designation">Manager</p>
+      </div>
+      <ul class="nav" style="padding-top: 0px;">
+        <li class="nav-item active">
+          <a class="nav-link" href="index.html">
+            <img src="../../../assets/images/icons/1.png" alt="">
+            <span class="menu-title">Home</span>
           </a>
-          <!--//nav-link-->
         </li>
-         <!--//nav-item-->
-         <li class="nav-item">
-          <!--//Bootstrap Icons: https://icons.getbootstrap.com/ -->
-          <a class="nav-link" target="_blank"
-            href="localhost:3000">
-            <span class="nav-icon">
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-speedometer2" viewBox="0 0 16 16">
-                <path d="M8 4a.5.5 0 0 1 .5.5V6a.5.5 0 0 1-1 0V4.5A.5.5 0 0 1 8 4zM3.732 5.732a.5.5 0 0 1 .707 0l.915.914a.5.5 0 1 1-.708.708l-.914-.915a.5.5 0 0 1 0-.707zM2 10a.5.5 0 0 1 .5-.5h1.586a.5.5 0 0 1 0 1H2.5A.5.5 0 0 1 2 10zm9.5 0a.5.5 0 0 1 .5-.5h1.5a.5.5 0 0 1 0 1H12a.5.5 0 0 1-.5-.5zm.754-4.246a.389.389 0 0 0-.527-.02L7.547 9.31a.91.91 0 1 0 1.302 1.258l3.434-4.297a.389.389 0 0 0-.029-.518z"/>
-                <path fill-rule="evenodd" d="M0 10a8 8 0 1 1 15.547 2.661c-.442 1.253-1.845 1.602-2.932 1.25C11.309 13.488 9.475 13 8 13c-1.474 0-3.31.488-4.615.911-1.087.352-2.49.003-2.932-1.25A7.988 7.988 0 0 1 0 10zm8-7a7 7 0 0 0-6.603 9.329c.203.575.923.876 1.68.63C4.397 12.533 6.358 12 8 12s3.604.532 4.923.96c.757.245 1.477-.056 1.68-.631A7 7 0 0 0 8 3z"/>
-              </svg>
-            </span>
-            <span class="nav-link-text">Website</span>
-          </a>
-          <!--//nav-link-->
-        </li>
-        <!--//nav-item-->
-
-        <!--//nav-item-->
         <li class="nav-item">
-          <!--//Bootstrap Icons: https://icons.getbootstrap.com/ -->
+          <a class="nav-link" href="pages/widgets.html">
+            <img src="../../../assets/images/icons/4.png" alt="">
+            <span class="menu-title">Category</span>
+          </a>
+        </li>
+        <li class="nav-item">
           <a class="nav-link" routerLink="/city">
-            <span class="nav-icon">
-              <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-card-list" fill="currentColor"
-                xmlns="http://www.w3.org/2000/svg">
-                <path fill-rule="evenodd"
-                  d="M14.5 3h-13a.5.5 0 0 0-.5.5v9a.5.5 0 0 0 .5.5h13a.5.5 0 0 0 .5-.5v-9a.5.5 0 0 0-.5-.5zm-13-1A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2h-13z" />
-                <path fill-rule="evenodd"
-                  d="M5 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 5 8zm0-2.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm0 5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5z" />
-                <circle cx="3.5" cy="5.5" r=".5" />
-                <circle cx="3.5" cy="8" r=".5" />
-                <circle cx="3.5" cy="10.5" r=".5" />
-              </svg>
-            </span>
-            <span class="nav-link-text">Jobs</span>
+            <img src="../../../assets/images/icons/009-maps-and-flags.png" alt="">
+            <span class="menu-title">City</span>
           </a>
-          <!--//nav-link-->
         </li>
-        <!--//nav-item-->
-
-        <li class="nav-item has-submenu">
-          <!--//Bootstrap Icons: https://icons.getbootstrap.com/ -->
-          <a class="nav-link submenu-toggle" data-bs-toggle="collapse" href="#submenu-1" role="button"
-            aria-expanded="false" aria-controls="submenu-1">
-            <span class="nav-icon">
-              <!--//Bootstrap Icons: https://icons.getbootstrap.com/ -->
-              <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-files" fill="currentColor"
-                xmlns="http://www.w3.org/2000/svg">
-                <path fill-rule="evenodd"
-                  d="M4 2h7a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2zm0 1a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h7a1 1 0 0 0 1-1V4a1 1 0 0 0-1-1H4z" />
-                <path
-                  d="M6 0h7a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2v-1a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H6a1 1 0 0 0-1 1H4a2 2 0 0 1 2-2z" />
-              </svg>
-            </span>
-            <span class="nav-link-text">Pages</span>
-            <span class="submenu-arrow">
-              <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-chevron-down" fill="currentColor"
-                xmlns="http://www.w3.org/2000/svg">
-                <path fill-rule="evenodd"
-                  d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z" />
-              </svg>
-            </span>
-            <!--//submenu-arrow-->
+        <li class="nav-item">
+          <a class="nav-link" href="pages/ui-elements/buttons.html">
+            <img src="../../../assets/images/icons/007-star.png" alt="">
+            <span class="menu-title">Users</span>
           </a>
-          <!--//nav-link-->
-          <div id="submenu-1" class="collapse submenu submenu-1" data-parent="#menu-accordion">
-            <ul class="submenu-list list-unstyled">
-              <li class="submenu-item">
-                <a class="submenu-link" routerLink="/clientlist" routerLinkActive="router-link-active">Client List</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="pages/tables/index.html">
+            <img src="../../../assets/images/icons/5.png" alt="">
+            <span class="menu-title">Charts</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="pages/charts/index.html">
+            <img src="../../../assets/images/icons/6.png" alt="">
+            <span class="menu-title">Charts</span>
+          </a>
+        </li>
+       
+        <li class="nav-item">
+          <a class="nav-link" data-toggle="collapse" href="#sample-pages" aria-expanded="false" aria-controls="sample-pages">
+            <img src="../../../assets/images/icons/9.png" alt="">
+            <span class="menu-title">Sample Pages<i class="fa fa-sort-down"></i></span>
+          </a>
+          <div class="collapse" id="sample-pages">
+            <ul class="nav flex-column sub-menu">
+              <li class="nav-item">
+                <a class="nav-link" href="">
+                  Blank Page
+                </a>
               </li>
-              <li class="submenu-item">
-                <a class="submenu-link" routerLink="/talentlist" routerLinkActive="router-link-active">Talent List</a>
+              <li class="nav-item">
+                <a class="nav-link" href="">
+                  Login
+                </a>
               </li>
-              <li class="submenu-item">
-                <a class="submenu-link" routerLink="/notifications"
-                  routerLinkActive="router-link-active">Notifications</a>
+              <li class="nav-item">
+                <a class="nav-link" href="">
+                  Register
+                </a>
               </li>
-              <li class="submenu-item">
-                <a class="submenu-link" routerLink="/myaccount" routerLinkActive="router-link-active">Account</a>
+              <li class="nav-item">
+                <a class="nav-link" href="">
+                  404
+                </a>
               </li>
-              <li class="submenu-item">
-                <a class="submenu-link" routerLink="/settings" routerLinkActive="router-link-active">Settings</a>
+              <li class="nav-item">
+                <a class="nav-link" href="">
+                  500
+                </a>
               </li>
             </ul>
           </div>
         </li>
-
-        <!--//nav-item-->
-        <li class="nav-item has-submenu">
-          <!--//Bootstrap Icons: https://icons.getbootstrap.com/ -->
-          <a class="nav-link submenu-toggle" data-bs-toggle="collapse" href="#submenu-2" role="button"
-            aria-expanded="false" aria-controls="submenu-2">
-            <span class="nav-icon">
-              <!--//Bootstrap Icons: https://icons.getbootstrap.com/ -->
-              <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-columns-gap" fill="currentColor"
-                xmlns="http://www.w3.org/2000/svg">
-                <path fill-rule="evenodd"
-                  d="M6 1H1v3h5V1zM1 0a1 1 0 0 0-1 1v3a1 1 0 0 0 1 1h5a1 1 0 0 0 1-1V1a1 1 0 0 0-1-1H1zm14 12h-5v3h5v-3zm-5-1a1 1 0 0 0-1 1v3a1 1 0 0 0 1 1h5a1 1 0 0 0 1-1v-3a1 1 0 0 0-1-1h-5zM6 8H1v7h5V8zM1 7a1 1 0 0 0-1 1v7a1 1 0 0 0 1 1h5a1 1 0 0 0 1-1V8a1 1 0 0 0-1-1H1zm14-6h-5v7h5V1zm-5-1a1 1 0 0 0-1 1v7a1 1 0 0 0 1 1h5a1 1 0 0 0 1-1V1a1 1 0 0 0-1-1h-5z" />
-              </svg>
-            </span>
-            <span class="nav-link-text">External</span>
-            <span class="submenu-arrow">
-              <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-chevron-down" fill="currentColor"
-                xmlns="http://www.w3.org/2000/svg">
-                <path fill-rule="evenodd"
-                  d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z" />
-              </svg>
-            </span>
-            <!--//submenu-arrow-->
-          </a>
-          <!--//nav-link-->
-          <div id="submenu-2" class="collapse submenu submenu-2" data-parent="#menu-accordion">
-            <ul class="submenu-list list-unstyled">
-              <li class="submenu-item">
-                <a class="submenu-link" routerLink="/signin" routerLinkActive="router-link-active">Login</a>
-              </li>
-              <li class="submenu-item">
-                <a class="submenu-link" routerLink="/create" routerLinkActive="router-link-active">Signup</a>
-              </li>
-              <li class="submenu-item">
-                <a class="submenu-link" routerLink="/resetpassword" routerLinkActive="router-link-active">Reset
-                  password</a>
-              </li>
-            </ul>
-          </div>
-        </li>
-        <!--//nav-item-->
-
         <li class="nav-item">
-          <!--//Bootstrap Icons: https://icons.getbootstrap.com/ -->
-          <a class="nav-link" routerLink="/charts" routerLinkActive="router-link-active">
-            <span class="nav-icon">
-              <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-bar-chart-line" fill="currentColor"
-                xmlns="http://www.w3.org/2000/svg">
-                <path fill-rule="evenodd"
-                  d="M11 2a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v12h.5a.5.5 0 0 1 0 1H.5a.5.5 0 0 1 0-1H1v-3a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v3h1V7a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v7h1V2zm1 12h2V2h-2v12zm-3 0V7H7v7h2zm-5 0v-3H2v3h2z" />
-              </svg>
-            </span>
-            <span class="nav-link-text">Charts</span>
+          <a class="nav-link" href="">
+            <img src="../../../assets/images/icons/10.png" alt="">
+            <span class="menu-title">Settings</span>
           </a>
-          <!--//nav-link-->
         </li>
-        <!--//nav-item-->
-
-        <li class="nav-item">
-          <!--//Bootstrap Icons: https://icons.getbootstrap.com/ -->
-          <a class="nav-link" routerLink="/help" routerLinkActive="router-link-active">
-            <span class="nav-icon">
-              <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-question-circle" fill="currentColor"
-                xmlns="http://www.w3.org/2000/svg">
-                <path fill-rule="evenodd" d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
-                <path
-                  d="M5.255 5.786a.237.237 0 0 0 .241.247h.825c.138 0 .248-.113.266-.25.09-.656.54-1.134 1.342-1.134.686 0 1.314.343 1.314 1.168 0 .635-.374.927-.965 1.371-.673.489-1.206 1.06-1.168 1.987l.003.217a.25.25 0 0 0 .25.246h.811a.25.25 0 0 0 .25-.25v-.105c0-.718.273-.927 1.01-1.486.609-.463 1.244-.977 1.244-2.056 0-1.511-1.276-2.241-2.673-2.241-1.267 0-2.655.59-2.75 2.286zm1.557 5.763c0 .533.425.927 1.01.927.609 0 1.028-.394 1.028-.927 0-.552-.42-.94-1.029-.94-.584 0-1.009.388-1.009.94z" />
-              </svg>
-            </span>
-            <span class="nav-link-text">Help</span>
-          </a>
-          <!--//nav-link-->
-        </li>
-        <!--//nav-item-->
       </ul>
-      <!--//app-menu-->
     </nav>
-
-    <!--//app-nav-->
-    <div class="app-sidepanel-footer">
-      <nav class="app-nav app-nav-footer">
-        <ul class="app-menu footer-menu list-unstyled">
-          <li class="nav-item">
-            <!--//Bootstrap Icons: https://icons.getbootstrap.com/ -->
-            <a class="nav-link" routerLink="/settings" routerLinkActive="active">
-              <span class="nav-icon">
-                <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-gear" fill="currentColor"
-                  xmlns="http://www.w3.org/2000/svg">
-                  <path fill-rule="evenodd"
-                    d="M8.837 1.626c-.246-.835-1.428-.835-1.674 0l-.094.319A1.873 1.873 0 0 1 4.377 3.06l-.292-.16c-.764-.415-1.6.42-1.184 1.185l.159.292a1.873 1.873 0 0 1-1.115 2.692l-.319.094c-.835.246-.835 1.428 0 1.674l.319.094a1.873 1.873 0 0 1 1.115 2.693l-.16.291c-.415.764.42 1.6 1.185 1.184l.292-.159a1.873 1.873 0 0 1 2.692 1.116l.094.318c.246.835 1.428.835 1.674 0l.094-.319a1.873 1.873 0 0 1 2.693-1.115l.291.16c.764.415 1.6-.42 1.184-1.185l-.159-.291a1.873 1.873 0 0 1 1.116-2.693l.318-.094c.835-.246.835-1.428 0-1.674l-.319-.094a1.873 1.873 0 0 1-1.115-2.692l.16-.292c.415-.764-.42-1.6-1.185-1.184l-.291.159A1.873 1.873 0 0 1 8.93 1.945l-.094-.319zm-2.633-.283c.527-1.79 3.065-1.79 3.592 0l.094.319a.873.873 0 0 0 1.255.52l.292-.16c1.64-.892 3.434.901 2.54 2.541l-.159.292a.873.873 0 0 0 .52 1.255l.319.094c1.79.527 1.79 3.065 0 3.592l-.319.094a.873.873 0 0 0-.52 1.255l.16.292c.893 1.64-.902 3.434-2.541 2.54l-.292-.159a.873.873 0 0 0-1.255.52l-.094.319c-.527 1.79-3.065 1.79-3.592 0l-.094-.319a.873.873 0 0 0-1.255-.52l-.292.16c-1.64.893-3.433-.902-2.54-2.541l.159-.292a.873.873 0 0 0-.52-1.255l-.319-.094c-1.79-.527-1.79-3.065 0-3.592l.319-.094a.873.873 0 0 0 .52-1.255l-.16-.292c-.892-1.64.902-3.433 2.541-2.54l.292.159a.873.873 0 0 0 1.255-.52l.094-.319z" />
-                  <path fill-rule="evenodd"
-                    d="M8 5.754a2.246 2.246 0 1 0 0 4.492 2.246 2.246 0 0 0 0-4.492zM4.754 8a3.246 3.246 0 1 1 6.492 0 3.246 3.246 0 0 1-6.492 0z" />
-                </svg>
-              </span>
-              <span class="nav-link-text">Settings</span>
-            </a>
-            <!--//nav-link-->
-          </li>
-        </ul>
-        <!--//footer-menu-->
-      </nav>
-    </div>
-    <!--//app-sidepanel-footer-->
-  </div>
-  <!--//sidepanel-inner-->
-</div>
-<!--//app-sidepanel-->

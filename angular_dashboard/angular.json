@@ -29,9 +29,16 @@
             ],
             "styles": [
               "src/styles.css",
-              "node_modules/bootstrap/dist/css/bootstrap.min.css"
+              "node_modules/bootstrap/dist/css/bootstrap.min.css",
+              "src/assets/"
             ],
-            "scripts": []
+            "scripts": [
+              "src/assets/css/perfect-scrollbar/dist/js/perfect-scrollbar.jquery.min.js",
+              "src/assets/js/hoverable-collapse.js",
+              "src/assets/js/misc.js",
+              "src/assets/css/bootstrap/dist/js/bootstrap.min.js",
+              "src/assets/js/jquery/dist/jquery.min.js"
+            ]
           },
           "configurations": {
             "production": {

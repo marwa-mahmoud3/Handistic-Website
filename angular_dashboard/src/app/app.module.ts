@@ -30,7 +30,6 @@ import { ResetPaswordComponent } from './pages/external/reset-pasword/reset-pasw
 import { ErrorPageComponent } from './pages/external/error-page/error-page.component';
 import { SigninComponent } from './pages/external/signin/signin.component';
 import { HeaderComponent } from './components/header/header.component';
-import { FooterComponent } from './components/footer/footer.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { NotificationComponent } from './components/notification/notification.component';
 import { PreferencesComponent } from './components/preferences/preferences.component';
@@ -43,7 +42,7 @@ import { NotificationSettingsComponent } from './components/notification-setting
 import { HelpComponent } from './pages/help/help.component';
 import { NotificationsComponent } from './pages/notifications/notifications.component';
 import { SettingsComponent } from './pages/settings/settings.component';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, NgForm, ReactiveFormsModule } from '@angular/forms';
 import { environment } from 'src/environments/environment';
 
 import { ClientListComponent } from './pages/client-list/client-list.component';
@@ -56,6 +55,8 @@ import { Signup2Component } from './pages/signup2/signup2.component';
 import { SpecialaccountComponent } from './pages/specialaccount/specialaccount.component';
 import { Profile1Component } from './components/profile1/profile1.component';
 import { ResetpassformComponent } from './pages/resetpassform/resetpassform.component';
+import { HttpClientModule } from '@angular/common/http';
+
 import {
   AngularFireStorageModule,
   AngularFireStorageReference,
@@ -102,7 +103,6 @@ import { CityComponent } from './pages/city/city.component';
     DataPrivacyComponent,
     NotificationSettingsComponent,
     HeaderComponent,
-    FooterComponent,
     SidebarComponent,
     ClientListComponent,
     TalentListComponent,
@@ -126,7 +126,9 @@ import { CityComponent } from './pages/city/city.component';
   ReactiveFormsModule,
   AngularFireDatabaseModule,
   AngularFirestoreModule,
-  AngularFireStorageModule,  
+  AngularFireStorageModule,
+  HttpClientModule,
+  NgForm,
 ],
   exports: [CommonModule, FormsModule, ReactiveFormsModule],
   providers: [],

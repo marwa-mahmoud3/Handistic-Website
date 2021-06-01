@@ -3,24 +3,16 @@
     <div class="row justify-content-center content-my-account">
         <div class="col-md-6 col-sm-12 col-12 content-my-account-right">
             <h2>City</h2>
-            <form #loginForm="" >
-              <!-- <div *ngIf="showError" class="alert alert-danger" role="alert">
-                {{errorMessage.error | json}}
-              </div> -->
-                <div class="form-holder">
-                    <p>City ID<span>*</span></p>
-                  <input type="text" class="form-control" >
-                  <!-- <small class="text-danger"[class.d-none]="email.untouched || email.valid">Email Address is required</small> -->
-                </div><br>
-                <div class="form-holder">
-                    <p>City Name<span>*</span></p>
-                  <input type="password" class="form-control"  >
-                  <!-- <small class="text-danger"[class.d-none]="password.untouched || password.valid">Password is required</small> -->
-                </div>
-                <button type="submit"  class="bt" [disabled]="!loginForm.valid" >Add</button>
-                <div class="text-center "><span>If you haven't account 
-                  <a href="/Register" id="login" style="text-decoration: underline; color:rgb(61, 92, 179) ;padding-left: 10px;" > Sign Up </a></span>
-                </div>
+            <form #cityform="ngForm" (ngSubmit)="OnSubmit(cityform)">
+              <div *ngIf="showError" class="alert alert-danger" role="alert">
+                  {{errorMessage.error | json}}
+              </div>
+              <div class="form-holder">
+                  <p>City Name <span>*</span></p>
+                  <input type="text" class="form-control"  [class.is-invalid]="cityName.invalid && cityName.touched " [class.is-invalid]="cityName.invalid && cityName.touched " required #cityName="ngModel" [(ngModel)]="cityform.cityName" name="cityName">
+                  <small class="text-danger"[class.d-none]="cityName.untouched || cityName.valid">User Name is required</small>
+              </div>
+                <button type="submit"  class="bt" [disabled]="!cityform.valid" >Add</button>                
               </form>
         </div>
     </div>
