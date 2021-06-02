@@ -1,7 +1,7 @@
 <div class="container">
     <div class="product-out">
         <div class="title">
-            <h2 class="text-center">Product Our</h2>
+            <h2 class="text-center">Our Products</h2>
         </div>
         <div id="demo" class="carousel slide" data-ride="carousel">
             <!-- Indicators -->
@@ -15,7 +15,7 @@
                 <div class="carousel-item">
                     <div class="row product">
                         <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6 col-xs-6 col-12">
-                            <div class="card">
+                            <div class="card"  *ngFor="let product of products">
                                 <div class="card-img-top">
                                     <a href="product-single.html" class="wp-post-image">
                                         <img class="image-cover" src="https://via.placeholder.com/370x375.jpg" alt="product">
@@ -34,19 +34,18 @@
                                     </div>
                                 </div>
                                 <div class="card-body">
-                                    <p class="card-title"><a href="product-list.html">Beauty </a></p>
+                                    <p class="card-title"><a href="product-list.html"> Beauty </a></p>
                                     <p class="woocommerce-loop-product__title"><a href="product-single.html">
-                                        Cleanser layde</a></p>
+                                        {{product.ProductName}}</a></p>
                                     <span class="price">
                                             <ins>
                                                 <span class="woocommerce-Price-amount amount">
-                                                    <span class="woocommerce-Price-currencySymbol">$</span>79
+                                                    <span class="woocommerce-Price-currencySymbol">$</span>{{product.Quantity}}
                                                 </span>
                                             </ins>
-                                </span>
+                                        </span>
                                 </div>
                             </div>
-
                         </div>
                         <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6 col-xs-6 col-12">
                             <div class="card">
@@ -924,7 +923,7 @@
                                         <div class="btn-group">
                                             <button type="button" class="prev btn ">-</button>
                                             <button type="button" class="show-number btn ">1</button>
-                                            <button type="button" class="next btn ">+</button>
+                                            <button type="button" class="next btn "> </button>
                                         </div>
                                         <div class="btn-group">
                                             <a href="#" class="btn add-to-cart">ADD TO CART<p><i class="fas fa-cart-plus"></i></p> </a>
