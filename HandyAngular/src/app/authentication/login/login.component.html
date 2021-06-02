@@ -1,20 +1,5 @@
 
 <app-header></app-header>
-<!--end header-->
-
-<!--title page-->
-<!-- <div class="title-page"
-     style="background-image: url('https://via.placeholder.com/1920x345.jpg/f5f2f2/e8e8e7');background-position: center center;background-size: cover;">
-    <div class="container">
-        <div class="row">
-            <div class=" col-md-6 inner-title-page">
-                <h1>Shop</h1>
-                <p><span>Home</span> / Shop / My account</p>
-            </div>
-        </div>
-    </div>
-</div> -->
-<!--end title page-->
 
 <!--content account-->
 <div class="container" >
@@ -32,21 +17,28 @@
                 </div>
                 <div class="form-holder">
                     <p>Password<span>*</span></p>
-                  <input type="password" class="form-control"  [class.is-invalid]="password.invalid && password.touched " required #password="ngModel" [(ngModel)]="loginuser.password" name="password" >
-                  <small class="text-danger"[class.d-none]="password.untouched || password.valid">Password is required</small>
+                    <div class="input-group">
+                      <input [type]="fieldTextType ? 'text' : 'password'" class="form-control" [class.is-invalid]="password.invalid && password.touched " required #password="ngModel" [(ngModel)]="loginuser.password" name="password" />
+                      <div class="input-group-append">
+                        <span class="input-group-text">
+                            <i class="fa"
+                            [ngClass]="{
+                              'fa-eye-slash': !fieldTextType,
+                              'fa-eye': fieldTextType
+                            }"
+                            (click)="toggleFieldTextType()"></i>
+                        </span>
+                      </div>
+                    </div>
                 </div>
                 <button type="submit"  class="bt" [disabled]="!loginForm.valid" >Login</button>
-                <!-- <span><input type="checkbox" class="checkbox">&nbsp;&nbsp;Remember me</span> -->
-                <!-- <div style="margin-top: 20px;">
-                    <a href="javascript:void(0)" class="text-left lost-password">Lost your password?</a>
-                </div> -->
                 <br>
                 <div class="text-left">
-                  <a href="/forgetPassword" id="login" style="text-decoration: underline; color:rgb(61, 92, 179) ;padding-left: 10px;" > forget password</a>
+                  <a href="/forgetPassword" id="login" style="text-decoration: none; color:rgb(61, 92, 179) ;padding-left: 10px;" > Forget Password</a>
                 </div>
                 <br>
-                <div class="text-center "><span>If you haven't account 
-                  <a href="/Register" id="login" style="text-decoration: underline; color:rgb(61, 92, 179) ;padding-left: 10px;" > Sign Up </a></span>
+                <div class="text-center "><span>
+                  <a href="/Register" id="login" style="text-decoration: underline; color:rgb(61, 92, 179) ;padding-left: 10px;" > Create New Account </a></span>
                 </div>
               </form>
         </div>
@@ -54,9 +46,3 @@
 </div>
 <!--end content account-->
 
-<app-footer></app-footer>
-  <style>
-  
-  
-  </style>
-  

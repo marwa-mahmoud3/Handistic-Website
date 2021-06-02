@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { NgForm } from '@angular/forms';
+import {  NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
-import { ApiService } from '../../Services/api.service';
 import { UserService } from '../../Services/user.service';
 import { Users } from '../../Shared/Users';
 
@@ -13,7 +12,9 @@ import { Users } from '../../Shared/Users';
 export class RegisterComponent implements OnInit {
 
   userModel=new Users('','','','','');
-  constructor(private userservice:UserService,private apiservice:ApiService,private router: Router) { }
+  constructor(private userservice:UserService,private router: Router) { }
+  fieldTextType: boolean;
+  repeatFieldTextType: boolean;
   
   ngOnInit(): void {
     this.reserform();
@@ -42,4 +43,12 @@ export class RegisterComponent implements OnInit {
     })
   }
 
+
+  toggleFieldTextType() {
+    this.fieldTextType = !this.fieldTextType;
+  }
+
+  toggleRepeatFieldTextType() {
+    this.repeatFieldTextType = !this.repeatFieldTextType;
+  }
 }

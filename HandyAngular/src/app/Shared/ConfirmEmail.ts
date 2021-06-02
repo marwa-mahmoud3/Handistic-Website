@@ -1,4 +1,4 @@
-export class confirmEmail {
+export class ConfirmEmail {
     constructor(
         public email:string,
     ){}

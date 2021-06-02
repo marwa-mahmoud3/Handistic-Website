@@ -12,7 +12,6 @@ import { FooterComponent } from './footer/footer.component';
 import { ResetPasswordComponent } from './authentication/reset-password/reset-password.component';
 import { ForgetpasswordComponent } from './authentication/forgetpassword/forgetpassword.component';
 import { EmailConfirmationComponent } from './authentication/email-confirmation/email-confirmation.component';
-import { ProductsComponent } from './products/products.component';
 import { ProductsListComponent } from './products/products-list/products-list.component';
 import { ProductDetailsComponent } from './products/product-details/product-details.component';
 
@@ -26,7 +25,6 @@ import { ProductDetailsComponent } from './products/product-details/product-deta
     ResetPasswordComponent,
     ForgetpasswordComponent,
     EmailConfirmationComponent,
-    ProductsComponent,
     ProductsListComponent,
     ProductDetailsComponent,
   ],

@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { ResetPassword } from 'src/app/Shared/ResetPassword';
 import { UserService } from '../../Services/user.service';
-import { confirmEmail } from '../../Shared/ConfirmEmail';
 
 @Component({
   selector: 'app-forgetpassword',
@@ -11,34 +11,23 @@ import { confirmEmail } from '../../Shared/ConfirmEmail';
 })
 export class ForgetpasswordComponent implements OnInit {
 
-  confirmemail=new confirmEmail('');
   constructor(private userservice:UserService,private router: Router) { }
-  
+  currentuser=null;
   ngOnInit(): void {
-    this.reserform();
   }
-  reserform(form? : NgForm){
-    if(form !=null)
-      form.reset();
-    this.confirmemail= {
-      email:'',
-    }
-  }
+  public emailConfirmed :boolean;
+  public showSuccess: boolean;
   public showError: boolean;
   public errorMessage: string;
   OnSubmit(form : NgForm){
-    this.userservice.confirmEmail(form.value).subscribe((data:any)=>{
-      if(data.error == null)
-        this.reserform(form);
+    this.userservice.confirmEmail(form.value).subscribe(
+      Resbonse=>{
+        this.showSuccess=true;
+        this.showError = false;
     },error => {
       this.showError = true;
       this.errorMessage = error;
+      this.showSuccess =false;
     })
-    if(!this.errorMessage)
-    {
-      this.router.navigate(["/ResetPassword"]);
-    }
-  }
-
-
+}
 }
