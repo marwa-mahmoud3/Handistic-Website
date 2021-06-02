@@ -1,6 +1,4 @@
-<div class="container-fluid" >
-  <div class="row row-offcanvas row-offcanvas-right">
-    <nav class="sidebar sidebar-offcanvas" id="sidebar"  style="background-color: rgba(241, 238, 238, 0.774);padding-top: 60px;height: 1000px">
+<nav class="bg-white sidebar sidebar-offcanvas" id="sidebar" style="padding-top: 60px;height: 1000px">    
       <div class="user-info">
         <img src="../../../assets/images/face.jpg" alt="">
         <p class="name">Marwa</p>
@@ -14,7 +12,7 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="pages/widgets.html">
+          <a class="nav-link" routerLink="/category">
             <img src="../../../assets/images/icons/4.png" alt="">
             <span class="menu-title">Category</span>
           </a>
@@ -37,15 +35,39 @@
             <span class="menu-title">Charts</span>
           </a>
         </li>
+        <!-- <li class="nav-item has-submenu"> -->
+          <!--//Bootstrap Icons: https://icons.getbootstrap.com/ -->
+          <!-- <a >
+            <span class="nav-link-text">Categories</span>
+            <span class="submenu-arrow">
+            
+            </span>
+          </a> -->
+          <!--//nav-link-->
+          <!-- <div id="submenu-1" class="collapse submenu submenu-1" data-parent="#menu-accordion">
+            <ul class="submenu-list list-unstyled">
+              <li class="submenu-item">
+                <a class="submenu-link" routerLink="/clientlist" routerLinkActive="router-link-active">Client List</a>
+              </li>
+              <li class="submenu-item">
+                <a class="submenu-link" routerLink="/talentlist" routerLinkActive="router-link-active">Talent List</a>
+              </li>
+              <li class="submenu-item">
+                <a class="submenu-link" routerLink="/notifications"
+                  routerLinkActive="router-link-active">Notifications</a>
+              </li>
+              <li class="submenu-item">
+                <a class="submenu-link" routerLink="/myaccount" routerLinkActive="router-link-active">Account</a>
+              </li>
+              <li class="submenu-item">
+                <a class="submenu-link" routerLink="/settings" routerLinkActive="router-link-active">Settings</a>
+              </li>
+            </ul>
+          </div>
+        </li> -->
         <li class="nav-item">
-          <a class="nav-link" href="pages/charts/index.html">
-            <img src="../../../assets/images/icons/6.png" alt="">
-            <span class="menu-title">Charts</span>
-          </a>
-        </li>
-       
-        <li class="nav-item">
-          <a class="nav-link" data-toggle="collapse" href="#sample-pages" aria-expanded="false" aria-controls="sample-pages">
+          <a class="nav-link submenu-toggle" data-bs-toggle="collapse" href="#submenu-1" role="button"
+          aria-expanded="false" aria-controls="submenu-1" data-toggle="collapse" href="#sample-pages" aria-expanded="false" aria-controls="sample-pages">
             <img src="../../../assets/images/icons/9.png" alt="">
             <span class="menu-title">Sample Pages<i class="fa fa-sort-down"></i></span>
           </a>

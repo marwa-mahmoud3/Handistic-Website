@@ -63,6 +63,11 @@ import {
   AngularFireUploadTask,
 } from "@angular/fire/storage";
 import { CityComponent } from './pages/city/city.component';
+import { AddcityComponent } from './pages/addcity/addcity.component';
+import { UpdatecityComponent } from './pages/updatecity/updatecity.component';
+import { CategoryComponent } from './pages/category/category.component';
+import { UpdatecategoryComponent } from './pages/updatecategory/updatecategory.component';
+import { AddcategoryComponent } from './pages/addcategory/addcategory.component';
 
 @NgModule({
   declarations: [
@@ -114,6 +119,11 @@ import { CityComponent } from './pages/city/city.component';
     Profile1Component,
     ResetpassformComponent,
     CityComponent,
+    AddcityComponent,
+    UpdatecityComponent,
+    CategoryComponent,
+    UpdatecategoryComponent,
+    AddcategoryComponent,
   
   ],
   imports: [
@@ -128,7 +138,6 @@ import { CityComponent } from './pages/city/city.component';
   AngularFirestoreModule,
   AngularFireStorageModule,
   HttpClientModule,
-  NgForm,
 ],
   exports: [CommonModule, FormsModule, ReactiveFormsModule],
   providers: [],

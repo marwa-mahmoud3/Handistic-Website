@@ -28,16 +28,25 @@
               "src/assets/images"
             ],
             "styles": [
+              "src/assets/css/style.css",
               "src/styles.css",
-              "node_modules/bootstrap/dist/css/bootstrap.min.css",
-              "src/assets/"
+              "src/assets/perfect-scrollbar/dist/css/perfect-scrollbar.min.css",
+              "src/assets/font-awesome/css/font-awesome.min.css",
+              "src/assets/flag-icon-css/css/flag-icon.min.css"
             ],
             "scripts": [
-              "src/assets/css/perfect-scrollbar/dist/js/perfect-scrollbar.jquery.min.js",
-              "src/assets/js/hoverable-collapse.js",
-              "src/assets/js/misc.js",
+              "src/assets/css/perfect-scrollbar/dist/js/perfect-scrollbar.jquery.min.js",              
               "src/assets/css/bootstrap/dist/js/bootstrap.min.js",
-              "src/assets/js/jquery/dist/jquery.min.js"
+              "src/assets/js/jquery/dist/jquery.min.js",
+              "src/assets/jquery/dist/jquery.min.js",
+              "src/assets/popper.js/dist/umd/popper.min.js",
+              "src/assets/js/misc.js",
+              "src/assets/js/maps.js",
+              "src/assets/js/chart.js",
+              "src/assets/js/off-canvas.js",
+              "src/assets/js/hoverable-collapse.js",  
+              "src/assets/perfect-scrollbar/dist/js/perfect-scrollbar.jquery.min.js",
+              "src/assets/bootstrap/dist/js/bootstrap.min.js"
             ]
           },
           "configurations": {

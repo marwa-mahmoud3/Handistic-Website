@@ -16,6 +16,11 @@ import { SpecialaccountComponent } from './pages/specialaccount/specialaccount.c
 import { ResetpassformComponent } from './pages/resetpassform/resetpassform.component';
 import { TalentListComponent } from './pages/talent-list/talent-list.component';
 import { CityComponent } from './pages/city/city.component';
+import { AddcityComponent } from './pages/addcity/addcity.component';
+import { UpdatecityComponent } from './pages/updatecity/updatecity.component';
+import { CategoryComponent } from './pages/category/category.component';
+import { AddcategoryComponent } from './pages/addcategory/addcategory.component';
+import { UpdatecategoryComponent } from './pages/updatecategory/updatecategory.component';
 
 
 const routes: Routes = [
@@ -24,6 +29,11 @@ const routes: Routes = [
   { path: 'city', component: CityComponent, canActivate: [AuthGuard] },
   { path: 'charts', component: ChartsComponent, canActivate: [AuthGuard] },
   { path: 'settings', component: SettingsComponent, canActivate: [AuthGuard] },
+  {path:'addcity',component:AddcityComponent,canActivate: [AuthGuard]},
+  {path:'addcategory',component:AddcategoryComponent,canActivate: [AuthGuard]},
+  {path:'updatecity/:id',component:UpdatecityComponent,canActivate: [AuthGuard]},
+  {path:'updatecategory/:id',component:UpdatecategoryComponent,canActivate: [AuthGuard]},
+  {path:'category',component:CategoryComponent,canActivate: [AuthGuard]},
   {
     path: 'notifications',
     component: NotificationsComponent,

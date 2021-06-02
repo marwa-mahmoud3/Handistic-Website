@@ -7466,12 +7466,12 @@ sup {
   top: -.5em; }
 
 a {
-  color: orange;
+  color: #007bff;
   text-decoration: none;
   background-color: transparent;
   -webkit-text-decoration-skip: objects; }
   a:hover {
-    color: orange;
+    color: #0056b3;
     text-decoration: underline; }
 
 a:not([href]):not([tabindex]) {
@@ -12973,6 +12973,11 @@ body {
   margin: 0;
   overflow-x: hidden; }
 
+.form-control,
+.form-control:focus {
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none; }
+
 .form-control {
   box-shadow: none; }
 
@@ -13148,7 +13153,7 @@ input:focus {
       .sidebar .nav .nav-item a.nav-link:hover {
         color: #3f4549; }
     .sidebar .nav .nav-item.active > .nav-link {
-      color: orange; }
+      color: #1991EB; }
     .sidebar .nav.sub-menu {
       padding-left: 2.5em; }
       .sidebar .nav.sub-menu .nav-item.active .nav-link {
@@ -13223,10 +13228,7 @@ input:focus {
       margin: auto; }
   .navbar .navbar-brand-wrapper .brand-logo-mini {
     display: none; }
-    .brand-logo h2{
-      line-height: 40px;
-      color: orange;
-    }
+
 .navbar .navbar-menu-wrapper {
   transition: width .8s ease;
   padding: 1px 15px;
@@ -13436,8 +13438,16 @@ input[type="search"], input, .form-control {
   background: white; }
 
 .bg-primary-gradient, .navbar.navbar-default {
-  background: orange;
- }
+  background: #318be3;
+  /* For browsers that do not support gradients */
+  background: -webkit-linear-gradient(90deg, #318be3, #04befe);
+  /* For Safari 5.1 to 6.0 */
+  background: -o-linear-gradient(90deg, #318be3, #04befe);
+  /* For Opera 11.1 to 12.0 */
+  background: -moz-linear-gradient(90deg, #318be3, #04befe);
+  /* For Firefox 3.6 to 15 */
+  background: linear-gradient(90deg, #318be3, #04befe);
+  /* Standard syntax */ }
 
 .bg-success-gadient {
   background: #2bb415;
@@ -13519,6 +13529,11 @@ body {
   padding: 0;
   margin: 0;
   overflow-x: hidden; }
+
+.form-control,
+.form-control:focus {
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none; }
 
 .form-control {
   box-shadow: none; }
@@ -13623,7 +13638,7 @@ input:focus {
   outline: none; }
 
 .content-wrapper {
-  background: #fff;
+  background: #f2f7f8;
   margin-left: 215px;
   min-height: 100vh;
   padding: 2rem 1rem;
@@ -13645,6 +13660,17 @@ pre {
   background: #636c72 er;
   padding: 15px;
   font-size: 14px; }
+
+.footer {
+  background: #e1edef;
+  margin-left: 215px;
+  padding: 1rem;
+  transition: all .8s ease;
+  width: calc(100% - 215px); }
+  @media (max-width: 991px) {
+    .footer {
+      margin-left: 0;
+      width: 100%; } }
 
 .navbar.fixed-top + .container-fluid {
   padding-top: 3.5rem; }
@@ -13977,3 +14003,4 @@ input {
   border: solid 1px #ebebeb;
   color: #1c2c3f; }
 
+/*# sourceMappingURL=maps/style.css.map */

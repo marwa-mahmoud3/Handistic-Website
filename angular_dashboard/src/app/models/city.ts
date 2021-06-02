@@ -1,3 +1,5 @@
 export class city {
-    CityName:string;
+    Id:number;
+    Name:string;
 }
+
