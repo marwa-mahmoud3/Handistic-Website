@@ -2145,9 +2145,9 @@ i {
 }
 
 .banner {
-	background-image:      url("https://via.placeholder.com/1173x386.jpg/f5f2f2/e8e8e7");
+	background-image:      url("../../assets/images/vase.jpg");
 	background-repeat:     no-repeat;
-	background-size:       cover;
+	background-size:       100% 100%;
 	background-position-x: -20px;
 	margin-bottom:         70px;
 	margin-top:            70px;

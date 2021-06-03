@@ -18,11 +18,11 @@
                 <div class="carousel-inner">
                     <div class="carousel-item active">
                         <div class="row product">
-                            <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6 col-xs-6 col-12" *ngFor="let product of productList | slice:1:10">
-                                <div class="card">
-                                    <div class="card-img-top">
+                            <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6 col-xs-6 col-12" *ngFor="let product of productList | slice:16:32">
+                                <div class="card" style="height: 100%;">
+                                    <div class="card-img-top" >
                                         <a href="product-single.html" class="wp-post-image">
-                                            <img class="image-cover" src="../../../assets/images/{{product.productImagePath}}" alt="product">
+                                            <img class="image-cover" src="../../../assets/images/{{product.productImagePath}}"  height="100%" alt="product">
                                         </a>
                                         <p class="onnew">New</p>
                                         <div class="icon-product">
@@ -56,7 +56,7 @@
                     </div>
                     <div class="carousel-item">
                         <div class="row product">
-                            <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6 col-xs-6 col-12" *ngFor="let product of productList | slice:11:27">
+                            <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6 col-xs-6 col-12" *ngFor="let product of productList | slice:1:13">
                                 <div class="card">
                                     <div class="card-img-top">
                                         <a href="product-single.html" class="wp-post-image">
