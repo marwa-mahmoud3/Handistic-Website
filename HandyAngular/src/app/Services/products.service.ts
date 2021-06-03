@@ -8,10 +8,10 @@ import { Observable } from 'rxjs';
 export class ProductsService {
 
   constructor(private http:HttpClient) { }
-baseURL= 'https://localhost:44339/api';
+baseURL= 'https://localhost:44339/api/Products';
 
 getAllProducts() {
-  return this.http.get(`${this.baseURL}/Products`);
+  return this.http.get(this.baseURL);
 }
 
 

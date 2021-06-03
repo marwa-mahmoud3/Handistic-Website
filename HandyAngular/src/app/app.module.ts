@@ -14,6 +14,12 @@ import { ForgetpasswordComponent } from './authentication/forgetpassword/forgetp
 import { EmailConfirmationComponent } from './authentication/email-confirmation/email-confirmation.component';
 import { ProductsListComponent } from './products/products-list/products-list.component';
 import { ProductDetailsComponent } from './products/product-details/product-details.component';
+import { SiteReiewsComponent } from './home/site-reiews/site-reiews.component';
+import { HomeDealsComponent } from './home/home-deals/home-deals.component';
+import { HomeDiscountsComponent } from './home/home-discounts/home-discounts.component';
+import { HomeNewsComponent } from './home/home-news/home-news.component';
+import { HomeSliderComponent } from './home/home-slider/home-slider.component';
+import { HomeComponent } from './home/home/home.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +33,12 @@ import { ProductDetailsComponent } from './products/product-details/product-deta
     EmailConfirmationComponent,
     ProductsListComponent,
     ProductDetailsComponent,
+    HomeComponent,
+    HomeDealsComponent,
+    HomeDiscountsComponent,
+    HomeNewsComponent,
+    HomeSliderComponent,
+    SiteReiewsComponent
   ],
   imports: [
     BrowserModule,

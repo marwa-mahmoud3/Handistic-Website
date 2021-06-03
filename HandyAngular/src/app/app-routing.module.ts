@@ -7,7 +7,7 @@ import { RegisterComponent } from './authentication/register/register.component'
 import { ResetPasswordComponent } from './authentication/reset-password/reset-password.component';
 import { HomeNewsComponent } from './home/home-news/home-news.component';
 import { HomeSliderComponent } from './home/home-slider/home-slider.component';
-import { HomeComponent } from './home/home.component';
+import { HomeComponent } from './home/home/home.component';
 import { ProductDetailsComponent } from './products/product-details/product-details.component';
 import { ProductsListComponent } from './products/products-list/products-list.component';
 

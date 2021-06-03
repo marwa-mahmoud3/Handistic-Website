@@ -27,7 +27,6 @@ export class ProductsListComponent implements OnInit {
                     this.productList.push(product);
                 })
             },
-            (error) => console.log(error)
         );
 }
 }
