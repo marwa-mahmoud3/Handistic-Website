@@ -20,6 +20,7 @@ import { HomeDiscountsComponent } from './home/home-discounts/home-discounts.com
 import { HomeNewsComponent } from './home/home-news/home-news.component';
 import { HomeSliderComponent } from './home/home-slider/home-slider.component';
 import { HomeComponent } from './home/home/home.component';
+import { ProfileComponent } from './profile/profile.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import { HomeComponent } from './home/home/home.component';
     HomeDiscountsComponent,
     HomeNewsComponent,
     HomeSliderComponent,
-    SiteReiewsComponent
+    SiteReiewsComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,

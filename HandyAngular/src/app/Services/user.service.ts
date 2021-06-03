@@ -12,11 +12,11 @@ import { Users } from '../Shared/Users';
 export class UserService {
 
   constructor(private http: HttpClient) { }
-  url_Register='https://localhost:44356/api/Auth/Register?isAdmin=true';
-  url_Login='https://localhost:44356/api/Auth/Login';
-  url_confirm="https://localhost:44356/api/Auth/EmailConfrimation";
-  url_reset='https://localhost:44356/api/Auth/ResetPassword';
-  url_user='https://localhost:44356/api/Users';
+  url_Register='https://localhost:44339/api/Auth/Register?isAdmin=true';
+  url_Login='https://localhost:44339/api/Auth/Login';
+  url_confirm="https://localhost:44339/api/Auth/EmailConfrimation";
+  url_reset='https://localhost:44339/api/Auth/ResetPassword';
+  url_user='https://localhost:44339/api/Users';
   ngOnInit() {          
   }
   registerUser(user : Users)

@@ -10,6 +10,7 @@ import { HomeSliderComponent } from './home/home-slider/home-slider.component';
 import { HomeComponent } from './home/home/home.component';
 import { ProductDetailsComponent } from './products/product-details/product-details.component';
 import { ProductsListComponent } from './products/products-list/products-list.component';
+import { ProfileComponent } from './profile/profile.component';
 
 
 const routes: Routes = [
@@ -23,7 +24,8 @@ const routes: Routes = [
   {path:"productDetails",component:ProductDetailsComponent},
   {path:"productsList",component:ProductsListComponent},
   {path:"Slider",component:HomeSliderComponent},
-  {path:"News",component:HomeNewsComponent}
+  {path:"News",component:HomeNewsComponent},
+  {path:"profile",component:ProfileComponent}
 ];
 
 @NgModule({
