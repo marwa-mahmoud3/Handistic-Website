@@ -1,3 +1,4 @@
+import { Product } from './../Shared/Product';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
@@ -8,7 +9,7 @@ import { Observable } from 'rxjs';
 export class ProductsService {
 
   constructor(private http:HttpClient) { }
-baseURL= 'https://localhost:44339/api/Products';
+baseURL= 'https://localhost:44339/api/Product';
 
 getAllProducts() {
   return this.http.get(this.baseURL);
@@ -36,5 +37,9 @@ return this.http.delete(`${this.baseURL}/Products`);
 
 searchByName(name): Observable<any> {
 return this.http.get(`${this.baseURL}/Products?name=${name}`);
+}
+
+getCategoryProducts(id): Observable<any>{
+  return this.http.get(`${this.baseURL}/ProductList/${id}`);
 }
 }

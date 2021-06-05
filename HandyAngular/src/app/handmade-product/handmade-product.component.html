@@ -164,14 +164,11 @@ style="background-image: url('../../../assets/images/banner.jpg');background-pos
                         <span class="float-left">Price: $6 - $54</span>
                         <button class="btn float-right">FILTER</button>
                     </div>
-                    <div class="category-blog">
+                    <div class="category-blog" >
                         <h2>Categories</h2>
-
-                        <a href=""> Beauty (23)</a>
-                        <a href="">BB Creams (20)</a>
-                        <a href="">Make Up (31)</a>
-                        <a href="">Spa (08)</a>
-                        <a href="">Skin care (15)</a>
+                        <div *ngFor="let item of categoryList" >
+                            <a href="">{{item.name}}  {{ getProductsByCategory(1)}}</a>
+                    </div>
                     </div>
                     <div class="popular-item">
                         <h2>Popular Items</h2>
