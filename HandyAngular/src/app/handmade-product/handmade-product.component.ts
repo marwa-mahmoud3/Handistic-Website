@@ -1,13 +1,14 @@
-import { ProductsService } from './../../Services/products.service';
 import { Component, OnInit } from '@angular/core';
-import { Product } from 'src/app/Shared/Product';
+import { ProductsService } from '../Services/products.service';
+import { Product } from '../Shared/Product';
 
 @Component({
-  selector: 'app-products-list',
-  templateUrl: './products-list.component.html',
-  styleUrls: ['./products-list.component.css']
+  selector: 'app-handmade-product',
+  templateUrl: './handmade-product.component.html',
+  styleUrls: ['./handmade-product.component.css']
 })
-export class ProductsListComponent implements OnInit {
+export class HandmadeProductComponent implements OnInit {
+
   products: Product [] = [];
   productList: Product []=[];
   item :number;
@@ -28,5 +29,6 @@ export class ProductsListComponent implements OnInit {
                 })
             },
         );
+
 }
 }

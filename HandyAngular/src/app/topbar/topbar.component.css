@@ -1,0 +1,12 @@
+.header{
+    background-color: black;
+    color: white;
+    height: 25px;
+}
+.menu a {
+    color: white;
+    font-size: 14px;
+}
+.menu ul{
+    padding-top: 5px;
+}
