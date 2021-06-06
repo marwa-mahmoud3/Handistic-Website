@@ -43,10 +43,6 @@ Assigned to: Physcode
 	text-align: center;
 }
 
-.header .logo img {
-	width:  100%;
-	height: 100%;
-}
 
 .menu {
 	text-align: center;
@@ -63,7 +59,7 @@ Assigned to: Physcode
 	display:        inline;
 	position:       relative;
 	padding-right:  30px;
-	padding-bottom: 40px;
+	padding-bottom: 10px;
 }
 
 .menu ul li a {
@@ -2989,7 +2985,6 @@ i {
 	font-family:    'El Messiri', sans-serif;
 	margin-top:     30px !important;
 	padding-bottom: 0 !important;
-	margin-bottom:  80px;
 }
 
 .lastest .card {
@@ -4045,16 +4040,16 @@ i {
 }
 
 .item-homepage {
-	/* margin:         120px 0; */
-	/* display:        table-cell; */
-	/* vertical-align: middle; */
+	/* margin:         150px 0; */
+	display:        table-cell;
+	vertical-align: middle;
 
 }
 
 .item-homepage .content-item-homepage {
 	text-align:  center;
 	font-family: 'El Messiri', sans-serif;
-	font-size:   40px;
+	font-size:   30px;
 }
 
 .item-homepage .content-item-homepage .wpb_wrapper {
@@ -4148,7 +4143,8 @@ i {
 }
 
 .item-homepage .content-item-homepage .inner-banner-section {
-	padding:    50px 0;
+	padding-top:    20px ;
+	padding-bottom: 30px;
 	position:   relative;
 	z-index:    2;
 	display:    block;

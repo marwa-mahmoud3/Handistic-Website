@@ -20,8 +20,9 @@ import { HomeComponent } from './home/home/home.component';
 import { ProfileComponent } from './profile/profile.component';
 import { TopbarComponent } from './topbar/topbar.component';
 import { HandmadeProductComponent } from './handmade-product/handmade-product.component';
-import { OurServicesComponent } from './home/our-services/our-services.component';
 import { ContactUsComponent } from './home/contact-us/contact-us.component';
+import { CreateShopComponent } from './create-shop/create-shop.component';
+import { OurServicesComponent } from './home/our-services/our-services.component';
 
 @NgModule({
   declarations: [
@@ -43,7 +44,9 @@ import { ContactUsComponent } from './home/contact-us/contact-us.component';
     TopbarComponent,
     HandmadeProductComponent,
     OurServicesComponent,
-    ContactUsComponent
+    ContactUsComponent,
+    CreateShopComponent,
+    TopbarComponent
   ],
   imports: [
     BrowserModule,

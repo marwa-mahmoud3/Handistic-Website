@@ -5,6 +5,7 @@ import { ForgetpasswordComponent } from './authentication/forgetpassword/forgetp
 import { LoginComponent } from './authentication/login/login.component';
 import { RegisterComponent } from './authentication/register/register.component';
 import { ResetPasswordComponent } from './authentication/reset-password/reset-password.component';
+import { CreateShopComponent } from './create-shop/create-shop.component';
 import { HandmadeProductComponent } from './handmade-product/handmade-product.component';
 import { HomeNewsComponent } from './home/home-news/home-news.component';
 import { HomeSliderComponent } from './home/home-slider/home-slider.component';
@@ -23,7 +24,8 @@ const routes: Routes = [
   {path:"Slider",component:HomeSliderComponent},
   {path:"News",component:HomeNewsComponent},
   {path:"profile",component:ProfileComponent},
-  {path: "HandmadeProducts",component:HandmadeProductComponent}
+  {path: "HandmadeProducts",component:HandmadeProductComponent},
+  {path:"CreateShop",component:CreateShopComponent}
 ];
 
 @NgModule({

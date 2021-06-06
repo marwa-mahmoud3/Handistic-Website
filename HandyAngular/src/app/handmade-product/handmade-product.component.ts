@@ -17,6 +17,7 @@ export class HandmadeProductComponent implements OnInit {
 
   ngOnInit(): void {
     this.loadProducts();
+    this.loadCategories();
   }
 
   loadProducts() {
@@ -29,6 +30,9 @@ export class HandmadeProductComponent implements OnInit {
                 })
             },
         );
-
-}
+  }
+  loadCategories()
+  {
+    
+  }
 }
