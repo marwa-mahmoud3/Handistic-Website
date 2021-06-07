@@ -10,12 +10,7 @@ import { UpdatecategoryComponent } from './pages/updatecategory/updatecategory.c
 
 const routes: Routes = [
   { path: '', redirectTo: '/overview', pathMatch: 'full' },
-  { path: 'city', component: CityComponent},
-  {path:'addcity',component:AddcityComponent},
-  {path:'addcategory',component:AddcategoryComponent},
-  {path:'updatecity/:id',component:UpdatecityComponent},
-  {path:'updatecategory/:id',component:UpdatecategoryComponent},
-  {path:'category',component:CategoryComponent},
+
 ];
 
 @NgModule({
