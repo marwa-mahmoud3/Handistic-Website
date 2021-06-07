@@ -1,23 +1,24 @@
+<app-header-after-login></app-header-after-login>
 <div class="page-wrapper bg-gra-02 p-t-130 p-b-100 ">
     <div class="">
         <div class="card card-4">
             <div class="card-body">
             
-                <form #userData="ngForm" (ngSubmit)="UserData(userData)">
+                <form *ngIf="firstform;" #userData="ngForm" (ngSubmit)="UserData(userData)">
                     <h2 class="title" style="margin-bottom: 30px;">Create Your Shop</h2>
                     <h3> Please fill you data here.</h3>
                     <div class="row" style="margin-top: 50px;">
                         <div class="col-lg-6 col-md-4">
                             <label class="label">Frist Name<span class="star">*</span> </label>
                             <div class="">
-                                <input class="form-control" type="text" placeholder=" Enter your frist name" [class.is-invalid]="firstName.invalid && firstName.touched " [class.is-invalid]="firstName.invalid && firstName.touched" required #firstName="ngModel" [(ngModel)]="userData.firstName" name="firstName"> 
+                                <input  class="form-control" type="text" placeholder=" Enter your frist name" [class.is-invalid]="firstName.invalid && firstName.touched " [class.is-invalid]="firstName.invalid && firstName.touched" required #firstName="ngModel" [(ngModel)]="request.firstName" name="firstName"> 
                             </div>
                             <small class="text-danger"[class.d-none]="firstName.untouched || firstName.valid">First Name is required</small>
                         </div>
                         <div class="col-lg-6 col-md-4">
                             <label class="label">Last Name<span class="star">*</span> </label>
                             <div class="input-group">
-                                <input class="form-control " type="text" placeholder="Enter your last name" [class.is-invalid]="lastName.invalid && lastName.touched " [class.is-invalid]="lastName.invalid && lastName.touched" required #lastName="ngModel" [(ngModel)]="userData.lastName" name="lastName"> 
+                                <input class="form-control " type="text" placeholder="Enter your last name" [class.is-invalid]="lastName.invalid && lastName.touched " [class.is-invalid]="lastName.invalid && lastName.touched" required #lastName="ngModel" [(ngModel)]="request.lastName" name="lastName"> 
                             </div>
                             <small class="text-danger"[class.d-none]="lastName.untouched || lastName.valid">Last Name is required</small>
                         </div>
@@ -26,19 +27,15 @@
                         <div class="col-lg-6 col-md-4">
                             <label class="label">Phone Number<span class="star">*</span> </label>
                             <div class="input-group">
-                                <input class="form-control" type="text" placeholder="Enter your phone number" [class.is-invalid]="phone.invalid && phone.touched " [class.is-invalid]="phone.invalid && phone.touched" required #phone="ngModel" [(ngModel)]="userData.phone" name="phone">
+                                <input class="form-control" type="text" placeholder="Enter your phone number" [class.is-invalid]="phone.invalid && phone.touched " [class.is-invalid]="phone.invalid && phone.touched" required #phone="ngModel" [(ngModel)]="request.phone" name="phone">
                             </div>
                             <small class="text-danger"[class.d-none]="phone.untouched || phone.valid">Phone is required</small>
                         </div>
                         <div class="col-lg-6 col-md-4">
                             <label class="label">Choose Your Goverorate<span class="star">*</span></label>
                             <div class="input-group">
-                                <select class="form-control form-select-lg" [class.is-invalid]="governorate.invalid && governorate.touched " [class.is-invalid]="governorate.invalid && governorate.touched" required #governorate="ngModel" [(ngModel)]="userData.governorate" name="governorate">
-                                    <option selected>Choose Governorate</option>
-                                    <option value="1">Assuir</option>
-                                    <option value="2">Minya</option>
-                                    <option value="3">New Vellay</option>
-                                    <option value="4">Sohag</option>
+                                <select  class="form-control form-select-lg" [class.is-invalid]="governorate.invalid && governorate.touched " [class.is-invalid]="governorate.invalid && governorate.touched" required #governorate="ngModel" [(ngModel)]="request.governorate" name="governorate">
+                                    <option *ngFor="let city of CityList " value="{{city.name}}">{{city.name}}</option>
                                 </select>
                             </div>
                             <small class="text-danger"[class.d-none]="governorate.untouched || governorate.valid">Governorate is required</small>
@@ -50,7 +47,7 @@
                             <!-- Upload image input-->
                             <div class="input-group mb-3 px-2 py-2 rounded-pill bg-white shadow-sm">
                                 <input id="upload" type="file"  class="form-control border-0" 
-                                [class.is-invalid]="idCardImage.invalid && idCardImage.touched " [class.is-invalid]="idCardImage.invalid && idCardImage.touched" required #idCardImage="ngModel" [(ngModel)]="userData.idCardImage" name="idCardImage">
+                                [class.is-invalid]="idCardImage.invalid && idCardImage.touched " [class.is-invalid]="idCardImage.invalid && idCardImage.touched" required #idCardImage="ngModel" [(ngModel)]="request.idCardImage" name="idCardImage">
                             </div>
                             <small style="margin-left: 15px;" class="text-danger"[class.d-none]="idCardImage.untouched || idCardImage.valid">Id Card Image is required</small>
                         </div>
@@ -59,7 +56,7 @@
                             <!-- Upload image input-->
                             <div class="input-group mb-3 px-2 py-2 rounded-pill bg-white shadow-sm">
                                 <input id="upload" type="file"  class="form-control border-0"
-                                [class.is-invalid]="personWithCardImage.invalid && personWithCardImage.touched " [class.is-invalid]="personWithCardImage.invalid && personWithCardImage.touched" required #personWithCardImage="ngModel" [(ngModel)]="userData.personWithCardImage" name="personWithCardImage">
+                                [class.is-invalid]="personWithCardImage.invalid && personWithCardImage.touched " [class.is-invalid]="personWithCardImage.invalid && personWithCardImage.touched" required #personWithCardImage="ngModel" [(ngModel)]="request.personWithCardImage" name="personWithCardImage">
                             </div>
                             <small style="margin-left: 15px;" class="text-danger"[class.d-none]="personWithCardImage.untouched || personWithCardImage.valid">Personal Image with Card is required</small>
                         </div>
@@ -68,7 +65,7 @@
                             <label class="label" style="margin-top: 30px;margin-bottom: 15px;">Choose Method to show your products<span class="star">*</span></label>
 
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" name="flexRadioDefault" id="image" (change)="ShowLinkData()">
+                                <input class="form-check-input" type="radio" name="flexRadioDefault" id="image" checked (change)="ShowLinkData()">
                                 <label class="form-check-label" for="flexRadioDefault1" >
                                     Upload image of my product
                                 </label>
@@ -84,16 +81,20 @@
                         <div *ngIf="ShowLink; else elseBlock" class="col-lg-6 col-md-4 " style="padding-top: 20px;" id="link-div">
                             <label class="label">Your Profile Link<span class="star">*</span> </label>
                             <div class="input-group">
-                                <input class="form-control" type="text" placeholder="Enter your email address" [(ngModel)]="userData.link"> 
+                                <input class="form-control" type="text" placeholder="Enter your Link for Your Products" 
+                                [class.is-invalid]="link.invalid && link.touched " [class.is-invalid]="link.invalid && link.touched" required #link="ngModel" name="link" [(ngModel)]="request.link"> 
                             </div>
+                            <small class="text-danger"[class.d-none]="link.untouched || link.valid">Your Profile Link is required</small>
                         </div>
                         <ng-template #elseBlock></ng-template>
                         
                         <div *ngIf="ShowImage; else BlockImage"  class="col-lg-6"  id="image-div">
                             <label class="label" style="margin-top: 30px;">Upload image of product<span class="star">*</span></label>
                             <div class="input-group mb-3 px-2 py-2 rounded-pill bg-white shadow-sm">
-                                <input id="upload" type="file" class="form-control border-0" [(ngModel)]="userData.productWithCardImage">
+                                <input id="upload" type="file" class="form-control border-0" 
+                                [class.is-invalid]="productWithCardImage.invalid && productWithCardImage.touched " [class.is-invalid]="productWithCardImage.invalid && productWithCardImage.touched" required #productWithCardImage="ngModel" name="productWithCardImage" [(ngModel)]="request.productWithCardImage">
                             </div>
+                            <small class="text-danger"[class.d-none]="productWithCardImage.untouched || productWithCardImage.valid">Image of product Link is required</small>
                         </div>
                     </div>
                     <ng-template #BlockImage></ng-template>
@@ -102,56 +103,55 @@
                     </div>
                 </form>   
                 
-             <!-- ============================================    -->
-                <form *ngIf="secondform; ">                
-                    <hr style="margin-top: 10px; margin-bottom: 20px;">
-                    <h2 class="title">Shop preferences</h2>
-                    <span>
+          
+                <!-- ============================================ -->
+                <form *ngIf="secondform;" #shopData="ngForm" (ngSubmit)="shopData(shopData)">                
+                    <h2 class="title" style="margin-bottom: 80px;">Create Your Shop</h2>
+                    <h3>
                         Let's get started! Tell us about you and your shop.
-                    </span>
-                    <div class="row" style="margin-top: 40px;">
-
+                    </h3>
+                    <div class="row" style="margin-top: 60px;">
                         <div class="col-lg-6 col-md-4">
-                            <label class="label">Shop Governorate<span class="star">*</span> </label>
+                            <label class="label">Choose Your Shop Goverorate<span class="star">*</span></label>
+                            <p></p>
                             <div class="input-group">
-                                <select class="form-select form-select-lg mb-3"
-                                    aria-label=".form-select-lg example">
-                                    <option selected>Choose Governorate</option>
-                                    <option value="1">ِAssuit</option>
-                                    <option value="2">Minya</option>
-                                    <option value="3">Sohag</option>
+                                <select  class="form-control form-select-lg" [class.is-invalid]="governorate.invalid && governorate.touched " [class.is-invalid]="governorate.invalid && governorate.touched" required #governorate="ngModel" [(ngModel)]="request.governorate" name="governorate">
+                                    <option *ngFor="let city of CityList " value="{{city.name}}">{{city.name}}</option>
                                 </select>
                             </div>
+                            <small class="text-danger"[class.d-none]="governorate.untouched || governorate.valid">Governorate is required</small>
                         </div>
 
                         <div class="col-lg-6 col-md-4">
-                            <label class="label">Choose Category of your products?<span
-                                    class="star">*</span></label>
-
+                            <label class="label">Choose Category of your products?<span class="star">*</span></label>
+                            <p></p>
                             <div class="input-group">
-                                <select class="form-select form-select-lg mb-3"
-                                    aria-label=".form-select-lg example">
-                                    <option selected>Choose Category</option>
-                                    <option value="1">Food</option>
-                                    <option value="2">Hand Crafts</option>
-
+                                <select  class="form-control form-select-lg" [class.is-invalid]="governorate.invalid && governorate.touched " [class.is-invalid]="governorate.invalid && governorate.touched" required #governorate="ngModel" [(ngModel)]="request.governorate" name="governorate">
+                                    <option *ngFor="let category of CategoryList " value="{{category.name}}">{{category.name}}</option>
                                 </select>
                             </div>
+                            <small class="text-danger"[class.d-none]="governorate.untouched || governorate.valid">Governorate is required</small>
                         </div>
-                        <div class="col-lg-12 col-md-4">
-                            <label class="label" style="margin-top: 30px;">Type Shop name<span
-                                    class="star">*</span></label>
-
+                    </div>
+                    <div class="row" style="margin-top: 60px;">
+                        <div class="col-lg-6 col-md-4">
+                            <label class="label">Type Shop name<span class="star">*</span></label>
+                            <p></p>
                             <div class="input-group mb-3">
-                                <input class="form-control input--style-4" type="text" placeholder="Shop Name">
+                                <div class="input-group">
+                                    <select  class="form-control form-select-lg" [class.is-invalid]="governorate.invalid && governorate.touched " [class.is-invalid]="governorate.invalid && governorate.touched" required #governorate="ngModel" [(ngModel)]="request.governorate" name="governorate">
+                                        <option  value="HandiCrafts">HandiCrafts</option>
+                                        <option  value="Food">Food</option>
+
+                                    </select>
+                                </div>                            
                             </div>
                         </div>
 
                         <div class="col-lg-6 ">
-                            <label class="label" style="margin-top: 30px;">Which of these best describes you?<span class="star">*</span></label>
-
+                            <label class="label">Which of these best describes you?<span class="star">*</span></label>
                             <!-- Upload image input-->
-                            <div class="input-group mb-3 px-2 py-2 rounded-pill bg-white shadow-sm">
+                            <div class="input-group mb-3 px-2 py-2 rounded-pill bg-white shadow-sm" >
                                 <input id="upload" type="file" class="form-control border-0">
                             </div>
                         </div>
@@ -159,8 +159,8 @@
 
 
 
-                    <div class="p-t-15" style="text-align:center">
-                        <button class="btn " type="submit" style=" padding: 5px 30px 5px 30px;">Next</button>
+                    <div class="row justify-content-center" >
+                        <button type="submit" [disabled]="!shopData.valid" >Create</button>
                     </div>
                 </form>
             </div>

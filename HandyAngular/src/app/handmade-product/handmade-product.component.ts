@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductsService } from '../Services/products.service';
-import { Product } from '../Shared/Product';
+import { Product } from '../Models/Product';
 
 @Component({
   selector: 'app-handmade-product',

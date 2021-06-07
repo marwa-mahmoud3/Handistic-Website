@@ -1,6 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { AuthService } from 'src/app/services/authservices/auth.service';
 
 @Component({
   selector: 'app-header',
@@ -8,13 +6,10 @@ import { AuthService } from 'src/app/services/authservices/auth.service';
   styleUrls: ['./header.component.css'],
 })
 export class HeaderComponent implements OnInit {
-  adminRef?: any;
 
-  constructor(public router: Router, public authService: AuthService) {}
+  constructor() {}
 
   ngOnInit(): void {
-    this.adminRef = JSON.parse(localStorage.getItem('user'));
-    console.log(this.adminRef);
 
   }
 }

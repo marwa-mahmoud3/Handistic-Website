@@ -1,12 +1,12 @@
 {
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
   "cli": {
-    "analytics": "cfcc2bf0-6065-4bf7-97ae-aeb282ac39dc"
+    "analytics": false
   },
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "dashboard": {
+    "HandyAngular": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -16,37 +16,32 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/dashboard",
+            "outputPath": "dist/HandyAngular",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
             "tsConfig": "tsconfig.app.json",
             "aot": true,
             "assets": [
-              "src/favicon.ico",
-              "src/assets",
-              "src/assets/images"
+              "src/favicon.png",
+              "src/assets"
             ],
             "styles": [
-              "src/assets/css/style.css",
               "src/styles.css",
-              "src/assets/perfect-scrollbar/dist/css/perfect-scrollbar.min.css",
-              "src/assets/font-awesome/css/font-awesome.min.css",
-              "src/assets/flag-icon-css/css/flag-icon.min.css"
+              "src/assets/css/all.css",
+              "src/assets/css/bootstrap.css",
+              "src/assets/css/bootstrap.min.css",
+              "src/assets/css/flexslider.css",
+              "src/assets/css/owl.carousel.css",
+              "src/assets/css/owl.theme.default.css",
+              "src/assets/css/style.css"  
             ],
             "scripts": [
-              "src/assets/css/perfect-scrollbar/dist/js/perfect-scrollbar.jquery.min.js",              
-              "src/assets/css/bootstrap/dist/js/bootstrap.min.js",
-              "src/assets/js/jquery/dist/jquery.min.js",
-              "src/assets/jquery/dist/jquery.min.js",
-              "src/assets/popper.js/dist/umd/popper.min.js",
-              "src/assets/js/misc.js",
-              "src/assets/js/maps.js",
-              "src/assets/js/chart.js",
-              "src/assets/js/off-canvas.js",
-              "src/assets/js/hoverable-collapse.js",  
-              "src/assets/perfect-scrollbar/dist/js/perfect-scrollbar.jquery.min.js",
-              "src/assets/bootstrap/dist/js/bootstrap.min.js"
+              "src/assets/js/bootstrap.min.js",
+              "src/assets/js/custom.js",
+              "src/assets/js/jquery-3.3.1.min.js",
+              "src/assets/js/jquery.flexslider-min.js",
+              "src/assets/js/owl.carousel.js"
             ]
           },
           "configurations": {
@@ -82,18 +77,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "dashboard:build"
+            "browserTarget": "HandyAngular:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "dashboard:build:production"
+              "browserTarget": "HandyAngular:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "dashboard:build"
+            "browserTarget": "HandyAngular:build"
           }
         },
         "test": {
@@ -130,16 +125,16 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "dashboard:serve"
+            "devServerTarget": "HandyAngular:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "dashboard:serve:production"
+              "devServerTarget": "HandyAngular:serve:production"
             }
           }
         }
       }
     }
   },
-  "defaultProject": "dashboard"
+  "defaultProject": "HandyAngular"
 }

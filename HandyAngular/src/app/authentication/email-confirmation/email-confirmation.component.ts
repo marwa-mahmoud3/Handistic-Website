@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { UserService } from 'src/app/Services/user.service';
-import { ConfirmEmail } from 'src/app/Shared/ConfirmEmail';
+import { ConfirmEmail } from 'src/app/Models/ConfirmEmail';
 
 @Component({
   selector: 'app-email-confirmation',

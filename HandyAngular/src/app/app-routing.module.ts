@@ -17,13 +17,13 @@ const routes: Routes = [
   {path:'',redirectTo:'Home', pathMatch: 'full' },
   {path:"Home",component : HomeComponent},
   {path:"Register",component : RegisterComponent},
-  {path:"Login",component : LoginComponent},
+  {path:"Login",component :LoginComponent},
   {path:"ResetPassword",component:ResetPasswordComponent},
   {path:"forgetPassword",component:ForgetpasswordComponent},
   {path:"EmailConfirmation",component:EmailConfirmationComponent},
   {path:"Slider",component:HomeSliderComponent},
   {path:"News",component:HomeNewsComponent},
-  {path:"profile",component:ProfileComponent},
+  {path:"profile/:email",component:ProfileComponent},
   {path: "HandmadeProducts",component:HandmadeProductComponent},
   {path:"CreateShop",component:CreateShopComponent}
 ];

@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import {NgForm} from '@angular/forms';
-import {  Router } from '@angular/router';
-import { ConfirmEmail } from 'src/app/Shared/ConfirmEmail';
+import {  ActivatedRoute, Router, RouterLink } from '@angular/router';
+import { ConfirmEmail } from 'src/app/Models/ConfirmEmail';
 import { UserService } from '../../Services/user.service';
-import { LoginUsers } from '../../Shared/Login';
+import { LoginUsers } from '../../Models/Login';
   @Component({
     selector: 'app-login',
     templateUrl: './login.component.html',
@@ -14,10 +14,11 @@ import { LoginUsers } from '../../Shared/Login';
     isLoginError : boolean =false;
     fieldTextType: boolean;
     repeatFieldTextType: boolean; 
-    constructor(private userservice:UserService,private router: Router) { }
+    constructor(private userservice:UserService,private router: Router ,private route:ActivatedRoute) { }
     email= new ConfirmEmail('');
     ngOnInit() {
       this.reserform();
+      
     }
     reserform(form? : NgForm){
       if(form !=null)
@@ -27,7 +28,6 @@ import { LoginUsers } from '../../Shared/Login';
         password : ''
       }
     }
-   
     public emailConfirmed :boolean;
     public showSuccess: boolean;
     public showError: boolean;
@@ -36,7 +36,7 @@ import { LoginUsers } from '../../Shared/Login';
     this.userservice.loginUser(this.loginuser).subscribe((data:any)=>{
       if(data.Succeeded == true)
         this.reserform(form);
-        this.router.navigate(["/profile"]);
+        this.router.navigate(['/profile/',this.loginuser.email])
     },error => {
       this.showError = true;
       this.errorMessage = error;

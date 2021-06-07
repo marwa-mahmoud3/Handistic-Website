@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {  NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { UserService } from '../../Services/user.service';
-import { Users } from '../../Shared/Users';
+import { Users } from '../../Models/Users';
 
 @Component({
   selector: 'app-register',

@@ -6,7 +6,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { RegisterComponent } from './authentication/register/register.component';
 import { LoginComponent } from './authentication/login/login.component';
-import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { ResetPasswordComponent } from './authentication/reset-password/reset-password.component';
 import { ForgetpasswordComponent } from './authentication/forgetpassword/forgetpassword.component';
@@ -23,13 +22,14 @@ import { HandmadeProductComponent } from './handmade-product/handmade-product.co
 import { ContactUsComponent } from './home/contact-us/contact-us.component';
 import { CreateShopComponent } from './create-shop/create-shop.component';
 import { OurServicesComponent } from './home/our-services/our-services.component';
+import { HeaderBeforeLoginComponent } from './header-before-login/header-before-login.component';
+import { HeaderAfterLoginComponent } from './header-after-login/header-after-login.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     RegisterComponent,
     LoginComponent,
-    HeaderComponent,
     FooterComponent,
     ResetPasswordComponent,
     ForgetpasswordComponent,
@@ -46,7 +46,9 @@ import { OurServicesComponent } from './home/our-services/our-services.component
     OurServicesComponent,
     ContactUsComponent,
     CreateShopComponent,
-    TopbarComponent
+    TopbarComponent,
+    HeaderBeforeLoginComponent,
+    HeaderAfterLoginComponent
   ],
   imports: [
     BrowserModule,
