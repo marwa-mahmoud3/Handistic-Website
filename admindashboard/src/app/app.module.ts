@@ -14,6 +14,9 @@ import { UpdateCityComponent } from './pages/update-city/update-city.component';
 import { FormsModule, NgForm, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { HomeComponent } from './pages/home/home.component';
+import { RequestsComponent } from './pages/requests/requests.component';
+import { RequestdetailsComponent } from './pages/requestdetails/requestdetails.component';
+import { UpdaterequestComponent } from './pages/updaterequest/updaterequest.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +29,10 @@ import { HomeComponent } from './pages/home/home.component';
     AddCityComponent,
     UpdateCategoryComponent,
     UpdateCityComponent,
-    HomeComponent
+    HomeComponent,
+    RequestsComponent,
+    RequestdetailsComponent,
+    UpdaterequestComponent
   ],
   imports: [
     BrowserModule,
