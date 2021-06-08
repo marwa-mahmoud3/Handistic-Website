@@ -18,7 +18,6 @@ export class AddCategoryComponent implements OnInit {
   public errorMessage: string;
   OnSubmit(form : NgForm){
     this.categoryservice.addCategory(form.value).subscribe((data:any)=>{
-      if(!data.error)
       this.showSuccess=true;
       this.showError = false;
     },error => {

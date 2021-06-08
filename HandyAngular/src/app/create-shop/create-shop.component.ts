@@ -1,10 +1,8 @@
+import { city } from './../Models/city';
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { city } from '../Models/city';
 import { RequestModel } from '../Models/RequestModel';
-import { CategoryService } from '../Services/category.service';
 import { CityService } from '../Services/CityService';
-import { uploadcategory } from '../Services/uploadcategory';
 import { UserService } from '../Services/user.service';
 import { userRequest } from '../Services/userRequest';
 
@@ -15,18 +13,25 @@ import { userRequest } from '../Services/userRequest';
 })
 export class CreateShopComponent implements OnInit {
 
-  constructor(private userservic : UserService,private userRequestService : userRequest,private cityservice:CityService,
-    private categoryservice:CategoryService ) { }
+  constructor(private userservic : UserService,private userRequestService : userRequest,private cityservice:CityService,) { }
   public ShowLink:boolean =true;
   public ShowImage:boolean;
-  public secondform:boolean=true;
-  public firstform:boolean;
+  public secondform:boolean;
+  public firstform:boolean=true;
   public Currentuser;
   public request = new RequestModel('','','','','','','','','');
+
   ngOnInit(): void {
     this.getId();
-    this.GetAllCities();
-    this.GetAllCategories();
+    this.GetAllCities();    
+  }
+  name = 'Angular';
+    
+  onItemSelect(item: any) {
+    console.log(item);
+  }
+  onSelectAll(items: any) {
+    console.log(items);
   }
   ShowLinkData()
   {
@@ -54,10 +59,10 @@ export class CreateShopComponent implements OnInit {
       this.request.rquestId = this.Currentuser.id;
     })
   }
-
+  city =[]
   cities:city[]=[];
   CityList:city[]=[];
-  CurrentCity =null;
+  Selected :city[]=[];
   GetAllCities()
   {
     this.cityservice.getCities().subscribe((data:any)=>{
@@ -65,17 +70,7 @@ export class CreateShopComponent implements OnInit {
       this.cities.forEach(city => {
           this.CityList.push(city);
       });
-    });
-  }
-  categories:uploadcategory[]=[];
-  CategoryList:uploadcategory[]=[];
-  GetAllCategories()
-  {
-    this.categoryservice.getCategories().subscribe((data:any)=>{
-      this.categories = data;
-      this.categories.forEach(city => {
-          this.CategoryList.push(city);
-      });
+      this.city = this.CityList;
     });
   }
 }

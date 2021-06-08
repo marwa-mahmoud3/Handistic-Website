@@ -1,0 +1,56 @@
+
+#upload{
+    /* opacity: 0.6; */
+    border-radius: inherit;
+    background: border-box;
+}
+  
+
+.field-icon {
+  float: right;
+  margin-left: -25px;
+  margin-top: -25px;
+  position: relative;
+  z-index: 2;
+}
+  form {
+    width: 100%;
+    position: relative;
+    z-index: 9;
+    padding: 0px 20px 55px 20px ;
+    background: rgb(255, 255, 255)
+    ;
+  } 
+  
+    .form-control:focus {
+      border: 1px solid #ffa6a8; }
+  .star{
+      color: red;
+      margin-left: 5px;
+  }
+  button {
+    border: none;
+    width: 30%;
+    height: 49px;
+    margin-top: 40px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    background: #000;
+    color: #fff;
+    text-transform: uppercase;
+    font-size: 15px;
+    letter-spacing: 2px;
+    transition: all 0.5s;
+    position: relative;
+    overflow: hidden; }
+  
+  @media (max-width: 767px) {
+}
+    #login:hover{
+       opacity: .5;
+    }
+  
+  

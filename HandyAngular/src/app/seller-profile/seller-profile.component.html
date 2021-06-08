@@ -1,0 +1,119 @@
+<app-header-after-login></app-header-after-login>
+
+<div class="container">
+    <div class="row content-blog">
+        <div class="col-md-3">
+            <div class="content-blog-left">
+                <div class="author-blog">
+                    <img src="https://via.placeholder.com/100" alt="">
+                    <h3 > {{username}} </h3>
+                    <small>{{email}}</small>
+                    <p>Sed ut perspiciatis unde omnis iste natus error sit volupta.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-8">
+            <div class="content-blog-right">
+                <form  #ProductData="ngForm" (ngSubmit)="SaveProduct()">
+                    <div class="row">
+                        <div class="col-lg-12 col-md-4">
+                            <label class="label">Product Name<span class="star">*</span> </label>
+                            <div class="">
+                                <input  class="form-control" type="text" placeholder=" Enter your frist name" [class.is-invalid]="productName.invalid && productName.touched " [class.is-invalid]="productName.invalid && productName.touched" required #productName="ngModel" [(ngModel)]="ProductData.productName" name="productName"> 
+                            </div>
+                            <small class="text-danger"[class.d-none]="productName.untouched || productName.valid">Product Name is required</small>
+                        </div>
+                    </div>
+                    <div class="row" style="margin-top: 50px;">
+                        <div class="col-lg-12 col-md-4">
+                            <label class="label">Details<span class="star">*</span> </label>
+                            <div class="input-group">
+                                <textarea class="form-control" type="text" placeholder="Enter your Product Details" [class.is-invalid]="details.invalid && details.touched " [class.is-invalid]="details.invalid && details.touched" required #details="ngModel" [(ngModel)]="ProductData.details" name="details"> </textarea>
+                            </div>
+                            <small class="text-danger"[class.d-none]="details.untouched || details.valid">Product Details is required</small>
+                        </div>
+                    </div>
+                    <div class="row" style="margin-top: 50px;">
+                        <div class="col-lg-6 col-md-4">
+                            <label class="label">Product Price<span class="star">*</span> </label>
+                            <div class="input-group">
+                                <input class="form-control" type="number" placeholder="Enter your Product Price" [class.is-invalid]="unitPrice.invalid && unitPrice.touched " [class.is-invalid]="unitPrice.invalid && unitPrice.touched" required #unitPrice="ngModel" [(ngModel)]="ProductData.unitPrice" name="unitPrice">
+                            </div>
+                            <small class="text-danger"[class.d-none]="unitPrice.untouched || unitPrice.valid">Product Price is required</small>
+                        </div>
+                        <div class="col-lg-6 col-md-4">
+                            <label class="label">Quantity<span class="star">*</span> </label>
+                            <div class="input-group">
+                                <input class="form-control" type="number" placeholder="Enter your Product Quantity" [class.is-invalid]="quantity.invalid && quantity.touched " [class.is-invalid]="quantity.invalid && quantity.touched" required #quantity="ngModel" [(ngModel)]="ProductData.quantity" name="quantity">
+                            </div>
+                            <small class="text-danger"[class.d-none]="unitPrice.untouched || unitPrice.valid">Product Price is required</small>
+                        </div>
+                    </div>
+                    <div class="row" style="margin-top: 50px;">
+                        <div class="col-lg-6 col-md-4">
+                            <label class="label">Product Size<span class="star">*</span> </label>
+                            <div class="input-group">
+                                <input class="form-control" type="number" placeholder="Enter your Product Size" [class.is-invalid]="size.invalid && size.touched " [class.is-invalid]="size.invalid && size.touched" required #size="ngModel" [(ngModel)]="ProductData.size" name="size">
+                            </div>
+                            <small class="text-danger"[class.d-none]="size.untouched || size.valid">Product size is required</small>
+                        </div>
+                        <div class="col-lg-6 col-md-4">
+                            <label class="label">Chooes Product Category<span class="star">*</span></label>
+                            <div class="input-group">
+                                <select  class="form-control form-select-lg" [class.is-invalid]="categoryId.invalid && categoryId.touched " [class.is-invalid]="categoryId.invalid && categoryId.touched" required #categoryId="ngModel" [(ngModel)]="ProductData.categoryId" name="categoryId">
+                                    <option *ngFor="let Category of CategoryList " value="{{Category.id}}" [(ngModel)]="categoryId" >{{Category.name}}</option>
+                                </select>
+                            </div>
+                            <small class="text-danger"[class.d-none]="categoryId.untouched || categoryId.valid">Product Category is required</small>
+                        </div>
+                    </div>
+                   <div class="row" style="margin-top: 50px;">
+                        <div class="col-lg-12 ">
+                            <label class="label" >Upload Product Image<span class="star">*</span></label>
+                            <!-- Upload image input-->
+                            <div class="input-group mb-3 px-2 py-2 rounded-pill bg-white shadow-sm">
+                                <input id="upload" type="file"  class="form-control border-0" 
+                                [class.is-invalid]="productImage.invalid && productImage.touched " [class.is-invalid]="productImage.invalid && productImage.touched" required #productImage="ngModel" [(ngModel)]="ProductData.productImage" name="productImage">
+                            </div>
+                            <small style="margin-left: 15px;" class="text-danger"[class.d-none]="productImage.untouched || productImage.valid">Id Card Image is required</small>
+                        </div>
+                    </div>
+                    <div class="row justify-content-center">
+                        <button [disabled]="!ProductData.valid" type="submit" >Save</button>
+                    </div>
+                </form>  
+              
+                <div class="blog">
+                    <div class="item-blog">
+                        <img src="https://via.placeholder.com/870x530.jpg" alt="">
+                        <a href="" ><i class="far fa-heart"></i></a>&nbsp; Like 10 &nbsp;&nbsp;&nbsp;&nbsp; <i class="far fa-calendar-alt"></i> &nbsp; April 12, 2019
+                        <h2>Temporibus autem quib</h2>
+                        <p>
+                            At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium
+                            voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati
+                            cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi,
+                            id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio.
+                        </p>
+                        <button class="btn float-left">READ MORE</button>
+                        <div class="float-right">
+                            <table>
+                                <tr>
+                                    <td><a href=""><i class="fab fa-twitter"></i></a></td>
+                                    <td><a href=""><i class="fab fa-facebook"></i></a></td>
+                                    <td><a href=""><i class="fab fa-instagram"></i></a></td>
+                                </tr>
+                            </table>
+                        </div>
+
+                    </div>
+                </div>
+                <ul class="pagination justify-content-center">
+                    <li class="page-item"><a class="page-link" href="#">1</a></li>
+                    <li class="page-item"><a class="page-link" href="#">2</a></li>
+                    <li class="page-item"><a class="page-link" href="#"> > </a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

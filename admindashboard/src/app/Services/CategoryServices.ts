@@ -19,13 +19,13 @@ export class CategoryServices {
   getCategories(){
     return this.http.get(this.url_category)
   }
-  deleteCategory(id:any): Observable<any> {
+  deleteCategory(id): Observable<any> {
     return this.http.delete(`${this.url_category}/${id}`);
   }
-  updateCategory(id:any,category:any): Observable<any> {
+  updateCategory(id,category): Observable<any> {
     return this.http.put(`${this.url_category}/${id}`,category);
   }
-  getCategoryByID(id:any): Observable<any> {
+  getCategoryByID(id): Observable<any> {
     return this.http.get(`${this.url_category}/${id}`);
   }
 }

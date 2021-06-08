@@ -1,4 +1,6 @@
 export class City {
-    Id:number;
-    Name:string;
+    constructor(
+        public  id:number,
+        public name:string
+    ){}
 }

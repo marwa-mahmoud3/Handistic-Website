@@ -1,3 +1,4 @@
+import { SellerProfileComponent } from './seller-profile/seller-profile.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { EmailConfirmationComponent } from './authentication/email-confirmation/email-confirmation.component';
@@ -24,8 +25,10 @@ const routes: Routes = [
   {path:"Slider",component:HomeSliderComponent},
   {path:"News",component:HomeNewsComponent},
   {path:"profile/:email",component:ProfileComponent},
+  {path:"profile",component:ProfileComponent},
   {path: "HandmadeProducts",component:HandmadeProductComponent},
-  {path:"CreateShop",component:CreateShopComponent}
+  {path:"CreateShop",component:CreateShopComponent},
+  {path: "SellerProfile" , component:SellerProfileComponent}
 ];
 
 @NgModule({

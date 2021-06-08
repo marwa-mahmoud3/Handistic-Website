@@ -21,7 +21,7 @@
               
               <div class="form-holder">
                   <p>Category Name <span>*</span></p>
-                  <input type="text" class="form-control"  [class.is-invalid]="Name.invalid && Name.touched " [class.is-invalid]="Name.invalid && Name.touched " required #Name="ngModel" [(ngModel)]="categoryform.Name" name="Name">
+                  <input type="text" class="form-control"  [class.is-invalid]="Name.invalid && Name.touched " [class.is-invalid]="Name.invalid && Name.touched " required #Name="ngModel" [(ngModel)]="categoryform.name" name="Name">
                   <small class="text-danger"[class.d-none]="Name.untouched || Name.valid">City is required</small>
               </div>
                 <button type="submit"  class="bt" [disabled]="!categoryform.valid" >Add</button>

@@ -1,18 +1,14 @@
 {
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
   "cli": {
-    "analytics": "3b9a2369-6c06-4820-a677-c77ab4a879b3"
+    "analytics": false
   },
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
     "admindashboard": {
       "projectType": "application",
-      "schematics": {
-        "@schematics/angular:application": {
-          "strict": true
-        }
-      },
+      "schematics": {},
       "root": "",
       "sourceRoot": "src",
       "prefix": "app",
@@ -28,10 +24,23 @@
             "aot": true,
             "assets": [
               "src/favicon.ico",
-              "src/assets"
+              "src/assets",
+              "src/assets/style.css",
+              "src/assets/font-awesome/css/font-awesome.min.css",
+              "src/assets/perfect-scrollbar/dist/css/perfect-scrollbar.min.css",
+              "src/assets/flag-icon-css/css/flag-icon.min.css"
             ],
             "styles": [
-              "src/styles.css"
+              "src/styles.css",
+              "src/assets/jquery/dist/jquery.min.js",
+              "src/assets/popper.js/dist/umd/popper.min.js",
+              "src/assets/bootstrap/dist/js/bootstrap.min.js",
+              "src/assets/chart.js/dist/Chart.min.js",
+              "src/assets/js/off-canvas.js",
+              "src/assets/js/hoverable-collapse.js",
+              "src/assets/js/misc.js",
+              "src/assets/js/chart.js",
+              "src/assets/js/maps.js"
             ],
             "scripts": []
           },
@@ -53,13 +62,13 @@
               "budgets": [
                 {
                   "type": "initial",
-                  "maximumWarning": "500kb",
-                  "maximumError": "1mb"
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
                 },
                 {
                   "type": "anyComponentStyle",
-                  "maximumWarning": "2kb",
-                  "maximumError": "4kb"
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
                 }
               ]
             }

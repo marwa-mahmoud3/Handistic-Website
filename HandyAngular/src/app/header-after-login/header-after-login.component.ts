@@ -19,6 +19,7 @@ export class HeaderAfterLoginComponent implements OnInit {
   }
   logout(){
     this.apiservice.logout();
+    localStorage.setItem('username','')
   }
 
   getUser(email): void {

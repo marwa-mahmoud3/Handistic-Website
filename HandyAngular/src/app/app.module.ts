@@ -24,6 +24,9 @@ import { CreateShopComponent } from './create-shop/create-shop.component';
 import { OurServicesComponent } from './home/our-services/our-services.component';
 import { HeaderBeforeLoginComponent } from './header-before-login/header-before-login.component';
 import { HeaderAfterLoginComponent } from './header-after-login/header-after-login.component';
+import { NgSelectModule } from '@ng-select/ng-select';
+import { UserProfileComponent } from './user-profile/user-profile.component';
+import { SellerProfileComponent } from './seller-profile/seller-profile.component'; 
 
 @NgModule({
   declarations: [
@@ -48,7 +51,9 @@ import { HeaderAfterLoginComponent } from './header-after-login/header-after-log
     CreateShopComponent,
     TopbarComponent,
     HeaderBeforeLoginComponent,
-    HeaderAfterLoginComponent
+    HeaderAfterLoginComponent,
+    UserProfileComponent,
+    SellerProfileComponent,
   ],
   imports: [
     BrowserModule,
@@ -56,6 +61,7 @@ import { HeaderAfterLoginComponent } from './header-after-login/header-after-log
     HttpClientModule,
     ReactiveFormsModule,
     AppRoutingModule,
+    NgSelectModule
   ],
   providers: [],
   bootstrap: [AppComponent]

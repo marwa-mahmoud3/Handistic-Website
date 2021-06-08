@@ -7,3 +7,4 @@
 @import './assets/css/owl.carousel.css';
 @import './assets/css/owl.theme.default.css';
 @import './assets/css/style.css';
+@import "~@ng-select/ng-select/themes/default.theme.css";

@@ -112,53 +112,39 @@
                     </h3>
                     <div class="row" style="margin-top: 60px;">
                         <div class="col-lg-6 col-md-4">
-                            <label class="label">Choose Your Shop Goverorate<span class="star">*</span></label>
-                            <p></p>
-                            <div class="input-group">
-                                <select  class="form-control form-select-lg" [class.is-invalid]="governorate.invalid && governorate.touched " [class.is-invalid]="governorate.invalid && governorate.touched" required #governorate="ngModel" [(ngModel)]="request.governorate" name="governorate">
-                                    <option *ngFor="let city of CityList " value="{{city.name}}">{{city.name}}</option>
-                                </select>
-                            </div>
-                            <small class="text-danger"[class.d-none]="governorate.untouched || governorate.valid">Governorate is required</small>
+                            <label class="label">Choose Your Shop City<span class="star">*</span></label>
+                            <ng-select [items]="city" [class.is-invalid]="governorate.invalid && governorate.touched " [class.is-invalid]="governorate.invalid && governorate.touched" required #governorate="ngModel" [(ngModel)]="request.governorate" name="governorate"
+                            bindLabel="name"
+                            placeholder="Select City"
+                            appendTo="body"
+                            [multiple]="true"
+                            [(ngModel)]="Selected"></ng-select>
+                            <small class="text-danger"[class.d-none]="governorate.untouched || governorate.valid">City is required</small>
                         </div>
 
                         <div class="col-lg-6 col-md-4">
-                            <label class="label">Choose Category of your products?<span class="star">*</span></label>
-                            <p></p>
+                            <label class="label">Choose the type of service you want to provide <span class="star">*</span></label>
                             <div class="input-group">
-                                <select  class="form-control form-select-lg" [class.is-invalid]="governorate.invalid && governorate.touched " [class.is-invalid]="governorate.invalid && governorate.touched" required #governorate="ngModel" [(ngModel)]="request.governorate" name="governorate">
-                                    <option *ngFor="let category of CategoryList " value="{{category.name}}">{{category.name}}</option>
+                                <select  class="form-control form-select-lg" [class.is-invalid]="serviceType.invalid && serviceType.touched " [class.is-invalid]="serviceType.invalid && serviceType.touched" required #serviceType="ngModel" [(ngModel)]="request.serviceType" name="serviceType">
+                                    <option  value="HandiCrafts">HandiCrafts</option>
+                                    <option  value="Food">Food</option>
                                 </select>
                             </div>
-                            <small class="text-danger"[class.d-none]="governorate.untouched || governorate.valid">Governorate is required</small>
+                            <small class="text-danger"[class.d-none]="serviceType.untouched || serviceType.valid">service Type is required</small>
                         </div>
                     </div>
-                    <div class="row" style="margin-top: 60px;">
+                    <div class="row justify-content-center" style="margin-top: 60px;">
                         <div class="col-lg-6 col-md-4">
                             <label class="label">Type Shop name<span class="star">*</span></label>
-                            <p></p>
                             <div class="input-group mb-3">
                                 <div class="input-group">
-                                    <select  class="form-control form-select-lg" [class.is-invalid]="governorate.invalid && governorate.touched " [class.is-invalid]="governorate.invalid && governorate.touched" required #governorate="ngModel" [(ngModel)]="request.governorate" name="governorate">
-                                        <option  value="HandiCrafts">HandiCrafts</option>
-                                        <option  value="Food">Food</option>
-
-                                    </select>
-                                </div>                            
-                            </div>
-                        </div>
-
-                        <div class="col-lg-6 ">
-                            <label class="label">Which of these best describes you?<span class="star">*</span></label>
-                            <!-- Upload image input-->
-                            <div class="input-group mb-3 px-2 py-2 rounded-pill bg-white shadow-sm" >
-                                <input id="upload" type="file" class="form-control border-0">
+                                    <input  class="form-control" type="text" placeholder=" Enter your frist name" [class.is-invalid]="shopName.invalid && shopName.touched " [class.is-invalid]="shopName.invalid && shopName.touched" required #shopName="ngModel" [(ngModel)]="request.shopName" name="shopName"> 
+                                </div>  
+                                <small class="text-danger"[class.d-none]="shopName.untouched || shopName.valid">Shop Name is required</small>                          
                             </div>
                         </div>
                     </div>
-
-
-
+                     
                     <div class="row justify-content-center" >
                         <button type="submit" [disabled]="!shopData.valid" >Create</button>
                     </div>

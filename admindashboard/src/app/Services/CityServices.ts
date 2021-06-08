@@ -19,13 +19,13 @@ export class CityServices {
   getCities(){
     return this.http.get(this.url_city)
   }
-  deleteCity(id: any): Observable<any> {
+  deleteCity(id): Observable<any> {
     return this.http.delete(`${this.url_city}/${id}`);
   }
-  updateCity(id: any,city: null): Observable<any> {
+  updateCity(id,city): Observable<any> {
     return this.http.put(`${this.url_city}/${id}`,city);
   }
-  getCityByID(id: any): Observable<any> {
+  getCityByID(id): Observable<any> {
     return this.http.get(`${this.url_city}/${id}`);
   }
 }

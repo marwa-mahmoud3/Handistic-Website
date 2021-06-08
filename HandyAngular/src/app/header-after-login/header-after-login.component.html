@@ -13,12 +13,14 @@
                     <div class="header-right menu" style="margin-top: 15px;">
                         <ul class="list-inline" style="margin-top: 0px;padding-top: 0px;">
                             <li><a style="background: #000;color:#fff" [(ngModel)]="CurrentUser"><i class="fa"> </i> {{CurrentUser}}</a>
-                                <ul style="height: 130px;width: 150px;">
-                                    <li style="padding: 0px;margin: 0px;" ><a href="about.html">My Profile</a></li>
+                                <ul style="height: 170px;width: 150px;">
+                                    <li style="padding: 0px;margin: 0px;" routerLink="/SellerProfile"><a>My Profile</a></li>
+                                    <li style="padding: 0px;margin: 0px;" ><a href="about.html">Settings</a></li>
                                     <li style="padding: 0px;margin: 0px;" (click)="logout()"><a class="btn" style="background: #000;">Logout</a></li>
                                 </ul>
                             </li>
-                            <li></li>
+                            <li>
+                            </li>
                         </ul>
                     </div>
                 </div>
@@ -138,7 +140,6 @@
                                 </ul>
                             </li>
                             <li><a href="contact-us.html">contact</a></li>
-                            <!-- <li><a href="/Login">Login</a></li> -->
                         </ul>
                     </div>
                 </div>  
@@ -206,7 +207,10 @@
                             </li>
                             <li>
                                 <a href="javascript:void(0)" class="search-header1"><img src="../../assets/imager/home/search-header.png" alt="" style="width: 20px;height: 20px;margin-top: -10px;"></a>
-                            </li>                     
+                            </li>  
+                            <li >
+                                <a href="" ><i class="far fa-heart"style="font-size: 22px;Color: #555"></i></a>
+                            </li>                   
                         </ul>
                     </div>
                 </div>                

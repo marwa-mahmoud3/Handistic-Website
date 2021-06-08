@@ -16,22 +16,22 @@ getAllProducts() {
 
 
 getProductById(id): Observable<any> {
-return this.http.get(`${this.baseURL}/Products/${id}`);
+return this.http.get(`${this.baseURL}/${id}`);
 }
 
 createProduct(data): Observable<any> {
-return this.http.post(`${this.baseURL}/Products`, data);
+return this.http.post(`${this.baseURL}`, data);
 }
 
 update(id, data): Observable<any> {
-return this.http.put(`${this.baseURL}/Products/${id}`, data);
+return this.http.put(`${this.baseURL}/${id}`, data);
 }
 
 delete(id): Observable<any> {
-return this.http.delete(`${this.baseURL}/Products/${id}`);
+return this.http.delete(`${this.baseURL}/${id}`);
 }
 deleteAll(): Observable<any> {
-return this.http.delete(`${this.baseURL}/Products`);
+return this.http.delete(`${this.baseURL}`);
 }
 
 searchByName(name): Observable<any> {

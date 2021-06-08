@@ -1,5 +1,5 @@
 import { Router } from '@angular/router';
-import { Category } from './../../Models/Category';
+import { Category } from '../../Models/Category';
 import { Component, OnInit } from '@angular/core';
 import { CategoryServices } from 'src/app/Services/CategoryServices';
 
@@ -26,7 +26,7 @@ export class CategoriesComponent implements OnInit {
       });
     });
   }
-  deleteCategory(id): void {
+  deleteCategory(id) {
     this.categoryservice.deleteCategory(id).subscribe()
   }
   

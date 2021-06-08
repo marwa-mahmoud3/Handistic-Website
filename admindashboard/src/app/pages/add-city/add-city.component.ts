@@ -16,9 +16,9 @@ export class AddCityComponent implements OnInit {
   public showSuccess: boolean =false ;
   public showError: boolean;
   public errorMessage: string;
+ 
   OnSubmit(form : NgForm){
     this.cityservice.addCity(form.value).subscribe((data:any)=>{
-      if(!data.error)
       this.showSuccess=true;
       this.showError = false;
     },error => {
