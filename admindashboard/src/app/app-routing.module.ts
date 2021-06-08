@@ -9,6 +9,7 @@ import { CitiesComponent } from './pages/cities/cities.component';
 import { UpdateCityComponent } from './pages/update-city/update-city.component';
 
 const routes: Routes = [
+  {path:'',redirectTo:'Home', pathMatch: 'full' },
   {path: 'city', component: CitiesComponent},
   {path:'addcity',component:AddCityComponent},
   {path:'addcategory',component:AddCategoryComponent},

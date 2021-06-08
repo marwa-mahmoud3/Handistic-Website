@@ -15,7 +15,8 @@
 
         <div class="col-md-8">
             <div class="content-blog-right">
-                <form  #ProductData="ngForm" (ngSubmit)="SaveProduct()">
+                <form  #ProductData="ngForm" (ngSubmit)="SaveProduct(ProductData)">
+                    <!-- <input  class="form-control" value=1  type="number" #shopId="ngModel" [(ngModel)]="ProductData.shopId" name="shopId">  -->
                     <div class="row">
                         <div class="col-lg-12 col-md-4">
                             <label class="label">Product Name<span class="star">*</span> </label>
@@ -47,14 +48,14 @@
                             <div class="input-group">
                                 <input class="form-control" type="number" placeholder="Enter your Product Quantity" [class.is-invalid]="quantity.invalid && quantity.touched " [class.is-invalid]="quantity.invalid && quantity.touched" required #quantity="ngModel" [(ngModel)]="ProductData.quantity" name="quantity">
                             </div>
-                            <small class="text-danger"[class.d-none]="unitPrice.untouched || unitPrice.valid">Product Price is required</small>
+                            <small class="text-danger"[class.d-none]="quantity.untouched || quantity.valid">Product Quantity is required</small>
                         </div>
                     </div>
                     <div class="row" style="margin-top: 50px;">
                         <div class="col-lg-6 col-md-4">
                             <label class="label">Product Size<span class="star">*</span> </label>
                             <div class="input-group">
-                                <input class="form-control" type="number" placeholder="Enter your Product Size" [class.is-invalid]="size.invalid && size.touched " [class.is-invalid]="size.invalid && size.touched" required #size="ngModel" [(ngModel)]="ProductData.size" name="size">
+                                <input class="form-control" type="text" placeholder="Enter your Product Size" [class.is-invalid]="size.invalid && size.touched " [class.is-invalid]="size.invalid && size.touched" required #size="ngModel" [(ngModel)]="ProductData.size" name="size">
                             </div>
                             <small class="text-danger"[class.d-none]="size.untouched || size.valid">Product size is required</small>
                         </div>
@@ -62,7 +63,7 @@
                             <label class="label">Chooes Product Category<span class="star">*</span></label>
                             <div class="input-group">
                                 <select  class="form-control form-select-lg" [class.is-invalid]="categoryId.invalid && categoryId.touched " [class.is-invalid]="categoryId.invalid && categoryId.touched" required #categoryId="ngModel" [(ngModel)]="ProductData.categoryId" name="categoryId">
-                                    <option *ngFor="let Category of CategoryList " value="{{Category.id}}" [(ngModel)]="categoryId" >{{Category.name}}</option>
+                                    <option *ngFor="let Category of CategoryList" value={{Category.id}} >{{Category.name}}</option>
                                 </select>
                             </div>
                             <small class="text-danger"[class.d-none]="categoryId.untouched || categoryId.valid">Product Category is required</small>
@@ -74,9 +75,9 @@
                             <!-- Upload image input-->
                             <div class="input-group mb-3 px-2 py-2 rounded-pill bg-white shadow-sm">
                                 <input id="upload" type="file"  class="form-control border-0" 
-                                [class.is-invalid]="productImage.invalid && productImage.touched " [class.is-invalid]="productImage.invalid && productImage.touched" required #productImage="ngModel" [(ngModel)]="ProductData.productImage" name="productImage">
+                                [class.is-invalid]="productImagePath.invalid && productImagePath.touched " [class.is-invalid]="productImagePath.invalid && productImagePath.touched" required #productImagePath="ngModel" [(ngModel)]="ProductData.productImagePath" name="productImagePath">
                             </div>
-                            <small style="margin-left: 15px;" class="text-danger"[class.d-none]="productImage.untouched || productImage.valid">Id Card Image is required</small>
+                            <small style="margin-left: 15px;" class="text-danger"[class.d-none]="productImagePath.untouched || productImagePath.valid">Id Card Image is required</small>
                         </div>
                     </div>
                     <div class="row justify-content-center">

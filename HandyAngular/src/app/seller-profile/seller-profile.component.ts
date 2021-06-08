@@ -1,3 +1,4 @@
+import { NgForm } from '@angular/forms';
 import { Category } from './../Models/Category';
 import { CategoryService } from './../Services/CategoryService';
 import { UserService } from 'src/app/Services/user.service';
@@ -24,13 +25,11 @@ export class SellerProfileComponent implements OnInit {
     });
     this.GetAllCategories();    
   }
-  public product = new Product('','',null,null,'','',null);
-  SaveProduct()
+  SaveProduct(form : NgForm)
   {
-    console.log(this.product)
-      this.productservice.createProduct(this.product).subscribe()
+    console.log(form.value)
+      this.productservice.createProduct(form.value).subscribe()
   }
-
   categories: Category[]=[];
   CategoryList:Category[]=[];
   GetAllCategories()

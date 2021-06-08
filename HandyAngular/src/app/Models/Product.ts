@@ -1,5 +1,6 @@
 export class Product {
     constructor(
+        public shopId :number,
         public productName:string,
         public details:string,
         public unitPrice:number,
