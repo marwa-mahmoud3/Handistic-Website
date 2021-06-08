@@ -7,6 +7,8 @@ import { AddCityComponent } from './pages/add-city/add-city.component';
 import { CategoriesComponent } from './pages/categories/categories.component';
 import { CitiesComponent } from './pages/cities/cities.component';
 import { UpdateCityComponent } from './pages/update-city/update-city.component';
+import { RequestsComponent } from './pages/requests/requests.component';
+import { RequestdetailsComponent } from './pages/requestdetails/requestdetails.component';
 
 const routes: Routes = [
   {path:'',redirectTo:'Home', pathMatch: 'full' },
@@ -16,7 +18,11 @@ const routes: Routes = [
   {path:'updatecity/:id',component:UpdateCityComponent},
   {path:'updatecategory/:id',component:UpdateCategoryComponent},
   {path:'category',component:CategoriesComponent},
-  {path:'Home',component:HomeComponent}
+  {path:'Home',component:HomeComponent},
+  {path:'request',component:RequestsComponent},
+  {path:'requestdetails/:id',component:RequestdetailsComponent},
+  // {path:'updaterequest/:id',component:UpdaterequestComponent}
+
 ];
 
 @NgModule({
