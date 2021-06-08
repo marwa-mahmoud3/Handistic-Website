@@ -1,3 +1,4 @@
+import { HomeComponent } from './pages/home/home.component';
 import { UpdateCategoryComponent } from './pages/update-category/update-category.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
@@ -14,6 +15,7 @@ const routes: Routes = [
   {path:'updatecity/:id',component:UpdateCityComponent},
   {path:'updatecategory/:id',component:UpdateCategoryComponent},
   {path:'category',component:CategoriesComponent},
+  {path:'Home',component:HomeComponent}
 ];
 
 @NgModule({

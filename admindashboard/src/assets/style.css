@@ -13663,11 +13663,11 @@ pre {
   font-size: 14px; }
 
 .footer {
-  background: #e1edef;
-  margin-left: 215px;
+  color: #000;
+  background: #fff;
   padding: 1rem;
   transition: all .8s ease;
-  width: calc(100% - 215px); }
+  }
   @media (max-width: 991px) {
     .footer {
       margin-left: 0;

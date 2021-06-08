@@ -13,6 +13,7 @@ import { UpdateCategoryComponent } from './pages/update-category/update-category
 import { UpdateCityComponent } from './pages/update-city/update-city.component';
 import { FormsModule, NgForm, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { HomeComponent } from './pages/home/home.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { HttpClientModule } from '@angular/common/http';
     AddCategoryComponent,
     AddCityComponent,
     UpdateCategoryComponent,
-    UpdateCityComponent
+    UpdateCityComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
