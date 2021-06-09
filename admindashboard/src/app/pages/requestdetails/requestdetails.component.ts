@@ -29,25 +29,17 @@ export class RequestdetailsComponent implements OnInit {
   }
 
   updateAcceptRequest() {
-    localStorage.setItem('seller','true')
+    // localStorage.setItem('seller','true')
     this.currentrequest.isAccepted=true;
     this.requestservice.updateRequest(this.currentrequest.id , this.currentrequest).subscribe()
-    this.newseller.FirstName=this.currentrequest.firstName;
-    this.newseller.LastName=this.currentrequest.lastName;
-    this.newseller.Phone=this.currentrequest.phone;
-    this.newseller.Governorate=this.currentrequest.governorate;
-    this.newseller.IdCardImage=this.currentrequest.idCardImage;
-    this.newseller.PersonWithCardImage=this.currentrequest.personWithCardImage;
-    this.newseller.Link=this.currentrequest.link;
-    this.newseller.ProductWithCardImage=this.currentrequest.productWithCardImage;
-
-    this.sellerservices.addseller(this.newseller).subscribe()
-    this.requestservice.deleteRequest(this.currentrequest.id).subscribe()
-
+    console.log(this.currentrequest)
+    this.sellerservices.addseller(this.currentrequest).subscribe()
     this.router.navigate(['/request'])
   }
-  deleteRequest() {
-    this.requestservice.deleteRequest(this.currentrequest.id).subscribe()
+  RejectRequest() {
+    this.currentrequest.isAccepted=false;
+    this.requestservice.updateRequest(this.currentrequest.id , this.currentrequest).subscribe()
+    this.sellerservices.deleteSeller(this.currentrequest.id).subscribe()
     this.router.navigate(['/request'])
   }
 

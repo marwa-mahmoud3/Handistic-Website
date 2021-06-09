@@ -7,6 +7,13 @@
                     <h2 class="title" style="margin-bottom: 30px;">Create Your Shop</h2>
                     <input type="text" [(ngModel)]="user.userId" hidden id="userId" name="userId"> 
                     <h3> Please fill you data here.</h3>
+                    <div *ngIf="showError; else elseBlock">
+                        <div class="alert alert-danger" role="alert">
+                          {{errorMessage.error | json}}
+                        </div>
+                      </div>
+                      <ng-template #elseBlock></ng-template>
+
                     <div class="row" style="margin-top: 50px;">
                         <div class="col-lg-6 col-md-4" >
                             <label class="label">Frist Name<span class="star">*</span> </label>
@@ -110,6 +117,12 @@
                     <h3>
                         Let's get started! Tell us about you and your shop.
                     </h3>
+                    <div *ngIf="Error; else elseBlock">
+                        <div class="alert alert-danger" role="alert">
+                          {{errorMessage.error | json}}
+                        </div>
+                      </div>
+                      <ng-template #elseBlock></ng-template>
                     <input type="text" [(ngModel)]="currentShop.rquestId" hidden id="rquestId" name="rquestId"> 
                     <div class="row" style="margin-top: 60px;">
                         <div class="col-lg-6 col-md-4">

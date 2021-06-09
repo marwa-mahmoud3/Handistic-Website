@@ -1,18 +1,19 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { RequestModel } from '../Models/RequestModel';
 import { shop } from '../Models/shop';
 
 
 @Injectable({
   providedIn: 'root'
 })
-export class userRequest {
+export class ShopService {
 
   constructor(private http: HttpClient) { }
-  url='https://localhost:44339/api/Shops';
+  url='https://localhost:44339/api/CityShops/CityShop';
   ngOnInit() {          
   }
-  inserRequest(shop : shop )
+  CreateShop(shop : shop )
   {
     return this.http.post(this.url,shop);
   }

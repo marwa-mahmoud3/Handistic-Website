@@ -1,5 +1,5 @@
 import { Router } from '@angular/router';
-import { ShopsService } from './../Services/shopsService';
+import { ShopService } from '../Services/shopService';
 import { shop } from './../Models/shop';
 import { city } from './../Models/city';
 import { Component, OnInit } from '@angular/core';
@@ -20,7 +20,7 @@ export class CreateShopComponent implements OnInit {
   public message: string;
   @Output() public onUploadFinished = new EventEmitter();
   constructor(private userservic : UserService,private userRequestService : userRequest,private router: Router,
-  private shopservice: ShopsService ,private cityservice:CityService,private http: HttpClient) { }
+  private shopservice: ShopService ,private cityservice:CityService,private http: HttpClient) { }
   public ShowLink:boolean =true;
   public ShowImage:boolean;
   public secondform:boolean;
@@ -49,12 +49,22 @@ export class CreateShopComponent implements OnInit {
     this.ShowImage =true;
     this.ShowLink =false;
   }
+  public showSuccess:boolean;
+  public showError :boolean;
+  public errorMessage :string;
   UserData(form :NgForm)
   {
-    
-    this.userRequestService.inserRequest(this.request).subscribe()
-    this.secondform =true;
-    this.firstform=false;
+    this.userRequestService.inserRequest(this.request).subscribe( Resbonse=>{
+      this.showSuccess=true;
+      this.showError = false;
+      this.secondform =true;
+      this.firstform=false;
+  },error => {
+    this.showError = true;
+    this.errorMessage = error;
+    this.showSuccess =false;
+  })
+   
   }
   getId()
   {
@@ -78,11 +88,20 @@ export class CreateShopComponent implements OnInit {
       this.city = this.CityList;
     });
   }
+  public Success :boolean
+  public Error :boolean
   CreateShop(form : NgForm)
   {
-   console.log(form.value) 
-     this.shopservice.CreateShop(form.value).subscribe()
-     this.router.navigate(['/profile'])
+     this.shopservice.CreateShop(form.value).subscribe(Resbonse=>{
+      this.Success=true;
+      this.Error = false;
+      this.router.navigate(['/profile'])
+  },error => {
+    this.Error = true;
+    this.errorMessage = error;
+    this.showSuccess =false;
+  })
+    
   }
    public uploadFile = (files) => {
     if (files.length === 0) {
