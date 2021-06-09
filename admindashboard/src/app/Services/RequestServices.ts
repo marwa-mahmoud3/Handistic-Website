@@ -16,7 +16,7 @@ export class RequestServices {
   {
     return this.http.post(this.url_request,request);
   } 
-  getRequestes(){
+  getRequestes(){ 
     return this.http.get(this.url_request)
   }
   deleteRequest(id): Observable<any> {

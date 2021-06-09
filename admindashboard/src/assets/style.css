@@ -13639,12 +13639,11 @@ input:focus {
   outline: none; }
 
 .content-wrapper {
-  background: #f2f7f8;
   margin-left: 215px;
   min-height: 100vh;
   padding: 2rem 1rem;
   transition: all .8s ease;
-  width: calc(100% - 215px); }
+  width: calc(100% - 215px); }  
   @media (max-width: 991px) {
     .content-wrapper {
       margin-left: 0;

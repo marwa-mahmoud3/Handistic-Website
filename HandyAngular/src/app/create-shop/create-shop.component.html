@@ -3,12 +3,12 @@
     <div class="">
         <div class="card card-4">
             <div class="card-body">
-            
                 <form *ngIf="firstform;" #userData="ngForm" (ngSubmit)="UserData(userData)">
                     <h2 class="title" style="margin-bottom: 30px;">Create Your Shop</h2>
+                    <input type="text" [(ngModel)]="user.userId" hidden id="userId" name="userId"> 
                     <h3> Please fill you data here.</h3>
                     <div class="row" style="margin-top: 50px;">
-                        <div class="col-lg-6 col-md-4">
+                        <div class="col-lg-6 col-md-4" >
                             <label class="label">Frist Name<span class="star">*</span> </label>
                             <div class="">
                                 <input  class="form-control" type="text" placeholder=" Enter your frist name" [class.is-invalid]="firstName.invalid && firstName.touched " [class.is-invalid]="firstName.invalid && firstName.touched" required #firstName="ngModel" [(ngModel)]="request.firstName" name="firstName"> 
@@ -46,8 +46,8 @@
                             <label class="label" >Upload Imagr for you id card<span class="star">*</span></label>
                             <!-- Upload image input-->
                             <div class="input-group mb-3 px-2 py-2 rounded-pill bg-white shadow-sm">
-                                <input id="upload" type="file"  class="form-control border-0" 
-                                [class.is-invalid]="idCardImage.invalid && idCardImage.touched " [class.is-invalid]="idCardImage.invalid && idCardImage.touched" required #idCardImage="ngModel" [(ngModel)]="request.idCardImage" name="idCardImage">
+                                <input id="upload" #file type="file" multiple  class="form-control border-0" (change)="uploadFile(file.files)"
+                                [class.is-invalid]="idCardImage.invalid && idCardImage.touched" [class.is-invalid]="idCardImage.invalid && idCardImage.touched" required #idCardImage="ngModel" [(ngModel)]="request.idCardImage" name="idCardImage">
                             </div>
                             <small style="margin-left: 15px;" class="text-danger"[class.d-none]="idCardImage.untouched || idCardImage.valid">Id Card Image is required</small>
                         </div>
@@ -55,7 +55,7 @@
                             <label class="label" >Upload image for you with id card<span class="star">*</span></label>
                             <!-- Upload image input-->
                             <div class="input-group mb-3 px-2 py-2 rounded-pill bg-white shadow-sm">
-                                <input id="upload" type="file"  class="form-control border-0"
+                                <input id="upload" type="file"  class="form-control border-0" #file type="file" multiple (change)="uploadFile(file.files)"
                                 [class.is-invalid]="personWithCardImage.invalid && personWithCardImage.touched " [class.is-invalid]="personWithCardImage.invalid && personWithCardImage.touched" required #personWithCardImage="ngModel" [(ngModel)]="request.personWithCardImage" name="personWithCardImage">
                             </div>
                             <small style="margin-left: 15px;" class="text-danger"[class.d-none]="personWithCardImage.untouched || personWithCardImage.valid">Personal Image with Card is required</small>
@@ -91,7 +91,7 @@
                         <div *ngIf="ShowImage; else BlockImage"  class="col-lg-6"  id="image-div">
                             <label class="label" style="margin-top: 30px;">Upload image of product<span class="star">*</span></label>
                             <div class="input-group mb-3 px-2 py-2 rounded-pill bg-white shadow-sm">
-                                <input id="upload" type="file" class="form-control border-0" 
+                                <input id="upload" type="file" class="form-control border-0" #file type="file" multiple (change)="uploadFile(file.files)"
                                 [class.is-invalid]="productWithCardImage.invalid && productWithCardImage.touched " [class.is-invalid]="productWithCardImage.invalid && productWithCardImage.touched" required #productWithCardImage="ngModel" name="productWithCardImage" [(ngModel)]="request.productWithCardImage">
                             </div>
                             <small class="text-danger"[class.d-none]="productWithCardImage.untouched || productWithCardImage.valid">Image of product Link is required</small>
@@ -105,40 +105,28 @@
                 
           
                 <!-- ============================================ -->
-                <form *ngIf="secondform;" #shopData="ngForm" (ngSubmit)="shopData(shopData)">                
+                <form *ngIf="secondform;" #shopData="ngForm" (ngSubmit)="CreateShop(shopData)">                
                     <h2 class="title" style="margin-bottom: 80px;">Create Your Shop</h2>
                     <h3>
                         Let's get started! Tell us about you and your shop.
                     </h3>
+                    <input type="text" [(ngModel)]="currentShop.rquestId" hidden id="rquestId" name="rquestId"> 
                     <div class="row" style="margin-top: 60px;">
                         <div class="col-lg-6 col-md-4">
                             <label class="label">Choose Your Shop City<span class="star">*</span></label>
-                            <ng-select [items]="city" [class.is-invalid]="governorate.invalid && governorate.touched " [class.is-invalid]="governorate.invalid && governorate.touched" required #governorate="ngModel" [(ngModel)]="request.governorate" name="governorate"
+                            <ng-select [items]="city" [class.is-invalid]="cities.invalid && cities.touched " [class.is-invalid]="cities.invalid && cities.touched" required #cities="ngModel" [(ngModel)]="shopData.cities" name="cities"
                             bindLabel="name"
                             placeholder="Select City"
                             appendTo="body"
                             [multiple]="true"
                             [(ngModel)]="Selected"></ng-select>
-                            <small class="text-danger"[class.d-none]="governorate.untouched || governorate.valid">City is required</small>
+                            <small class="text-danger"[class.d-none]="cities.untouched || cities.valid">City is required</small>
                         </div>
-
                         <div class="col-lg-6 col-md-4">
-                            <label class="label">Choose the type of service you want to provide <span class="star">*</span></label>
-                            <div class="input-group">
-                                <select  class="form-control form-select-lg" [class.is-invalid]="serviceType.invalid && serviceType.touched " [class.is-invalid]="serviceType.invalid && serviceType.touched" required #serviceType="ngModel" [(ngModel)]="request.serviceType" name="serviceType">
-                                    <option  value="HandiCrafts">HandiCrafts</option>
-                                    <option  value="Food">Food</option>
-                                </select>
-                            </div>
-                            <small class="text-danger"[class.d-none]="serviceType.untouched || serviceType.valid">service Type is required</small>
-                        </div>
-                    </div>
-                    <div class="row justify-content-center" style="margin-top: 60px;">
-                        <div class="col-lg-6 col-md-4">
-                            <label class="label">Type Shop name<span class="star">*</span></label>
+                            <label class="label">Shop name<span class="star">*</span></label>
                             <div class="input-group mb-3">
                                 <div class="input-group">
-                                    <input  class="form-control" type="text" placeholder=" Enter your frist name" [class.is-invalid]="shopName.invalid && shopName.touched " [class.is-invalid]="shopName.invalid && shopName.touched" required #shopName="ngModel" [(ngModel)]="request.shopName" name="shopName"> 
+                                    <input  class="form-control" type="text" placeholder=" Enter your frist name" [class.is-invalid]="shopName.invalid && shopName.touched " [class.is-invalid]="shopName.invalid && shopName.touched" required #shopName="ngModel" [(ngModel)]="shopData.shopName" name="shopName"> 
                                 </div>  
                                 <small class="text-danger"[class.d-none]="shopName.untouched || shopName.valid">Shop Name is required</small>                          
                             </div>

@@ -1,86 +1,67 @@
 
-<div class="row mb-2" style="padding-top: 100px;width: 100%;margin: 0px;">
-    <div class="col-lg-12">
-      <div class="card">
-        <div class="card-body">
-          <h5 class="card-title mb-4" style="display: inline-block;margin-right: 40px;">Requests - {{currentrequest.id}} </h5>
-          <!-- <a  href="/addcategory" class="btn btn-success btn-sm" style="color: white;">Add New Category</a> -->
-          <div class="table-responsive" style="margin-bottom: 70px;">
-            <table class="table center-aligned-table">
-              <thead>
-                <tr class="text-primary">
-                  <th>No</th>
-                  <th>Request Id</th>
-                  <th>Frist Name</th>
-                  <th>Last Name</th>
-                  <th>Phone</th>
-                  <th>Governorate</th>
-           
-                </tr>
-              </thead>
-              <tbody>
-                <tr >
-                  <td>{{currentrequest.id}}</td>
-                  <td>{{currentrequest.rquestId}}</td>
-                  <td>{{currentrequest.firstName}}</td>
-                  <td>{{currentrequest.lastName}}</td>
-                  <td>{{currentrequest.phone}}</td>
-                  <td>{{currentrequest.governorate}}</td>
-                  
-
-                </tr>
-              </tbody>
-            </table>
-          </div>
-          <div class="table-responsive" style="margin-bottom: 70px;">
-            <table class="table center-aligned-table">
-              <thead>
-                <tr class="text-primary">
-             
-                  <th>Id Card Image</th>
-                  <th>Person With Card Image</th>
-                 
-                </tr>
-              </thead>
-              <tbody>
-                <tr >
-                 
-                  <td>{{currentrequest.idCardImage}}</td>
-                  <td>{{currentrequest.personWithCardImage}}</td>
-               
-                </tr>
-              </tbody>
-            </table>
-          </div>
-          <div class="table-responsive" style="margin-bottom: 70px;">
-            <table class="table center-aligned-table">
-              <thead>
-                <tr class="text-primary">
-           
-                  <th>Is Accepted</th>
-                  <th>Profile Link</th>
-                  <th>Product With CardImage</th>
-                  <th>Accepted</th>
-                  <th>Rejected</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr >
-                 
-                  <td>{{currentrequest.isAccepted}}</td>
-                  <td>{{currentrequest.link}}</td>
-                  <td>{{currentrequest.productWithCardImage}}</td>
-
-
-                  <td><a href="/requestdetails/{{currentrequest.id}}" class="btn btn-primary btn-sm" style="color: #fff;" (click)="updateAcceptRequest()" >Accepte</a></td >
-
-                  <td><a href="/requestdetails/{{currentrequest.id}}" class="btn btn-danger btn-sm" style="color: #fff;" (click)="updateRejectRequest()" >Reject</a></td >
-
-                </tr>
-              </tbody>
-            </table>
+<form style="padding-top:70px;" (onUploadFinished)="uploadFinished($event)">
+    <h3 class="page-heading mb-4 ">
+      {{currentrequest.firstName}} {{currentrequest.lastName}}</h3>
+    <!-- <div class="float-right"><a class="text-primary">All Requests</a></div> -->
+    <div class="row ">
+      <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 mb-4 " >
+        <div class="table-responsive " >
+          <table class="table center-aligned-table bg-white">
+            <thead>
+              <tr class="text-primary">
+                <th>No</th>
+                <th>Frist Name</th>
+                <th>Last Name</th>
+                <th>Phone</th>
+                <th>Governorate</th>   
+                <th>Is Accepted</th>        
+              </tr>
+            </thead>
+            <tbody>
+              <tr >
+                <td>{{currentrequest.id}}</td>
+                <td>{{currentrequest.firstName}}</td>
+                <td>{{currentrequest.lastName}}</td>
+                <td>{{currentrequest.phone}}</td>
+                <td>{{currentrequest.governorate}}</td>
+                <td>{{currentrequest.isAccepted}}</td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="bg-white">
+            <label style="font-size: 20px;padding-top: 18px;padding-left: 10px;padding-right: 10px;">Profile Link : </label>
+            <a class="text-primary" href="" style="font-size: 15px;">{{currentrequest.link}}</a>
           </div>
         </div>
       </div>
     </div>
-  </div>
+    <div class="row ">
+      <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 mb-4">
+         <div class="card ">
+           <div class="card-body personal">
+            <img [src]="createImgPath(currentrequest.idCardImage)">
+            </div>
+          </div>
+      </div> 
+      <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 ">
+        <div class="card ">
+          <div class="card-body personal">
+             <img [src]="createImgPath(currentrequest.personWithCardImage)">
+           </div>
+         </div>
+      </div> 
+      <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 mb-4">
+        <div class="card ">
+          <div class="card-body personal">
+            <img [src]="createImgPath(currentrequest.productWithCardImage)">
+          </div>
+        </div>
+      </div> 
+    </div>
+    <div class="row " style="align-items: center;">
+      <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 mb-4">
+       <button style="float: left;" class="btn-primary" (click)="updateAcceptRequest()">Accepted</button>
+       <button style="float: right;" class="btn-danger" (click)="updateRejectRequest()">Reject</button>
+      </div>
+    </div>
+  </form>

@@ -26,7 +26,7 @@ import { HeaderBeforeLoginComponent } from './header-before-login/header-before-
 import { HeaderAfterLoginComponent } from './header-after-login/header-after-login.component';
 import { NgSelectModule } from '@ng-select/ng-select';
 import { UserProfileComponent } from './user-profile/user-profile.component';
-import { SellerProfileComponent } from './seller-profile/seller-profile.component'; 
+import { SellerProfileComponent } from './seller-profile/seller-profile.component';
 
 @NgModule({
   declarations: [
@@ -54,6 +54,7 @@ import { SellerProfileComponent } from './seller-profile/seller-profile.componen
     HeaderAfterLoginComponent,
     UserProfileComponent,
     SellerProfileComponent,
+    
   ],
   imports: [
     BrowserModule,

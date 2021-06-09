@@ -1,42 +1,34 @@
 
 <div class="row mb-2" style="padding-top: 100px;width: 100%;margin: 0px;">
-    <div class="col-lg-12">
-      <div class="card">
-        <div class="card-body">
-          <h5 class="card-title mb-4" style="display: inline-block;margin-right: 40px;">Requests Table </h5>
-          <!-- <a  href="/addcategory" class="btn btn-success btn-sm" style="color: white;">Add New Category</a> -->
-          <div class="table-responsive">
-            <table class="table center-aligned-table">
-              <thead>
-                <tr class="text-primary">
-                  <th>No</th>
-                  <th>Request Id</th>
-                  <th>Frist Name</th>
-                  <th>Last Name</th>
-                  <th>Phone</th>
-                  <th>Governorate</th>
-                  <!-- <th>Is Accepted</th> -->
-                  <th>Profile Link</th>
-                  <th>Details</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr class="" *ngFor="let request of RequestList ">
-                  <td>{{request.id}}</td>
-                  <td>{{request.rquestId}}</td>
-                  <td>{{request.firstName}}</td>
-                  <td>{{request.lastName}}</td>
-                  <td>{{request.phone}}</td>
-                  <td>{{request.governorate}}</td>
-                  <!-- <td>{{request.isAccepted}}</td> -->
-                  <td>{{request.link}}</td>
-
-                  <td><a href="/requestdetails/{{request.id}}" class="btn btn-primary btn-sm" style="color: #fff;">Details</a></td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
+  <div class="col-lg-12">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title mb-4" style="display: inline-block;margin-right: 40px;">Requests Table </h5>
+        <div class="table-responsive">
+          <table class="table center-aligned-table">
+            <thead>
+              <tr class="text-primary">
+                <th>No</th>
+                <th>Frist Name</th>
+                <th>Last Name</th>
+                <th>Phone</th>
+                <th>Governorate</th>
+                <th>Details</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let request of RequestList">
+                <td>{{request.id}}</td>
+                <td>{{request.firstName}}</td>
+                <td>{{request.lastName}}</td>
+                <td>{{request.phone}}</td>
+                <td>{{request.governorate}}</td>
+                <td><a href="/requestdetails/{{request.id}}" class="btn btn-primary btn-md" style="color: #fff;">Details</a></td>
+              </tr>
+            </tbody>
+          </table>
         </div>
       </div>
     </div>
   </div>
+</div>

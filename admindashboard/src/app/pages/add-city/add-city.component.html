@@ -2,7 +2,7 @@
 
     <div class="row justify-content-center content-my-account">
         <div class="col-md-6 col-sm-12 col-12 content-my-account-right">
-            <h2>Add New City</h2>
+            <h2 style="padding-bottom: 20px;">Add New City</h2>
             <form #cityform="ngForm" (ngSubmit)="OnSubmit(cityform)">
               <div *ngIf="showSuccess; else thenfaild">
                 <div class="alert alert-success" role="alert">
@@ -20,14 +20,14 @@
               <ng-template #elseBlock></ng-template>
               
               <div class="form-holder">
-                  <p>City Name <span>*</span></p>
+                  <p>City Name <span style="color:#ffa6a8;"> *</span></p>
                   <input type="text" class="form-control"  [class.is-invalid]="Name.invalid && Name.touched " [class.is-invalid]="Name.invalid && Name.touched " required #Name="ngModel" [(ngModel)]="cityform.name" name="Name">
                   <small class="text-danger"[class.d-none]="Name.untouched || Name.valid">City is required</small>
               </div>
                 <button type="submit"  class="bt" [disabled]="!cityform.valid" >Add</button>
                 <br>  
                 <div class="row justify-content-center content-my-account">
-                    <a  href="/city" class="" style="color: #1991EB;">Show All Cities</a>
+                    <a  href="/city" class="" style="color: #ffa6a8;">Show All Cities</a>
                 </div>              
               </form>
         </div>

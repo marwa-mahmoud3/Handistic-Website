@@ -28,7 +28,8 @@ const routes: Routes = [
   {path:"profile",component:ProfileComponent},
   {path: "HandmadeProducts",component:HandmadeProductComponent},
   {path:"CreateShop",component:CreateShopComponent},
-  {path: "SellerProfile" , component:SellerProfileComponent}
+  {path: "SellerProfile" , component:SellerProfileComponent},
+
 ];
 
 @NgModule({

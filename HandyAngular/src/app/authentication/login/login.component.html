@@ -15,7 +15,7 @@
                   <small class="text-danger"[class.d-none]="email.untouched || email.valid">Email Address is required</small>
                 </div>
                 <div class="form-holder">
-                    <p>Password<span>*</span></p>
+                    <p>Password <span> *</span></p>
                     <div class="input-group">
                       <input [type]="fieldTextType ? 'text' : 'password'" class="form-control" [class.is-invalid]="password.invalid && password.touched " required #password="ngModel" [(ngModel)]="loginuser.password" name="password" />
                       <div class="input-group-append">

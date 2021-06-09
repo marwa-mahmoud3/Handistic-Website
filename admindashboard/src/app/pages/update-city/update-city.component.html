@@ -19,14 +19,14 @@
              
               <div *ngIf="currentCity" class="edit-form">          
                 <div class="form-holder">
-                    <p>City Name <span>*</span></p>
+                    <p>City Name <span style="color:#ffa6a8;"> *</span></p>
                     <input  type="text" class="form-control" id="name" [(ngModel)]="currentCity.name" name="name">
                 </div>
               </div>               
                 <button type="submit"  class="bt" [disabled]="!cityform.valid" >Update</button>
                 <br>  
                 <div class="row justify-content-center content-my-account">
-                    <a  href="/city" class="" style="color: #1991EB;">Show All Cities</a>
+                    <a  href="/city" class="" style="color: #ffa6a8;">Show All Cities</a>
                 </div> 
             </form>
           

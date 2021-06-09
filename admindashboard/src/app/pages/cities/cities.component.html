@@ -3,7 +3,7 @@
       <div class="card ">
         <div class="card-body ">
           <h5 class="card-title mb-4 " style="display: inline-block;margin-right: 50px;">Cities Table </h5>
-          <a  href="/addcity" class="btn btn-success btn-sm" style="color: white;">Add New City</a>
+          <a  href="/addcity" class="btn btn-sm" style="color: white;background-color: #ffa6a8;">Add New City</a>
           <div class="table-responsive ">
             <table class="table center-aligned-table">
               <thead>
@@ -17,7 +17,7 @@
                 </tr>
               </thead>
               <tbody>
-                <tr class="" *ngFor="let city of CityList ">
+                <tr *ngFor="let city of CityList">
                   <td>{{city.id}}</td>
                   <td>{{city.name}}</td>  
                   <td><a href="/updatecity/{{city.id}}" class="btn btn-primary btn-sm" style="color: #fff;">Update</a></td>

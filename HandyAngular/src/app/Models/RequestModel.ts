@@ -1,7 +1,7 @@
 
 export class RequestModel {
     constructor(
-        public rquestId:string,
+        public userId:string,
         public firstName:string,
         public lastName:string,
         public phone:string,

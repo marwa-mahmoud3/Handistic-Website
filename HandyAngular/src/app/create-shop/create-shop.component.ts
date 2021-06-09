@@ -1,3 +1,6 @@
+import { Router } from '@angular/router';
+import { ShopsService } from './../Services/shopsService';
+import { shop } from './../Models/shop';
 import { city } from './../Models/city';
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
@@ -5,28 +8,31 @@ import { RequestModel } from '../Models/RequestModel';
 import { CityService } from '../Services/CityService';
 import { UserService } from '../Services/user.service';
 import { userRequest } from '../Services/userRequest';
-
+import { HttpClient, HttpEventType } from '@angular/common/http';
+import {Output, EventEmitter } from '@angular/core';
 @Component({
   selector: 'app-create-shop',
   templateUrl: './create-shop.component.html',
   styleUrls: ['./create-shop.component.css']
 })
 export class CreateShopComponent implements OnInit {
-
-  constructor(private userservic : UserService,private userRequestService : userRequest,private cityservice:CityService,) { }
+  public progress: number;
+  public message: string;
+  @Output() public onUploadFinished = new EventEmitter();
+  constructor(private userservic : UserService,private userRequestService : userRequest,private router: Router,
+  private shopservice: ShopsService ,private cityservice:CityService,private http: HttpClient) { }
   public ShowLink:boolean =true;
   public ShowImage:boolean;
   public secondform:boolean;
   public firstform:boolean=true;
   public Currentuser;
   public request = new RequestModel('','','','','','','','','');
-
+  user = new RequestModel(localStorage.getItem('userId'),'','','','','','','','');
+  currentShop =new shop(localStorage.getItem('userId'),'',[])
   ngOnInit(): void {
     this.getId();
-    this.GetAllCities();    
-  }
-  name = 'Angular';
-    
+    this.GetAllCities();  
+  }    
   onItemSelect(item: any) {
     console.log(item);
   }
@@ -45,9 +51,8 @@ export class CreateShopComponent implements OnInit {
   }
   UserData(form :NgForm)
   {
-    this.userRequestService.inserRequest(this.request).subscribe(
-      
-    )
+    
+    this.userRequestService.inserRequest(this.request).subscribe()
     this.secondform =true;
     this.firstform=false;
   }
@@ -56,7 +61,7 @@ export class CreateShopComponent implements OnInit {
     this.userservic.getIdByUserName(localStorage.getItem('username')).subscribe(result => {
       this.Currentuser = result;
       localStorage.setItem('userId',this.Currentuser.id)
-      this.request.rquestId = this.Currentuser.id;
+      this.request.userId = this.Currentuser.id;
     })
   }
   city =[]
@@ -73,4 +78,29 @@ export class CreateShopComponent implements OnInit {
       this.city = this.CityList;
     });
   }
+  CreateShop(form : NgForm)
+  {
+   console.log(form.value) 
+     this.shopservice.CreateShop(form.value).subscribe()
+     this.router.navigate(['/profile'])
+  }
+   public uploadFile = (files) => {
+    if (files.length === 0) {
+      return;
+    }
+
+    let fileToUpload = <File>files[0];
+    const formData = new FormData();
+    formData.append('file', fileToUpload, fileToUpload.name);
+
+    this.http.post('https://localhost:44339/api/Upload', formData, {reportProgress: true, observe: 'events'})
+      .subscribe(event => {
+        if (event.type === HttpEventType.UploadProgress)
+          this.progress = Math.round(100 * event.loaded / event.total);
+        else if (event.type === HttpEventType.Response) {
+          this.message = 'Upload success.';
+          this.onUploadFinished.emit(event.body);
+        }
+      });
+}
 }

@@ -29,10 +29,26 @@ export class RequestdetailsComponent implements OnInit {
   updateAcceptRequest() {
     this.currentrequest.isAccepted=true;
     this.requestservice.updateRequest(this.currentrequest.id , this.currentrequest).subscribe()
+    this.router.navigate(['/requestdetails/',this.currentrequest.id])
   }
   updateRejectRequest() {
     this.currentrequest.isAccepted=false;
     this.requestservice.updateRequest(this.currentrequest.id , this.currentrequest).subscribe()
+    this.router.navigate(['/requestdetails/',this.currentrequest.id])
   }
-  
+  public createImgPath = (serverPath: string) => {
+    return `https://localhost:44339/${serverPath}`;
+  }
+  public response: {dbPath: ''};
+  onCreate()
+  {
+    this.currentrequest = {
+      idCardImage: this.response.dbPath,
+      personWithCardImage : this.response.dbPath,
+      productWithCardImage :this.response.dbPath,
+    }
+  }
+  public uploadFinished = (event) => {
+    this.response = event;
+  }
 }
