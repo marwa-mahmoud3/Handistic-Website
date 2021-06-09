@@ -3,7 +3,7 @@
     <div class="">
         <div class="card card-4">
             <div class="card-body">
-                <form *ngIf="firstform;" #userData="ngForm" (ngSubmit)="UserData(userData)">
+                <form #userData="ngForm" (ngSubmit)="UserData(userData)">
                     <h2 class="title" style="margin-bottom: 30px;">Create Your Shop</h2>
                     <input type="text" [(ngModel)]="user.userId" hidden id="userId" name="userId"> 
                     <h3> Please fill you data here.</h3>
@@ -50,7 +50,7 @@
                     </div>
                    <div class="row" style="margin-top: 50px;">
                         <div class="col-lg-6 ">
-                            <label class="label" >Upload Imagr for you id card<span class="star">*</span></label>
+                            <label class="label" >Upload Image for you id card<span class="star">*</span></label>
                             <!-- Upload image input-->
                             <div class="input-group mb-3 px-2 py-2 rounded-pill bg-white shadow-sm">
                                 <input id="upload" #file type="file" multiple  class="form-control border-0" (change)="uploadFile(file.files)"
@@ -111,7 +111,7 @@
                 </form>   
                 
           
-                <!-- ============================================ -->
+         
                 <form *ngIf="secondform;" #shopData="ngForm" (ngSubmit)="CreateShop(shopData)">                
                     <h2 class="title" style="margin-bottom: 80px;">Create Your Shop</h2>
                     <h3>
@@ -126,7 +126,8 @@
                     <input type="text" [(ngModel)]="currentShop.rquestId" hidden id="rquestId" name="rquestId"> 
                     <div class="row" style="margin-top: 60px;">
                         <div class="col-lg-6 col-md-4">
-                            <label class="label">Choose Your Shop City<span class="star">*</span></label>
+                            <label class="label">Choose Where you'd like to provide your service<span class="star">*</span></label>
+                            
                             <ng-select [items]="city" [class.is-invalid]="cities.invalid && cities.touched " [class.is-invalid]="cities.invalid && cities.touched" required #cities="ngModel" [(ngModel)]="shopData.cities" name="cities"
                             bindLabel="name"
                             placeholder="Select City"
