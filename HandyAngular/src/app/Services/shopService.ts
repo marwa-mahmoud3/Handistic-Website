@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { RequestModel } from '../Models/RequestModel';
+import { Observable } from 'rxjs';
 import { shop } from '../Models/shop';
 
 
@@ -10,11 +10,30 @@ import { shop } from '../Models/shop';
 export class ShopService {
 
   constructor(private http: HttpClient) { }
-  url='https://localhost:44339/api/CityShops/CityShop';
+  url = 'https://localhost:44339/api/Shops'
+  baseurl='https://localhost:44339/api/CityShops/CityShop';
   ngOnInit() {          
   }
   CreateShop(shop : shop )
   {
-    return this.http.post(this.url,shop);
+    return this.http.post(this.baseurl,shop);
   }
-}
+  getAllShops() {​​​
+    return this.http.get(this.url);
+  }​​​
+  getShoptById(id): Observable<any> {​​​
+    return this.http.get(`${​​​this.url}​​​/${​​​id}​​​`);
+  }​​​
+  createShop(data): Observable<any> {​​​
+    return this.http.post(`${​​​this.url}​​​`, data);
+  }​​​
+  update(id, data): Observable<any> {​​​
+    return this.http.put(`${​​​this.url}​​​/${​​​id}​​​`, data);
+  }​​​
+  delete(id): Observable<any> {​​​
+    return this.http.delete(`${​​​this.url}​​​/${​​​id}​​​`);
+  }​​​
+  getShopByUserId(id): Observable<any> {​​​
+    return this.http.get(`${​​​this.url}​​​/UserShop/${​​​id}​​​`);
+  }
+}​​​

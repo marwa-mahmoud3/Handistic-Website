@@ -63,7 +63,7 @@
                             <label class="label">Chooes Product Category<span class="star">*</span></label>
                             <div class="input-group">
                                 <select  class="form-control form-select-lg" [class.is-invalid]="categoryId.invalid && categoryId.touched " [class.is-invalid]="categoryId.invalid && categoryId.touched" required #categoryId="ngModel" [(ngModel)]="ProductData.categoryId" name="categoryId">
-                                    <option *ngFor="let Category of CategoryList" value={{Category.id}} >{{Category.name}}</option>
+                                    <option *ngFor="let Category of CategoryList" >{{Category.name}}</option>
                                 </select>
                             </div>
                             <small class="text-danger"[class.d-none]="categoryId.untouched || categoryId.valid">Product Category is required</small>

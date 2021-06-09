@@ -52,8 +52,26 @@ export class CreateShopComponent implements OnInit {
   public showSuccess:boolean;
   public showError :boolean;
   public errorMessage :string;
+  List =[]
+  List1 = []
+  List2 =[]
+  index : number;
+  index1 : number;
+  index2 : number;
   UserData(form :NgForm)
   {
+    this.List= this.request.idCardImage.split('\\');
+    this.index = this.request.idCardImage.split('\\').length
+    this.request.idCardImage = "Resources/images/"+this.List[this.index-1];
+   
+    this.List1= this.request.personWithCardImage.split('\\');
+    this.index1 = this.request.personWithCardImage.split('\\').length
+    this.request.personWithCardImage = "Resources/images/"+this.List1[this.index-1];
+    
+    this.List2= this.request.productWithCardImage.split('\\');
+    this.index2 = this.request.productWithCardImage.split('\\').length
+    this.request.productWithCardImage = "Resources/images/"+this.List2[this.index-1];
+
     this.userRequestService.inserRequest(this.request).subscribe( Resbonse=>{
       this.showSuccess=true;
       this.showError = false;

@@ -32,17 +32,16 @@ export class RequestdetailsComponent implements OnInit {
     // localStorage.setItem('seller','true')
     this.currentrequest.isAccepted=true;
     this.requestservice.updateRequest(this.currentrequest.id , this.currentrequest).subscribe()
-    console.log(this.currentrequest)
     this.sellerservices.addseller(this.currentrequest).subscribe()
     this.router.navigate(['/request'])
   }
   RejectRequest() {
     this.currentrequest.isAccepted=false;
     this.requestservice.updateRequest(this.currentrequest.id , this.currentrequest).subscribe()
-    this.sellerservices.deleteSeller(this.currentrequest.id).subscribe()
+    this.sellerservices.deleteSeller(this.currentrequest.userId).subscribe()
     this.router.navigate(['/request'])
   }
-
+  
   
   public createImgPath = (serverPath: string) => {
     return `https://localhost:44339/${serverPath}`;

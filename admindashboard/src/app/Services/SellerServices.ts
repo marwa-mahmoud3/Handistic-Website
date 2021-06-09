@@ -19,8 +19,9 @@ export class SellertServices {
   getSellers(){ 
     return this.http.get(this.url_request)
   }
-  deleteSeller(id): Observable<any> {
-    return this.http.delete(`${this.url_request}/${id}`);
+  deleteSeller(UserId): Observable<any> {
+    console.log(UserId)
+    return this.http.delete(`${this.url_request}/UserId?userId=${UserId}`);
   }
   updateSeller(id,seller): Observable<any> {
     return this.http.put(`${this.url_request}/${id}`,seller);
