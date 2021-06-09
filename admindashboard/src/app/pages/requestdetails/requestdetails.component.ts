@@ -27,11 +27,13 @@ export class RequestdetailsComponent implements OnInit {
   }
 
   updateAcceptRequest() {
+    localStorage.setItem('seller','true')
     this.currentrequest.isAccepted=true;
     this.requestservice.updateRequest(this.currentrequest.id , this.currentrequest).subscribe()
     this.router.navigate(['/requestdetails/',this.currentrequest.id])
   }
   updateRejectRequest() {
+    localStorage.setItem('seller','false')
     this.currentrequest.isAccepted=false;
     this.requestservice.updateRequest(this.currentrequest.id , this.currentrequest).subscribe()
     this.router.navigate(['/requestdetails/',this.currentrequest.id])

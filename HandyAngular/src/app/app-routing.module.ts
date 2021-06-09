@@ -1,3 +1,4 @@
+import { UserProfileComponent } from './user-profile/user-profile.component';
 import { SellerProfileComponent } from './seller-profile/seller-profile.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
@@ -29,6 +30,7 @@ const routes: Routes = [
   {path: "HandmadeProducts",component:HandmadeProductComponent},
   {path:"CreateShop",component:CreateShopComponent},
   {path: "SellerProfile" , component:SellerProfileComponent},
+  {path :"UserProfile" , component:UserProfileComponent},
 
 ];
 
