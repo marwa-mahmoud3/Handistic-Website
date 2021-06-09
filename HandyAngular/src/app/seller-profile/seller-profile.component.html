@@ -15,7 +15,7 @@
 
         <div class="col-md-8">
             <div class="content-blog-right">
-                <form  #ProductData="ngForm" (ngSubmit)="SaveProduct(ProductData)">
+                <form  #ProductData="ngForm" (ngSubmit)="SaveProduct()">
                     <!-- <input  class="form-control" value=1  type="number" #shopId="ngModel" [(ngModel)]="ProductData.shopId" name="shopId">  -->
                     <div class="row">
                         <div class="col-lg-12 col-md-4">
@@ -60,7 +60,7 @@
                             <small class="text-danger"[class.d-none]="size.untouched || size.valid">Product size is required</small>
                         </div>
                         <div class="col-lg-6 col-md-4">
-                            <label class="label">Chooes Product Category<span class="star">*</span></label>
+                            <label class="label">Choose Your Products Category<span class="star">*</span></label>
                             <div class="input-group">
                                 <select  class="form-control form-select-lg" [class.is-invalid]="categoryId.invalid && categoryId.touched " [class.is-invalid]="categoryId.invalid && categoryId.touched" required #categoryId="ngModel" [(ngModel)]="ProductData.categoryId" name="categoryId">
                                     <option *ngFor="let Category of CategoryList" >{{Category.name}}</option>
@@ -73,29 +73,27 @@
                         <div class="col-lg-12 ">
                             <label class="label" >Upload Product Image<span class="star">*</span></label>
                             <!-- Upload image input-->
+
                             <div class="input-group mb-3 px-2 py-2 rounded-pill bg-white shadow-sm">
-                                <input id="upload" type="file"  class="form-control border-0" 
+                                <input id="upload" type="file"  class="form-control border-0" #file type="file" multiple (change)="uploadFile(file.files)"
                                 [class.is-invalid]="productImagePath.invalid && productImagePath.touched " [class.is-invalid]="productImagePath.invalid && productImagePath.touched" required #productImagePath="ngModel" [(ngModel)]="ProductData.productImagePath" name="productImagePath">
                             </div>
                             <small style="margin-left: 15px;" class="text-danger"[class.d-none]="productImagePath.untouched || productImagePath.valid">Id Card Image is required</small>
                         </div>
+                        
                     </div>
                     <div class="row justify-content-center">
                         <button [disabled]="!ProductData.valid" type="submit" >Save</button>
                     </div>
                 </form>  
               
-                <div class="blog">
+                <div class="blog" *ngFor="let product of productList">
                     <div class="item-blog">
-                        <img src="https://via.placeholder.com/870x530.jpg" alt="">
+                        <img src='../../../assets/images/{{product.productImagePath}}' alt="">
                         <a href="" ><i class="far fa-heart"></i></a>&nbsp; Like 10 &nbsp;&nbsp;&nbsp;&nbsp; <i class="far fa-calendar-alt"></i> &nbsp; April 12, 2019
-                        <h2>Temporibus autem quib</h2>
-                        <p>
-                            At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium
-                            voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati
-                            cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi,
-                            id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio.
-                        </p>
+                        <h2>{{product.productName}}</h2>
+                        <h3>{{product.unitPrice}}$</h3>
+                        <p>{{product.Details}}</p>
                         <button class="btn float-left">READ MORE</button>
                         <div class="float-right">
                             <table>
