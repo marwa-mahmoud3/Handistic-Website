@@ -10,6 +10,8 @@ export class Request{
         public  PersonWithCardImage:string,
         public  IsAccepted :boolean,
         public  Link:string,
-        public  ProductWithCardImage:string
-    ){}
+        public  ProductWithCardImage:string,
+    ){
+
+    }
 }

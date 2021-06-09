@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { RequestServices } from 'src/app/Services/RequestServices';
+import { SellertServices } from 'src/app/Services/SellerServices';
 
 @Component({
   selector: 'app-requestdetails',
@@ -10,7 +11,8 @@ import { RequestServices } from 'src/app/Services/RequestServices';
 export class RequestdetailsComponent implements OnInit {
 
   currentrequest = null;
-  constructor(private requestservice:RequestServices , private router:Router , private route:ActivatedRoute) { }
+  newseller=null;
+  constructor(private requestservice:RequestServices,private sellerservices:SellertServices , private router:Router , private route:ActivatedRoute) { }
 
   ngOnInit(): void {
     this.getRequestDetails(this.route.snapshot.paramMap.get('id'));
@@ -29,13 +31,26 @@ export class RequestdetailsComponent implements OnInit {
   updateAcceptRequest() {
     this.currentrequest.isAccepted=true;
     this.requestservice.updateRequest(this.currentrequest.id , this.currentrequest).subscribe()
-    this.router.navigate(['/requestdetails/',this.currentrequest.id])
+    this.newseller.FirstName=this.currentrequest.firstName;
+    this.newseller.LastName=this.currentrequest.lastName;
+    this.newseller.Phone=this.currentrequest.phone;
+    this.newseller.Governorate=this.currentrequest.governorate;
+    this.newseller.IdCardImage=this.currentrequest.idCardImage;
+    this.newseller.PersonWithCardImage=this.currentrequest.personWithCardImage;
+    this.newseller.Link=this.currentrequest.link;
+    this.newseller.ProductWithCardImage=this.currentrequest.productWithCardImage;
+
+    this.sellerservices.addseller(this.newseller).subscribe()
+    this.requestservice.deleteRequest(this.currentrequest.id).subscribe()
+
+    this.router.navigate(['/request'])
   }
-  updateRejectRequest() {
-    this.currentrequest.isAccepted=false;
-    this.requestservice.updateRequest(this.currentrequest.id , this.currentrequest).subscribe()
-    this.router.navigate(['/requestdetails/',this.currentrequest.id])
+  deleteRequest() {
+    this.requestservice.deleteRequest(this.currentrequest.id).subscribe()
+    this.router.navigate(['/request'])
+
   }
+  
   public createImgPath = (serverPath: string) => {
     return `https://localhost:44339/${serverPath}`;
   }
