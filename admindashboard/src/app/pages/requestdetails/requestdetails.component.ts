@@ -29,6 +29,7 @@ export class RequestdetailsComponent implements OnInit {
   }
 
   updateAcceptRequest() {
+    localStorage.setItem('seller','true')
     this.currentrequest.isAccepted=true;
     this.requestservice.updateRequest(this.currentrequest.id , this.currentrequest).subscribe()
     this.newseller.FirstName=this.currentrequest.firstName;
@@ -48,8 +49,8 @@ export class RequestdetailsComponent implements OnInit {
   deleteRequest() {
     this.requestservice.deleteRequest(this.currentrequest.id).subscribe()
     this.router.navigate(['/request'])
-
   }
+
   
   public createImgPath = (serverPath: string) => {
     return `https://localhost:44339/${serverPath}`;

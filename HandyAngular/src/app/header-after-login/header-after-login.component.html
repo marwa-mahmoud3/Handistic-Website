@@ -14,7 +14,7 @@
                         <ul class="list-inline" style="margin-top: 0px;padding-top: 0px;">
                             <li><a style="background: #000;color:#fff"><i class="fa"> </i> {{CurrentUser}}</a>
                                 <ul style="height: 170px;width: 150px;">
-                                    <li style="padding: 0px;margin: 0px;" routerLink="/SellerProfile"><a>My Profile</a></li>
+                                    <li style="padding: 0px;margin: 0px;" (click)="goToProfile()"><a>My Profile</a></li>
                                     <li style="padding: 0px;margin: 0px;" ><a href="about.html">Settings</a></li>
                                     <li style="padding: 0px;margin: 0px;" (click)="logout()"><a class="btn" style="background: #000;">Logout</a></li>
                                 </ul>
