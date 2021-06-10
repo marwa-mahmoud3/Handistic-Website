@@ -9,6 +9,7 @@ import { CitiesComponent } from './pages/cities/cities.component';
 import { UpdateCityComponent } from './pages/update-city/update-city.component';
 import { RequestsComponent } from './pages/requests/requests.component';
 import { RequestdetailsComponent } from './pages/requestdetails/requestdetails.component';
+import { SellerDetailsComponent } from './pages/seller-details/seller-details.component';
 
 const routes: Routes = [
   {path:'',redirectTo:'Home', pathMatch: 'full' },
@@ -21,6 +22,7 @@ const routes: Routes = [
   {path:'Home',component:HomeComponent},
   {path:'request',component:RequestsComponent},
   {path:'requestdetails/:id',component:RequestdetailsComponent},
+  {path:'sellerdetails/:id',component:SellerDetailsComponent}
   // {path:'updaterequest/:id',component:UpdaterequestComponent}
 
 ];

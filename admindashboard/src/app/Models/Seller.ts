@@ -9,6 +9,7 @@ export class Seller {
         public  IdCardImage :string,
         public  PersonWithCardImage :string,
         public  Link :string,
+        public  BlockNumber:number,
         public  ProductWithCardImage:string
     ){}
 }
