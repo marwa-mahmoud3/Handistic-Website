@@ -27,6 +27,7 @@ import { HeaderAfterLoginComponent } from './header-after-login/header-after-log
 import { NgSelectModule } from '@ng-select/ng-select';
 import { UserProfileComponent } from './user-profile/user-profile.component';
 import { SellerProfileComponent } from './seller-profile/seller-profile.component';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
 
 @NgModule({
   declarations: [
@@ -62,8 +63,8 @@ import { SellerProfileComponent } from './seller-profile/seller-profile.componen
     HttpClientModule,
     ReactiveFormsModule,
     AppRoutingModule,
-    NgSelectModule
-  ],
+    NgSelectModule,
+    Ng2SearchPipeModule  ],
   providers: [],
   bootstrap: [AppComponent]
 })

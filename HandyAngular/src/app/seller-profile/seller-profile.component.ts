@@ -1,5 +1,5 @@
+import { shops } from './../Models/shop';
 
-import { shop } from './../Models/shop';
 import { NgForm } from '@angular/forms';
 import { Category } from './../Models/Category';
 import { CategoryService } from './../Services/CategoryService';
@@ -25,8 +25,20 @@ export class SellerProfileComponent implements OnInit {
   public username=null;
   public email=null;
   public user=null;
+  currentshop = new shops(localStorage.getItem('shopId'),'','',[]);
 
+  ProductData : Product
   ngOnInit(): void {
+    this.loadProducts();
+    this.userservice.getIdByUserName(localStorage.getItem('username')).subscribe(
+      data => {
+        this.user = data;
+        this.shopService.ShopByUserId(this.user.id).subscribe(
+            (data) => {
+              localStorage.setItem('shopId',data.id) 
+            })
+      }
+    )
     this.username = localStorage.getItem('username');
     this.userservice.getIdByUserName(this.username).subscribe((data:any)=>{
       this.user = data;
@@ -36,7 +48,6 @@ export class SellerProfileComponent implements OnInit {
   }
 products : Product[]= [];
 productList : Product[] = [];
-public ProductData = new Product( null,'','',null ,null,'','',null);
 
 loadProducts() {
   this.productService.getAllProducts()
@@ -44,25 +55,34 @@ loadProducts() {
           (products: any[]) => {
               this.products = products;
               this.products.forEach(product => {
+                if(Number(localStorage.getItem('shopId'))== product.shopId){
                   this.productList.push(product);
-              })
+              }})
           },
       );
 }
 
-getShopByUserId(){
-  var result =this.shopService.getShopByUserId(localStorage.getItem("userId"));
-  console.log(result);
-}
-
-
-SaveProduct()
+List =[]
+index : number;
+public product = new Product(Number(localStorage.getItem('shopId')),'','',null,null,'','',null);
+public success:boolean
+SaveProduct(form : NgForm)
   {
-    console.log(this.ProductData)
-      this.productService.createProduct(this.ProductData).subscribe();
+    this.List= this.product.productImagePath.split('\\');
+    this.index = this.product.productImagePath.split('\\').length
+    this.product.productImagePath = "Resources/images/"+this.List[this.index-1];
+    this.productService.createProduct(this.product).subscribe(
+      (data:any)=>{
+        if(data.Succeeded == true)
+        this.product =new Product(null,'','',null,null,'','',null)
+        form.reset();
+        this.success =true;
+      },error => {
+        this.success = false;
+      })
   }
 
-  
+
   categories: Category[]=[];
   CategoryList:Category[]=[];
   GetAllCategories()
@@ -93,6 +113,20 @@ SaveProduct()
           this.onUploadFinished.emit(event.body);
         }
       });
-      
-}
+       
+   }
+  public createImgPath = (serverPath: string) => {
+    return `https://localhost:44339/${serverPath}`;
+  }
+  public response: {dbPath: ''};
+  allproduct =null
+  onCreate()
+  {
+    this.allproduct = {
+      productImagePath :this.response.dbPath,
+    }
+  }
+  public uploadFinished = (event) => {
+    this.response = event;
+  }
 }

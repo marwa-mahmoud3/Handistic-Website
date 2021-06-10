@@ -11,6 +11,7 @@ import { CategoryService } from '../Services/CategoryService';
   styleUrls: ['./handmade-product.component.css']
 })
 export class HandmadeProductComponent implements OnInit {
+  filterTerm: string;
   categories: Category[] = [];
   CategoryList : Category[] = [];
   products: Product [] = [];
@@ -43,5 +44,19 @@ export class HandmadeProductComponent implements OnInit {
           this.CategoryList.push(city);
       });
     });
+  }
+  public createImgPath = (serverPath: string) => {
+    return `https://localhost:44339/${serverPath}`;
+  }
+  public response: {dbPath: ''};
+  allproduct =null
+  onCreate()
+  {
+    this.allproduct = {
+      productImagePath :this.response.dbPath,
+    }
+  }
+  public uploadFinished = (event) => {
+    this.response = event;
   }
 }

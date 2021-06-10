@@ -33,7 +33,8 @@ export class ShopService {
   delete(id): Observable<any> {​​​
     return this.http.delete(`${​​​this.url}​​​/${​​​id}​​​`);
   }​​​
-  getShopByUserId(id): Observable<any> {​​​
-    return this.http.get(`${​​​this.url}​​​/UserShop/${​​​id}​​​`);
+  ShopByUserId(UserId): Observable<any> {​​​
+    return this.http.get(`https://localhost:44339/api/Shops/UserId?userId=78f23985-ae56-45b5-aa22-04eede435973`);
+    // return this.http.get(`${this.url}/UserId?userId=${UserId}​​​`);
   }
 }​​​

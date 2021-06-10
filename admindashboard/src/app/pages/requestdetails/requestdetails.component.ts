@@ -29,7 +29,6 @@ export class RequestdetailsComponent implements OnInit {
   }
 
   updateAcceptRequest() {
-    // localStorage.setItem('seller','true')
     this.currentrequest.isAccepted=true;
     this.requestservice.updateRequest(this.currentrequest.id , this.currentrequest).subscribe()
     this.sellerservices.addseller(this.currentrequest).subscribe()

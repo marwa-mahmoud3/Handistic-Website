@@ -20,7 +20,6 @@ export class SellertServices {
     return this.http.get(this.url_request)
   }
   deleteSeller(UserId): Observable<any> {
-    console.log(UserId)
     return this.http.delete(`${this.url_request}/UserId?userId=${UserId}`);
   }
   updateSeller(id,seller): Observable<any> {

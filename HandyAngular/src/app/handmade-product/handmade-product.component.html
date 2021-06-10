@@ -1,3 +1,5 @@
+
+<app-header-after-login></app-header-after-login>
 <div class="title-page"
 style="background-image: url('../../../assets/images/banner.jpg');background-position: center center;background-size: 100% 100%;">
     <div class="container">
@@ -30,10 +32,11 @@ style="background-image: url('../../../assets/images/banner.jpg');background-pos
                     </div>
                 </div>
                 <div class="row product">
-                    <div class="col-md-4 col-sm-6 col-12" *ngFor="let product of productList">
+                    <div class="col-md-4 col-sm-6 col-12" *ngFor="let product of productList |filter:filterTerm">
                         <div class="card">
-                            <div class="card-img-top" style="background-image: url('../../../assets/images/{{product.productImagePath}}');background-size: 100% 100%;background: no-repeat;">
+                            <div class="card-img-top" style="background-image: url('');background-size: 100% 100%;background: no-repeat;">
                                 <a href="product-single.html" class="wp-post-image">
+                                    <img [src]="createImgPath(product.productImagePath)" style="width: 250px;height: 250px;">
                                 </a>
                                 <p class="onnew">New</p>
                                 <div class="icon-product">
@@ -154,7 +157,7 @@ style="background-image: url('../../../assets/images/banner.jpg');background-pos
             <div class="col-xl-3 col-lg-3 col-md-3 col-sm-12 col-12">
                 <div class="content-blog-left">
                     <div class="search-blog">
-                        <input type="text" placeholder="Search" class="float-left">
+                        <input type="text" placeholder="Search" class="float-left" [(ngModel)]="filterTerm">
                         <button class="btn float-right"><span class="lnr lnr-chevron-right"></span></button>
                     </div>
                     <div class="filter-price">

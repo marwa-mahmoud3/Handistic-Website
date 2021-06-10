@@ -2,7 +2,7 @@
 
 <div class="container">
     <div class="row content-blog">
-        <div class="col-md-3">
+        <div class="col-md-3 ">
             <div class="content-blog-left">
                 <div class="author-blog">
                     <img src="https://via.placeholder.com/100" alt="">
@@ -12,16 +12,22 @@
                 </div>
             </div>
         </div>
-
         <div class="col-md-8">
             <div class="content-blog-right">
-                <form  #ProductData="ngForm" (ngSubmit)="SaveProduct()">
-                    <!-- <input  class="form-control" value=1  type="number" #shopId="ngModel" [(ngModel)]="ProductData.shopId" name="shopId">  -->
+                <div *ngIf="success; else elseSucess">
+                    <div class="alert alert-success" role="alert">
+                      Product Added
+                    </div>
+                  </div>
+                  <ng-template #elseSucess></ng-template>
+                <form #ProductData="ngForm" (ngSubmit)="SaveProduct(ProductData)">
+
+                    <input type="text" [(ngModel)]="product.shopId" hidden   id="shopId" name="shopId"> 
                     <div class="row">
                         <div class="col-lg-12 col-md-4">
                             <label class="label">Product Name<span class="star">*</span> </label>
                             <div class="">
-                                <input  class="form-control" type="text" placeholder=" Enter your frist name" [class.is-invalid]="productName.invalid && productName.touched " [class.is-invalid]="productName.invalid && productName.touched" required #productName="ngModel" [(ngModel)]="ProductData.productName" name="productName"> 
+                                <input  class="form-control" type="text" placeholder=" Enter your frist name" [class.is-invalid]="productName.invalid && productName.touched " [class.is-invalid]="productName.invalid && productName.touched" required #productName="ngModel" [(ngModel)]="product.productName" name="productName"> 
                             </div>
                             <small class="text-danger"[class.d-none]="productName.untouched || productName.valid">Product Name is required</small>
                         </div>
@@ -30,7 +36,7 @@
                         <div class="col-lg-12 col-md-4">
                             <label class="label">Details<span class="star">*</span> </label>
                             <div class="input-group">
-                                <textarea class="form-control" type="text" placeholder="Enter your Product Details" [class.is-invalid]="details.invalid && details.touched " [class.is-invalid]="details.invalid && details.touched" required #details="ngModel" [(ngModel)]="ProductData.details" name="details"> </textarea>
+                                <textarea class="form-control" type="text" placeholder="Enter your Product Details" [class.is-invalid]="details.invalid && details.touched " [class.is-invalid]="details.invalid && details.touched" required #details="ngModel" [(ngModel)]="product.details" name="details"> </textarea>
                             </div>
                             <small class="text-danger"[class.d-none]="details.untouched || details.valid">Product Details is required</small>
                         </div>
@@ -39,14 +45,14 @@
                         <div class="col-lg-6 col-md-4">
                             <label class="label">Product Price<span class="star">*</span> </label>
                             <div class="input-group">
-                                <input class="form-control" type="number" placeholder="Enter your Product Price" [class.is-invalid]="unitPrice.invalid && unitPrice.touched " [class.is-invalid]="unitPrice.invalid && unitPrice.touched" required #unitPrice="ngModel" [(ngModel)]="ProductData.unitPrice" name="unitPrice">
+                                <input class="form-control" type="number" placeholder="Enter your Product Price" [class.is-invalid]="unitPrice.invalid && unitPrice.touched " [class.is-invalid]="unitPrice.invalid && unitPrice.touched" required #unitPrice="ngModel" [(ngModel)]="product.unitPrice" name="unitPrice">
                             </div>
                             <small class="text-danger"[class.d-none]="unitPrice.untouched || unitPrice.valid">Product Price is required</small>
                         </div>
                         <div class="col-lg-6 col-md-4">
                             <label class="label">Quantity<span class="star">*</span> </label>
                             <div class="input-group">
-                                <input class="form-control" type="number" placeholder="Enter your Product Quantity" [class.is-invalid]="quantity.invalid && quantity.touched " [class.is-invalid]="quantity.invalid && quantity.touched" required #quantity="ngModel" [(ngModel)]="ProductData.quantity" name="quantity">
+                                <input class="form-control" type="number" placeholder="Enter your Product Quantity" [class.is-invalid]="quantity.invalid && quantity.touched " [class.is-invalid]="quantity.invalid && quantity.touched" required #quantity="ngModel" [(ngModel)]="product.quantity" name="quantity">
                             </div>
                             <small class="text-danger"[class.d-none]="quantity.untouched || quantity.valid">Product Quantity is required</small>
                         </div>
@@ -55,18 +61,18 @@
                         <div class="col-lg-6 col-md-4">
                             <label class="label">Product Size<span class="star">*</span> </label>
                             <div class="input-group">
-                                <input class="form-control" type="text" placeholder="Enter your Product Size" [class.is-invalid]="size.invalid && size.touched " [class.is-invalid]="size.invalid && size.touched" required #size="ngModel" [(ngModel)]="ProductData.size" name="size">
+                                <input class="form-control" type="text" placeholder="Enter your Product Size" [class.is-invalid]="size.invalid && size.touched " [class.is-invalid]="size.invalid && size.touched" required #size="ngModel" [(ngModel)]="product.size" name="size">
                             </div>
                             <small class="text-danger"[class.d-none]="size.untouched || size.valid">Product size is required</small>
                         </div>
                         <div class="col-lg-6 col-md-4">
                             <label class="label">Choose Your Products Category<span class="star">*</span></label>
                             <div class="input-group">
-                                <select  class="form-control form-select-lg" [class.is-invalid]="categoryId.invalid && categoryId.touched " [class.is-invalid]="categoryId.invalid && categoryId.touched" required #categoryId="ngModel" [(ngModel)]="ProductData.categoryId" name="categoryId">
-                                    <option *ngFor="let Category of CategoryList" >{{Category.name}}</option>
+                                <select  class="form-control form-select-lg" [class.is-invalid]="categoryId.invalid && categoryId.touched " [class.is-invalid]="categoryId.invalid && categoryId.touched" required #categoryId="ngModel" [(ngModel)]="product.categoryId" name="categoryId">
+                                    <option *ngFor="let Category of CategoryList" value={{Category.id}} >{{Category.name}}</option>
                                 </select>
                             </div>
-                            <small class="text-danger"[class.d-none]="categoryId.untouched || categoryId.valid">Product Category is required</small>
+                            <small class="text-danger" [class.d-none]="categoryId.untouched || categoryId.valid">Product Category is required</small>
                         </div>
                     </div>
                    <div class="row" style="margin-top: 50px;">
@@ -76,7 +82,7 @@
 
                             <div class="input-group mb-3 px-2 py-2 rounded-pill bg-white shadow-sm">
                                 <input id="upload" type="file"  class="form-control border-0" #file type="file" multiple (change)="uploadFile(file.files)"
-                                [class.is-invalid]="productImagePath.invalid && productImagePath.touched " [class.is-invalid]="productImagePath.invalid && productImagePath.touched" required #productImagePath="ngModel" [(ngModel)]="ProductData.productImagePath" name="productImagePath">
+                                [class.is-invalid]="productImagePath.invalid && productImagePath.touched " [class.is-invalid]="productImagePath.invalid && productImagePath.touched" required #productImagePath="ngModel" [(ngModel)]="product.productImagePath" name="productImagePath">
                             </div>
                             <small style="margin-left: 15px;" class="text-danger"[class.d-none]="productImagePath.untouched || productImagePath.valid">Id Card Image is required</small>
                         </div>
@@ -87,14 +93,14 @@
                     </div>
                 </form>  
               
-                <div class="blog" *ngFor="let product of productList">
-                    <div class="item-blog">
-                        <img src='../../../assets/images/{{product.productImagePath}}' alt="">
+                <div class="blog">
+                    <div class="item-blog"  *ngFor="let allproduct of productList">
+                        <img [src]="createImgPath(allproduct.productImagePath)" style="width: 100%;height: 400px;" alt="">
                         <a href="" ><i class="far fa-heart"></i></a>&nbsp; Like 10 &nbsp;&nbsp;&nbsp;&nbsp; <i class="far fa-calendar-alt"></i> &nbsp; April 12, 2019
-                        <h2>{{product.productName}}</h2>
-                        <h3>{{product.unitPrice}}$</h3>
-                        <p>{{product.Details}}</p>
-                        <button class="btn float-left">READ MORE</button>
+                        <h2>{{allproduct.productName}}</h2>
+                        <h3>{{allproduct.unitPrice}}$</h3>
+                        <p>{{allproduct.details}}</p>
+                        <button class="btn float-left" style="color: #fff;">READ MORE</button>
                         <div class="float-right">
                             <table>
                                 <tr>
