@@ -28,6 +28,8 @@ import { NgSelectModule } from '@ng-select/ng-select';
 import { UserProfileComponent } from './user-profile/user-profile.component';
 import { SellerProfileComponent } from './seller-profile/seller-profile.component';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import { CommonModule } from '@angular/common';
+import { WishlistComponent } from './wishlist/wishlist.component';
 
 @NgModule({
   declarations: [
@@ -55,13 +57,14 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
     HeaderAfterLoginComponent,
     UserProfileComponent,
     SellerProfileComponent,
-    
+    WishlistComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpClientModule,
     ReactiveFormsModule,
+    CommonModule, 
     AppRoutingModule,
     NgSelectModule,
     Ng2SearchPipeModule  ],

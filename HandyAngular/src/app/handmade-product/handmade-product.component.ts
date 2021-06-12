@@ -1,11 +1,13 @@
-import { logging } from 'protractor';
-import { ProductsService } from './../Services/products.service';
-import { CategoryService } from './../Services/CategoryService';
-
+import { UserService } from './../Services/user.service';
+import { ProductWishlist } from './../Models/ProductWishlist';
 import { Component, OnInit } from '@angular/core';
+import { ProductsService } from '../Services/products.service';
 import { Product } from '../Models/Product';
 import { Category } from '../Models/Category';
-import { ProductsCount } from '../Models/ProductsCount';
+import { CategoryService } from '../Services/CategoryService';
+import { ProductWishlistService } from '../Services/ProductWishlistService';
+import { Users } from '../Models/Users';
+import { ThrowStmt } from '@angular/compiler';
 
 @Component({
   selector: 'app-handmade-product',
@@ -19,14 +21,17 @@ export class HandmadeProductComponent implements OnInit {
   products: Product [] = [];
   productList: Product []=[];
   item :number;
-  CountProducts :ProductsCount[] =[]
-  constructor( private productservices: ProductsService,private categoryService : CategoryService) {
+  user : any;
+  wishlistid:number;
+  constructor(private HomeService: ProductsService , private productservices: ProductsService
+    ,private categoryService : CategoryService ,private productWishlistService : ProductWishlistService, private userService: UserService) {
   }
 
   ngOnInit(): void {
     this.loadProducts();
     this.loadCategories();
   }
+
   loadProducts() {
     this.productservices.getAllProducts()
         .subscribe(
@@ -38,25 +43,34 @@ export class HandmadeProductComponent implements OnInit {
             },
         );
   }
-  AllCounts
+
+
+ 
+  public productWishlist;
+  AddToWishList(id){
+    this.userService.getIdByUserName(localStorage.getItem('username')).subscribe(
+      data => {
+        this.user = data;
+        this.productWishlistService.GetWishlistByUserId(this.user.id).subscribe(
+          product=>{
+            this.productWishlist = new ProductWishlist(id,product.id);
+            this.productWishlistService.CreateProductWishlist(this.productWishlist).subscribe( 
+            );
+          }
+        )  
+      }
+    )
+  }
+
+
   loadCategories()
   {
     this.categoryService.getCategories().subscribe((data:any)=>{
       this.categories = data;
-      this.categories.forEach(category => {
-          this.CategoryList.push(category); 
-          this.productservices.getCountOfProducts(category.id).subscribe(
-            (count =>{
-                this.CountProducts.push(count);
-            })        
-          )
-       });
+      this.categories.forEach(city => {
+          this.CategoryList.push(city);
+      });
     });
-  }
-  filter
-  filterByCategoryName(name)
-  {
-     this.filter =name;
   }
   public createImgPath = (serverPath: string) => {
     return `https://localhost:44339/${serverPath}`;

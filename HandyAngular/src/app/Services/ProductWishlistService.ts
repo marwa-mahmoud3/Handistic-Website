@@ -29,16 +29,22 @@ export class ProductWishlistService {
   update(id, data): Observable<any> {​​​
     return this.http.put(`${​​​this.url}​​​/${​​​id}​​​`, data);
   }​​​
-  delete(id): Observable<any> {​​​
+  deleteById(id): Observable<any> {​​​
     return this.http.delete(`${​​​this.url}​​​/${​​​id}​​​`);
   }​​​
 
+  deleteByWishlistId(id):Observable<any>{
+    return this.http.delete(`https://localhost:44339/api/ProductWishlist/DeleteByListId/${id}`);
+  }
+
+  deleteByProductId(id):Observable<any>{
+    return this.http.delete(`https://localhost:44339/api/ProductWishlist/DeleteByProductId/${id}`);
+  }
+
   GetWishlistByUserId(userid:string): Observable<any>{
-    console.log(userid);
-    console.log(`${​​​this.baseUrl}/${userid}​​​`);
     let urll=`${​​​this.baseUrl}/${userid}`;
      return this.http.get(urll);
-   // return this.http.get(`${​​​this.baseUrl}/${userid}​​​`);
+   //return this.http.get(`${​​​this.baseUrl}/${userid}​​​`);
   }
 
   ProductWishlistByUserId(UserId): Observable<any> {​​​
