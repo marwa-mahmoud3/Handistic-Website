@@ -30,13 +30,13 @@
                   <td>{{currentseller.lastName}}</td>
                   <td>{{currentseller.phone}}</td>
                   <td>{{currentseller.governorate}}</td>
-                  <td>{{currentseller.blockNumber}}</td>
+                  <td>{{currentseller.blocksNumber}}</td>
                 </tr>
               </tbody>
             </table>
             <div class="bg-white">
               <label style="font-size: 20px;padding-top: 18px;padding-left: 10px;padding-right: 10px;">Profile Link : </label>
-              <a class="text-primary" href="" style="font-size: 15px;">{{currentseller.link}}</a>
+              <a class="text-primary" href="{{currentseller.link}}" style="font-size: 15px;">{{currentseller.link}}</a>
             </div>
           </div>
         </div>
@@ -67,7 +67,7 @@
       <div class="row " style="align-items: center;">
         <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 mb-4">
          <button style="float: left;" class="btn-primary" (click)="blockSeller()">Block</button>
-         <button style="float: right;" class="btn-danger" (click)="deleteSeller(currentseller.id)">Delete</button>
+         <button style="float: right;" class="btn-danger" (click)="deleteSeller()">Delete</button>
         </div>
       </div>
     </form>

@@ -1,9 +1,11 @@
+import { logging } from 'protractor';
+import { ProductsService } from './../Services/products.service';
+import { CategoryService } from './../Services/CategoryService';
 
 import { Component, OnInit } from '@angular/core';
-import { ProductsService } from '../Services/products.service';
 import { Product } from '../Models/Product';
 import { Category } from '../Models/Category';
-import { CategoryService } from '../Services/CategoryService';
+import { ProductsCount } from '../Models/ProductsCount';
 
 @Component({
   selector: 'app-handmade-product',
@@ -17,14 +19,14 @@ export class HandmadeProductComponent implements OnInit {
   products: Product [] = [];
   productList: Product []=[];
   item :number;
-  constructor(private HomeService: ProductsService , private productservices: ProductsService,private categoryService : CategoryService) {
+  CountProducts :ProductsCount[] =[]
+  constructor( private productservices: ProductsService,private categoryService : CategoryService) {
   }
 
   ngOnInit(): void {
     this.loadProducts();
     this.loadCategories();
   }
-
   loadProducts() {
     this.productservices.getAllProducts()
         .subscribe(
@@ -36,14 +38,25 @@ export class HandmadeProductComponent implements OnInit {
             },
         );
   }
+  AllCounts
   loadCategories()
   {
     this.categoryService.getCategories().subscribe((data:any)=>{
       this.categories = data;
-      this.categories.forEach(city => {
-          this.CategoryList.push(city);
-      });
+      this.categories.forEach(category => {
+          this.CategoryList.push(category); 
+          this.productservices.getCountOfProducts(category.id).subscribe(
+            (count =>{
+                this.CountProducts.push(count);
+            })        
+          )
+       });
     });
+  }
+  filter
+  filterByCategoryName(name)
+  {
+     this.filter =name;
   }
   public createImgPath = (serverPath: string) => {
     return `https://localhost:44339/${serverPath}`;

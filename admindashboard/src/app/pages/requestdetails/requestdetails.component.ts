@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { RequestServices } from 'src/app/Services/RequestServices';
 import { SellertServices } from 'src/app/Services/SellerServices';
+import { shopServices } from 'src/app/Services/shopServices';
 
 @Component({
   selector: 'app-requestdetails',
@@ -12,7 +13,7 @@ export class RequestdetailsComponent implements OnInit {
 
   currentrequest = null;
   newseller=null;
-  constructor(private requestservice:RequestServices,private sellerservices:SellertServices , private router:Router , private route:ActivatedRoute) { }
+  constructor(private requestservice:RequestServices,private shopservice : shopServices ,private sellerservices:SellertServices , private router:Router , private route:ActivatedRoute) { }
 
   ngOnInit(): void {
     this.getRequestDetails(this.route.snapshot.paramMap.get('id'));
@@ -21,7 +22,6 @@ export class RequestdetailsComponent implements OnInit {
     this.requestservice.getRequestByID(id).subscribe(
       request=>{
         this.currentrequest=request;
-        console.log(request);
       },
       error=>{
            console.log(error);
@@ -31,8 +31,9 @@ export class RequestdetailsComponent implements OnInit {
   updateAcceptRequest() {
     this.currentrequest.isAccepted=true;
     this.requestservice.updateRequest(this.currentrequest.id , this.currentrequest).subscribe()
+    this.requestservice.deleteRequest(this.currentrequest.id).subscribe()
     this.sellerservices.addseller(this.currentrequest).subscribe()
-    this.router.navigate(['/request'])
+    // this.router.navigate(['/request'])
   }
   RejectRequest() {
     this.currentrequest.isAccepted=false;
@@ -45,6 +46,7 @@ export class RequestdetailsComponent implements OnInit {
   public createImgPath = (serverPath: string) => {
     return `https://localhost:44339/${serverPath}`;
   }
+  
   public response: {dbPath: ''};
   onCreate()
   {

@@ -26,7 +26,7 @@ export class SellerProfileComponent implements OnInit {
   public email=null;
   public user=null;
   currentshop = new shops(localStorage.getItem('shopId'),'','',[]);
-
+  
   ProductData : Product
   ngOnInit(): void {
     this.loadProducts();
@@ -64,7 +64,7 @@ loadProducts() {
 
 List =[]
 index : number;
-public product = new Product(Number(localStorage.getItem('shopId')),'','',null,null,'','',null);
+public product = new Product(Number(localStorage.getItem('shopId')),localStorage.getItem('username'),Date.now.toString(),'','',null,null,'','',null);
 public success:boolean
 SaveProduct(form : NgForm)
   {
@@ -73,8 +73,6 @@ SaveProduct(form : NgForm)
     this.product.productImagePath = "Resources/images/"+this.List[this.index-1];
     this.productService.createProduct(this.product).subscribe(
       (data:any)=>{
-        if(data.Succeeded == true)
-        this.product =new Product(null,'','',null,null,'','',null)
         form.reset();
         this.success =true;
       },error => {

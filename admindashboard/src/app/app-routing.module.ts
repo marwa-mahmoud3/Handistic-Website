@@ -1,3 +1,4 @@
+import { SellersComponent } from './pages/sellers/sellers.component';
 import { HomeComponent } from './pages/home/home.component';
 import { UpdateCategoryComponent } from './pages/update-category/update-category.component';
 import { NgModule } from '@angular/core';
@@ -22,9 +23,8 @@ const routes: Routes = [
   {path:'Home',component:HomeComponent},
   {path:'request',component:RequestsComponent},
   {path:'requestdetails/:id',component:RequestdetailsComponent},
-  {path:'sellerdetails/:id',component:SellerDetailsComponent}
-  // {path:'updaterequest/:id',component:UpdaterequestComponent}
-
+  {path:'sellerdetails/:id',component:SellerDetailsComponent},
+  {path:'sellers',component:SellersComponent},
 ];
 
 @NgModule({

@@ -1,22 +1,17 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { shop } from '../Models/shop';
 
 
 @Injectable({
   providedIn: 'root'
 })
-export class ShopService {
+export class shopServices {
 
   constructor(private http: HttpClient) { }
   url = 'https://localhost:44339/api/Shops'
   baseurl='https://localhost:44339/api/CityShops/CityShop';
   ngOnInit() {          
-  }
-  CreateShop(shop : shop )
-  {
-    return this.http.post(this.baseurl,shop);
   }
   getAllShops() {​​​
     return this.http.get(this.url);
@@ -33,8 +28,4 @@ export class ShopService {
   delete(id): Observable<any> {​​​
     return this.http.delete(`${​​​this.url}​​​/${​​​id}​​​`);
   }​​​
-  ShopByUserId(UserId): Observable<any> {​​​
-    return this.http.get(`https://localhost:44339/api/Shops/UserId?userId=444c0ddb-a7f7-478f-8c34-94a83be2eb82`);
-    // return this.http.get(`${this.url}/UserId?userId=${UserId}​​​`);
-  }
-}​​​
+}

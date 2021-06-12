@@ -1,3 +1,4 @@
+import { CategoryService } from './../Services/CategoryService';
 import { Router } from '@angular/router';
 import { ShopService } from '../Services/shopService';
 import { shop } from './../Models/shop';
@@ -10,6 +11,7 @@ import { UserService } from '../Services/user.service';
 import { userRequest } from '../Services/userRequest';
 import { HttpClient, HttpEventType } from '@angular/common/http';
 import {Output, EventEmitter } from '@angular/core';
+import { Category } from '../Models/Category';
 @Component({
   selector: 'app-create-shop',
   templateUrl: './create-shop.component.html',
@@ -19,7 +21,7 @@ export class CreateShopComponent implements OnInit {
   public progress: number;
   public message: string;
   @Output() public onUploadFinished = new EventEmitter();
-  constructor(private userservic : UserService,private userRequestService : userRequest,private router: Router,
+  constructor(private CategoryService:CategoryService,private userservic : UserService,private userRequestService : userRequest,private router: Router,
   private shopservice: ShopService ,private cityservice:CityService,private http: HttpClient) { }
   public ShowLink:boolean =true;
   public ShowImage:boolean;
@@ -121,6 +123,7 @@ export class CreateShopComponent implements OnInit {
   })
     
   }
+ 
    public uploadFile = (files) => {
     if (files.length === 0) {
       return;

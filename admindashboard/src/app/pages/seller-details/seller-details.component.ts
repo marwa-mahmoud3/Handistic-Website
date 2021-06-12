@@ -1,3 +1,5 @@
+import { Seller } from './../../Models/Seller';
+import { RequestServices } from './../../Services/RequestServices';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { SellertServices } from 'src/app/Services/SellerServices';
@@ -10,7 +12,7 @@ import { SellertServices } from 'src/app/Services/SellerServices';
 export class SellerDetailsComponent implements OnInit {
 
   currentseller = null;
-  constructor(private sellerservices:SellertServices , private router:Router , private route:ActivatedRoute) { }
+  constructor(private sellerservices:SellertServices ,private requestservies: RequestServices, private router:Router , private route:ActivatedRoute) { }
 
   ngOnInit(): void {
     this.getSellerDetails(this.route.snapshot.paramMap.get('id'));
@@ -19,21 +21,27 @@ export class SellerDetailsComponent implements OnInit {
     this.sellerservices.getSellerByID(id).subscribe(
       seller=>{
         this.currentseller=seller;
-        console.log(seller);
-      },
-      error=>{
-           console.log(error);
-      });
+      })
   }
 
-  deleteSeller(id): void {
-    this.sellerservices.deleteSeller(id).subscribe()
+  deleteSeller() {
+    this.sellerservices.deleteSeller(this.currentseller.sellerId).subscribe()
+    this.requestservies.deleteRequestByUserId(this.currentseller.sellerId).subscribe()
+    this.router.navigate(['/sellers'])  
   }
   
   blockSeller() {
     this.currentseller.blocksNumber= this.currentseller.blocksNumber+1;
-    this.sellerservices.updateSeller(this.currentseller.id , this.currentseller).subscribe()
-    this.router.navigate(['/seller'])
+    if(this.currentseller.blocksNumber==3)
+    { 
+      this.sellerservices.deleteSeller(this.currentseller.sellerId).subscribe()
+      this.requestservies.deleteRequestByUserId(this.currentseller.sellerId).subscribe()
+      this.router.navigate(['/sellers'])
+    }
+    else if(this.currentseller.blocksNumber<3)
+    {
+      this.sellerservices.updateSeller(this.currentseller.id , this.currentseller).subscribe()
+    }
   }
   
   

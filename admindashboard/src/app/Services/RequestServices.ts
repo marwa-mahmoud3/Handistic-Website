@@ -28,4 +28,7 @@ export class RequestServices {
   getRequestByID(id): Observable<any> {
     return this.http.get(`${this.url_request}/${id}`);
   }
+  deleteRequestByUserId(UserId): Observable<any> {
+    return this.http.delete(`${this.url_request}/DeleteByUserID/UserId?userId=${UserId}`);
+  }
 }
