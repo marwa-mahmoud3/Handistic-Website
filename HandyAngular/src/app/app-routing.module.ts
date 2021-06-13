@@ -1,3 +1,4 @@
+import { WishlistComponent } from './wishlist/wishlist.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
 import { SellerProfileComponent } from './seller-profile/seller-profile.component';
 import { NgModule } from '@angular/core';
@@ -33,7 +34,7 @@ const routes: Routes = [
   {path: "SellerProfile" , component:SellerProfileComponent},
   {path :"UserProfile" , component:UserProfileComponent},
   {path :"Cart" , component:CartComponent},
-
+  {path :"Wishlist",component:WishlistComponent}
 
 ];
 

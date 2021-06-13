@@ -1,3 +1,4 @@
+import { ProductWishlistService } from './../Services/ProductWishlistService';
 import { logging } from 'protractor';
 import { ProductsService } from './../Services/products.service';
 import { CategoryService } from './../Services/CategoryService';
@@ -7,6 +8,7 @@ import { Product } from '../Models/Product';
 import { Category } from '../Models/Category';
 import { ProductsCount } from '../Models/ProductsCount';
 import { UserService } from 'src/app/Services/user.service';
+import { ProductWishlist } from '../Models/ProductWishlist';
 
 
 @Component({
@@ -23,7 +25,7 @@ export class HandmadeProductComponent implements OnInit {
   item :number;
   CountProducts :ProductsCount[] =[]
   user:any;
-  constructor(private UserService:UserService, private productservices: ProductsService,private categoryService : CategoryService,private CartService:CartService) {
+  constructor(private productWishlistService:ProductWishlistService,private UserService:UserService, private productservices: ProductsService,private categoryService : CategoryService,private CartService:CartService) {
   }
 
   ngOnInit(): void {
@@ -32,6 +34,21 @@ export class HandmadeProductComponent implements OnInit {
     this.UserService.getIdByUserName(localStorage.getItem('username')).subscribe((
       data =>{
         this.user=data}))
+  }
+  public productWishlist;
+  AddToWishList(id){
+    this.UserService.getIdByUserName(localStorage.getItem('username')).subscribe(
+      data => {
+        this.user = data;
+        this.productWishlistService.GetWishlistByUserId(this.user.id).subscribe(
+          product=>{
+            this.productWishlist = new ProductWishlist(id,product.id);
+            this.productWishlistService.CreateProductWishlist(this.productWishlist).subscribe( 
+            );
+          }
+        )  
+      }
+    )
   }
   loadProducts() {
     this.productservices.getAllProducts()
