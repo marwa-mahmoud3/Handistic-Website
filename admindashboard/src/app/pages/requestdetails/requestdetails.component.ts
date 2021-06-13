@@ -33,7 +33,7 @@ export class RequestdetailsComponent implements OnInit {
     this.requestservice.updateRequest(this.currentrequest.id , this.currentrequest).subscribe()
     this.requestservice.deleteRequest(this.currentrequest.id).subscribe()
     this.sellerservices.addseller(this.currentrequest).subscribe()
-    // this.router.navigate(['/request'])
+    this.router.navigate(['/request'])
   }
   RejectRequest() {
     this.currentrequest.isAccepted=false;

@@ -11,8 +11,8 @@ import { Component, OnInit } from '@angular/core';
 export class UserProfileComponent implements OnInit {
 
   constructor(private UserService:UserService) { }
-   users 
-   user 
+   users =null
+   user =null
   ngOnInit(): void {
     this.UserService.getIdByUserName(localStorage.getItem('username')).subscribe((
       data =>{

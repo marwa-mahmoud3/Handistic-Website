@@ -157,7 +157,7 @@ style="background-image: url('../../../assets/images/banner.jpg');background-pos
             <div class="col-xl-3 col-lg-3 col-md-3 col-sm-12 col-12">
                 <div class="content-blog-left">
                     <div class="search-blog">
-                        <input type="text" placeholder="Search" value="{{filter |filter:filterTerm}}" class="float-left" [(ngModel)]="filterTerm">
+                        <input type="text" placeholder="Search"  class="float-left" [(ngModel)]="filterTerm">
                         <button class="btn float-right"><span class="lnr lnr-chevron-right"></span></button>
                     </div>
                     <div class="filter-price">
@@ -171,7 +171,8 @@ style="background-image: url('../../../assets/images/banner.jpg');background-pos
                         <h2>Categories</h2>
                       <div>
                         <div style="display: inline-block;">
-                            <a (click)="filterByCategoryName(category.name)" *ngFor="let category of CategoryList">
+                            <a (click)="loadProducts()">All Products</a>
+                            <a (click)="getProductsByCategory(category.id)" *ngFor="let category of CategoryList">
                             {{category.name}} 
                            </a>
                         </div>

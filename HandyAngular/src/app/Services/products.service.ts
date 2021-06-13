@@ -42,6 +42,9 @@ getCategoryProducts(id): Observable<any>{
   return this.http.get(`${this.baseURL}/ProductList/${id}`);
 }
 getCountOfProducts(id): Observable<any>{
-  return this.http.get(`${this.baseURL}/GetProductsByCategoryId/${id}`); 
+  return this.http.get(`${this.baseURL}/GetProductsCountByCategoryId/${id}`); 
+}
+GetProductsByCategoryId(id): Observable<any>{
+  return this.http.get(`${this.baseURL}/GetProductsByCategory/${id}`); 
 }
 }

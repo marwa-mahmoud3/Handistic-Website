@@ -53,10 +53,17 @@ export class HandmadeProductComponent implements OnInit {
        });
     });
   }
-  filter
-  filterByCategoryName(name)
+  getProductsByCategory(id)
   {
-     this.filter =name;
+    this.productList = []
+    this.productservices.GetProductsByCategoryId(id).subscribe(
+      (products: any[]) => {
+          this.products = products;
+          this.products.forEach(product => {
+              this.productList.push(product);
+          })
+      },
+  );
   }
   public createImgPath = (serverPath: string) => {
     return `https://localhost:44339/${serverPath}`;

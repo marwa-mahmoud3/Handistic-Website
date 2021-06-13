@@ -34,7 +34,7 @@ export class ShopService {
     return this.http.delete(`${​​​this.url}​​​/${​​​id}​​​`);
   }​​​
   ShopByUserId(UserId): Observable<any> {​​​
-    return this.http.get(`https://localhost:44339/api/Shops/UserId?userId=444c0ddb-a7f7-478f-8c34-94a83be2eb82`);
+    return this.http.get(`https://localhost:44339/api/Shops/UserId?userId=${UserId}`);
     // return this.http.get(`${this.url}/UserId?userId=${UserId}​​​`);
   }
 }​​​
