@@ -5,7 +5,7 @@ style="background-image: url('../../../assets/images/banner.jpg');background-pos
     <div class="container">
         <div class="row">
             <div class=" col-md-6 inner-title-page">
-                <h1>Shop Now</h1>
+                <h1>Shop</h1>
             </div>
         </div>
     </div>
@@ -36,7 +36,7 @@ style="background-image: url('../../../assets/images/banner.jpg');background-pos
                         <div class="card">
                             <div class="card-img-top" style="background-image: url('');background-size: 100% 100%;background: no-repeat;">
                                 <a href="product-single.html" class="wp-post-image">
-                                    <img [src]="createImgPath(product.productImagePath)" style="height: 250px;">
+                                    <img [src]="createImgPath(product.productImagePath)" style="width: 250px;height: 250px;">
                                 </a>
                                 <p class="onnew">New</p>
                                 <div class="icon-product">
@@ -53,7 +53,7 @@ style="background-image: url('../../../assets/images/banner.jpg');background-pos
                                 </div>
                             </div>
                             <div class="card-body">
-                                <p class="card-title text-left"><a href="">Added by {{product.userName}} </a></p>
+                                <p class="card-title"><a href="product-list.html">Beauty </a></p>
                                 <p class="woocommerce-loop-product__title"><a href="product-single.html">
                                     {{product.productName}}</a></p>
                                 <span class="price">
@@ -157,7 +157,7 @@ style="background-image: url('../../../assets/images/banner.jpg');background-pos
             <div class="col-xl-3 col-lg-3 col-md-3 col-sm-12 col-12">
                 <div class="content-blog-left">
                     <div class="search-blog">
-                        <input type="text" placeholder="Search" value="{{filter |filter:filterTerm}}" class="float-left" [(ngModel)]="filterTerm">
+                        <input type="text" placeholder="Search" class="float-left" [(ngModel)]="filterTerm">
                         <button class="btn float-right"><span class="lnr lnr-chevron-right"></span></button>
                     </div>
                     <div class="filter-price">
@@ -170,17 +170,85 @@ style="background-image: url('../../../assets/images/banner.jpg');background-pos
                     <div class="category-blog">
                         <h2>Categories</h2>
                       <div>
-                        <div style="display: inline-block;">
-                            <a (click)="filterByCategoryName(category.name)" *ngFor="let category of CategoryList">
-                            {{category.name}} 
-                           </a>
+                        <!-- <a href="" [(ngModel)]="category.name"> {{Category.Name}} ({{Category.numpro}})</a> -->
+                        <a href="">BB Creams (20)</a>
+                        <a href="">Make Up (31)</a>
+                        <a href="">Spa (08)</a>
+                        <a href="">Skin care (15)</a>
+                    </div>
+                    </div>
+                    <div class="popular-item">
+                        <h2>Popular Items</h2>
+                        <div class="card">
+                            <div class="row no-gutters">
+                                <div class="col-xl-4 col-lg-4 col-md-12 col-sm-6 col-6">
+                                   <a href="product-single.html"><img src="https://via.placeholder.com/100x85.jpg" class="card-img" alt="..."></a>
+                                </div>
+                                <div class="col-xl-8 col-lg-8 col-md-12 col-sm-6 col-6">
+                                    <div class="card-body">
+                                        <h5 class="card-title woocommerce-loop-product__title"><a href="product-single.html">Skin reaction</a></h5>
+                                        <p class="card-text price">
+                                            <ins>
+													<span class="woocommerce-Price-amount amount">
+														<span class="woocommerce-Price-currencySymbol">$</span>56
+													</span>
+                                            </ins>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                        <div style="display: inline-block;">
-                            <a *ngFor="let count of CountProducts">&nbsp;({{count}})</a>
+                        <div class="card">
+                            <div class="row no-gutters">
+                                <div class="col-xl-4 col-lg-4 col-md-12 col-sm-6 col-6">
+                                   <a href="product-single.html"><img src="https://via.placeholder.com/100x85.jpg" class="card-img" alt="..."></a>
+                                </div>
+                                <div class="col-xl-8 col-lg-8 col-md-12 col-sm-6 col-6">
+                                    <div class="card-body">
+                                        <h5 class="card-title woocommerce-loop-product__title"><a href="product-single.html">Face cream</a> </h5>
+                                        <p class="card-text price">
+                                            <ins>
+													<span class="woocommerce-Price-amount amount">
+														<span class="woocommerce-Price-currencySymbol">$</span>48
+													</span>
+                                            </ins>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-
-
-                      </div>
+                        <div class="card">
+                            <div class="row no-gutters">
+                                <div class="col-xl-4 col-lg-4 col-md-12 col-sm-6 col-6">
+                                  <a href="product-single.html"><img src="https://via.placeholder.com/100x85.jpg" class="card-img" alt="..."></a>
+                                </div>
+                                <div class="col-xl-8 col-lg-8 col-md-12 col-sm-6 col-6">
+                                    <div class="card-body">
+                                        <h5 class="card-title woocommerce-loop-product__title"><a href="product-single.html">Hydrating primer</a> </h5>
+                                        <p class="card-text price">
+                                            <ins>
+													<span class="woocommerce-Price-amount amount">
+														<span class="woocommerce-Price-currencySymbol">$</span>83
+													</span>
+                                            </ins>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tag-blog">
+                        <h2>Tag</h2>
+                        <div class="link-blog">
+                            <a href="#" >Nature</a>
+                            <a href="#">Oragnic</a>
+                            <a href="#">Fresh</a>
+                            <a href="#">Vegan</a>
+                            <a href="#">Spa</a>
+                        </div>
+                    </div>
+                    <div class="lastest-img">
+                        <img src="https://via.placeholder.com/270x160.jpg" alt="">
                     </div>
                 </div>
             </div>

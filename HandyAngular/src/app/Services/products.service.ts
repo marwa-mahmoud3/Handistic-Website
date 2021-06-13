@@ -27,7 +27,7 @@ update(id, data): Observable<any> {
 return this.http.put(`${this.baseURL}/${id}`, data);
 }
 
-delete(id): Observable<any> {
+deleteById(id): Observable<any> {
 return this.http.delete(`${this.baseURL}/${id}`);
 }
 deleteAll(): Observable<any> {
