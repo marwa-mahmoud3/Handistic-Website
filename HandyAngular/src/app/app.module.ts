@@ -28,6 +28,7 @@ import { NgSelectModule } from '@ng-select/ng-select';
 import { UserProfileComponent } from './user-profile/user-profile.component';
 import { SellerProfileComponent } from './seller-profile/seller-profile.component';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import { CartComponent } from './cart/cart.component';
 
 @NgModule({
   declarations: [
@@ -55,6 +56,7 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
     HeaderAfterLoginComponent,
     UserProfileComponent,
     SellerProfileComponent,
+    CartComponent,
     
   ],
   imports: [

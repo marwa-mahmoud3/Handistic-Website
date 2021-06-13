@@ -13,6 +13,7 @@ import { HomeNewsComponent } from './home/home-news/home-news.component';
 import { HomeSliderComponent } from './home/home-slider/home-slider.component';
 import { HomeComponent } from './home/home/home.component';
 import { ProfileComponent } from './profile/profile.component';
+import { CartComponent } from './cart/cart.component';
 
 
 const routes: Routes = [
@@ -31,6 +32,8 @@ const routes: Routes = [
   {path:"CreateShop",component:CreateShopComponent},
   {path: "SellerProfile" , component:SellerProfileComponent},
   {path :"UserProfile" , component:UserProfileComponent},
+  {path :"Cart" , component:CartComponent},
+
 
 ];
 

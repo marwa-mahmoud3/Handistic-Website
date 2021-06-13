@@ -1,0 +1,72 @@
+
+<!--title page-->
+<div class="title-page"
+     style="background-image: url('https://via.placeholder.com/1920x345.jpg/f5f2f2/e8e8e7');background-position: center center;background-size: cover;">
+    <div class="container">
+        <div class="row">
+            <div class=" col-md-6 inner-title-page">
+                <h1>Shop</h1>
+                <p><span>Home</span>/ Shop / Cart</p>
+            </div>
+        </div>
+    </div>
+</div>
+<!--end title page-->
+
+<!--content cart-->
+<div class="container">
+    <div class="row content-cart">
+        <table class="table cart-desktop">
+            <thead>
+            <tr>
+                <th scope="col"></th>
+                <th scope="col" style="text-align: left">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Product</th>
+                <th scope="col">Price</th>
+                <th scope="col">Quantity</th>
+                <th scope="col">Total</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let item of cartItemList; let i= index">
+                <td><button (click)=" RemoveItemFromCart(item.productId);" routerLink="/Cart" class="remove">X</button></td>                <td>
+                    <div class="row">
+                        <img [src]="createImgPath(getProductPathImg(i))" style="width: 80px;height: 70px;" alt="">
+                        <p>{{getProductName(i)}}</p>
+                    </div>
+                </td>
+                <td>{{item.unitPrice}}</td>
+                <td>
+                    <div class="btn-group">
+                        <button type="button" class="prev btn" (click)="decreaseItemQuantity(item.productId,item.quantity)" >-</button>
+                        <button type="button" class="show-number btn ">{{item.quantity}}</button>
+                        <button type="button" class="next btn " (click)="increaseItemQuantity(item.productId)">+</button>
+                    </div>
+                </td>
+                <td><span>${{item.totalPrice}}</span></td>
+            </tr>
+            
+            
+            </tbody>
+        </table>
+
+        <div class="card-button">
+            <button type="button" (click)="ClearCart()" class="btn coupon float-left" >CLEAR CART</button>
+            <button type="button" class="btn apply float-left">APPLY COUPON</button>
+            <button type="button" class="btn update float-right">UPDATE CART</button>
+        </div>
+        <div class="rocart-total">
+            <h2>Cart totals</h2>
+            <ul class="list-inline">
+                <li class="list-inline-item"><p>Subtotal</p></li>
+                <li class="list-inline-item"><span>$ {{getTotalPrice()}}</span></li>
+            </ul>
+            <ul class="list-inline">
+                <li class="list-inline-item"><p>Total</p></li>
+                <li class="list-inline-item"><p>$ {{getTotalPrice()}}</p></li>
+            </ul>
+            <button class="btn float-left">PROCEED TO CHECKOUT</button>
+        </div>
+    </div>
+</div>
+<!--end content cart-->
+
