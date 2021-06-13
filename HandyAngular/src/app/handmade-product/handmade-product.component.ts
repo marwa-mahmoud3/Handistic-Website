@@ -1,11 +1,13 @@
 import { logging } from 'protractor';
 import { ProductsService } from './../Services/products.service';
 import { CategoryService } from './../Services/CategoryService';
-
+import { CartService } from '../Services/CartService';
 import { Component, OnInit } from '@angular/core';
 import { Product } from '../Models/Product';
 import { Category } from '../Models/Category';
 import { ProductsCount } from '../Models/ProductsCount';
+import { UserService } from 'src/app/Services/user.service';
+
 
 @Component({
   selector: 'app-handmade-product',
@@ -20,12 +22,16 @@ export class HandmadeProductComponent implements OnInit {
   productList: Product []=[];
   item :number;
   CountProducts :ProductsCount[] =[]
-  constructor( private productservices: ProductsService,private categoryService : CategoryService) {
+  user:any;
+  constructor(private UserService:UserService, private productservices: ProductsService,private categoryService : CategoryService,private CartService:CartService) {
   }
 
   ngOnInit(): void {
     this.loadProducts();
     this.loadCategories();
+    this.UserService.getIdByUserName(localStorage.getItem('username')).subscribe((
+      data =>{
+        this.user=data}))
   }
   loadProducts() {
     this.productservices.getAllProducts()
@@ -71,5 +77,9 @@ export class HandmadeProductComponent implements OnInit {
   }
   public uploadFinished = (event) => {
     this.response = event;
+  }
+
+  AddItemToCart(productId:number){
+  this.CartService.addItemToCart(this.user.id,productId,null).subscribe();
   }
 }

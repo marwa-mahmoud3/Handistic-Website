@@ -40,7 +40,7 @@ style="background-image: url('../../../assets/images/banner.jpg');background-pos
                                 </a>
                                 <p class="onnew">New</p>
                                 <div class="icon-product">
-                                    <button class="btn">
+                                    <button class="btn" (click)="AddItemToCart(product.id)">
                                         <span class="fa fa-cart-plus"></span>
                                     </button>
                                     <button type="button" class="btn click-quick-view" data-toggle="modal"
