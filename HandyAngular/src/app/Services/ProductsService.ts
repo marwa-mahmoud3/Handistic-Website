@@ -20,7 +20,10 @@ return this.http.get(`${this.baseURL}/${id}`);
 }
 
 createProduct(data): Observable<any> {
-return this.http.post(`${this.baseURL}`, data);
+return this.http.post(this.baseURL, data);
+}
+getOfferdProductsByCategory(id:number):Observable<any>{
+  return this.http.get(`${this.baseURL}/GetOfferedProductsByCategory/${id}`);
 }
 
 update(id, data): Observable<any> {
@@ -31,7 +34,7 @@ deleteById(id): Observable<any> {
 return this.http.delete(`${this.baseURL}/${id}`);
 }
 deleteAll(): Observable<any> {
-return this.http.delete(`${this.baseURL}`);
+return this.http.delete(this.baseURL);
 }
 
 searchByName(name): Observable<any> {
@@ -47,4 +50,8 @@ getCountOfProducts(id): Observable<any>{
 GetProductsByCategoryId(id): Observable<any>{
   return this.http.get(`${this.baseURL}/GetProductsByCategory/${id}`); 
 }
+getProductsWithDiscount():Observable<any>{
+return this.http.get(`${this.baseURL}/GetProductsWithDiscount`);
+}
+
 }

@@ -1,3 +1,9 @@
+import { ProductDetailsComponent } from './product-details/product-details.component';
+import { UpdateProductComponent } from './update-product/update-product.component';
+import { OffersComponent } from './offers/offers.component';
+import { CheckoutComponent } from './checkout/checkout.component';
+import { AboutUSComponent } from './about-us/about-us.component';
+import { ContactUSComponent } from './contact-us/contact-us.component';
 import { WishlistComponent } from './wishlist/wishlist.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
 import { SellerProfileComponent } from './seller-profile/seller-profile.component';
@@ -34,7 +40,13 @@ const routes: Routes = [
   {path: "SellerProfile" , component:SellerProfileComponent},
   {path :"UserProfile" , component:UserProfileComponent},
   {path :"Cart" , component:CartComponent},
-  {path :"Wishlist",component:WishlistComponent}
+  {path :"Wishlist",component:WishlistComponent},
+  {path : "ContactUs" ,component:ContactUSComponent},
+  {path : "AboutUS" ,component:AboutUSComponent},
+  {path :"Checkout" ,component:CheckoutComponent},
+  {path :"Offers" ,component:OffersComponent},
+  {path :"EditProduct/:id" ,component:UpdateProductComponent},
+  {path :"ProductDetails/:id" ,component:ProductDetailsComponent},
 
 ];
 

@@ -1,39 +1,37 @@
-import { ProductWishlistService } from './../Services/ProductWishlistService';
-import { logging } from 'protractor';
-import { ProductsService } from '../Services/ProductsService';
-import { CategoryService } from './../Services/CategoryService';
-import { CartService } from '../Services/CartService';
 import { Component, OnInit } from '@angular/core';
-import { Product } from '../Models/Product';
 import { Category } from '../Models/Category';
+import { Product } from '../Models/Product';
 import { ProductsCount } from '../Models/ProductsCount';
-import { UserService } from 'src/app/Services/user.service';
 import { ProductWishlist } from '../Models/ProductWishlist';
-
+import { CategoryService } from '../Services/CategoryService';
+import { ProductsService } from '../Services/ProductsService';
+import { UserService } from 'src/app/Services/user.service';
+import { CartService } from '../Services/CartService';
+import { ProductWishlistService } from '../Services/ProductWishlistService';
 
 @Component({
-  selector: 'app-handmade-product',
-  templateUrl: './handmade-product.component.html',
-  styleUrls: ['./handmade-product.component.css']
+  selector: 'app-offers',
+  templateUrl: './offers.component.html',
+  styleUrls: ['./offers.component.css']
 })
-export class HandmadeProductComponent implements OnInit {
+export class OffersComponent implements OnInit {
+
   filterTerm: string;
-  categories: Category[] = [];
   CategoryList : Category[] = [];
   products: Product [] = [];
-  productList: Product []=[];
   item :number;
-  CountProducts :ProductsCount[] =[]
+  CountProducts :ProductsCount []=[]
   user:any;
-  constructor(private productWishlistService:ProductWishlistService,private UserService:UserService, private productservices: ProductsService,private categoryService : CategoryService,private CartService:CartService) {
+  productsWithDiscount:Product[]=[];
+  constructor(private productWishlistService:ProductWishlistService,private UserService: UserService, private productservices: ProductsService,private categoryService : CategoryService,private CartService:CartService) {
   }
 
   ngOnInit(): void {
-    this.loadProducts();
-    this.loadCategories();
     this.UserService.getIdByUserName(localStorage.getItem('username')).subscribe((
       data =>{
         this.user=data}))
+    this.loadCategories();
+    this.getAllProductsWithDiscount();
   }
   public productWishlist;
   AddToWishList(id){
@@ -50,41 +48,35 @@ export class HandmadeProductComponent implements OnInit {
       }
     )
   }
-  loadProducts() {
-    this.productList = []
-    this.productservices.getAllProducts()
-        .subscribe(
-            (products: any[]) => {
-                this.products = products;
-                this.products.forEach(product => {
-                    this.productList.push(product);
-                })
-            },
-        );
-  }
-  AllCounts
+ 
+
   loadCategories()
   {
     this.categoryService.getCategories().subscribe((data:any)=>{
-      this.categories = data;
-      this.categories.forEach(category => {
+      data.forEach(category => {
           this.CategoryList.push(category); 
-          this.productservices.getCountOfProducts(category.id).subscribe(
-            (count =>{
-                this.CountProducts.push(count);
-            })        
-          )
+          this.productservices.getOfferdProductsByCategory(category.id).subscribe((count=>{
+            this.CountProducts.push(count);
+          }))     
        });
     });
   }
+
+
+  getAllProductsWithDiscount(){
+    this.productservices.getProductsWithDiscount().subscribe((data=>{
+      this.productsWithDiscount=data;
+    }))
+  }
   getProductsByCategory(id)
   {
-    this.productList = []
+    this.productsWithDiscount = []
     this.productservices.GetProductsByCategoryId(id).subscribe(
-      (products: any[]) => {
-          this.products = products;
+      (data) => {
+        this.products=data;
           this.products.forEach(product => {
-              this.productList.push(product);
+            if(product.discount>0)
+              this.productsWithDiscount.push(product);
           })
       },
   );
@@ -108,4 +100,11 @@ export class HandmadeProductComponent implements OnInit {
   this.CartService.addItemToCart(this.user.id,productId,null).subscribe();
   location.reload();
   }
+  getPriceAfterDiscount(prouct:Product){
+   let res=prouct.unitPrice;
+   res-=prouct.unitPrice*(prouct.discount/100.0);
+   return Math.ceil(res);
+  }
+  
+
 }

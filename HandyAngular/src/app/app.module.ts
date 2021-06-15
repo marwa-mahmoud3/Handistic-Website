@@ -1,3 +1,5 @@
+import { CheckoutComponent } from './checkout/checkout.component';
+import { ContactUSComponent } from './contact-us/contact-us.component';
 import { WishlistComponent } from './wishlist/wishlist.component';
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
@@ -20,7 +22,6 @@ import { HomeComponent } from './home/home/home.component';
 import { ProfileComponent } from './profile/profile.component';
 import { TopbarComponent } from './topbar/topbar.component';
 import { HandmadeProductComponent } from './handmade-product/handmade-product.component';
-import { ContactUsComponent } from './home/contact-us/contact-us.component';
 import { CreateShopComponent } from './create-shop/create-shop.component';
 import { OurServicesComponent } from './home/our-services/our-services.component';
 import { HeaderBeforeLoginComponent } from './header-before-login/header-before-login.component';
@@ -30,6 +31,11 @@ import { UserProfileComponent } from './user-profile/user-profile.component';
 import { SellerProfileComponent } from './seller-profile/seller-profile.component';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { CartComponent } from './cart/cart.component';
+import { AboutUSComponent } from './about-us/about-us.component';
+import { ContactComponent } from './home/contact/contact.component';
+import { OffersComponent } from './offers/offers.component';
+import { UpdateProductComponent } from './update-product/update-product.component';
+import { ProductDetailsComponent } from './product-details/product-details.component';
 
 @NgModule({
   declarations: [
@@ -50,7 +56,6 @@ import { CartComponent } from './cart/cart.component';
     TopbarComponent,
     HandmadeProductComponent,
     OurServicesComponent,
-    ContactUsComponent,
     CreateShopComponent,
     TopbarComponent,
     HeaderBeforeLoginComponent,
@@ -59,6 +64,13 @@ import { CartComponent } from './cart/cart.component';
     SellerProfileComponent,
     CartComponent,
     WishlistComponent,
+    ContactUSComponent,
+    AboutUSComponent,
+    ContactComponent,
+    CheckoutComponent,
+    OffersComponent,
+    UpdateProductComponent,
+    ProductDetailsComponent,
   ],
   imports: [
     BrowserModule,

@@ -3,9 +3,8 @@
     <div class="">
         <div class="card card-4">
             <div class="card-body">
-                <form *ngIf="firstform;" #userData="ngForm" (ngSubmit)="UserData(userData)">
+                <form *ngIf="firstform;" #userData="ngForm" (ngSubmit)="UserData()">
                     <h2 class="title" style="margin-bottom: 30px;">Create Your Shop</h2>
-                    <input type="text" [(ngModel)]="user.userId" hidden id="userId" name="userId"> 
                     <h3> Please fill you data here.</h3>
                     <div *ngIf="showError; else elseBlock">
                         <div class="alert alert-danger" role="alert">
@@ -13,7 +12,7 @@
                         </div>
                       </div>
                       <ng-template #elseBlock></ng-template>
-
+                    <input type="text" [(ngModel)]="request.userId" hidden   id="userId" name="userId"> 
                     <div class="row" style="margin-top: 50px;">
                         <div class="col-lg-6 col-md-4" >
                             <label class="label">Frist Name<span class="star">*</span> </label>
@@ -86,7 +85,7 @@
                         </div> 
                       
                         <div *ngIf="ShowLink; else elseBlock" class="col-lg-6 col-md-4 " style="padding-top: 20px;" id="link-div">
-                            <label class="label">Your Profile Link<span class="star">*</span> </label>
+                            <label class="label">Upload image of product<span class="star">*</span> </label>
                             <div class="input-group">
                                 <input class="form-control" type="text" placeholder="Enter your Link for Your Products" 
                                 [class.is-invalid]="link.invalid && link.touched " [class.is-invalid]="link.invalid && link.touched" required #link="ngModel" name="link" [(ngModel)]="request.link"> 
@@ -96,7 +95,7 @@
                         <ng-template #elseBlock></ng-template>
                         
                         <div *ngIf="ShowImage; else BlockImage"  class="col-lg-6"  id="image-div">
-                            <label class="label" style="margin-top: 30px;">Upload image of product<span class="star">*</span></label>
+                            <label class="label" style="margin-top: 30px;">Your Profile Link<span class="star">*</span></label>
                             <div class="input-group mb-3 px-2 py-2 rounded-pill bg-white shadow-sm">
                                 <input id="upload" type="file" class="form-control border-0" #file type="file" multiple (change)="uploadFile(file.files)"
                                 [class.is-invalid]="productWithCardImage.invalid && productWithCardImage.touched " [class.is-invalid]="productWithCardImage.invalid && productWithCardImage.touched" required #productWithCardImage="ngModel" name="productWithCardImage" [(ngModel)]="request.productWithCardImage">
@@ -110,7 +109,7 @@
                     </div>
                 </form>   
                 
-          
+          <!------>
          
                 <form *ngIf="secondform;" #shopData="ngForm" (ngSubmit)="CreateShop(shopData)">                
                     <h2 class="title" style="margin-bottom: 80px;">Create Your Shop</h2>

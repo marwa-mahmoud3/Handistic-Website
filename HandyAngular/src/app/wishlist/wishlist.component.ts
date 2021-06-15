@@ -1,7 +1,6 @@
 import { CookieService } from 'ngx-cookie-service';
-import { ProductsService } from './../Services/products.service';
+import { ProductsService } from '../Services/ProductsService';
 import { ProductWishlist } from './../Models/ProductWishlist';
-import { HandmadeProductComponent } from './../handmade-product/handmade-product.component';
 import { ProductWishlistService } from './../Services/ProductWishlistService';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';

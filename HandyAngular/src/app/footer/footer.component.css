@@ -5,3 +5,16 @@
     height: 10px;
     margin-left: 135px;
 }
+h2{
+    color: #fff;
+}
+.list-inline li{
+    color: rgb(214, 211, 211);
+}
+.list-inline li a{
+    color: rgb(214, 211, 211);
+}
+.list-inline input{
+    color: rgb(214, 211, 211);
+    border-bottom: 1px solid rgb(214, 211, 211);
+}

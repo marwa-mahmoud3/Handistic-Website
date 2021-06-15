@@ -12,15 +12,15 @@
                 <div>
                     <div class="header-right menu" style="margin-top: 15px;">
                         <ul class="list-inline" style="margin-top: 0px;padding-top: 0px;">
-                            <li><a style="background: #000;color:#fff"><i class="fa"> </i> {{CurrentUser}}</a>
+                            <li><a style="background: #000;color:#fff"><i  style="color:#fff; font-size: 15px;" class="fas fa-user"> </i> {{CurrentUser.userName}}</a>
                                 <ul style="height: 170px;width: 150px;">
                                     <li style="padding: 0px;margin: 0px;" (click)="goToProfile()"><a>My Profile</a></li>
                                     <li style="padding: 0px;margin: 0px;" ><a href="about.html">Settings</a></li>
                                     <li style="padding: 0px;margin: 0px;" (click)="logout()"><a class="btn" style="background: #000;">Logout</a></li>
                                 </ul>
                             </li>
-                            <li>
-                            </li>
+                            <!-- <li>
+                            </li> -->
                         </ul>
                     </div>
                 </div>
@@ -60,15 +60,12 @@
                 <div class="header-right menu">
                     <ul class="list-inline" style="margin-top: 5px;">
                         <li><a href="about.html">MY Profile</a>
-                            <ul>
-                                <li><a href="about.html">About Us</a></li>
-                                <li><a href="what-we-offer.html">What We Offer</a></li>
-                                <li><a href="our-team.html">Our Team</a></li>
-                                <li><a href="comming-soon.html">Comming Soon</a></li>
-                                <li><a href="error-page.html">Error Page</a></li>
+                            <ul style="height: 170px;width: 150px;">
+                                <li style="padding: 0px;margin: 0px;" (click)="goToProfile()"><a>My Profile</a></li>
+                                <li style="padding: 0px;margin: 0px;" ><a href="about.html">Settings</a></li>
+                                <li style="padding: 0px;margin: 0px;" (click)="logout()"><a class="btn" style="background: #000;">Logout</a></li>
                             </ul>
                         </li>
-                        <li (click)="logout()"><a >Logout</a></li>
                     </ul>
                 </div>
         </div>
@@ -94,59 +91,17 @@
                     <div class="menu">
                         <ul>
                             <li><a routerLink="/profile">home</a></li>
-                            <li><a href="about.html">page</a>
-                                <ul>
-                                    <li><a href="about.html">About Us</a></li>
-                                    <li><a href="what-we-offer.html">What We Offer</a></li>
-                                    <li><a href="our-team.html">Our Team</a></li>
-                                    <li><a href="comming-soon.html">Comming Soon</a></li>
-                                    <li><a href="error-page.html">Error Page</a></li>
-                                </ul>
-                            </li>
-                            <li><a href="product-list.html" >shop</a>
-                                <ul>
-                                    <li><a routerLink="/HandmadeProducts">Product List</a></li>
-                                    <li><a href="product-single.html">Product Single</a></li>
-                                    <li><a href="shop-2-colum.html">Layouts</a><span
-                                            class="lnr lnr-chevron-right"></span>
-                                        <ul>
-                                            <li><a href="shop-2-colum.html">2 Colums</a></li>
-                                            <li><a href="shop-3-colum.html">3 Colums</a></li>
-                                            <li><a href="shop-4-colum.html">4 Colums</a></li>
-
-                                        </ul>
-                                    </li>
-                                    <li><a href="cart.html">Shop Page</a><span class="lnr lnr-chevron-right"></span>
-                                        <ul>
-                                            <li><a href="cart.html">Cart</a></li>
-                                            <li><a href="wishlist.html">Wish List</a></li>
-                                            <li><a href="checkout.html">Check Out</a></li>
-                                        </ul>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li><a href="blog-single.html">blog</a>
-                                <ul>
-                                    <li><a href="blog-masonry.html">Masonry</a></li>
-                                    <li><a href="blog-standard-right-siderbar.html">Standard</a><span
-                                            class="lnr lnr-chevron-right"></span>
-                                        <ul>
-                                            <li><a href="blog-standard-right-siderbar.html">Right Sidebar</a></li>
-                                            <li><a href="blog-standard-left-siderbar.html">Left Sidebar</a></li>
-                                            <li><a href="blog-standard-no-sliderbar.html">No Sidebar</a></li>
-                                        </ul>
-                                    </li>
-                                    <li><a href="blog-single.html">Single</a></li>
-                                </ul>
-                            </li>
-                            <li><a href="contact-us.html">contact</a></li>
+                            <li><a routerLink="/HandmadeProducts">Store</a></li>
+                            <li><a routerLink="/Offers" >Offers</a></li>
+                            <li><a routerLink="/AboutUS" >About Us</a></li>
+                            <li><a routerLink="/ContactUs">contact</a></li>
                         </ul>
                     </div>
                 </div>  
                 <div>
                     <div class="header-right">
                         <ul class="list-inline">
-                            <li><a href="#" class="cart-index">
+                            <li><a routerLink="/Cart" class="cart-index">
                                 <img src="../../assets/imager/home/bag-2.png" alt=""
                                      style="width: 16px;height: 22px;margin-top: -10px;">
                                 <div class="number-cart">
@@ -156,36 +111,20 @@
                                 <div class="widget_shopping_cart">
                                     <div class="widget_shopping_cart_content">
                                         <ul class="woocommerce-mini-cart cart_list product_list_widget ">
-                                            <li class="woocommerce-mini-cart-item mini_cart_item clearfix">
-                                                <a class="product-image" href="#">
-                                                    <img src="https://via.placeholder.com/80x70.jpg" alt="cart-1">
-                                                </a>
-                                                <a class="product-title" href="#">Skin recreation</a>
-
-                                                <span class="woocommerce-Price-amount amount">
+                                            <li class="woocommerce-mini-cart-item mini_cart_item clearfix"
+                                             *ngFor="let item of cartItemList | slice:0:3; let i= index ">
+                                                <a class="product-image">
+                                                    <img [src]="createImgPath(getProductPathImg(i))" width="60px" height="60px">
+                                                    <a class="product-title">{{getProductName(i)}}</a>
+                                                    <span class="float-right">
 														<span class="woocommerce-Price-currencySymbol">$</span>
-														56
+														{{item.unitPrice}}
                                                 </span>
-                                                <span class="quantity">
-													Qty: 1
+                                                <span class="quantity" style="margin-left:-20px;">
+													Qty: {{item.quantity}}
 												</span>
-                                                <a href="#" class="remove">
-                                                    <span class="lnr lnr-cross"></span>
                                                 </a>
-                                            </li>
-                                            <li class="woocommerce-mini-cart-item mini_cart_item clearfix">
-                                                <a class="product-image" href="#">
-                                                    <img src="https://via.placeholder.com/80x70.jpg" alt="cart-2">
-                                                </a>
-                                                <a class="product-title" href="#">Face cream</a>
-
-                                                <span class="woocommerce-Price-amount amount">
-														<span class="woocommerce-Price-currencySymbol">$</span>
-														48
-													</span>
-                                                <span class="quantity">
-													Qty: 2
-												</span>
+                                               
                                                 <a href="#" class="remove">
                                                     <span class="lnr lnr-cross"></span>
                                                 </a>
@@ -195,11 +134,11 @@
                                             <span>Order Total:</span>
                                             <span class="woocommerce-Price-amount amount">
 												<span class="woocommerce-Price-currencySymbol">$</span>
-												200
+												{{getTotalPrice()}}
 											</span>
                                         </p>
                                         <p class="woocommerce-mini-cart__buttons buttons">
-                                            <a href="#" class="button wc-forward au-btn btn-small">VIEW CART &
+                                            <a routerLink="/Cart" class="button wc-forward au-btn btn-small">VIEW CART &
                                                 CHECKOUT</a>
                                         </p>
                                     </div>

@@ -1,5 +1,5 @@
 export class Product {
-    constructor(
+    constructor(    
         public shopId :number,
         public userName:string,
         public Date :string,
@@ -9,6 +9,7 @@ export class Product {
         public quantity : number,
         public productImagePath : string,
         public size : string,
-        public categoryId : number 
+        public categoryId : number,
+        public discount : number ,
     ){}
 }

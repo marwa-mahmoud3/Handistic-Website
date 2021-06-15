@@ -1,0 +1,180 @@
+<app-header-after-login></app-header-after-login>
+<div class="title-page"
+style="background-image: url('../../../assets/images/sale.jpg');background-position: center right;background-size: 60% 120%;background-repeat: no-repeat;background-color: #E5D7CA;">
+    <div class="container">
+        <div class="row">
+            <div class=" col-md-6 inner-title-page">
+                <h1>Offers</h1>
+            </div>
+        </div>
+    </div>
+</div>
+<!--end title detail-->
+
+<!--product list-->
+<div class="container">
+    <div class="prodcut-list">
+        <div class="row">
+            <div class="col-xl-9 col-lg-9 col-md-9 col-sm-12 col-12">
+                <div class="row header-show-list">
+                    <div class="col-md-6 col-sm-12 col-12">
+                        <p>Showing 1–12 of 24 results</p>
+                    </div>
+                    
+                </div>
+                <div class="row product">
+                    <div class="col-md-4 col-sm-6 col-12" *ngFor="let product of productsWithDiscount |filter:filterTerm">
+                        <div class="card">
+                            <div class="card-img-top" style="background-image: url('');background-size: 100% 100%;background: no-repeat;">
+                                <a href="product-single.html" class="wp-post-image">
+                                    <img [src]="createImgPath(product.productImagePath)" style="width: 250px;height: 250px;">
+                                </a>
+                                <p class="onsale">Sale</p>
+                                <div class="icon-product">
+                                    <button class="btn" (click)="AddItemToCart(product.id)">
+                                        <span class="fa fa-cart-plus"></span>
+                                    </button>
+                                    <button type="button" class="btn click-quick-view" routerLink="/ProductDetails/{{product.id}}" >
+                                        <span class="fa fa-search-plus" ></span>
+                                    </button>
+                                    <button class="btn" (click)="AddToWishList(product.id)" >
+                                        <span class="fas fa-heart">	</span>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <p class="card-title"><a class="float-left" href="product-list.html">Added by {{product.userName}} </a></p><br>
+                                 
+                                <p class="woocommerce-loop-product__title"><a href="product-single.html">
+                                    {{product.productName}}</a></p>
+                                    <span class="price">
+                                        <del>
+                                            <span class="woocommerce-Price-amount amount">
+                                                <span class="woocommerce-Price-currencySymbol">$</span>{{product.unitPrice}}
+
+                                            </span>
+                                        </del>
+                                        <ins>
+                                            <span class="woocommerce-Price-amount amount">
+                                                <span class="woocommerce-Price-currencySymbol">$</span>{{getPriceAfterDiscount(product)}}
+                                            </span>
+                                        </ins>
+                            </span>
+                            </div>
+                        </div>
+
+                    </div>                       
+                    <ul class="pagination justify-content-center">
+                        <li class="page-item"><a class="page-link" href="#">1</a></li>
+                        <li class="page-item"><a class="page-link" href="#">2</a></li>
+                        <li class="page-item"><a class="page-link" href="#"> > </a></li>
+                    </ul>
+                </div>
+                <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered" role="document">
+                        <div class="modal-content container">
+                            <div class="product-single-quick-view">
+                                <div class="row product_detail">
+                                    <div class="col-md-6 col-sm-12 col-12">
+                                        <div class="flex-quick-view">
+                                            <div id="flex-slider" class="flexslider">
+                                                <ul class="slides">
+                                                    <li>
+                                                        <img src="https://via.placeholder.com/560" alt="">
+                                                    </li>
+                                                    <li>
+                                                        <img src="https://via.placeholder.com/560" alt="">
+                                                    </li>
+                                                    <li>
+                                                        <img src="https://via.placeholder.com/560" alt="">
+                                                    </li>
+                                                    <li>
+                                                        <img src="https://via.placeholder.com/560" alt="">
+                                                    </li>
+                                                    <!-- items mirrored twice, total of 12 -->
+                                                </ul>
+                                            </div>
+                                            <div id="flex-carousel" class="flexslider">
+                                                <ul class="slides">
+                                                    <li>
+                                                        <img src="https://via.placeholder.com/125x100.jpg" alt="">
+                                                    </li>
+                                                    <li>
+                                                        <img src="https://via.placeholder.com/125x100.jpg" alt="">
+                                                    </li>
+                                                    <li>
+                                                        <img src="https://via.placeholder.com/125x100.jpg" alt="">
+                                                    </li>
+                                                    <li>
+                                                        <img src="https://via.placeholder.com/125x100.jpg" alt="">
+                                                    </li>
+                                                    <!-- items mirrored twice, total of 12 -->
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 col-sm-12 col-12 content-product">
+                                        <h2>Whitening cream | $65</h2>
+                                        <p><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                                                class="fas fa-star"></i><i class="fas fa-star"></i> &nbsp; (2 customer
+                                            review)</p>
+                                        <p>Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
+                                            when an
+                                            unknown printer took a galley of type and scrambled it to make a type specimen
+                                            book.
+                                            It has survived not only five centuries, but also the leap into electronic </p>
+                                        <div class="infor-product">
+                                            <p><span>Sku: </span>22</p>
+                                            <p><span>Category: </span>Cosmetic</p>
+                                            <p><span>Tag: </span>Trendy</p>
+                                            <p><span>Share: </span>
+                                                <a href=""><i class="fab fa-facebook"></i></a>
+                                                <a href=""><i class="fab fa-linkedin-in"></i></a>
+                                                <a href=""><i class="fab fa-instagram"></i></a></p>
+                                        </div>
+                                        <div>
+                                            <div class="btn-group">
+                                                <button type="button" class="prev btn ">-</button>
+                                                <button type="button" class="show-number btn ">1</button>
+                                                <button type="button" class="next btn ">+</button>
+                                            </div>
+                                            <div class="btn-group">
+                                                <a href="#" class="btn add-to-cart">ADD TO CART<p><i
+                                                        class="fas fa-cart-plus"></i></p> </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <span class="lnr lnr-cross close-quick-view" data-dismiss="modal"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-3 col-lg-3 col-md-3 col-sm-12 col-12">
+                <div class="content-blog-left">
+                    <div class="search-blog">
+                        <input type="text" placeholder="Search" class="float-left" [(ngModel)]="filterTerm">
+                        <button class="btn float-right"><span class="fas fa-search"></span></button>
+                    </div>
+                    
+                    <div class="category-blog">
+                        <h2>Categories</h2>
+                      <div>
+                        <div style="display: inline-block;">
+                            <a (click)="getAllProductsWithDiscount()">All Products</a>
+                            <a (click)="getProductsByCategory(category.id)" *ngFor="let category of CategoryList">
+                            {{category.name}} 
+                           </a>
+                        </div>
+                        <div style="display: inline-block;">
+                            <a *ngFor="let count of CountProducts">({{count}})</a>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--end product list-->

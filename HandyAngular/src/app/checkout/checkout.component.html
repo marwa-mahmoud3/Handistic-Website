@@ -1,0 +1,224 @@
+<app-header-after-login></app-header-after-login>
+<div class="title-page"
+     style="background-color: #F1EEF1">
+    <div class="container">
+        <div class="row">
+            <div class=" col-md-6 inner-title-page">
+                <h1>Check out</h1>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container ">
+        <div class="entry-content">
+            <div class="woocommerce-info">
+                <i class="far fa-window-maximize"></i> &nbsp;&nbsp;&nbsp;Have a coupon?
+                <a class="showcoupon">Click here to enter your code</a>
+            </div>
+            <form class="checkout_coupon" method="post" action="#">
+                <p class="form-row-first float-left">
+                    <input type="text" name="coupon_code" class="input-text" placeholder="Coupon code" id="coupon_code" value="">
+                </p>
+                <p class="form-row-last float-right">
+                    <button class="btn-sm">Apply Coupon</button>
+                </p>
+                <div style="clear: both;"></div>
+            </form>
+        </div>
+</div>
+
+<div class="container" >
+    <div class="row content-checkout">
+        <div class="col-md-6 billing-detail" *ngIf="firstform;" >
+            <form #checkoutData="ngForm">
+                <h2>Billing details</h2>
+                <div class="row">
+                    <div class="col-md-6 col-sm-12 col-12">
+                        <p>First name<span> *</span></p>
+                        <input type="text">
+                    </div>
+                    <div class="col-md-6 col-sm-12 col-12">
+                        <p>Last name<span> *</span></p>
+                        <input type="text">
+                    </div>
+                </div>
+                <p>Address<span> *</span></p>
+                <input type="text" placeholder="Steet Address">
+                <input type="text" placeholder="Apartment, suite, unit etc. (optional)">
+                <p>City<span> *</span></p>
+                <input type="text">
+                <p>Postcode/Zip<span> *</span></p>
+                <input type="text">
+                <div class="row">
+                    <div class="col-md-6"><p>Phone<span> *</span></p>
+                        <input type="text">
+                    </div>
+                    <div class="col-md-6"><p>Email Address<span> *</span></p>
+                        <input type="text">
+                    </div>
+                </div>
+                <div style="width: 100%;text-align: center;margin-top: 40px;">
+                    <button (click)="goToPayment()" class="btn" style="background-color: #000;color: #fff;"> ORDER</button>
+                </div>
+            </form>         
+        </div>
+<!------------------------------------------>
+
+        <div class="col-md-6" *ngIf="SecondForm;" >
+            <div class="card "style="border: none;" >
+                <div class="card-header bg-white" style="border: none;">
+                    <div class="bg-white shadow-sm pt-4 pl-2 pr-2 pb-2">
+                        <ul role="tablist" class="nav bg-light nav-pills rounded nav-fill mb-3">
+                            <li class="nav-item" (click)="Credit()"> 
+                                <a  data-toggle="pill" href="#credit-card" id="nav-link" class="nav-link active "> 
+                                  <i class="fas fa-credit-card mr-2" ></i> Credit Card </a> 
+                                </li>
+                            <li class="nav-item" (click)="Paypal()"> 
+                                <a data-toggle="pill" href="#paypal" class="nav-link "> 
+                                <i class="fab fa-paypal mr-2"></i> Paypal 
+                            </a> 
+                            </li>
+                            <li class="nav-item" (click)="Banking()"> 
+                                <a data-toggle="pill" href="#net-banking" class="nav-link "> 
+                                <i class="fas fa-mobile-alt mr-2"></i> Net Banking </a> 
+                            </li>
+                        </ul>
+                    </div> 
+                <div class="tab-content" >
+                    <div id="credit-card" class="tab-pane fade show active pt-3">
+                        <form class="form" role="form" *ngIf="credit;">
+                            <div class="form-group"> <label for="username">
+                                <h6>Card Owner</h6>
+                                </label> <input type="text" name="username" placeholder="Card Owner Name" required class="form-control "> 
+                            </div>
+                            <div class="form-group"> 
+                                <label for="cardNumber">
+                                    <h6>Card number</h6>
+                                </label>
+                                <div class="input-group"> <input type="text" name="cardNumber" placeholder="Valid card number" class="form-control " required>
+                                    <div class="input-group-append"> 
+                                        <span class="input-group-text text-muted"> <i class="fab fa-cc-visa mx-1"></i> <i class="fab fa-cc-mastercard mx-1"></i>
+                                            <i class="fab fa-cc-amex mx-1"></i> </span> 
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-8">
+                                    <div class="form-group"> 
+                                        <label>
+                                            <span class="hidden-xs">
+                                                <h6>Expiration Date</h6>
+                                            </span>
+                                        </label>
+                                    <div class="input-group"> <input type="number" placeholder="MM" name="" class="form-control" required> 
+                                        <input type="number" placeholder="YY" name="" class="form-control" required>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="form-group mb-4"> 
+                                    <label data-toggle="tooltip" title="Three digit CV code on the back of your card">
+                                        <h6>CVV <i class="fa fa-question-circle d-inline"></i></h6>
+                                    </label> 
+                                    <input type="text" required class="form-control"> 
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-footer">
+                            <button type="button" class="subscribe btn btn-primary btn-block shadow-sm"> Confirm Payment </button>
+                        </div>
+                    </form>
+                </div>
+            </div> 
+                <!-- Paypal info -->
+            <form  id="paypal" class="tab-pane fade pt-3 form" *ngIf="paypal;">
+                <h6 class="pb-2">Select your paypal account type</h6>
+                <div class="form-group "> 
+                    <label class="radio-inline"> 
+                        <input type="radio" name="optradio" checked> Domestic 
+                    </label> 
+                    <label class="radio-inline"> 
+                         <input type="radio" name="optradio" class="ml-5">International 
+                    </label>
+                </div>
+                <p> 
+                    <button type="button" class="btn btn-primary ">
+                    <i class="fab fa-paypal mr-2"></i> Log into my Paypal</button> 
+                </p>
+                <p class="text-muted"> Note: After clicking on the button, you will be directed to a secure gateway for payment. After completing the payment process, you will be redirected back to the website to view details of your order. </p>
+            </form> 
+
+             <form  id="net-banking" class="tab-pane fade pt-3 form" *ngIf="banking;">
+                    <div class="form-group "> 
+                        <label for="Select Your Bank">
+                        <h6>Select your Bank</h6>
+                        </label> 
+                        <select class="form-control" id="ccmonth">
+                            <option value="" selected disabled>--Please select your Bank--</option>
+                            <option>Al Ahli Bank</option>
+                            <option>Abu Dhabi Islamic Bank</option>
+                            <option>Suez Canal Bank</option>
+                            <option>Alex Bank</option>
+                            <option>Faisal Islamic Bank</option>
+                            <option>Al Baraka Bank</option>
+                        </select> 
+                    </div>
+                    <div class="form-group">
+                        <p> <button type="button" class="btn btn-primary "><i class="fas fa-mobile-alt mr-2"></i> Proceed Payment</button> </p>
+                    </div>
+                    <p class="text-muted">Note: After clicking on the button, you will be directed to a secure gateway for payment. After completing the payment process, you will be redirected back to the website to view details of your order. </p>
+                </form> 
+            </div>
+        </div>
+    </div>
+
+       
+        <div class="col-md-6 item-checkout">
+            <h2>Your order</h2>
+            <div class="item-checkout-detail"
+            *ngFor="let item of cartItemList; let i= index" style="border-bottom: 1px solid #e6e6e6;">
+                <div class="card">
+                    <div class="row no-gutters">
+                        <div class="col-xl-3 col-lg-3 col-md-4 col-sm-4 col-5">
+                            <img [src]="createImgPath(getProductPathImg(i))"  >                        
+                        </div>
+                        <div class="col-xl-9 col-lg-9 col-md-8 col-sm-8 col-7">
+                            <div class="card-body">
+                                <h4 class="card-text">{{getProductName(i)}}</h4>
+                                <p class="card-text">Qty: {{item.quantity}}</p>
+                                <span class="price" style="padding-top: 20px;" >
+								   <ins>
+										<span class="woocommerce-Price-amount amount">
+									       <span class="woocommerce-Price-currencySymbol">$</span>{{item.unitPrice}}
+									    </span>
+			          			</ins>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="sub-payment" style="margin-top: 20px;">
+                <h5>Subtotal&nbsp;&nbsp;&nbsp;<span>${{getTotalPrice()}}</span></h5>
+            </div>
+            <div class="sub-payment">
+                <h5>Shipping &nbsp;&nbsp;&nbsp;<small> there are no shipping methods available. please double check your
+                    address, or contact us if you need any help.
+                </small>
+                </h5>
+            </div>
+            <div class="sub-payment">
+                <h5>Total&nbsp;&nbsp;&nbsp;<span>${{getTotalPrice()}}</span></h5>
+            </div>
+        </div>
+    </div>
+</div>
+
+    <script>
+        $(function() {
+$('[data-toggle="tooltip"]').tooltip()
+})
+    </script>

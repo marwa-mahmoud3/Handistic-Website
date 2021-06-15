@@ -1,0 +1,134 @@
+<app-header-after-login></app-header-after-login>
+<div class="container" style="padding-top: 120px; padding-bottom: 80px;">
+    <div class="row justify-content-center content-my-account">
+        <div class="col-md-9 col-sm-12 col-12 content-my-account-right">
+            <h2 style="padding-bottom: 20px;">Update Product</h2>
+    
+            <form #ProductData="ngForm" (ngSubmit)="OnSubmit(ProductData)">
+                <div *ngIf="showSuccess; else thenfaild">
+                    <div class="alert alert-success" role="alert">
+                        Product Updated
+                    </div>
+                </div>
+                <ng-template #thenfaild></ng-template>
+
+                <div *ngIf="showError; else elseBlock">
+                    <div class="alert alert-warning" role="alert">
+                        {{errorMessage.error | json}}
+                    </div>
+                </div>
+                <ng-template #elseBlock></ng-template>
+                <input type="text" [(ngModel)]="currentProduct.shopId" hidden id="shopId" name="shopId">
+                <input type="text" [(ngModel)]="currentProduct.userName" hidden id="userName" name="userName">
+                <div class="row">
+                    <div class="col-lg-12 col-md-4">
+                        <label class="label">Product Name<span class="star">*</span> </label>
+                        <div class="">
+                            <input class="form-control" type="text" placeholder=" Enter your frist name"
+                                [class.is-invalid]="productName.invalid && productName.touched "
+                                [class.is-invalid]="productName.invalid && productName.touched" required
+                                #productName="ngModel" [(ngModel)]="currentProduct.productName" name="productName">
+                        </div>
+                        <small class="text-danger" [class.d-none]="productName.untouched || productName.valid">Product
+                            Name is required</small>
+                    </div>
+                </div>
+                <div class="row" style="margin-top: 50px;">
+                    <div class="col-lg-12 col-md-4">
+                        <label class="label">Details<span class="star">*</span> </label>
+                        <div class="input-group">
+                            <textarea class="form-control" type="text" placeholder="Enter your Product Details"
+                                [class.is-invalid]="details.invalid && details.touched "
+                                [class.is-invalid]="details.invalid && details.touched" required #details="ngModel"
+                                [(ngModel)]="currentProduct.details" name="details"> </textarea>
+                        </div>
+                        <small class="text-danger" [class.d-none]="details.untouched || details.valid">Product Details
+                            is required</small>
+                    </div>
+                </div>
+                <div class="row" style="margin-top: 50px;">
+                    <div class="col-lg-4 col-md-4">
+                        <label class="label">Product Price<span class="star">*</span> </label>
+                        <div class="input-group">
+                            <input class="form-control" type="number" placeholder="your Product Price"
+                                [class.is-invalid]="unitPrice.invalid && unitPrice.touched "
+                                [class.is-invalid]="unitPrice.invalid && unitPrice.touched" required
+                                #unitPrice="ngModel" [(ngModel)]="currentProduct.unitPrice" name="unitPrice">
+                        </div>
+                        <small class="text-danger" [class.d-none]="unitPrice.untouched || unitPrice.valid">Product Price
+                            is required</small>
+                    </div>
+                    <div class="col-lg-4 col-md-4">
+                        <label class="label">Quantity<span class="star">*</span> </label>
+                        <div class="input-group">
+                            <input class="form-control" type="number" placeholder="your Product Quantity"
+                                [class.is-invalid]="quantity.invalid && quantity.touched "
+                                [class.is-invalid]="quantity.invalid && quantity.touched" required #quantity="ngModel"
+                                [(ngModel)]="currentProduct.quantity" name="quantity">
+                        </div>
+                        <small class="text-danger" [class.d-none]="quantity.untouched || quantity.valid">Product
+                            Quantity is required</small>
+                    </div>
+                    <div class="col-lg-4 col-md-4">
+                        <label class="label">Product Discount<span class="star">*</span> </label>
+                        <div class="input-group">
+                            <input class="form-control" type="number" placeholder="your Product Discount"
+                                [class.is-invalid]="discount.invalid && discount.touched "
+                                [class.is-invalid]="discount.invalid && discount.touched" required #discount="ngModel"
+                                [(ngModel)]="currentProduct.discount" name="discount">
+                        </div>
+                        <small class="text-danger" [class.d-none]="discount.untouched || discount.valid">Product
+                            Discount is required</small>
+                    </div>
+                </div>
+                <div class="row" style="margin-top: 50px;">
+                    <div class="col-lg-6 col-md-4">
+                        <label class="label">Product Size<span class="star">*</span> </label>
+                        <div class="input-group">
+                            <input class="form-control" type="text" placeholder="Enter your Product Size"
+                                [class.is-invalid]="size.invalid && size.touched "
+                                [class.is-invalid]="size.invalid && size.touched" required #size="ngModel"
+                                [(ngModel)]="currentProduct.size" name="size">
+                        </div>
+                        <small class="text-danger" [class.d-none]="size.untouched || size.valid">Product size is
+                            required</small>
+                    </div>
+                    <div class="col-lg-6 col-md-4">
+                        <label class="label">Choose Your Products Category<span class="star">*</span></label>
+                        <div class="input-group">
+                            <select class="form-control form-select-lg"
+                                [class.is-invalid]="categoryId.invalid && categoryId.touched "
+                                [class.is-invalid]="categoryId.invalid && categoryId.touched" required
+                                #categoryId="ngModel" [(ngModel)]="currentProduct.categoryId" name="categoryId">
+                                <option *ngFor="let Category of CategoryList" value={{Category.id}}>{{Category.name}}
+                                </option>
+                            </select>
+                        </div>
+                        <small class="text-danger" [class.d-none]="categoryId.untouched || categoryId.valid">Product
+                            Category is required</small>
+                    </div>
+                </div>
+                <div class="row" style="margin-top: 50px;">
+                    <div class="col-lg-12 ">
+                        <label class="label">Upload Product Image<span class="star">*</span></label>
+                        <!-- Upload image input-->
+
+                        <div class="input-group mb-3 px-2 py-2 rounded-pill bg-white shadow-sm">
+                            <input id="upload" type="file" class="form-control border-0" #file type="file" multiple
+                                (change)="uploadFile(file.files)"
+                                [class.is-invalid]="productImagePath.invalid && productImagePath.touched "
+                                [class.is-invalid]="productImagePath.invalid && productImagePath.touched" required
+                                #productImagePath="ngModel" [(ngModel)]="currentProduct.productImagePath"
+                                name="productImagePath" value={{currentProduct.productImagePath}}>
+                        </div>
+                        <small style="margin-left: 15px;" class="text-danger"
+                            [class.d-none]="productImagePath.untouched || productImagePath.valid">Id Card Image is
+                            required</small>
+                    </div>
+
+                </div>
+                    <button [disabled]="!ProductData.valid" type="submit" class="bt">Save</button>
+            </form>
+        </div>
+    </div>
+    </div>

@@ -1,4 +1,3 @@
-import { CategoryService } from './../Services/CategoryService';
 import { Router } from '@angular/router';
 import { ShopService } from '../Services/shopService';
 import { shop } from './../Models/shop';
@@ -7,32 +6,26 @@ import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { RequestModel } from '../Models/RequestModel';
 import { CityService } from '../Services/CityService';
-import { UserService } from '../Services/user.service';
 import { userRequest } from '../Services/userRequest';
-import { HttpClient, HttpEventType } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import {Output, EventEmitter } from '@angular/core';
-import { Category } from '../Models/Category';
 @Component({
   selector: 'app-create-shop',
   templateUrl: './create-shop.component.html',
   styleUrls: ['./create-shop.component.css']
 })
 export class CreateShopComponent implements OnInit {
-  public progress: number;
-  public message: string;
   @Output() public onUploadFinished = new EventEmitter();
-  constructor(private CategoryService:CategoryService,private userservic : UserService,private userRequestService : userRequest,private router: Router,
+  constructor(private userRequestService : userRequest,private router: Router,
   private shopservice: ShopService ,private cityservice:CityService,private http: HttpClient) { }
   public ShowLink:boolean =true;
   public ShowImage:boolean;
   public secondform:boolean;
   public firstform:boolean=true;
   public Currentuser;
-  public request = new RequestModel('','','','','','','','','');
-  user = new RequestModel(localStorage.getItem('userId'),'','','','','','','','');
+  request = new RequestModel(localStorage.getItem('userId'),'','','','','','','','');
   currentShop =new shop(localStorage.getItem('userId'),'',[])
   ngOnInit(): void {
-    this.getId();
     this.GetAllCities();  
   }    
   onItemSelect(item: any) {
@@ -62,6 +55,7 @@ export class CreateShopComponent implements OnInit {
   index2 : number;
   UserData(form :NgForm)
   {
+
     this.List= this.request.idCardImage.split('\\');
     this.index = this.request.idCardImage.split('\\').length
     this.request.idCardImage = "Resources/images/"+this.List[this.index-1];
@@ -73,7 +67,7 @@ export class CreateShopComponent implements OnInit {
     this.List2= this.request.productWithCardImage.split('\\');
     this.index2 = this.request.productWithCardImage.split('\\').length
     this.request.productWithCardImage = "Resources/images/"+this.List2[this.index-1];
-
+    console.log(this.request)
     this.userRequestService.inserRequest(this.request).subscribe( Resbonse=>{
       this.showSuccess=true;
       this.showError = false;
@@ -86,14 +80,7 @@ export class CreateShopComponent implements OnInit {
   })
    
   }
-  getId()
-  {
-    this.userservic.getIdByUserName(localStorage.getItem('username')).subscribe(result => {
-      this.Currentuser = result;
-      localStorage.setItem('userId',this.Currentuser.id)
-      this.request.userId = this.Currentuser.id;
-    })
-  }
+ 
   city =[]
   cities:city[]=[];
   CityList:city[]=[];
@@ -134,13 +121,6 @@ export class CreateShopComponent implements OnInit {
     formData.append('file', fileToUpload, fileToUpload.name);
 
     this.http.post('https://localhost:44339/api/Upload', formData, {reportProgress: true, observe: 'events'})
-      .subscribe(event => {
-        if (event.type === HttpEventType.UploadProgress)
-          this.progress = Math.round(100 * event.loaded / event.total);
-        else if (event.type === HttpEventType.Response) {
-          this.message = 'Upload success.';
-          this.onUploadFinished.emit(event.body);
-        }
-      });
+      .subscribe()
 }
 }

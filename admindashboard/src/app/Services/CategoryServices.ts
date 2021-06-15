@@ -16,7 +16,7 @@ export class CategoryServices {
   {
     return this.http.post(this.url_category,category);
   } 
-  getCategories(){
+  getCategories(){  
     return this.http.get(this.url_category)
   }
   deleteCategory(id): Observable<any> {

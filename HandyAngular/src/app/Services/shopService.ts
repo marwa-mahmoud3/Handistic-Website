@@ -35,6 +35,5 @@ export class ShopService {
   }​​​
   ShopByUserId(UserId): Observable<any> {​​​
     return this.http.get(`https://localhost:44339/api/Shops/UserId?userId=${UserId}`);
-    // return this.http.get(`${this.url}/UserId?userId=${UserId}​​​`);
   }
 }​​​

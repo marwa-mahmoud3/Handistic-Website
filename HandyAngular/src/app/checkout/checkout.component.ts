@@ -1,26 +1,25 @@
 import { Component, OnInit } from '@angular/core';
+import { CartItem } from '../Models/CartItem';
+import { Product } from '../Models/Product';
 import { UserService } from 'src/app/Services/user.service';
 import { CartService } from '../Services/CartService';
 import { ProductsService } from '../Services/ProductsService';
 
-import { CartItem } from '../Models/CartItem';
-import { Product } from '../Models/Product';
-
-
 @Component({
-  selector: 'app-cart',
-  templateUrl: './cart.component.html',
-  styleUrls: ['./cart.component.css']
+  selector: 'app-checkout',
+  templateUrl: './checkout.component.html',
+  styleUrls: ['./checkout.component.css']
 })
-export class CartComponent implements OnInit {
+export class CheckoutComponent implements OnInit {
 
   constructor(private UserService:UserService, private CartService:CartService,private ProductsService:ProductsService) { }
   
   user:any;
   cartItemList:CartItem[]=[];
   productCartList:Product[]=[];
+  firstform :boolean=true;
+  SecondForm:boolean;
   
-
  ngOnInit(): void {
    this.UserService.getIdByUserName(localStorage.getItem('username')).subscribe((
      data =>{
@@ -38,7 +37,12 @@ export class CartComponent implements OnInit {
      }
    )) 
  }
-
+ 
+ goToPayment()
+ {
+   this.firstform =false;
+   this.SecondForm =true;
+ }
  ClearCart(){ 
   this.CartService.crearCart(this.user.id).subscribe();
   window.location.reload();
@@ -89,5 +93,25 @@ onCreate()
 public uploadFinished = (event) => {
   this.response = event;
 }
-
+public credit :boolean =true;
+public paypal :boolean ;
+public banking :boolean ;
+Credit()
+{
+   this.credit =true;
+   this.paypal =false;
+   this.banking= false;
+}
+Paypal()
+{
+   this.credit =false;
+   this.paypal =true;
+   this.banking= false;
+}
+Banking()
+{
+   this.credit =false;
+   this.paypal =false;
+   this.banking= true;
+}
 }
