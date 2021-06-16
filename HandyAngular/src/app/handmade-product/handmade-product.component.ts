@@ -66,8 +66,7 @@ export class HandmadeProductComponent implements OnInit {
   loadCategories()
   {
     this.categoryService.getCategories().subscribe((data:any)=>{
-      this.categories = data;
-      this.categories.forEach(category => {
+      data.forEach(category => {
           this.CategoryList.push(category); 
           this.productservices.getCountOfProducts(category.id).subscribe(
             (count =>{

@@ -20,13 +20,17 @@ li .active{
 }
 
 input[type="radio"] {
-    margin-right: 5px
+    margin-right: 5px;
 }
-
+input{
+  margin-bottom: 1px;
+}
 .bold {
     font-weight: bold
 }
-
+.label span{
+  color: red;
+}
 .form {
     width: 100%;
     position: relative;
@@ -55,10 +59,7 @@ input[type="radio"] {
     transition: all 0.5s;
     position: relative;
     overflow: hidden; }
-  a{
-    color: #ffa6a8;
-
-  }
+ 
   
   @media (max-width: 767px) {
     .form {

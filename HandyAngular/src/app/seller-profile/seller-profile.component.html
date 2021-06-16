@@ -113,6 +113,7 @@
                         <h3>{{allproduct.unitPrice}}$</h3>
                         <p>{{allproduct.details}}</p>
                         <button class="btn float-left" ><a href="/EditProduct/{{allproduct.id}}" style="color: #fff;">UPDATE</a></button>
+                        <button class="btn float-left " style="color: #fff;" (click)="deleteProduct(allproduct.id)">Delete</button>
                         <div class="float-right">
                             <table>
                                 <tr>

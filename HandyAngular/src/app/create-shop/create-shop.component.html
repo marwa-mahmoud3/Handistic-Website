@@ -73,13 +73,13 @@
                             <div class="form-check">
                                 <input class="form-check-input" type="radio" name="flexRadioDefault" id="image" checked (change)="ShowLinkData()">
                                 <label class="form-check-label" for="flexRadioDefault1" >
-                                    Upload image of my product
+                                    Type my profile link contaion your product
                                 </label>
                               </div>  
                             <div class="form-check" style="margin: 0px;">
                                 <input class="form-check-input" type="radio" name="flexRadioDefault" id="link" (change)="ShowImageData()">
                                 <label class="form-check-label" >
-                                    Type my profile link contaion my product
+                                    Upload image of your product
                                 </label>
                             </div>
                         </div> 
@@ -95,12 +95,12 @@
                         <ng-template #elseBlock></ng-template>
                         
                         <div *ngIf="ShowImage; else BlockImage"  class="col-lg-6"  id="image-div">
-                            <label class="label" style="margin-top: 30px;">Your Profile Link<span class="star">*</span></label>
+                            <label class="label" style="margin-top: 30px;">Image of product Link is required<span class="star">*</span></label>
                             <div class="input-group mb-3 px-2 py-2 rounded-pill bg-white shadow-sm">
                                 <input id="upload" type="file" class="form-control border-0" #file type="file" multiple (change)="uploadFile(file.files)"
                                 [class.is-invalid]="productWithCardImage.invalid && productWithCardImage.touched " [class.is-invalid]="productWithCardImage.invalid && productWithCardImage.touched" required #productWithCardImage="ngModel" name="productWithCardImage" [(ngModel)]="request.productWithCardImage">
                             </div>
-                            <small class="text-danger"[class.d-none]="productWithCardImage.untouched || productWithCardImage.valid">Image of product Link is required</small>
+                            <small class="text-danger"[class.d-none]="productWithCardImage.untouched || productWithCardImage.valid">Your Profile Link</small>
                         </div>
                     </div>
                     <ng-template #BlockImage></ng-template>

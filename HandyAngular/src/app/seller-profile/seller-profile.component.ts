@@ -88,7 +88,10 @@ SaveProduct(form : NgForm)
       });
     });
   }
-
+  deleteProduct(id){
+    this.productService.deleteById(id).subscribe();
+    window.location.reload();
+  }
   public uploadFile = (files) => {
     if (files.length === 0) {
       return;

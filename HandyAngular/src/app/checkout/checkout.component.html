@@ -10,62 +10,75 @@
     </div>
 </div>
 
-<div class="container ">
-        <div class="entry-content">
-            <div class="woocommerce-info">
-                <i class="far fa-window-maximize"></i> &nbsp;&nbsp;&nbsp;Have a coupon?
-                <a class="showcoupon">Click here to enter your code</a>
-            </div>
-            <form class="checkout_coupon" method="post" action="#">
-                <p class="form-row-first float-left">
-                    <input type="text" name="coupon_code" class="input-text" placeholder="Coupon code" id="coupon_code" value="">
-                </p>
-                <p class="form-row-last float-right">
-                    <button class="btn-sm">Apply Coupon</button>
-                </p>
-                <div style="clear: both;"></div>
-            </form>
-        </div>
-</div>
 
-<div class="container" >
-    <div class="row content-checkout">
-        <div class="col-md-6 billing-detail" *ngIf="firstform;" >
-            <form #checkoutData="ngForm">
-                <h2>Billing details</h2>
-                <div class="row">
+<div class="container " style="margin-top: 70px;">
+    <div class="row  content-checkout">
+        <div class="col-md-6 card-body"  >
+            <form  #BillingData="ngForm" (ngSubmit)="AddBilling(BillingData)" style="margin-right: 10px;">
+                <h2 style="margin-bottom: 30px;">Billing details</h2>
+                <input type="text" value="{{Billing.userId}}" hidden  [(ngModel)]="Billing.userId" type="text" class="form-control"  name="userId" #userId="ngModel" >
+                <input type="text" value="{{Billing.email}}" hidden  [(ngModel)]="Billing.email" type="text" class="form-control"  name="email" #email="ngModel">
+                <div class="row mb-3">
                     <div class="col-md-6 col-sm-12 col-12">
-                        <p>First name<span> *</span></p>
-                        <input type="text">
+                        <label class="label">First name<span> *</span></label>
+                        <div class="input-group">
+                            <input placeholder=" Enter First Name" type="text" class="form-control" name="firstName"  [class.is-invalid]="firstName.invalid && firstName.touched " [class.is-invalid]="firstName.invalid && firstName.touched " required #firstName="ngModel" [(ngModel)]="BillingData.firstName" >
+                        </div>
+                        <small class="text-danger" [class.d-none]="firstName.untouched || firstName.valid">First Name is required</small>
                     </div>
                     <div class="col-md-6 col-sm-12 col-12">
-                        <p>Last name<span> *</span></p>
-                        <input type="text">
+                        <label class="label">Last name<span> *</span></label>
+                        <div class="input-group">
+                            <input placeholder=" Enter Last Name" type="text" class="form-control" name="lastName"   [class.is-invalid]="lastName.invalid && lastName.touched " [class.is-invalid]="lastName.invalid && lastName.touched " required #lastName="ngModel" [(ngModel)]="BillingData.lastName" >
+                        </div>
+                        <small class="text-danger"[class.d-none]="lastName.untouched || lastName.valid">Last Name is required</small>
                     </div>
                 </div>
-                <p>Address<span> *</span></p>
-                <input type="text" placeholder="Steet Address">
-                <input type="text" placeholder="Apartment, suite, unit etc. (optional)">
-                <p>City<span> *</span></p>
-                <input type="text">
-                <p>Postcode/Zip<span> *</span></p>
-                <input type="text">
                 <div class="row">
-                    <div class="col-md-6"><p>Phone<span> *</span></p>
-                        <input type="text">
-                    </div>
-                    <div class="col-md-6"><p>Email Address<span> *</span></p>
-                        <input type="text">
+                    <div class="col-md-12 mb-3">
+                        <label class="label">Sreet<span> *</span></label>
+                        <div class="input-group">
+                            <input placeholder=" Enter Your Street" type="text" class="form-control"  name="street"   [class.is-invalid]="street.invalid && street.touched " [class.is-invalid]="street.invalid && street.touched " required #street="ngModel" [(ngModel)]="BillingData.street" >
+                        </div>
+                        <small class="text-danger"[class.d-none]="street.untouched || street.valid">Street is required</small>                
                     </div>
                 </div>
-                <div style="width: 100%;text-align: center;margin-top: 40px;">
-                    <button (click)="goToPayment()" class="btn" style="background-color: #000;color: #fff;"> ORDER</button>
+                <div class="row">
+                    <div class="col-md-6  mb-3">
+                        <label class="label">City<span> *</span></label>
+                        <div class="input-group">
+                            <input placeholder=" Enter Your City" type="text" class="form-control" value="{{Billing.city}}"  name="city"    [class.is-invalid]="city.invalid && city.touched " [class.is-invalid]="city.invalid && city.touched " required #city="ngModel" [(ngModel)]="Billing.city" >
+                        </div>
+                        <small class="text-danger" [class.d-none]="city.untouched || city.valid">City is required</small>
+                    </div>
+                    <div class="col-md-6  mb-3">
+                        <label class="label">Postcode/Zip<span> *</span></label>
+                        <div class="input-group">
+                            <input placeholder=" Enter Postcode" type="number" class="form-control" name="postcode"  [class.is-invalid]="postcode.invalid && postcode.touched " [class.is-invalid]="postcode.invalid && postcode.touched " required #postcode="ngModel" [(ngModel)]="BillingData.postcode" >
+                        </div>
+                        <small class="text-danger" [class.d-none]="postcode.untouched || postcode.valid">PostCode is required</small>
+                    </div>
+                </div>
+                
+                <div class="row mb-4">
+                    <div class="col-md-12 ">
+                        <label class="label">Phone<span> *</span></label>
+                        <div class="input-group">
+                            <input placeholder=" Enter your Phone" type="text" class="form-control" name="phone"  [class.is-invalid]="phone.invalid && phone.touched " [class.is-invalid]="phone.invalid && phone.touched " required #phone="ngModel" [(ngModel)]="BillingData.phone">
+                        </div>
+                        <small class="text-danger" [class.d-none]="phone.untouched || phone.valid">Phone is required</small>
+                    </div>
+                </div>
+                <div class="row justify-content-center" >
+                    <div class="col-12">
+                        <button [disabled]="!BillingData.valid" type="submit" style="background-color: black;" >Order</button>
+                    </div>
                 </div>
             </form>         
         </div>
 <!------------------------------------------>
 
-        <div class="col-md-6" *ngIf="SecondForm;" >
+        <!-- <div class="col-md-6" *ngIf="SecondForm;" >
             <div class="card "style="border: none;" >
                 <div class="card-header bg-white" style="border: none;">
                     <div class="bg-white shadow-sm pt-4 pl-2 pr-2 pb-2">
@@ -131,7 +144,7 @@
                     </form>
                 </div>
             </div> 
-                <!-- Paypal info -->
+
             <form  id="paypal" class="tab-pane fade pt-3 form" *ngIf="paypal;">
                 <h6 class="pb-2">Select your paypal account type</h6>
                 <div class="form-group "> 
@@ -171,7 +184,7 @@
                 </form> 
             </div>
         </div>
-    </div>
+    </div> -->
 
        
         <div class="col-md-6 item-checkout">

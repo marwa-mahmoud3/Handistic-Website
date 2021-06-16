@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { UserService } from 'src/app/Services/user.service';
 import { CartService } from '../Services/CartService';
@@ -14,7 +15,7 @@ import { Product } from '../Models/Product';
 })
 export class CartComponent implements OnInit {
 
-  constructor(private UserService:UserService, private CartService:CartService,private ProductsService:ProductsService) { }
+  constructor(private UserService:UserService,private router:Router, private CartService:CartService,private ProductsService:ProductsService) { }
   
   user:any;
   cartItemList:CartItem[]=[];
@@ -66,7 +67,10 @@ getProductName(idx){
 getProductPathImg(idx){
   return this.productCartList[idx].productImagePath;
 }
-
+GoToCheckOut(){
+  if(this.cartItemList.length>0)
+    this.router.navigate(["/Checkout"])
+}
 getTotalPrice(){
  let total=0;
  this.cartItemList.forEach(e=>{

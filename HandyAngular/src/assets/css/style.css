@@ -1236,7 +1236,7 @@ Assigned to: Physcode
 	font-size:     20px;
 }
 
-.content-checkout .billing-detail input {
+/* .content-checkout .billing-detail input {
 	width:         100%;
 	font-size:     13px;
 	margin-bottom: 20px;
@@ -1244,7 +1244,7 @@ Assigned to: Physcode
 	text-indent:   10px;
 	height:        40px;
 	border:        1px solid #cccccc;
-}
+} */
 
 .content-checkout .billing-detail input:focus {
 	outline: none;

@@ -101,12 +101,7 @@ public createImgPath = (serverPath: string) => {
 }
 public response: {dbPath: ''};
 allproduct =null
-onCreate()
-{
-  this.allproduct = {
-    productImagePath :this.response.dbPath,
-  }
-}
+
 public uploadFinished = (event) => {
   this.response = event;
 }

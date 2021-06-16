@@ -111,14 +111,11 @@ style="background-image: url('../../../assets/images/banner.jpg');background-pos
                     <div class="category-blog">
                         <h2>Categories</h2>
                       <div>
-                        <div style="display: inline-block;">
+                        <div >
                             <a (click)="loadProducts()">All Products</a>
-                            <a (click)="getProductsByCategory(category.id)" *ngFor="let category of CategoryList">
-                            {{category.name}} 
+                            <a (click)="getProductsByCategory(category.id)" *ngFor="let category of CategoryList;let i=index">
+                            {{category.name}} ({{CountProducts[i]}})
                            </a>
-                        </div>
-                        <div style="display: inline-block;">
-                            <a *ngFor="let count of CountProducts">({{count}})</a>
                         </div>
                     </div>
                     <div class="popular-item">

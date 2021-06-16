@@ -55,8 +55,8 @@ export class OffersComponent implements OnInit {
     this.categoryService.getCategories().subscribe((data:any)=>{
       data.forEach(category => {
           this.CategoryList.push(category); 
-          this.productservices.getOfferdProductsByCategory(category.id).subscribe((count=>{
-            this.CountProducts.push(count);
+          this.productservices.getOfferdProductsByCategory(category.id).subscribe((data=>{
+            this.CountProducts.push(data);
           }))     
        });
     });

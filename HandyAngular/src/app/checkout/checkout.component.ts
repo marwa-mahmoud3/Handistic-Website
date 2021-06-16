@@ -1,3 +1,7 @@
+import { NgForm } from '@angular/forms';
+import { OrderService } from './../Services/OrderService';
+import { BillingDetailsService } from './../Services/BillingDetailsService';
+import { BillingDetails } from './../Models/BillingDetails';
 import { Component, OnInit } from '@angular/core';
 import { CartItem } from '../Models/CartItem';
 import { Product } from '../Models/Product';
@@ -12,18 +16,21 @@ import { ProductsService } from '../Services/ProductsService';
 })
 export class CheckoutComponent implements OnInit {
 
-  constructor(private UserService:UserService, private CartService:CartService,private ProductsService:ProductsService) { }
+  constructor(private UserService:UserService, private CartService:CartService,
+             private ProductsService:ProductsService,private BillingDetailsservice: BillingDetailsService,
+             private Orderservice : OrderService) { }
   
   user:any;
   cartItemList:CartItem[]=[];
   productCartList:Product[]=[];
   firstform :boolean=true;
   SecondForm:boolean;
-  
+  public Billing 
  ngOnInit(): void {
    this.UserService.getIdByUserName(localStorage.getItem('username')).subscribe((
      data =>{
        this.user=data
+       this.Billing= new BillingDetails('','','',this.user.city,null,'',this.user.email,this.user.id)
        this.CartService.getUserCartItems(this.user.id).subscribe((
         data=>{
           this.cartItemList=data;
@@ -38,11 +45,6 @@ export class CheckoutComponent implements OnInit {
    )) 
  }
  
- goToPayment()
- {
-   this.firstform =false;
-   this.SecondForm =true;
- }
  ClearCart(){ 
   this.CartService.crearCart(this.user.id).subscribe();
   window.location.reload();
@@ -93,25 +95,17 @@ onCreate()
 public uploadFinished = (event) => {
   this.response = event;
 }
-public credit :boolean =true;
-public paypal :boolean ;
-public banking :boolean ;
-Credit()
+AddBilling(form :NgForm)
 {
-   this.credit =true;
-   this.paypal =false;
-   this.banking= false;
-}
-Paypal()
-{
-   this.credit =false;
-   this.paypal =true;
-   this.banking= false;
-}
-Banking()
-{
-   this.credit =false;
-   this.paypal =false;
-   this.banking= true;
-}
+  this.Orderservice.CreateOrder(localStorage.getItem('userId'),this.getTotalPrice()).subscribe((data=>{
+    this.cartItemList.forEach(item => {
+      this.Orderservice.AddOrderItem(item.productId,item.cartId).subscribe()
+    })
+    this.BillingDetailsservice.inserBillingDetails(form.value)
+    .subscribe((data=>{
+      this.ClearCart();
+      form.reset();
+    }))   
+  })
+  )}
 }

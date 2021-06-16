@@ -25,7 +25,6 @@ return this.http.post(this.baseURL, data);
 getOfferdProductsByCategory(id:number):Observable<any>{
   return this.http.get(`${this.baseURL}/GetOfferedProductsByCategory/${id}`);
 }
-
 update(id, data): Observable<any> {
 return this.http.put(`${this.baseURL}/${id}`, data);
 }
