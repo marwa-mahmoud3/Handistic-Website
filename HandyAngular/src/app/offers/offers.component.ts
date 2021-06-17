@@ -85,13 +85,6 @@ export class OffersComponent implements OnInit {
     return `https://localhost:44339/${serverPath}`;
   }
   public response: {dbPath: ''};
-  allproduct =null
-  onCreate()
-  {
-    this.allproduct = {
-      productImagePath :this.response.dbPath,
-    }
-  }
   public uploadFinished = (event) => {
     this.response = event;
   }

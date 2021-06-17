@@ -71,10 +71,34 @@
                 </div>
                 <div class="row justify-content-center" >
                     <div class="col-12">
-                        <button [disabled]="!BillingData.valid" type="submit" style="background-color: black;" >Order</button>
+                        <button [disabled]="!BillingData.valid" type="submit" style="background-color: black;" data-toggle="modal"
+                        data-target="#exampleModalCenter" >Order</button>
                     </div>
                 </div>
             </form>         
+        </div>
+        <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content container">
+                    <div class="product-single-quick-view">
+                        <div class="row mt-4">
+                            <div class="col-12 " >
+                                <div style="float: right;" (click)="goToStore()" data-dismiss="modal" class="Remove">X</div>
+                            </div>
+                        </div>
+                        <div class="row product_detail"  style="width: 100%;padding-top: 0px;">
+                            <div class="col-md-12 col-sm-12 col-12">
+                                <span style="font-size: 22px;">Your order has been placed, wait for sellers to communicate with you</span>
+                            </div>
+                        </div>
+                        <div class="row justify-content-center mb-4">
+                            <div class="col-12">
+                                <button (click)="goToStore()" data-dismiss="modal" >Ok</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
 <!------------------------------------------>
 

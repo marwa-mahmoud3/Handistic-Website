@@ -1,3 +1,4 @@
+import { AddReviewComponent } from './add-review/add-review.component';
 import { ProductDetailsComponent } from './product-details/product-details.component';
 import { UpdateProductComponent } from './update-product/update-product.component';
 import { OffersComponent } from './offers/offers.component';
@@ -47,6 +48,7 @@ const routes: Routes = [
   {path :"Offers" ,component:OffersComponent},
   {path :"EditProduct/:id" ,component:UpdateProductComponent},
   {path :"ProductDetails/:id" ,component:ProductDetailsComponent},
+  {path :"AddReview" ,component:AddReviewComponent},
 
 ];
 

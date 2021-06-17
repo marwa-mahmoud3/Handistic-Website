@@ -1,0 +1,10 @@
+.infor-product i{
+    color:black;
+    margin-right: 7px;
+}
+.infor-product p span{
+    font-weight: bold;
+}
+.required{
+    color: red;
+}

@@ -24,4 +24,9 @@ export class OrderService {
     let url=`${this.url_OrderItem}/${productId}/${CartId}`;
     return this.http.post(url,productId,CartId);
   }
+  GetOrderItems(orderId,Sellername)
+  {
+    let url=`https://localhost:44339/api/Orders/GetOrderItems/${orderId}/${Sellername}`;
+    return this.http.get(url);
+  }
 }

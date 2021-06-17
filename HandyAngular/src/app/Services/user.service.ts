@@ -42,5 +42,9 @@ export class UserService {
   getIdByUserName(userName) { 
     return this.http.get(`${this.url_userName}/${userName}`);
   }
+  getUserNameByUserId(userId): Observable<any> { 
+    let url=`https://localhost:44339/api/Users/GetNameByUserId/${userId}`;
+    return this.http.get(url);
+  }
 }
   

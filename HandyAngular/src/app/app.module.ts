@@ -36,6 +36,7 @@ import { ContactComponent } from './home/contact/contact.component';
 import { OffersComponent } from './offers/offers.component';
 import { UpdateProductComponent } from './update-product/update-product.component';
 import { ProductDetailsComponent } from './product-details/product-details.component';
+import { AddReviewComponent } from './add-review/add-review.component';
 
 @NgModule({
   declarations: [
@@ -71,6 +72,7 @@ import { ProductDetailsComponent } from './product-details/product-details.compo
     OffersComponent,
     UpdateProductComponent,
     ProductDetailsComponent,
+    AddReviewComponent,
   ],
   imports: [
     BrowserModule,

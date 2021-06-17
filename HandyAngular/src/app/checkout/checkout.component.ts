@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { NgForm } from '@angular/forms';
 import { OrderService } from './../Services/OrderService';
 import { BillingDetailsService } from './../Services/BillingDetailsService';
@@ -18,7 +19,7 @@ export class CheckoutComponent implements OnInit {
 
   constructor(private UserService:UserService, private CartService:CartService,
              private ProductsService:ProductsService,private BillingDetailsservice: BillingDetailsService,
-             private Orderservice : OrderService) { }
+             private Orderservice : OrderService,private router :Router) { }
   
   user:any;
   cartItemList:CartItem[]=[];
@@ -50,22 +51,6 @@ export class CheckoutComponent implements OnInit {
   window.location.reload();
 }
 
-increaseItemQuantity(productId:number){
-  this.CartService.increaseCartItemQuantity(this.user.id,productId,null).subscribe();
-  window.location.reload();
-}
-
-decreaseItemQuantity(productId:number,quantity:number){
-  if(quantity>1){
-  this.CartService.decreaseCartItemQuantity(this.user.id,productId,null).subscribe();}
-
-  else {this.CartService.deleteItemFromCart(this.user.id,productId).subscribe();}
-  window.location.reload();
-}
-RemoveItemFromCart(productId:number){
-  this.CartService.deleteItemFromCart(this.user.id,productId).subscribe();
-  window.location.reload();
-}
 getProductName(idx){
   return this.productCartList[idx].productName;
 }
@@ -85,13 +70,6 @@ public createImgPath = (serverPath: string) => {
   return `https://localhost:44339/${serverPath}`;
 }
 public response: {dbPath: ''};
-allproduct =null
-onCreate()
-{
-  this.allproduct = {
-    productImagePath :this.response.dbPath,
-  }
-}
 public uploadFinished = (event) => {
   this.response = event;
 }
@@ -103,9 +81,14 @@ AddBilling(form :NgForm)
     })
     this.BillingDetailsservice.inserBillingDetails(form.value)
     .subscribe((data=>{
-      this.ClearCart();
-      form.reset();
+      this.CartService.crearCart(localStorage.getItem('userId')).subscribe();
     }))   
   })
-  )}
+  )
+}
+
+goToStore()
+{
+  this.router.navigate(["/profile"])
+}
 }
