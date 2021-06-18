@@ -1,9 +1,9 @@
+import { ClientNotifyService } from './../Services/ClientNotifyService';
+import { ActivatedRoute } from '@angular/router';
+import { BillingDetailsService } from './../Services/BillingDetailsService';
 import { UserService } from './../Services/user.service';
 import { AddReviewService } from './../Services/AddReviewService';
-import { NgForm } from '@angular/forms';
-import { Category } from './../Models/Category';
 import { CategoryService } from './../Services/CategoryService';
-import { ProductsService } from './../Services/ProductsService';
 import { Product } from './../Models/Product';
 import { Component, OnInit } from '@angular/core';
 import { OrderService } from '../Services/OrderService';
@@ -16,8 +16,9 @@ import { AddReview } from '../Models/AddReview';
 })
 export class AddReviewComponent implements OnInit {
 
-  constructor(private orderService:OrderService,private categoryservice:CategoryService,
-    private AddReviewService :AddReviewService) { }
+  constructor(private UserService:UserService,private orderService:OrderService,private categoryservice:CategoryService,protected route :ActivatedRoute
+    ,private AddReviewService :AddReviewService,private BillingDetailsService:BillingDetailsService,
+    private ClientNotifyService:ClientNotifyService) { }
   ProductList : Product[]=[]
   CategoryList:string[]=[]
   product :Product
@@ -28,28 +29,42 @@ export class AddReviewComponent implements OnInit {
   AverageRating:number[]=[]
   list :number[]=[]
   list1:number[]=[]
+  CurrentBilling
+  CurrentSeller
   ngOnInit(): void {
-    this.orderService.GetOrderItems(3,"Marwa").subscribe(
-      (data:any)=>{
-         data.forEach(element => {
-           this.ProductList.push(element);
-           this.ProductsId.push(element.id);
-           this.categoryservice.getCategoryByID(element.categoryId).subscribe((cat=>{cat
-             this.CategoryList.push(cat.name);
-           }))
-           this.AddReviewService.CountReviews(element.id).subscribe(
-             (count =>{
-               this.CountReviews.push(Number(count))
-             })
-           )
-           this.AddReviewService.averagerRating(element.id).subscribe((
-            (avg=>{
-              this.AverageRating.push(Math.floor(Number(avg)))
-            })
-           ))
-         });
-      })
+    this.BillingDetailsService.getBillingById(this.route.snapshot.paramMap.get('billingid')).subscribe((data=>{
+      this.CurrentBilling= data
+      this.ClientNotifyService.getById(this.CurrentBilling.id).subscribe(
+        (seller=>{
+          this.CurrentSeller =seller
+          this.UserService.getUserNameByUserId(this.CurrentSeller.sellerId).subscribe((seller=>{
+            this.CurrentSeller =seller
+            this.orderService.GetOrderItems(this.CurrentBilling.orderId,this.CurrentSeller.userName).subscribe(
+              (data:any)=>{
+                 data.forEach(element => {
+                   this.ProductList.push(element);
+                   this.ProductsId.push(element.id);
+                   this.categoryservice.getCategoryByID(element.categoryId).subscribe((cat=>{cat
+                     this.CategoryList.push(cat.name);
+                   }))
+                   this.AddReviewService.CountReviews(element.id).subscribe(
+                     (count =>{
+                       this.CountReviews.push(Number(count))
+                     })
+                   )
+                   this.AddReviewService.averagerRating(element.id).subscribe((
+                    (avg=>{
+                      this.AverageRating.push(Math.floor(Number(avg)))
+                    })
+                   ))
+                 });
+              })
+        })
+      )
       
+      }))
+   
+    }))
   }
 
   public ReviewObject 

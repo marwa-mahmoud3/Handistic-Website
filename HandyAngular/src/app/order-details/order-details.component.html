@@ -1,0 +1,36 @@
+<app-header-after-login></app-header-after-login>
+<div class="container " style="margin-bottom: 50px;">
+    <div class="row content-blog">
+        <div class="col-4">
+            <h2>Billing Details</h2>
+            <br>
+           <ul>
+             <li>First Name: {{BillingItem.firstName}}</li>
+             <li>Last Name: {{BillingItem.lastName}}</li>
+             <li>Street: {{BillingItem.street}}</li>
+             <li>City: {{BillingItem.city}}</li>
+             <li>PostCode: {{BillingItem.postCode}}</li>
+             <li>Phone: {{BillingItem.phone}}</li>
+             <li>Email: {{BillingItem.email}}</li>
+             <li>User Profile: <a href="/profile" style="text-decoration: underline;color:#ffa6a8">{{users[0]}}</a></li>
+           </ul>
+            <span >
+                <!-- <button style="padding-left: 10px;">Start</button> -->
+                <button (click)="Delivered()">Delivered</button>
+            </span>
+        </div>
+        <div class="col-8">
+            <div class="content-blog-right">
+              <div class="blog" *ngFor="let product of ProductsList" style="padding-bottom: 20px;">
+                <div class="item-blog">
+                    <img [src]="createImgPath(product.productImagePath)" style="width: 100% ;height: 400px;">                    
+                    <h2 style="margin-top: 10px;">{{product.productName}} &nbsp;&nbsp;&nbsp; ${{product.unitPrice}} </h2>
+                    <p>
+                        {{product.details}}
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

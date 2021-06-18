@@ -37,6 +37,11 @@ import { OffersComponent } from './offers/offers.component';
 import { UpdateProductComponent } from './update-product/update-product.component';
 import { ProductDetailsComponent } from './product-details/product-details.component';
 import { AddReviewComponent } from './add-review/add-review.component';
+import { SellerNavbarComponent } from './seller-navbar/seller-navbar.component';
+import { NotificationComponent } from './notification/notification.component';
+import { OrderDetailsComponent } from './order-details/order-details.component';
+import { UserNavbarComponent } from './user-navbar/user-navbar.component';
+import { ClientNotifyComponent } from './client-notify/client-notify.component';
 
 @NgModule({
   declarations: [
@@ -73,6 +78,11 @@ import { AddReviewComponent } from './add-review/add-review.component';
     UpdateProductComponent,
     ProductDetailsComponent,
     AddReviewComponent,
+    SellerNavbarComponent,
+    NotificationComponent,
+    OrderDetailsComponent,
+    UserNavbarComponent,
+    ClientNotifyComponent,
   ],
   imports: [
     BrowserModule,

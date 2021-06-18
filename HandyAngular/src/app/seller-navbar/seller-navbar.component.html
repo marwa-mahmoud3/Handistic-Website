@@ -33,10 +33,6 @@
 <!--header mobile-->
 <div class="header">
     <div class="container-fluid search-header">
-        <form>
-            <input type="text" placeholder="Search">
-            <span class="close-search">X</span>
-        </form>
     </div>
     <div class="container-fluid">
         <div class="header-mobile">
@@ -99,13 +95,63 @@
                     </div>
                 </div>  
                 <div>
-                    <div class="header-right">
-                        <ul class="list-inline">
+                    <div class="header-right" >
+                        <ul class="list-inline"  >
+                            <li><a  class="cart-index" style="width: 100%;">
+                                     <i class="far fa-bell" style="font-size: 22px;"></i>
+                                </a>
+                                <div id="count">{{Counter}}</div>
+                                <div class="widget_shopping_cart" style="width:300px" >
+                                    <div class="widget_shopping_cart_content" style="padding-top: 5px;margin-top:5px">
+                                      <ul *ngFor="let item of NotificationList| slice:0:3;let i =index" class="woocommerce-mini-cart cart_list product_list_widget " style="padding: 0px;margin:0px"   >                                        
+                                            <li *ngIf="getReadboolean(i)"  class="woocommerce-mini-cart-item mini_cart_item clearfix" style="width: 100%;height: 100px;margin-bottom: 5px;">
+                                                    <a class="product-image" href="#">
+                                                        <img src="../../assets/images/user.png" style="border-radius: 50%;width: 60px;height: 70px;margin-left: 15px;"alt="cart-2">
+                                                    </a>
+                                                    <a class="product-title" href="#">{{users[i]}}</a>
+                                                    <span  class="woocommerce-Price-amount amount" style="font-weight: normal; font-size: small;left: 32%;margin-top: 7px;">
+                                                        {{item.notificationBody}} ....
+                                                    </span>
+                                                    <a href="/orderDetails"  (click)="MakeRead(item.id)" class="woocommerce-Price-amount amount " style="margin-top: 30px;margin-left: 90px;
+                                                    font-size: 13px;
+                                                    text-decoration: underline;color: #074d6d;">
+                                                        Details
+                                                </a>
+                                                    <a href="#" class="remove">
+                                                        <span class="lnr lnr-cross"></span>
+                                                    </a>
+                                                </li>
+                                                <li *ngIf="!getReadboolean(i)"  style="background-color: #e1f2fa;width: 100%;height: 100px;margin-bottom: 7px;">
+                                                    <a class="product-image" href="#">
+                                                        <img src="../../assets/images/user.png" style="border-radius: 50%;margin-left: 15px;width: 60px;height: 70px"alt="cart-2">
+                                                    </a>
+                                                    <a class="product-title" href="#">{{users[i]}}</a>
+                                                    <span  class="woocommerce-Price-amount amount" style="font-weight: normal; font-size: small;left: 32%;margin-top: 5px;">
+                                                        {{item.notificationBody}} ....
+                                                    </span>
+                                                    <a href="/orderDetails" (click)="MakeRead(item.id)" class="woocommerce-Price-amount amount " style="margin-top: 30px;margin-left: 90px;
+                                                    font-size: 13px;
+                                                    color: #074d6d;
+                                                    text-decoration: underline;">
+                                                        Details
+                                                </a>
+                                                    <a href="#" class="remove">
+                                                        <span class="lnr lnr-cross"></span>
+                                                    </a>
+                                                </li>                                            
+                                        </ul>
+                                        <p class="woocommerce-mini-cart__buttons buttons" style="margin-top: 30px;">
+                                            <a routerLink="/notification" class="button wc-forward au-btn btn-small">
+                                                SHOW MORE</a>
+                                        </p>
+                                        </div>
+                                 </div>
+                             </li>
                             <li><a routerLink="/Cart" class="cart-index">
                                 <img src="../../assets/imager/home/bag-2.png" alt=""
                                      style="width: 16px;height: 22px;margin-top: -10px;">
                                 <div class="number-cart">
-                                    2
+                                    {{cartItemList.length}}
                                 </div>
                             </a>
                                 <div class="widget_shopping_cart">
@@ -144,9 +190,7 @@
                                     </div>
                                 </div>
                             </li>
-                            <li>
-                                <a href="javascript:void(0)" class="search-header1"><img src="../../assets/imager/home/search-header.png" alt="" style="width: 20px;height: 20px;margin-top: -10px;"></a>
-                            </li>  
+                 
                             <li >
                                 <a  routerLink="/Wishlist" ><i class="far fa-heart"style="font-size: 22px;Color: #555"></i></a>
                             </li>                   
@@ -182,7 +226,7 @@
                                 <img src="../../assets/imager/home/bag-2.png" alt=""
                                      style="width: 16px;height: 22px;margin-top: -10px;">
                                 <div class="number-cart">
-                                    {{cartItemList.length}}
+                                    2
                                 </div>
                             </a>
                                 <div class="widget_shopping_cart">

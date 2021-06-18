@@ -29,4 +29,16 @@ export class OrderService {
     let url=`https://localhost:44339/api/Orders/GetOrderItems/${orderId}/${Sellername}`;
     return this.http.get(url);
   }
+
+  GetAllOrderItems(orderId)
+  {
+    let url=`https://localhost:44339/api/Orders/GetAllOrderItems/${orderId}`;
+    return this.http.get(url); 
+  }
+  GetAllOrders(orderId)
+  {
+    let url=`https://localhost:44339/api/Orders/GetAllOrders/${orderId}`;
+    return this.http.get(url);
+    
+  }
 }

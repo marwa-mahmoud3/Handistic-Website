@@ -1,3 +1,6 @@
+import { ClientNotifyComponent } from './client-notify/client-notify.component';
+import { OrderDetailsComponent } from './order-details/order-details.component';
+import { NotificationComponent } from './notification/notification.component';
 import { AddReviewComponent } from './add-review/add-review.component';
 import { ProductDetailsComponent } from './product-details/product-details.component';
 import { UpdateProductComponent } from './update-product/update-product.component';
@@ -48,8 +51,10 @@ const routes: Routes = [
   {path :"Offers" ,component:OffersComponent},
   {path :"EditProduct/:id" ,component:UpdateProductComponent},
   {path :"ProductDetails/:id" ,component:ProductDetailsComponent},
-  {path :"AddReview" ,component:AddReviewComponent},
-
+  {path :"AddReview/:billingid" ,component:AddReviewComponent},
+  {path :"notification" ,component:NotificationComponent},
+  {path:"orderDetails",component:OrderDetailsComponent},
+  {path:"notify",component:ClientNotifyComponent},
 ];
 
 @NgModule({

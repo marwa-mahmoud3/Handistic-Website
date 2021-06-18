@@ -16,4 +16,9 @@ export class BillingDetailsService {
   {
     return this.http.post(this.url_billing,billing);
   }
+  getBillingById(id)
+  {
+    let url=`https://localhost:44339/api/BillingDetails/${id}`;
+    return this.http.get(url)
+  }
 }
