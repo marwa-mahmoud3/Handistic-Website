@@ -22,7 +22,6 @@ export class ResetPasswordComponent implements OnInit {
   public showError: boolean;
   public errorMessage: string;
   OnSubmit(form : NgForm){
-    console.log(form.value);
     this.userservice.resetpassword(form.value).subscribe((data:any)=>{
       if(!data.error)
         this.router.navigate(["/Login"]);

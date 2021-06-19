@@ -29,8 +29,6 @@ export class NotificationComponent implements OnInit {
   Counter :number
   IsRead : boolean[]=[]
   ngOnInit(): void {
-    this.getUser(this.route.snapshot.paramMap.get('email'));
-    this.getId();
     this.GetNotifactions();
     this.notify.notReadedCount(localStorage.getItem('userId')).subscribe(
       count=>{
@@ -78,29 +76,14 @@ export class NotificationComponent implements OnInit {
     this.notify.getById(id).subscribe((data=>{
       this.newNotify = data
       this.newNotify.isRead =true 
-      console.log(this.newNotify)
       this.notify.changetoRead(id,this.newNotify).subscribe()
     }))
   }
-  Currentuser
-  getId()
-  {
-    this.userservice.getIdByUserName(localStorage.getItem('username')).subscribe(result => {
-      this.Currentuser = result;
-      localStorage.setItem('userId',this.Currentuser.id)
-    })
-  }
+  
   getReadboolean(idx){
     return this.IsRead[idx];
   }
   user =null;
-  getUser(email) {
-    this.userservice.getUserByEmail(email)
-      .subscribe(
-        (data => {
-          localStorage.setItem('username',data.userName)
-        }))
-  }
   answer ;
   goToProfile()
   {

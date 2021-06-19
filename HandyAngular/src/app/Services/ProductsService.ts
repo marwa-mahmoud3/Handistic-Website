@@ -52,5 +52,13 @@ GetProductsByCategoryId(id): Observable<any>{
 getProductsWithDiscount():Observable<any>{
 return this.http.get(`${this.baseURL}/GetProductsWithDiscount`);
 }
-
+getProductsByCategoryPaging(categoryId:number ,pageSize:number,pageNumber:number):Observable<any>{
+  return this.http.get(`https://localhost:44339/api/Product/GetProductsByCategoryByPaging/${categoryId}/${pageSize}/${pageNumber}`);
+}
+getOfferedByCategoryPaging(categoryId:number ,pageSize:number,pageNumber:number):Observable<any>{
+  return this.http.get(`https://localhost:44339/api/Product/GetOfferedByCategoryPagination/${categoryId}/${pageSize}/${pageNumber}`);
+}
+GetTopSales():Observable<any>{
+  return this.http.get(`${this.baseURL}/GetTopSales`);
+  }
 }

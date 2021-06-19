@@ -1,5 +1,4 @@
 import { ProductWishlistService } from './../Services/ProductWishlistService';
-import { logging } from 'protractor';
 import { ProductsService } from '../Services/ProductsService';
 import { CategoryService } from './../Services/CategoryService';
 import { CartService } from '../Services/CartService';
@@ -21,7 +20,6 @@ export class HandmadeProductComponent implements OnInit {
   categories: Category[] = [];
   CategoryList : Category[] = [];
   products: Product [] = [];
-  productList: Product []=[];
   item :number;
   CountProducts :ProductsCount[] =[]
   user:any;
@@ -29,7 +27,8 @@ export class HandmadeProductComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.loadProducts();
+    this.getProductsPerPage(1); 
+    this.setCrrentCategoryId(this.currentCategoryId)
     this.loadCategories();
     this.UserService.getIdByUserName(localStorage.getItem('username')).subscribe((
       data =>{
@@ -50,55 +49,81 @@ export class HandmadeProductComponent implements OnInit {
       }
     )
   }
-  loadProducts() {
-    this.productList = []
-    this.productservices.getAllProducts()
-        .subscribe(
-            (products: any[]) => {
-                this.products = products;
-                this.products.forEach(product => {
-                    this.productList.push(product);
-                })
-            },
-        );
-  }
-  AllCounts
+ 
+  CurrentCategory = new Category(1,"Clothes",'')
   loadCategories()
-  {
+  {    
+    this.CountProducts=[]
     this.categoryService.getCategories().subscribe((data:any)=>{
       data.forEach(category => {
           this.CategoryList.push(category); 
           this.productservices.getCountOfProducts(category.id).subscribe(
-            (count =>{
-                this.CountProducts.push(count);
+            (item =>{
+                this.CountProducts.push(item);
             })        
           )
        });
     });
+    
   }
-  getProductsByCategory(id)
-  {
-    this.productList = []
-    this.productservices.GetProductsByCategoryId(id).subscribe(
-      (products: any[]) => {
-          this.products = products;
-          this.products.forEach(product => {
-              this.productList.push(product);
-          })
-      },
-  );
-  }
+ 
   public createImgPath = (serverPath: string) => {
     return `https://localhost:44339/${serverPath}`;
-  }
-  public response: {dbPath: ''};
- 
-  public uploadFinished = (event) => {
-    this.response = event;
   }
 
   AddItemToCart(productId:number){
   this.CartService.addItemToCart(this.user.id,productId,null).subscribe();
   location.reload();
+  }
+
+
+  counter(i: number) {
+    return new Array(i);
+  }
+  //pagination 
+  hasProducts:boolean = false;
+  errorMsg: string;
+  productsPerPage: Product[];
+  pageSize: number = 2;
+  productsCount= 0
+  currentPageNumber: number = 1;
+  numberOfPages: number; 
+  selectedCategoryId: number;
+  currentCategoryId:number=1;
+  currentCategory:Category;
+  
+
+  
+setCrrentCategoryId(categoryId){
+  this.currentCategoryId=categoryId;
+  this.getSelectedPage(1);
+  this.productservices.getCountOfProducts(categoryId).subscribe((data=>{
+  this.productsCount=data;
+ this.numberOfPages=Math.ceil(this.productsCount / this.pageSize);
+
+  }))
+  this.categoryService.getCategoryByID(categoryId).subscribe((data=>{
+    this.CurrentCategory=data
+  }))
+}
+  getProductsPerPage(currentPageNumber: number) {
+    this.productservices.getProductsByCategoryPaging(this.currentCategoryId,this.pageSize, currentPageNumber).subscribe(
+      data => {
+        this.productsPerPage = data
+        this.currentPageNumber = currentPageNumber;
+        if(data.length != 0)
+          this.hasProducts = true;
+        else
+          this.hasProducts = false;
+
+      },
+      error => {
+        this.errorMsg = error;
+      }
+    )
+  }
+
+  getSelectedPage(currentPageNumber: number) {
+      this.getProductsPerPage(currentPageNumber);
   }
 }

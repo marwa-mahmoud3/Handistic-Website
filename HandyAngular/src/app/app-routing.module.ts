@@ -1,3 +1,4 @@
+import { BestsellingComponent } from './bestselling/bestselling.component';
 import { ClientNotifyComponent } from './client-notify/client-notify.component';
 import { OrderDetailsComponent } from './order-details/order-details.component';
 import { NotificationComponent } from './notification/notification.component';
@@ -37,7 +38,6 @@ const routes: Routes = [
   {path:"EmailConfirmation",component:EmailConfirmationComponent},
   {path:"Slider",component:HomeSliderComponent},
   {path:"News",component:HomeNewsComponent},
-  {path:"profile/:email",component:ProfileComponent},
   {path:"profile",component:ProfileComponent},
   {path: "HandmadeProducts",component:HandmadeProductComponent},
   {path:"CreateShop",component:CreateShopComponent},
@@ -53,8 +53,9 @@ const routes: Routes = [
   {path :"ProductDetails/:id" ,component:ProductDetailsComponent},
   {path :"AddReview/:billingid" ,component:AddReviewComponent},
   {path :"notification" ,component:NotificationComponent},
-  {path:"orderDetails",component:OrderDetailsComponent},
+  {path:"orderDetails/:id",component:OrderDetailsComponent},
   {path:"notify",component:ClientNotifyComponent},
+  {path:"bestSelleing",component:BestsellingComponent},
 ];
 
 @NgModule({

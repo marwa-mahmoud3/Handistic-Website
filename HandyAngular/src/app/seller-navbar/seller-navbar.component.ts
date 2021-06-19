@@ -10,6 +10,7 @@ import { CartService } from '../Services/CartService';
 import { ProductsService } from '../Services/ProductsService';
 import { sellerService } from './../Services/sellerService';
 import { UserService } from '../Services/user.service';
+import { ShopService } from '../Services/shopService';
 
 @Component({
   selector: 'app-seller-navbar',
@@ -28,9 +29,8 @@ export class SellerNavbarComponent implements OnInit {
   Counter :number
   IsRead : boolean[]=[]
   ngOnInit(): void {
-    this.getUser(this.route.snapshot.paramMap.get('email'));
-    this.getId();
     this.GetNotifactions();
+   
     this.notify.notReadedCount(localStorage.getItem('userId')).subscribe(
       count=>{
          this.Counter = count
@@ -62,6 +62,7 @@ export class SellerNavbarComponent implements OnInit {
   NotificationList :Notification[]=[]
   GetNotifactions()
   {
+    this.users=[]
     this.notify.getNotificationById(localStorage.getItem('userId')).subscribe((data=>{
      data.forEach(element => {
       this.NotificationList.push(element)
@@ -78,29 +79,14 @@ export class SellerNavbarComponent implements OnInit {
     this.notify.getById(id).subscribe((data=>{
       this.newNotify = data
       this.newNotify.isRead =true 
-      console.log(this.newNotify)
       this.notify.changetoRead(id,this.newNotify).subscribe()
     }))
   }
   Currentuser
-  getId()
-  {
-    this.userservice.getIdByUserName(localStorage.getItem('username')).subscribe(result => {
-      this.Currentuser = result;
-      localStorage.setItem('userId',this.Currentuser.id)
-    })
-  }
   getReadboolean(idx){
     return this.IsRead[idx];
   }
   user =null;
-  getUser(email) {
-    this.userservice.getUserByEmail(email)
-      .subscribe(
-        (data => {
-          localStorage.setItem('username',data.userName)
-        }))
-  }
   answer ;
   goToProfile()
   {

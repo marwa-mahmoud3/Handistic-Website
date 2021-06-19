@@ -31,13 +31,9 @@ export class UserNavbarComponent implements OnInit {
   IsRead : boolean[]=[]
   
   ngOnInit(): void {
-    
-    this.getUser(this.route.snapshot.paramMap.get('email'));
-    this.getId();
     this.GetNotifactions();
     this.ClientNotify.notReadedCount(localStorage.getItem('userId')).subscribe(
       count=>{
-        console.log(count)
          this.Counter = count
       }
     )
@@ -82,29 +78,13 @@ export class UserNavbarComponent implements OnInit {
     this.ClientNotify.getById(id).subscribe((data=>{
       this.newNotify = data
       this.newNotify.isRead =true 
-      console.log(this.newNotify)
       this.ClientNotify.changetoRead(id,this.newNotify).subscribe()
     }))
-  }
-  Currentuser
-  getId()
-  {
-    this.userservice.getIdByUserName(localStorage.getItem('username')).subscribe(result => {
-      this.Currentuser = result;
-      localStorage.setItem('userId',this.Currentuser.id)
-    })
   }
   getReadboolean(idx){
     return this.IsRead[idx];
   }
   user =null;
-  getUser(email) {
-    this.userservice.getUserByEmail(email)
-      .subscribe(
-        (data => {
-          localStorage.setItem('username',data.userName)
-        }))
-  }
   answer ;
   goToProfile()
   {

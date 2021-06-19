@@ -30,10 +30,6 @@ export class SellerProfileComponent implements OnInit {
   ProductData : Product
   ngOnInit(): void {
     this.loadProducts();
-    this.shopService.ShopByUserId(localStorage.getItem('userId')).subscribe(
-        (data) => {
-          localStorage.setItem('shopId',data.id) 
-        })
     this.username = localStorage.getItem('username');
     this.userservice.getIdByUserName(this.username).subscribe((data:any)=>{
       this.user = data;

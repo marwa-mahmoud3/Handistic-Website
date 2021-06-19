@@ -32,7 +32,6 @@ import { SellerProfileComponent } from './seller-profile/seller-profile.componen
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { CartComponent } from './cart/cart.component';
 import { AboutUSComponent } from './about-us/about-us.component';
-import { ContactComponent } from './home/contact/contact.component';
 import { OffersComponent } from './offers/offers.component';
 import { UpdateProductComponent } from './update-product/update-product.component';
 import { ProductDetailsComponent } from './product-details/product-details.component';
@@ -42,6 +41,7 @@ import { NotificationComponent } from './notification/notification.component';
 import { OrderDetailsComponent } from './order-details/order-details.component';
 import { UserNavbarComponent } from './user-navbar/user-navbar.component';
 import { ClientNotifyComponent } from './client-notify/client-notify.component';
+import { BestsellingComponent } from './bestselling/bestselling.component';
 
 @NgModule({
   declarations: [
@@ -72,7 +72,6 @@ import { ClientNotifyComponent } from './client-notify/client-notify.component';
     WishlistComponent,
     ContactUSComponent,
     AboutUSComponent,
-    ContactComponent,
     CheckoutComponent,
     OffersComponent,
     UpdateProductComponent,
@@ -83,6 +82,7 @@ import { ClientNotifyComponent } from './client-notify/client-notify.component';
     OrderDetailsComponent,
     UserNavbarComponent,
     ClientNotifyComponent,
+    BestsellingComponent,
   ],
   imports: [
     BrowserModule,

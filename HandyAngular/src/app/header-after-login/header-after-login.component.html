@@ -71,7 +71,7 @@
         </div>
     </div>
 </div>
-<div class="header">
+<div class="header" style="height: 70px;">
     <div class="container-fluid search-header">
         <form>
             <input type="text" placeholder="Search">
@@ -93,8 +93,10 @@
                             <li><a routerLink="/profile">home</a></li>
                             <li><a routerLink="/HandmadeProducts">Store</a></li>
                             <li><a routerLink="/Offers" >Offers</a></li>
+                            <li><a routerLink="/bestSelleing">Best Selling</a></li>
                             <li><a routerLink="/AboutUS" >About Us</a></li>
                             <li><a routerLink="/ContactUs">contact</a></li>
+                            
                         </ul>
                     </div>
                 </div>  
@@ -105,7 +107,7 @@
                                 <img src="../../assets/imager/home/bag-2.png" alt=""
                                      style="width: 16px;height: 22px;margin-top: -10px;">
                                 <div class="number-cart">
-                                    2
+                                    {{cartItemList.length}}
                                 </div>
                             </a>
                                 <div class="widget_shopping_cart">
@@ -114,7 +116,7 @@
                                             <li class="woocommerce-mini-cart-item mini_cart_item clearfix"
                                              *ngFor="let item of cartItemList | slice:0:3; let i= index ">
                                                 <a class="product-image">
-                                                    <img [src]="createImgPath(getProductPathImg(i))" width="60px" height="60px">
+                                                    <img [src]="createImgPath(productCartList[i].productImagePath)" width="60px" height="60px">
                                                     <a class="product-title">{{getProductName(i)}}</a>
                                                     <span class="float-right">
 														<span class="woocommerce-Price-currencySymbol">$</span>

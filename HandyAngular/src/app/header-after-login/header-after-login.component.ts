@@ -22,10 +22,7 @@ export class HeaderAfterLoginComponent implements OnInit {
      private CartService:CartService,private ProductsService:ProductsService) { }
   cartItemList:CartItem[]=[];
   productCartList:Product[]=[];
- 
   ngOnInit(): void {
-    this.getUser(this.route.snapshot.paramMap.get('email'));
-    this.getId();
     this.CurrentUser = new Users(localStorage.getItem('username'),'','','','');
     this.UserService.getIdByUserName(localStorage.getItem('username')).subscribe((
       data =>{
@@ -48,22 +45,9 @@ export class HeaderAfterLoginComponent implements OnInit {
     localStorage.clear()
   }
   Currentuser
-  getId()
-  {
-    this.userservice.getIdByUserName(localStorage.getItem('username')).subscribe(result => {
-      this.Currentuser = result;
-      localStorage.setItem('userId',this.Currentuser.id)
-    })
-  }
+
   
   user =null;
-  getUser(email) {
-    this.userservice.getUserByEmail(email)
-      .subscribe(
-        (data => {
-          localStorage.setItem('username',data.userName)
-        }))
-  }
   answer ;
   goToProfile()
   {
@@ -83,9 +67,6 @@ export class HeaderAfterLoginComponent implements OnInit {
   
 getProductName(idx){
   return this.productCartList[idx].productName;
-}
-getProductPathImg(idx){
-  return this.productCartList[idx].productImagePath;
 }
 
 getTotalPrice(){

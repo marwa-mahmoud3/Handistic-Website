@@ -19,7 +19,7 @@ style="background-image: url('../../../assets/images/banner.jpg');background-pos
             <div class="col-xl-9 col-lg-9 col-md-9 col-sm-12 col-12">
                 <div class="row header-show-list">
                     <div class="col-md-6 col-sm-12 col-12">
-                        <p>Showing 1–12 of 24 results</p>
+                        <p>By Category : {{CurrentCategory.name}}</p>
                     </div>
                     <div class="col-md-6 col-sm-12 col-12">
                         <select class="float-right">
@@ -32,11 +32,11 @@ style="background-image: url('../../../assets/images/banner.jpg');background-pos
                     </div>
                 </div>
                 <div class="row product">
-                    <div class="col-md-4 col-sm-6 col-12" *ngFor="let product of productList |filter:filterTerm">
+                    <div class="col-md-4 col-sm-6 col-12" *ngFor="let product of productsPerPage |filter:filterTerm">                 
                         <div class="card">
                             <div class="card-img-top" style="background-image: url('');background-size: 100% 100%;background: no-repeat;">
                                 <a href="product-single.html" class="wp-post-image">
-                                    <img [src]="createImgPath(product.productImagePath)" style="width: 250px;height: 250px;">
+                                    <img [src]="createImgPath(product.productImagePath)" style="height: 250px;">
                                 </a>
                                 <p class="onnew">New</p>
                                 <div class="icon-product">
@@ -52,8 +52,8 @@ style="background-image: url('../../../assets/images/banner.jpg');background-pos
                                 </div>
                             </div>
                             <div class="card-body">
-                                <p class="card-title"><a class="float-left" href="product-list.html">Added by {{product.userName}} </a></p><br>
-                                <p class="woocommerce-loop-product__title"><a href="product-single.html">
+                                <p class="card-title"><a class="float-left" href="">Added by {{product.userName}} </a></p><br>
+                                <p class="woocommerce-loop-product__title"><a>
                                     {{product.productName}}</a></p>
                                 <span class="price">
 												<ins>
@@ -64,36 +64,31 @@ style="background-image: url('../../../assets/images/banner.jpg');background-pos
                                     </span>
                             </div>
                         </div>
-
-                    </div>                       
-                    <ul class="pagination justify-content-center">
-                        <li class="page-item"><a class="page-link" href="#">1</a></li>
-                        <li class="page-item"><a class="page-link" href="#">2</a></li>
-                        <li class="page-item"><a class="page-link" href="#"> > </a></li>
-                    </ul>
-                </div>
-                <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-hidden="true">
-                    <div class="modal-dialog modal-dialog-centered" role="document">
-                        <div class="modal-content container">
-                            <div class="product-single-quick-view">
-                                <div class="row product_detail">
-                                    <div class="col-md-6 col-sm-12 col-12">
-                                        <div class="flex-quick-view">
-                                            <div id="flex-slider" class="flexslider">
-                                                
-                                            </div>
-                                            <div id="flex-carousel" class="flexslider">
-                                            
-                                            </div>
-                                        </div>
-                                    </div>
-                                   
-                                </div>
-                                <span class="fas fa-search close-quick-view" ></span>
-                            </div>
+                    </div> 
+                    <nav  aria-label="..." class="col-12 mt-5">
+                        <div class="d-inline-block">
+                          <ul class="pagination">
+                            <li class="page-item" 
+                              [ngClass]="{disabled:currentPageNumber <=1, cursorNotAllowed:currentPageNumber <=1}">
+                              <button style="color: #000;"  class="page-link" [disabled]="currentPageNumber <=1"
+                                (click)="getSelectedPage(currentPageNumber-1)">Previous</button>
+                            </li>
+                            <li class="page-item"   *ngFor='let x of counter(numberOfPages);let i = index'
+                              [class.active]="currentPageNumber == (i+1)">
+                              <button class="page-link" id="page-link"   (click)="getSelectedPage(i+1)">{{i+1}} </button>
+                            </li>
+                            <li class="page-item"
+                              [ngClass]="{disabled:currentPageNumber >=numberOfPages, cursorNotAllowed:currentPageNumber >=numberOfPages}">
+                              <button style="color: #000;" class="page-link" [disabled]="currentPageNumber >= numberOfPages"
+                                (click)="getSelectedPage(currentPageNumber+1)">Next</button>
+                            </li>
+                          </ul>
                         </div>
-                    </div>
+                        <div class="float-right h5 mr-4 text-secondary">Showing {{currentPageNumber}} of {{numberOfPages}}</div>
+                      </nav> 
+
                 </div>
+                
             </div>
             <div class="col-xl-3 col-lg-3 col-md-3 col-sm-12 col-12">
                 <div class="content-blog-left">
@@ -111,73 +106,15 @@ style="background-image: url('../../../assets/images/banner.jpg');background-pos
                     <div class="category-blog">
                         <h2>Categories</h2>
                       <div>
-                        <div >
-                            <a (click)="loadProducts()">All Products</a>
-                            <a (click)="getProductsByCategory(category.id)" *ngFor="let category of CategoryList;let i=index">
-                            {{category.name}} ({{CountProducts[i]}})
+                        <div style="display: inline-block;">
+                            <a style="margin-right: 5px;"(click)="setCrrentCategoryId(category.id)" *ngFor="let category of CategoryList">
+                            {{category.name}} 
                            </a>
                         </div>
-                    </div>
-                    <div class="popular-item">
-                        <h2>Popular Items</h2>
-                        <div class="card">
-                            <div class="row no-gutters">
-                                <div class="col-xl-4 col-lg-4 col-md-12 col-sm-6 col-6">
-                                   <a href="product-single.html"><img src="https://via.placeholder.com/100x85.jpg" class="card-img" alt="..."></a>
-                                </div>
-                                <div class="col-xl-8 col-lg-8 col-md-12 col-sm-6 col-6">
-                                    <div class="card-body">
-                                        <h5 class="card-title woocommerce-loop-product__title"><a href="product-single.html">Skin reaction</a></h5>
-                                        <p class="card-text price">
-                                            <ins>
-													<span class="woocommerce-Price-amount amount">
-														<span class="woocommerce-Price-currencySymbol">$</span>56
-													</span>
-                                            </ins>
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
+                        <div style="display: inline-block;" >
+                            <a  *ngFor="let category of CategoryList;let i=index">&nbsp;&nbsp; ({{CountProducts[i]}}) </a>
                         </div>
-                        <div class="card">
-                            <div class="row no-gutters">
-                                <div class="col-xl-4 col-lg-4 col-md-12 col-sm-6 col-6">
-                                   <a href="product-single.html"><img src="https://via.placeholder.com/100x85.jpg" class="card-img" alt="..."></a>
-                                </div>
-                                <div class="col-xl-8 col-lg-8 col-md-12 col-sm-6 col-6">
-                                    <div class="card-body">
-                                        <h5 class="card-title woocommerce-loop-product__title"><a href="product-single.html">Face cream</a> </h5>
-                                        <p class="card-text price">
-                                            <ins>
-													<span class="woocommerce-Price-amount amount">
-														<span class="woocommerce-Price-currencySymbol">$</span>48
-													</span>
-                                            </ins>
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="card">
-                            <div class="row no-gutters">
-                                <div class="col-xl-4 col-lg-4 col-md-12 col-sm-6 col-6">
-                                  <a href="product-single.html"><img src="https://via.placeholder.com/100x85.jpg" class="card-img" alt="..."></a>
-                                </div>
-                                <div class="col-xl-8 col-lg-8 col-md-12 col-sm-6 col-6">
-                                    <div class="card-body">
-                                        <h5 class="card-title woocommerce-loop-product__title"><a href="product-single.html">Hydrating primer</a> </h5>
-                                        <p class="card-text price">
-                                            <ins>
-													<span class="woocommerce-Price-amount amount">
-														<span class="woocommerce-Price-currencySymbol">$</span>83
-													</span>
-                                            </ins>
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    </div>               
                 </div>
             </div>
         </div>

@@ -23,6 +23,7 @@ export class UpdateProductComponent implements OnInit {
   prodctId:number;
   ngOnInit(): void {
     this.prodctId=+ this.route.snapshot.paramMap.get('id');
+    this.getCategory(this.prodctId)
     this.getProduct(this.route.snapshot.paramMap.get('id'));
     this.GetAllCategories();    
   }
@@ -84,6 +85,12 @@ ProductData : Product
           this.errorMessage = error;
           this.showSuccess=false;
         })
+    }
+    category:Category
+    getCategory(id): void {
+      this.categoryservice.getCategoryByID(id).subscribe((data=>{
+          this.category=data;
+      }));        
     }
   public uploadFile = (files) => {
     if (files.length === 0) {

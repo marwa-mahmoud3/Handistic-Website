@@ -1,9 +1,23 @@
 <app-header-after-login></app-header-after-login>
-<div class="container" style="padding-top: 120px; padding-bottom: 80px;">
+        
+<div class="container" style="padding-top: 10px; padding-bottom: 50px;">
     <div class="row justify-content-center content-my-account">
-        <div class="col-md-9 col-sm-12 col-12 content-my-account-right">
+        <div  class="col-md-5 col-sm-12 col-6 content-my-account-right" style="padding-top:200px;">
+            <img [src]="createImgPath(currentProduct.productImagePath) " style="width: 100%;height: 300px;">
+            <p style="margin-left: 10px;">{{currentProduct.details}} </p>
+            <div class="infor-product content-product" >
+                <p ><span style="margin-left: 30px;">By: </span>{{currentProduct.userName}}  <span style="margin-left: 100px;">Category: </span>{{category.name}}</p>
+                <p></p>
+                <p><span style="margin-left: 30px;">Size: </span>{{currentProduct.size}} <span style="margin-left: 120px;">Discount: </span>{{currentProduct.discount}}</p>
+                <p></p>
+                <p><span style="margin-left: 30px;">Quantity: </span>{{currentProduct.quantity}} <span style="margin-left: 100px;">Price: </span>{{currentProduct.unitPrice}}</p>
+                <p></p>
+
+            </div>
+        </div>
+        
+        <div class="col-md-7 col-sm-12 col-6 content-my-account-right">
             <h2 style="padding-bottom: 20px;">Update Product</h2>
-    
             <form #ProductData="ngForm" (ngSubmit)="OnSubmit(ProductData)">
                 <div *ngIf="showSuccess; else thenfaild">
                     <div class="alert alert-success" role="alert">

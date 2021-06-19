@@ -28,12 +28,7 @@ export class CreateShopComponent implements OnInit {
   ngOnInit(): void {
     this.GetAllCities();  
   }    
-  onItemSelect(item: any) {
-    console.log(item);
-  }
-  onSelectAll(items: any) {
-    console.log(items);
-  }
+  
   ShowLinkData()
   {
     this.ShowLink =true;
@@ -67,7 +62,6 @@ export class CreateShopComponent implements OnInit {
     this.List2= this.request.productWithCardImage.split('\\');
     this.index2 = this.request.productWithCardImage.split('\\').length
     this.request.productWithCardImage = "Resources/images/"+this.List2[this.index-1];
-    console.log(this.request)
     this.userRequestService.inserRequest(this.request).subscribe( Resbonse=>{
       this.showSuccess=true;
       this.showError = false;

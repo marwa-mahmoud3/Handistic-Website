@@ -1,114 +1,126 @@
-<div class="container lastest" style="padding-bottom: 200px;">
-    <div class="title">
-        <h2 class="text-center" style="padding: 20px 0;margin-bottom: 80px;">Latest News</h2>
+<div class="container" style="padding-bottom: 100px;font-family: 'Elsie', cursive ">
+    <div class="product-out">
+        <div class=" " style="margin-bottom: 50px;">
+            <h1 class="text-center">Best Selling</h1>
+        </div>
+        <div id="demo" class="carousel slide" data-ride="carousel">
+            <!-- Indicators -->
+            <ul class="carousel-indicators">
+                <li data-target="#demo" data-slide-to="0" class="active"></li>
+                <li data-target="#demo" data-slide-to="1"></li>
+                <li data-target="#demo" data-slide-to="2"></li>
+            </ul>
+            <!-- The slideshow -->
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <div class="row product">
+                        <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6 col-xs-6 col-12" *ngFor="let product of productList | slice:0:4">
+                            <div class="card">
+                                <div class="card-img-top">
+                                    <img class="image-cover" [src]="createImgPath(product.productImagePath)" style="height:250px" alt="product">
+                                    <p class="onnew">Best Selling</p>
+                                    <div class="icon-product" >
+                                        <button style=" margin-top:65%;" class="btn" (click)="AddItemToCart(product.id)">
+                                            <span class="fa fa-cart-plus"></span>
+                                        </button>
+                                        <button style=" margin-top:65%;" type="button" class="btn click-quick-view" routerLink="/ProductDetails/{{product.id}}" >
+                                            <span class="fa fa-search-plus" ></span>
+                                        </button>
+                                        <button style=" margin-top:65%;" class="btn" (click)="AddToWishList(product.id)" >
+                                            <span class="fas fa-heart">	</span>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="card-body">
+                                    <p class="woocommerce-loop-product__title">
+                                        <a style="text-decoration: none;">
+                                        {{product.productName}}</a></p>
+                                    <span class="price">
+                                            <ins>
+                                                <span class="woocommerce-Price-amount amount">
+                                                    <span class="woocommerce-Price-currencySymbol">$</span>{{product.unitPrice}}
+                                                </span>
+                                            </ins>
+                                </span>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div> 
+                </div>
+                <div class="carousel-item">
+                    <div class="row product">
+                        <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6 col-xs-6 col-12" *ngFor="let product of productList | slice:4:8">
+                            <div class="card">
+                                <div class="card-img-top">
+                                    <img class="image-cover" [src]="createImgPath(product.productImagePath)" style="height:250px" alt="product">
+                                    <p class="onnew">Best Selling</p>
+                                    <div class="icon-product" >
+                                        <button style=" margin-top:65%;" class="btn" (click)="AddItemToCart(product.id)">
+                                            <span class="fa fa-cart-plus"></span>
+                                        </button>
+                                        <button style=" margin-top:65%;" type="button" class="btn click-quick-view" routerLink="/ProductDetails/{{product.id}}" >
+                                            <span class="fa fa-search-plus" ></span>
+                                        </button>
+                                        <button style=" margin-top:65%;" class="btn" (click)="AddToWishList(product.id)" >
+                                            <span class="fas fa-heart">	</span>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="card-body">
+                                    <p class="woocommerce-loop-product__title">
+                                        <a style="text-decoration: none;">
+                                        {{product.productName}}</a></p>
+                                    <span class="price">
+                                            <ins>
+                                                <span class="woocommerce-Price-amount amount">
+                                                    <span class="woocommerce-Price-currencySymbol">$</span>{{product.unitPrice}}
+                                                </span>
+                                            </ins>
+                                </span>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <div class="row product">
+                        <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6 col-xs-6 col-12" *ngFor="let product of productList | slice:8:12">
+                            <div class="card">
+                                <div class="card-img-top">
+                                    <img class="image-cover" [src]="createImgPath(product.productImagePath)" style="height:250px" alt="product">
+                                    <p class="onnew">Best Selling</p>
+                                    <div class="icon-product" >
+                                        <button style=" margin-top:65%;" class="btn" (click)="AddItemToCart(product.id)">
+                                            <span class="fa fa-cart-plus"></span>
+                                        </button>
+                                        <button style=" margin-top:65%;" type="button" class="btn click-quick-view" routerLink="/ProductDetails/{{product.id}}" >
+                                            <span class="fa fa-search-plus" ></span>
+                                        </button>
+                                        <button style=" margin-top:65%;" class="btn" (click)="AddToWishList(product.id)" >
+                                            <span class="fas fa-heart">	</span>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="card-body">
+                                    <p class="woocommerce-loop-product__title">
+                                        <a style="text-decoration: none;">
+                                        {{product.productName}}</a></p>
+                                    <span class="price">
+                                            <ins>
+                                                <span class="woocommerce-Price-amount amount">
+                                                    <span class="woocommerce-Price-currencySymbol">$</span>{{product.unitPrice}}
+                                                </span>
+                                            </ins>
+                                </span>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-    <div class="row">
-        <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-xs-12 col-12 lastest-item">
-            <div class="card">
-                <div class="row no-gutters">
-                    <div class=" col-xl-4 col-lg-4 col-md-4 col-sm-4 col-xs-6 col-6">
-                        <a href="what-we-offer.html"><img src="../../../assets/images/wedding4.jpg" class="card-img" alt="..."></a>
-                    </div>
-                    <div class="col-lg-8 col-md-8 col-sm-8 col-xs-6 col-6">
-                        <div class="card-body">
-                            <h5 class="card-title"><a href="what-we-offer.html"style="text-decoration: none;"> But I must explain to you how all
-                                this</a></h5>
-                            <p class="card-text">
-                                By Sugar / May 18.2019
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-xs-12 col-12 lastest-item">
-            <div class="card">
-                <div class="row no-gutters">
-                    <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-xs-6 col-6">
-                        <a href="what-we-offer.html"> <img src="../../../assets/images/wedding3.jpg" class="card-img" alt="..."></a>
-                    </div>
-                    <div class="col-lg-8 col-md-8 col-sm-8 col-xs-6 col-6">
-                        <div class="card-body">
-                            <h5 class="card-title"><a href="what-we-offer.html"style="text-decoration: none;">Neque porr quisquam dolorem</a></h5>
-                            <p class="card-text">
-                                By Sugar / May 18.2019
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-xs-12 col-12 lastest-item">
-            <div class="card">
-                <div class="row no-gutters">
-                    <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-xs-6 col-6">
-                        <a href="what-we-offer.html"> <img src="../../../assets/images/gift5.jpg" class="card-img" alt="..."></a>
-                    </div>
-                    <div class="col-lg-8 col-md-8 col-sm-8 col-xs-6 col-6">
-                        <div class="card-body">
-                            <h5 class="card-title"><a href="what-we-offer.html"style="text-decoration: none;">Ut enim ad minima veniam quis
-                                nostrum</a></h5>
-                            <p class="card-text">
-                                By Sugar / May 18.2019
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-xs-12 col-12 lastest-item">
-            <div class="card">
-                <div class="row no-gutters">
-                    <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-xs-6 col-6">
-                        <a href="what-we-offer.html"> <img src="../../../assets/images/gift3.jpg" class="card-img" alt="..."></a>
-                    </div>
-                    <div class="col-lg-8 col-md-8 col-sm-8 col-xs-6 col-6">
-                        <div class="card-body">
-                            <h5 class="card-title"><a href="what-we-offer.html" style="text-decoration: none;">Itaque earum rerum hic tenetur</a>
-                            </h5>
-                            <p class="card-text">
-                                By Sugar / May 18.2019
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-xs-12 col-12 lastest-item">
-            <div class="card">
-                <div class="row no-gutters">
-                    <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-xs-6 col-6">
-                        <a href="what-we-offer.html"> <img src="../../../assets/images/home6.jpeg" class="card-img" alt="..."></a>
-                    </div>
-                    <div class="col-lg-8 col-md-8 col-sm-8 col-xs-6 col-6">
-                        <div class="card-body">
-                            <h5 class="card-title"><a href="what-we-offer.html"style="text-decoration: none;">In a free hour,when our power</a>
-                            </h5>
-                            <p class="card-text">
-                                By Sugar / May 18.2019
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-xs-12 col-12 lastest-item">
-            <div class="card">
-                <div class="row no-gutters">
-                    <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-xs-6 col-6">
-                        <a href="what-we-offer.html" > <img src="../../../assets/images/hoop7.jpg" class="card-img" alt="..."></a>
-                    </div>
-                    <div class="col-lg-8 col-md-8 col-sm-8 col-xs-6 col-6">
-                        <div class="card-body">
-                            <h5 class="card-title"><a href="what-we-offer.html" style="text-decoration: none;">On the other hand,we denounce</a>
-                            </h5>
-                            <p class="card-text">
-                                By Sugar / May 18.2019
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+</div> 

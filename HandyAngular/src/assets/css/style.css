@@ -39,7 +39,7 @@ Assigned to: Physcode
 .header .logo {
 	width:      135px;
 	height:     40px;
-	margin:     20px 0 20px 65px;
+	margin:     15px 0 20px 65px;
 	text-align: center;
 }
 
@@ -52,7 +52,7 @@ Assigned to: Physcode
 
 .menu ul {
 	list-style: none;
-	margin-top: 30px;
+	margin-top: 20px;
 }
 
 .menu ul li {
@@ -139,7 +139,7 @@ Assigned to: Physcode
 	padding-right: 65px;
 	text-align:    center;
 	position:      relative;
-	margin-top:    35px;
+	margin-top:    25px;
 }
 
 .header-right li {

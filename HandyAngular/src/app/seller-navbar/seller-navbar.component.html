@@ -67,7 +67,7 @@
         </div>
     </div>
 </div>
-<div class="header">
+<div class="header" style="height: 70px;">
     <div class="container-fluid search-header">
         <form>
             <input type="text" placeholder="Search">
@@ -89,6 +89,7 @@
                             <li><a routerLink="/profile">home</a></li>
                             <li><a routerLink="/HandmadeProducts">Store</a></li>
                             <li><a routerLink="/Offers" >Offers</a></li>
+                            <li><a routerLink="/bestSelleing">Best Selling</a></li>
                             <li><a routerLink="/AboutUS" >About Us</a></li>
                             <li><a routerLink="/ContactUs">contact</a></li>
                         </ul>
@@ -112,11 +113,12 @@
                                                     <span  class="woocommerce-Price-amount amount" style="font-weight: normal; font-size: small;left: 32%;margin-top: 7px;">
                                                         {{item.notificationBody}} ....
                                                     </span>
-                                                    <a href="/orderDetails"  (click)="MakeRead(item.id)" class="woocommerce-Price-amount amount " style="margin-top: 30px;margin-left: 90px;
-                                                    font-size: 13px;
-                                                    text-decoration: underline;color: #074d6d;">
+                                                    <a  (click)="MakeRead(item.id)" routerLink="/orderDetails/{{item.id}}" class="woocommerce-Price-amount amount btn" style="margin-top: 30px;margin-left: 90px;
+                                                    font-size: 13px;background-color: none;
+                                                    color: #074d6d;outline: none;border: none;
+                                                    text-decoration: underline;">
                                                         Details
-                                                </a>
+                                                    </a>
                                                     <a href="#" class="remove">
                                                         <span class="lnr lnr-cross"></span>
                                                     </a>
@@ -129,12 +131,12 @@
                                                     <span  class="woocommerce-Price-amount amount" style="font-weight: normal; font-size: small;left: 32%;margin-top: 5px;">
                                                         {{item.notificationBody}} ....
                                                     </span>
-                                                    <a href="/orderDetails" (click)="MakeRead(item.id)" class="woocommerce-Price-amount amount " style="margin-top: 30px;margin-left: 90px;
-                                                    font-size: 13px;
-                                                    color: #074d6d;
+                                                    <a  (click)="MakeRead(item.id)" routerLink="/orderDetails/{{item.id}}" class="woocommerce-Price-amount amount btn" style="margin-top: 30px;margin-left: 90px;
+                                                    font-size: 13px;background-color: none;
+                                                    color: #074d6d;outline: none;border: none;
                                                     text-decoration: underline;">
                                                         Details
-                                                </a>
+                                                    </a>
                                                     <a href="#" class="remove">
                                                         <span class="lnr lnr-cross"></span>
                                                     </a>
