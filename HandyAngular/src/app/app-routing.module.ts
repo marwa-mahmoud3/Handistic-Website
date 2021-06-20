@@ -1,3 +1,5 @@
+import { SearchResultComponent } from './search-result/search-result.component';
+import { ChatComponent } from './chat/chat.component';
 import { BestsellingComponent } from './bestselling/bestselling.component';
 import { ClientNotifyComponent } from './client-notify/client-notify.component';
 import { OrderDetailsComponent } from './order-details/order-details.component';
@@ -56,6 +58,9 @@ const routes: Routes = [
   {path:"orderDetails/:id",component:OrderDetailsComponent},
   {path:"notify",component:ClientNotifyComponent},
   {path:"bestSelleing",component:BestsellingComponent},
+  {path:"chat",component:ChatComponent},
+  {path:"searchResult/:searchKey",component:SearchResultComponent}
+
 ];
 
 @NgModule({

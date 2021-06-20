@@ -1,4 +1,4 @@
-import { ClientNotifyService } from './../Services/ClientNotifyService';
+import { NotificationService } from './../Services/notification.service';
 import { ActivatedRoute } from '@angular/router';
 import { BillingDetailsService } from './../Services/BillingDetailsService';
 import { UserService } from './../Services/user.service';
@@ -18,7 +18,7 @@ export class AddReviewComponent implements OnInit {
 
   constructor(private UserService:UserService,private orderService:OrderService,private categoryservice:CategoryService,protected route :ActivatedRoute
     ,private AddReviewService :AddReviewService,private BillingDetailsService:BillingDetailsService,
-    private ClientNotifyService:ClientNotifyService) { }
+    private NotifyService:NotificationService) { }
   ProductList : Product[]=[]
   CategoryList:string[]=[]
   product :Product
@@ -32,13 +32,13 @@ export class AddReviewComponent implements OnInit {
   CurrentBilling
   CurrentSeller
   ngOnInit(): void {
-    this.BillingDetailsService.getBillingById(this.route.snapshot.paramMap.get('billingid')).subscribe((data=>{
+      this.BillingDetailsService.getBillingById(this.route.snapshot.paramMap.get('billingid')).subscribe((data=>{
       this.CurrentBilling= data
-      this.ClientNotifyService.getById(this.CurrentBilling.id).subscribe(
+      this.NotifyService.GetByBillingId(this.route.snapshot.paramMap.get('billingid')).subscribe(
         (seller=>{
           this.CurrentSeller =seller
-          this.UserService.getUserNameByUserId(this.CurrentSeller.sellerId).subscribe((seller=>{
-            this.CurrentSeller =seller
+          this.UserService.getUserNameByUserId(this.CurrentSeller.sellerId).subscribe((u=>{
+            this.CurrentSeller =u
             this.orderService.GetOrderItems(this.CurrentBilling.orderId,this.CurrentSeller.userName).subscribe(
               (data:any)=>{
                  data.forEach(element => {

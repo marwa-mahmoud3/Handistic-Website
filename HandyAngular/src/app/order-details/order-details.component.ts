@@ -24,6 +24,8 @@ export class OrderDetailsComponent implements OnInit {
   ProductsList : Product[]=[]
   user 
   CurrentUser
+  notification
+  seller 
   ngOnInit(): void {
     this.notify.getById(this.route.snapshot.paramMap.get('id')).subscribe((e=>{
         this.user = e
@@ -31,16 +33,23 @@ export class OrderDetailsComponent implements OnInit {
            this.CurrentUser = item
          }))    
        }))
-    this.notify.getNotificationById(localStorage.getItem('userId')).subscribe((data=>{
-      this.BillingDetailsService.getBillingById(data[0].billingId).subscribe((element=>{
+    this.notify.getById(this.route.snapshot.paramMap.get('id')).subscribe((data=>{
+      this.notification= data
+      this.userService.getUserNameByUserId(this.notification.sellerId).subscribe((item =>{
+       this.seller=item
+       this.BillingDetailsService.getBillingById(this.notification.billingId).subscribe((element=>{
         this.BillingItem =element
         this.orderService.GetAllOrderItems(this.BillingItem.orderId).subscribe((items:any)=>{
           items.forEach(item => {
             this.productservice.getProductById(item.productID).subscribe((pro=>{
-              this.ProductsList.push(pro);
+              if(pro.userName == this.seller.userName)
+              {
+                this.ProductsList.push(pro);
+              }
             }))
           });
         })
+      }))
       }))
     }))
 

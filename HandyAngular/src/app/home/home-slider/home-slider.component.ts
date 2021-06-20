@@ -13,8 +13,6 @@ export class HomeSliderComponent implements OnInit {
   CategoryList :Category[]=[]
   ngOnInit(): void {
     this.CategoryService.getCategories().subscribe((data:any)=>{
-      console.log(data)
-
       data.forEach(city => {
           this.CategoryList.push(city);
       });

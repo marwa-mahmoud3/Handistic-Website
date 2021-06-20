@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { ProductWishlistService } from './../Services/ProductWishlistService';
 import { ProductsService } from '../Services/ProductsService';
 import { CategoryService } from './../Services/CategoryService';
@@ -23,7 +24,8 @@ export class HandmadeProductComponent implements OnInit {
   item :number;
   CountProducts :ProductsCount[] =[]
   user:any;
-  constructor(private productWishlistService:ProductWishlistService,private UserService:UserService, private productservices: ProductsService,private categoryService : CategoryService,private CartService:CartService) {
+  constructor(private productWishlistService:ProductWishlistService,private router :Router,
+    private UserService:UserService, private productservices: ProductsService,private categoryService : CategoryService,private CartService:CartService) {
   }
 
   ngOnInit(): void {
@@ -73,7 +75,7 @@ export class HandmadeProductComponent implements OnInit {
 
   AddItemToCart(productId:number){
   this.CartService.addItemToCart(this.user.id,productId,null).subscribe();
-  location.reload();
+  // location.reload();
   }
 
 
@@ -84,7 +86,7 @@ export class HandmadeProductComponent implements OnInit {
   hasProducts:boolean = false;
   errorMsg: string;
   productsPerPage: Product[];
-  pageSize: number = 2;
+  pageSize: number = 6;
   productsCount= 0
   currentPageNumber: number = 1;
   numberOfPages: number; 
@@ -126,4 +128,12 @@ setCrrentCategoryId(categoryId){
   getSelectedPage(currentPageNumber: number) {
       this.getProductsPerPage(currentPageNumber);
   }
+  hasDiscount(product:Product){
+    return product.discount>0;
+  }
+  getPriceAfterDiscount(prouct:Product){
+    let res=prouct.unitPrice;
+    res-=prouct.unitPrice*(prouct.discount/100.0);
+    return Math.ceil(res);
+   }
 }

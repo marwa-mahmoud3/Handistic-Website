@@ -42,6 +42,8 @@ import { OrderDetailsComponent } from './order-details/order-details.component';
 import { UserNavbarComponent } from './user-navbar/user-navbar.component';
 import { ClientNotifyComponent } from './client-notify/client-notify.component';
 import { BestsellingComponent } from './bestselling/bestselling.component';
+import { ChatComponent } from './chat/chat.component';
+import { SearchResultComponent } from './search-result/search-result.component';
 
 @NgModule({
   declarations: [
@@ -83,6 +85,8 @@ import { BestsellingComponent } from './bestselling/bestselling.component';
     UserNavbarComponent,
     ClientNotifyComponent,
     BestsellingComponent,
+    ChatComponent,
+    SearchResultComponent,
   ],
   imports: [
     BrowserModule,
@@ -91,7 +95,9 @@ import { BestsellingComponent } from './bestselling/bestselling.component';
     ReactiveFormsModule,
     AppRoutingModule,
     NgSelectModule,
-    Ng2SearchPipeModule  ],
+    Ng2SearchPipeModule,
+
+       ],
   providers: [],
   bootstrap: [AppComponent]
 })

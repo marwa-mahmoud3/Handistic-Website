@@ -1,3 +1,5 @@
+import { ProductWishlistService } from './../Services/ProductWishlistService';
+import { ShopService } from './../Services/shopService';
 import { ProductsService } from '../Services/ProductsService';
 import { sellerService } from './../Services/sellerService';
 import { Component, OnInit } from '@angular/core';
@@ -8,6 +10,7 @@ import { UserService } from '../Services/user.service';
 import { CartItem } from '../Models/CartItem';
 import { Product } from '../Models/Product';
 import { CartService } from '../Services/CartService';
+import { ProductWishlist } from '../Models/ProductWishlist';
 
 @Component({
   selector: 'app-header-after-login',
@@ -19,10 +22,32 @@ export class HeaderAfterLoginComponent implements OnInit {
   public CurrentUser 
   constructor(private apiservice : ApiService ,private route:ActivatedRoute,private userservice:UserService,
     private router: Router ,private sellerService : sellerService,private UserService:UserService,
-     private CartService:CartService,private ProductsService:ProductsService) { }
+     private CartService:CartService,private ProductsService:ProductsService,private shopService:ShopService,
+     private _productwishlistServices:ProductWishlistService) { }
   cartItemList:CartItem[]=[];
   productCartList:Product[]=[];
+  productwish: ProductWishlist[] = [];
+  productwishList: ProductWishlist[] = [];
+  wishlistID:number;
   ngOnInit(): void {
+    this._productwishlistServices.GetWishlistByUserId(localStorage.getItem('userId')).subscribe(
+      data2 => {
+        this.wishlistID=data2.id;
+        this._productwishlistServices.getAllProductWishlists().subscribe((data: any) => {
+          this.productwish = data;
+          this.productwish.forEach(product => {
+            if (product.wishlistID == data2.id) {
+              this.productwishList.push(product);
+            }
+          });
+        });
+
+      }
+    )
+    this.shopService.ShopByUserId(localStorage.getItem('userId')).subscribe(
+      (data) => {
+        localStorage.setItem('shopId',data.id) 
+      })
     this.CurrentUser = new Users(localStorage.getItem('username'),'','','','');
     this.UserService.getIdByUserName(localStorage.getItem('username')).subscribe((
       data =>{
@@ -87,4 +112,8 @@ public uploadFinished = (event) => {
   this.response = event;
 }
 
+goToSearchPage(searchKey){
+  console.log(searchKey);
+  this.router.navigate([`searchResult/${searchKey}`])
+}
 }

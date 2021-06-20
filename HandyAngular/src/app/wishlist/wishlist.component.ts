@@ -57,12 +57,16 @@ export class WishlistComponent implements OnInit {
 
   ClearWishlist(){ 
       this._productwishlistServices.deleteByWishlistId(this.wishlistID).subscribe(); 
-      window.location.reload();
+      this.router.routeReuseStrategy.shouldReuseRoute = () => false;
+      this.router.onSameUrlNavigation = 'reload';
+      this.router.navigate(["/Wishlist"]); 
   }
   
   RemoveProductFromWishlist(id){
       this._productwishlistServices.deleteByProductId(id).subscribe(); 
-      window.location.reload();
+      this.router.routeReuseStrategy.shouldReuseRoute = () => false;
+      this.router.onSameUrlNavigation = 'reload';
+       this.router.navigate(["/Wishlist"]);  
   }
 
   public createImgPath = (serverPath: string) => {

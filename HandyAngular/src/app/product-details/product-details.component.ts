@@ -1,7 +1,7 @@
 import { AddReview } from './../Models/AddReview';
 import { AddReviewService } from './../Services/AddReviewService';
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Category } from '../Models/Category';
 import { Product } from '../Models/Product';
 import { CategoryService } from '../Services/CategoryService';
@@ -32,7 +32,7 @@ export class ProductDetailsComponent implements OnInit {
   constructor(private productservices: ProductsService,
               private route:ActivatedRoute,
               private categoryservice:CategoryService,
-              private CartService:CartService,
+              private CartService:CartService,private router:Router,
               private UserService:UserService,private AddReviewService :AddReviewService) { }
 
   ngOnInit(): void {
@@ -101,8 +101,14 @@ export class ProductDetailsComponent implements OnInit {
     return `https://localhost:44339/${serverPath}`;
   }
   AddItemToCart(productId:number){
-    this.CartService.addItemToCart(this.user.id,productId,null).subscribe();
-    location.reload();
+    if(this.user !=null)
+    {
+      this.CartService.addItemToCart(this.user.id, productId, null).subscribe();
+      location.reload();
+    }
+    else{
+      this.router.navigate(["/Login"]);
+    }
     }
   
   }

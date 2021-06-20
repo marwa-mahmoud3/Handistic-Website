@@ -58,7 +58,6 @@ export class OffersComponent implements OnInit {
       this.categories.forEach(category => {
           this.productservices.getOfferdProductsByCategory(category.id).subscribe((data=>{
           if(data>0){
-            console.log(this.currentCategoryId);
             if(this.currentCategoryId==0){
               this.setCrrentCategoryId(category);
             }
@@ -99,7 +98,7 @@ export class OffersComponent implements OnInit {
 hasProducts:boolean = false;
 errorMsg: string;
 productsPerPage: Product[];
-pageSize: number = 3;
+pageSize: number = 6;
 productsCount= 0;
 currentPageNumber: number = 1;
 numberOfPages: number; // categoriesCount / pageSize
@@ -123,9 +122,7 @@ this.numberOfPages=Math.ceil(this.productsCount / this.pageSize);
 getProductsPerPage(currentPageNumber: number) {
   this.productservices.getOfferedByCategoryPaging(this.currentCategoryId,this.pageSize, currentPageNumber).subscribe(
     data => {
-      console.log(data);
       this.productsPerPage = data
-      console.log(data);
       this.currentPageNumber = currentPageNumber;
       if(data.length != 0)
         this.hasProducts = true;

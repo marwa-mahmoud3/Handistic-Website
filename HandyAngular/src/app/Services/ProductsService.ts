@@ -61,4 +61,14 @@ getOfferedByCategoryPaging(categoryId:number ,pageSize:number,pageNumber:number)
 GetTopSales():Observable<any>{
   return this.http.get(`${this.baseURL}/GetTopSales`);
   }
+  getBestSellingPagination(pageSize:number,pageNumber:number):Observable<any>{
+    return this.http.get(`https://localhost:44339/api/Product/GetTopSalesPagination/${pageSize}/${pageNumber}`);
+  }
+  
+  getProductsBySearchPagination(keyWord:string ,pageSize:number,pageNumber:number):Observable<any>{
+    return this.http.get(`https://localhost:44339/api/Product/SearchByKeyWordPagination/${keyWord}/${pageSize}/${pageNumber}`);
+  }
+  getCountBySearch(keyWord:string):Observable<any>{
+    return this.http.get(`https://localhost:44339/api/Product/CountProductsBySearch/${keyWord}`);
+  }
 }

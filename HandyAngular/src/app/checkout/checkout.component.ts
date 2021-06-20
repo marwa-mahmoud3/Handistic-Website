@@ -1,3 +1,4 @@
+import { Notification } from './../Models/Notification';
 import { Product } from './../Models/Product';
 import { NotificationService } from './../Services/notification.service';
 import { Router } from '@angular/router';
@@ -10,7 +11,6 @@ import { CartItem } from '../Models/CartItem';
 import { UserService } from 'src/app/Services/user.service';
 import { CartService } from '../Services/CartService';
 import { ProductsService } from '../Services/ProductsService';
-import { Notification } from '../Models/Notification';
 
 @Component({
   selector: 'app-checkout',
@@ -30,6 +30,7 @@ export class CheckoutComponent implements OnInit {
   firstform :boolean=true;
   SecondForm:boolean;
   public Billing 
+  Notifications:{[id:string]:number}={};
  ngOnInit(): void {
    this.UserService.getIdByUserName(localStorage.getItem('username')).subscribe((
      data =>{
@@ -49,10 +50,7 @@ export class CheckoutComponent implements OnInit {
    )) 
  }
  
-  ClearCart(){ 
-    this.CartService.crearCart(this.user.id).subscribe();
-    window.location.reload();
-  }
+
 
   getProductName(idx){
     return this.productCartList[idx].productName;
@@ -72,44 +70,41 @@ export class CheckoutComponent implements OnInit {
   public createImgPath = (serverPath: string) => {
     return `https://localhost:44339/${serverPath}`;
   }
-  public response: {dbPath: ''};
-  public uploadFinished = (event) => {
-    this.response = event;
-  }
   Billings 
-  Order
   notify 
   seller 
   notificationBody: string ="Ordered Your Product"
   count :number =0
+  NotifyList : Notification[]=[]
   AddBilling(form :NgForm)
   {
-    this.Orderservice.CreateOrder(localStorage.getItem('userId'),this.getTotalPrice()).subscribe((u=>{
-      this.cartItemList.forEach(item => {    
+    this.Orderservice.CreateOrder(localStorage.getItem('userId'),this.getTotalPrice()).subscribe((data=>{
+      this.cartItemList.forEach((item => {
         this.Orderservice.AddOrderItem(item.productId,item.cartId).subscribe()       
-      }) 
-      this.BillingDetailsservice.inserBillingDetails(form.value).subscribe((data=>{
-        this.Billings = data 
-           
-        for(var i=1;i<=1;i++)
-        {
-          this.Orderservice.GetAllOrderItems(this.Billings.id).subscribe((ordeItem:any)=>{   
-          ordeItem.forEach(element => {
-            this.Productservice.getProductById(element.productID).subscribe((pro:any) =>{
-              this.UserService.getIdByUserName(pro.userName).subscribe((u=>{
-                this.seller = u
-                this.notify = new Notification(this.notificationBody,this.Billings.id,this.seller.id,localStorage.getItem('userId'))
-            
-                  this.notificationService.createNotification(this.notify).subscribe();
-              
-              }))
-            })
-          })
-          this.CartService.crearCart(localStorage.getItem('userId')).subscribe()                   
-          })
-        }
-  })) 
-  }))
+      }))
+     this.BillingDetailsservice.inserBillingDetails(form.value).subscribe((s=>{
+       this.Billings =s 
+     })) 
+  
+    this.cartItemList.forEach(element => {
+      this.Productservice.getProductById(element.productId).subscribe((pro =>{
+        this.UserService.getIdByUserName(pro.userName).subscribe((u=>{
+          this.seller = u
+          this.notify = new Notification(this.notificationBody,this.Billings.id,this.seller.id,localStorage.getItem('userId'))
+          this.CreateNotify(this.notify)      
+          }))
+        }))
+      })
+     this.CartService.crearCart(localStorage.getItem('userId')).subscribe()                   
+    }))        
+  }
+  CreateNotify(notify)
+  {
+    if(this.Notifications[notify.sellerId]!=notify.billingId)
+    {
+      this.Notifications[notify.sellerId]=notify.billingId
+      this.notificationService.createNotification(this.notify).subscribe();
+    }
   }
   goToStore()
   {

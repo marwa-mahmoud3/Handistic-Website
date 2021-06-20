@@ -1,3 +1,4 @@
+import { Route, Router } from '@angular/router';
 import { CartService } from './../Services/CartService';
 import { CategoryService } from './../Services/CategoryService';
 import { UserService } from 'src/app/Services/user.service';
@@ -18,22 +19,26 @@ productList : Product[]=[]
 filterTerm: string;
 categories: Category[] = [];
 CategoryList : Category[] = [];
-
 CountProducts :number []=[]
 user:any;
+
 constructor(private productWishlistService:ProductWishlistService,private _productsService :ProductsService
-  ,private UserService: UserService, private productservices: ProductsService,private categoryService : CategoryService,private CartService:CartService) {
+  ,private UserService: UserService, private productservices: ProductsService,
+  private router:Router,private categoryService : CategoryService,private CartService:CartService) {
 }
 
 ngOnInit(): void {
-  this.loadCategoriesWithDiscount();
+  this.loadCategories();
   this.getProductsPerPage(1); 
+  this._productsService.GetTopSales().subscribe(data=>{
+    this.productsCount=data.length;
+this.numberOfPages=Math.ceil(this.productsCount / this.pageSize);  })
   this.UserService.getIdByUserName(localStorage.getItem('username')).subscribe((
     data =>{
       this.user=data}))
 }
 
-/**** WishList*******/
+/** WishList***/
 public productWishlist;
 AddToWishList(id){
   this.UserService.getIdByUserName(localStorage.getItem('username')).subscribe(
@@ -52,25 +57,25 @@ AddToWishList(id){
 
 
 
-loadCategoriesWithDiscount()
+loadCategories()
 {
   this.categoryService.getCategories().subscribe((data:any)=>{
     this.categories = data;
     this.categories.forEach(category => {
-        this.productservices.getOfferdProductsByCategory(category.id).subscribe((data=>{
+        this.productservices.getCountOfProducts(category.id).subscribe((data=>{
         if(data>0){
-          console.log(this.currentCategoryId);
+          //console.log(this.currentCategoryId);
           if(this.currentCategoryId==0){
             this.setCrrentCategoryId(category);
           }
           this.CategoryList.push(category); 
+          console.log(this.CategoryList);
           this.CountProducts.push(data);
         }
         }));
      });
   });
 }
-
 
 public createImgPath = (serverPath: string) => {
   return `https://localhost:44339/${serverPath}`;
@@ -100,7 +105,7 @@ getPriceAfterDiscount(prouct:Product){
 hasProducts:boolean = false;
 errorMsg: string;
 productsPerPage: Product[];
-pageSize: number = 3;
+pageSize: number = 1;
 productsCount= 0;
 currentPageNumber: number = 1;
 numberOfPages: number; // categoriesCount / pageSize
@@ -116,13 +121,13 @@ setCrrentCategoryId(category){
 this.currentCategoryId=category.id;
 this.currentCategory=category;
 this.getSelectedPage(1);
-this.productservices.getOfferdProductsByCategory(category.id).subscribe((data=>{
-this.productsCount=data;
-this.numberOfPages=Math.ceil(this.productsCount / this.pageSize);
-}))
+/*this.productservices.getCategoryProducts(category.id).subscribe((data=>{
+this.productsCount=data.length;*/
+//this.numberOfPages=Math.ceil(this.productsCount / this.pageSize);
+//}//))
 }
 getProductsPerPage(currentPageNumber: number) {
-this.productservices.getOfferedByCategoryPaging(this.currentCategoryId,this.pageSize, currentPageNumber).subscribe(
+this.productservices.getBestSellingPagination(this.pageSize, currentPageNumber).subscribe(
   data => {
     console.log(data);
     this.productsPerPage = data
@@ -152,5 +157,9 @@ getBest(){
         })
     },
 );
+}
+
+hasDiscount(product:Product){
+  return product.discount>0;
 }
 }

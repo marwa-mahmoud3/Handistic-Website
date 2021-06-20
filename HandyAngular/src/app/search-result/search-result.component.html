@@ -1,0 +1,90 @@
+<app-header-before-login *ngIf="IsLogin"></app-header-before-login>
+<app-header-after-login *ngIf="!IsLogin"></app-header-after-login>
+<div class="container" style="margin-top: 50px;">
+    <div class="row">
+        <div class="col-12">
+            <h3 >Search results for: <span style="color: #ffa6a8;font-size: 20px;">{{currentKeyWord}}</span></h3>
+            <div class="row productsContainer products" id="searchResultsContainer" *ngIf="hasProducts">
+            </div>
+        </div>
+    </div>
+    <div class="row" style="margin-top: 40px;">
+        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12 col-12">
+            <div class="alert alert-danger" *ngIf="!hasProducts" style="width: 100%;" role="alert">Sorry no match
+                results</div>
+        </div>
+    </div>
+    <div class="container list-product" >
+        <div class="content-shop-4colum">
+
+            <div class="row product" style="margin-top: 20px;">
+
+                <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 col-xs-12 col-12"
+                    *ngFor="let product of productsPerPage |filter:filterTerm">
+                    <div class="card">
+                        <div class="card-img-top">
+                            <a href="product-single.html" class="wp-post-image">
+                                <img class="image-cover" [src]="createImgPath(product.productImagePath)"
+                                    style="height:250px;">
+                            </a>
+                            <p class="onnew">New</p>
+                            <p *ngIf="!hasDiscount(product)" class="onnew">New</p>
+                            <p *ngIf="hasDiscount(product)" class="onsale">Sale</p>
+                            <div class="icon-product">
+                                <button class="btn" (click)="AddItemToCart(product.id)">
+                                    <span class="fa fa-cart-plus"></span>
+                                </button>
+                                <button type="button" class="btn click-quick-view"
+                                    routerLink="/ProductDetails/{{product.id}}">
+                                    <span class="fa fa-search-plus"></span>
+                                </button>
+                                <button class="btn" (click)="AddToWishList(product.id)">
+                                    <span class="fas fa-heart"> </span>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <p class="card-title"><a class="float-left" href="">Added by {{product.userName}} </a></p>
+                            <br>
+                            <p class="woocommerce-loop-product__title"><a>
+                                    {{product.productName}}</a></p>
+                            <span class="price">
+                                <del *ngIf="hasDiscount(product)">
+                                    <span class="woocommerce-Price-amount amount">
+                                        <span class="woocommerce-Price-currencySymbol">$</span>{{product.unitPrice}}
+
+                                    </span>
+                                </del>
+                                <ins>
+                                    <span class="woocommerce-Price-amount amount">
+                                        <span
+                                            class="woocommerce-Price-currencySymbol">$</span>{{getPriceAfterDiscount(product)}}
+                                    </span>
+                                </ins>
+                            </span>
+                        </div>
+                    </div>
+
+                </div>
+
+                <ul *ngIf="hasProducts" class="pagination justify-content-center">
+                    <li class="page-item"
+                        [ngClass]="{disabled:currentPageNumber <=1, cursorNotAllowed:currentPageNumber <=1}">
+                        <button style="color: #000;" class="page-link" [disabled]="currentPageNumber <=1"
+                            (click)="getSelectedPage(currentPageNumber-1)">Previous</button>
+                    </li>
+                    <li class="page-item" *ngFor='let x of counter(numberOfPages);let i = index'
+                        [class.active]="currentPageNumber == (i+1)">
+                        <button class="page-link" id="page-link" (click)="getSelectedPage(i+1)">{{i+1}}
+                        </button>
+                    </li>
+                    <li class="page-item"
+                        [ngClass]="{disabled:currentPageNumber >=numberOfPages, cursorNotAllowed:currentPageNumber >=numberOfPages}">
+                        <button style="color: #000;" class="page-link" [disabled]="currentPageNumber >= numberOfPages"
+                            (click)="getSelectedPage(currentPageNumber+1)">Next</button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

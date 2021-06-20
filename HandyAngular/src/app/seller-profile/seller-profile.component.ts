@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { shops } from './../Models/shop';
 
 import { NgForm } from '@angular/forms';
@@ -21,7 +22,8 @@ export class SellerProfileComponent implements OnInit {
   public message: string;
   @Output() public onUploadFinished = new EventEmitter();
   public Currentuser;
-  constructor(private userservice :UserService,private categoryservice:CategoryService,private productService: ProductsService,private http: HttpClient , private shopService :ShopService) { }
+  constructor(private userservice :UserService,private router :Router,
+    private categoryservice:CategoryService,private productService: ProductsService,private http: HttpClient , private shopService :ShopService) { }
   public username=null;
   public email=null;
   public user=null;
@@ -86,7 +88,9 @@ SaveProduct(form : NgForm)
   }
   deleteProduct(id){
     this.productService.deleteById(id).subscribe();
-    window.location.reload();
+    this.router.routeReuseStrategy.shouldReuseRoute = () => false;
+    this.router.onSameUrlNavigation = 'reload';
+    this.router.navigate(["/Wishlist"]);  
   }
   public uploadFile = (files) => {
     if (files.length === 0) {

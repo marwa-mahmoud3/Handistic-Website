@@ -32,7 +32,7 @@
                     <td><button (click)="RemoveItemFromCart(item.productId)" routerLink="/Cart" class="remove">X</button></td>               
                     <td style="float: left;margin-left: 50px;"><img [src]="createImgPath(getProductPathImg(i))" style="width: 80px;height: 70px;" ></td>
                     <td>{{getProductName(i)}}</td>
-                    <td>{{item.unitPrice}}</td>
+                    <td>{{productPriceAfterDiscount[item.productId]}}</td>
                     <td>
                         <div class="btn-group">
                             <button type="button" class="prev btn" (click)="decreaseItemQuantity(item.productId,item.quantity)" >-</button>
@@ -40,7 +40,7 @@
                             <button type="button" class="next btn " (click)="increaseItemQuantity(item.productId)">+</button>
                         </div>
                     </td>
-                    <td><span>${{item.totalPrice}}</span></td>
+                    <td><span>${{getTotalPriceForProduct(item.productId,item.quantity)}}</span></td>
                 </tr>           
             </tbody>
         </table>
@@ -54,15 +54,14 @@
             <h2>Cart totals</h2>
             <ul class="list-inline">
                 <li class="list-inline-item"><p>Subtotal</p></li>
-                <li class="list-inline-item"><span>$ {{getTotalPrice()}}</span></li>
+                <li class="list-inline-item"><span>$ {{getTotalPriceForCart()}}</span></li>
             </ul>
             <ul class="list-inline">
                 <li class="list-inline-item"><p>Total</p></li>
-                <li class="list-inline-item"><p>$ {{getTotalPrice()}}</p></li>
+                <li class="list-inline-item"><p>${{getTotalPriceForCart()}}</p></li>
             </ul>
             <button class="btn float-left" (click)="GoToCheckOut()">PROCEED TO CHECKOUT</button>
         </div>
     </div>
 </div>
 <!--end content cart-->
-

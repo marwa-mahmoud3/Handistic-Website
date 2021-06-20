@@ -49,4 +49,14 @@ changetoRead(id,notify)
   return this.http.put(url,notify);
 
 }
+CheckExist(BillingId,sellerId)
+{
+  let url =`https://localhost:44339/api/Notifications/CheckExistByBillingId/${BillingId}/${sellerId}`;
+  return this.http.get(url);
+}
+GetByBillingId(BillingId)
+{
+  let url =`https://localhost:44339/api/Notifications/GetNotifyByBillingId/${BillingId}`;
+  return this.http.get(url);
+}
 }

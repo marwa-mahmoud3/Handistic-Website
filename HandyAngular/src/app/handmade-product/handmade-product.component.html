@@ -1,4 +1,3 @@
-
 <app-header-after-login></app-header-after-login>
 <div class="title-page"
 style="background-image: url('../../../assets/images/banner.jpg');background-position: center center;background-size: 100% 100%;">
@@ -38,7 +37,8 @@ style="background-image: url('../../../assets/images/banner.jpg');background-pos
                                 <a href="product-single.html" class="wp-post-image">
                                     <img [src]="createImgPath(product.productImagePath)" style="height: 250px;">
                                 </a>
-                                <p class="onnew">New</p>
+                                <p *ngIf="!hasDiscount(product)" class="onnew">New</p>
+                                <p *ngIf="hasDiscount(product)" class="onsale">Sale</p>                                
                                 <div class="icon-product">
                                     <button class="btn" (click)="AddItemToCart(product.id)">
                                         <span class="fa fa-cart-plus"></span>
@@ -56,9 +56,15 @@ style="background-image: url('../../../assets/images/banner.jpg');background-pos
                                 <p class="woocommerce-loop-product__title"><a>
                                     {{product.productName}}</a></p>
                                 <span class="price">
+                                    <del *ngIf="hasDiscount(product)">
+                                        <span class="woocommerce-Price-amount amount">
+                                            <span class="woocommerce-Price-currencySymbol">$</span>{{product.unitPrice}}
+
+                                        </span>
+                                    </del>
 												<ins>
 													<span class="woocommerce-Price-amount amount">
-														<span class="woocommerce-Price-currencySymbol">$</span>{{product.unitPrice}}
+														<span class="woocommerce-Price-currencySymbol">$</span>{{getPriceAfterDiscount(product)}}
 													</span>
 												</ins>
                                     </span>

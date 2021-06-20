@@ -294,25 +294,24 @@ Assigned to: Physcode
 }
 
 .search-header {
-	height:     100px;
 	display:    none;
 	position:   absolute;
-	background: white;
-	top:        0;
+	background: rgb(255, 255, 255);
+	top:        5;
 	right:      0;
 	z-index:    500;
 }
 
 .search-header input {
-	width:         95%;
-	margin-left:   3%;
-	margin-top:    30px;
-	border:        none;
-	border-bottom: 1px solid black;
+	width:         90%;
+	margin-left:   20px;
+	margin-top:    20px;
 	text-indent:   20px;
+	margin-bottom: 30px;
+	padding-bottom: 10px;
 }
 
-.search-header span {
+.search-header .close-search {
 	position:   absolute;
 	right:      4%;
 	border:     none;

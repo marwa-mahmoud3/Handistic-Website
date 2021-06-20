@@ -1,5 +1,4 @@
 import { AddReview } from './../Models/AddReview';
-import { BillingDetails } from './../Models/BillingDetails';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 

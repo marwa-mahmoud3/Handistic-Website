@@ -20,7 +20,7 @@ export class CartComponent implements OnInit {
   user:any;
   cartItemList:CartItem[]=[];
   productCartList:Product[]=[];
-  
+  productPriceAfterDiscount:{[id:number]:number}={};
 
  ngOnInit(): void {
    this.UserService.getIdByUserName(localStorage.getItem('username')).subscribe((
@@ -38,16 +38,28 @@ export class CartComponent implements OnInit {
       ))
      }
    )) 
+
+   this.ProductsService.getAllProducts().subscribe((data:any)=>{
+     data.forEach(e => {
+      let res=e.unitPrice;
+      res-=e.unitPrice*(e.discount/100.0);
+      this.productPriceAfterDiscount[e.id]=Math.ceil(res);
+     });
+   });
  }
 
  ClearCart(){ 
   this.CartService.crearCart(this.user.id).subscribe();
-  window.location.reload();
+  this.router.routeReuseStrategy.shouldReuseRoute = () => false;
+  this.router.onSameUrlNavigation = 'reload';
+  this.router.navigate(["/Cart"]);
 }
 
 increaseItemQuantity(productId:number){
   this.CartService.increaseCartItemQuantity(this.user.id,productId,null).subscribe();
-  window.location.reload();
+   this.router.routeReuseStrategy.shouldReuseRoute = () => false;
+  this.router.onSameUrlNavigation = 'reload';
+  this.router.navigate(["/Cart"]);
 }
 
 decreaseItemQuantity(productId:number,quantity:number){
@@ -55,11 +67,15 @@ decreaseItemQuantity(productId:number,quantity:number){
   this.CartService.decreaseCartItemQuantity(this.user.id,productId,null).subscribe();}
 
   else {this.CartService.deleteItemFromCart(this.user.id,productId).subscribe();}
-  window.location.reload();
+  this.router.routeReuseStrategy.shouldReuseRoute = () => false;
+  this.router.onSameUrlNavigation = 'reload';
+  this.router.navigate(["/Cart"]);
 }
 RemoveItemFromCart(productId:number){
   this.CartService.deleteItemFromCart(this.user.id,productId).subscribe();
-  window.location.reload();
+  this.router.routeReuseStrategy.shouldReuseRoute = () => false;
+  this.router.onSameUrlNavigation = 'reload';
+  this.router.navigate(["/Cart"]);
 }
 getProductName(idx){
   return this.productCartList[idx].productName;
@@ -71,27 +87,18 @@ GoToCheckOut(){
   if(this.cartItemList.length>0)
     this.router.navigate(["/Checkout"])
 }
-getTotalPrice(){
+getTotalPriceForCart(){
  let total=0;
  this.cartItemList.forEach(e=>{
-   total+=e.totalPrice;
+   total+=this.productPriceAfterDiscount[e.productId]*e.quantity
  })
  return total;
 }
-
+getTotalPriceForProduct(productId:number,quantity:number){
+  return this.productPriceAfterDiscount[productId]*quantity;
+}
 public createImgPath = (serverPath: string) => {
   return `https://localhost:44339/${serverPath}`;
-}
-public response: {dbPath: ''};
-allproduct =null
-onCreate()
-{
-  this.allproduct = {
-    productImagePath :this.response.dbPath,
-  }
-}
-public uploadFinished = (event) => {
-  this.response = event;
 }
 
 }

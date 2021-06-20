@@ -1,0 +1,30 @@
+<app-header-after-login></app-header-after-login>
+<div class="container">
+    <div class="content container-fluid ">
+          <div class="row"  >                   
+            <div class="col-sm-12 col-xs-12 chat" style="overflow: hidden; outline: none;" tabindex="5001">
+              <div class="col-inside-lg decor-default"  >
+                <div class="chat-body" >
+                  <h6>Chat</h6>
+                    <div class="answer" *ngFor="let mObj of msgInboxArray" [ngClass]="mObj.user === msgDto.user ? 'left' : 'right'">
+                        <div class="avatar">
+                        <img src="../../assets/images/avt1.png" alt="User name">
+                        <div class="status offline"></div>
+                        </div>
+                        <div class="name" >{{mObj.user}}</div>
+                        <div class="text">
+                            {{mObj.msgText}}                    
+                        </div>
+                        <br>
+                    </div>      
+                </div>
+              </div>
+              <div class="input-group" >
+                <input type="text" class="form-control" placeholder="Type message here"  [(ngModel)]="msgDto.msgText"  />
+                <span class="input-group-text" (click)= "send()"><i class="fa fa-paper-plane" style="color: #7266ba;" ></i></span> 
+              </div><br> 
+               <input type="text" hidden value={{msgDto.user}} class="form-control" style="width: 20%;" placeholder="Your name" [(ngModel)]="msgDto.user" />
+            </div>
+          </div>
+        </div>
+     </div>
