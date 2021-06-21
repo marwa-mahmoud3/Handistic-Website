@@ -27,14 +27,14 @@ var custom_js = {
 		})
 		//click header mobile
 		jQuery('.click-mobile').on('click', function () {
-			if (jQuery('.click-mobile').hasClass('lnr-menu')) {
-				jQuery('.click-mobile').addClass('lnr-cross');
-				jQuery('.click-mobile').removeClass('lnr-menu');
+			if (jQuery('.click-mobile').hasClass('fa-bars')) {
+				jQuery('.click-mobile').addClass('fa-times');
+				jQuery('.click-mobile').removeClass('fa-bars');
 				jQuery('.menu-mobile').slideToggle(200, 'linear');
 
 			} else {
-				jQuery('.click-mobile').addClass('lnr-menu');
-				jQuery('.click-mobile').removeClass('lnr-cross');
+				jQuery('.click-mobile').addClass('fa-bars');
+				jQuery('.click-mobile').removeClass('fa-times');
 				jQuery('.menu-mobile').slideToggle(200, 'linear');
 			}
 		})

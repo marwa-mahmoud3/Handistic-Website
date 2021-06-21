@@ -1,3 +1,4 @@
+import { ProductWishlistService } from './../Services/ProductWishlistService';
 import { BillingDetailsService } from './../Services/BillingDetailsService';
 import { ClientNotifyService } from './../Services/ClientNotifyService';
 import { Notification } from './../Models/Notification';
@@ -12,6 +13,7 @@ import { CartService } from '../Services/CartService';
 import { ProductsService } from '../Services/ProductsService';
 import { sellerService } from './../Services/sellerService';
 import { UserService } from '../Services/user.service';
+import { ProductWishlist } from '../Models/ProductWishlist';
 
 @Component({
   selector: 'app-user-navbar',
@@ -23,13 +25,14 @@ export class UserNavbarComponent implements OnInit {
   public CurrentUser 
   constructor(private apiservice : ApiService ,private route:ActivatedRoute,private userservice:UserService,
     private router: Router ,private sellerService : sellerService,private UserService:UserService,
-     private CartService:CartService,private ProductsService:ProductsService,
+     private CartService:CartService,private ProductsService:ProductsService,private _productwishlistServices:ProductWishlistService,
     private ClientNotify :ClientNotifyService) { }
   cartItemList:CartItem[]=[];
   productCartList:Product[]=[];
   Counter :number
   IsRead : boolean[]=[]
-  
+  productwishList: ProductWishlist[] = [];
+  wishlistID:number;
   ngOnInit(): void {
     this.GetNotifactions();
     this.ClientNotify.notReadedCount(localStorage.getItem('userId')).subscribe(
@@ -37,6 +40,17 @@ export class UserNavbarComponent implements OnInit {
          this.Counter = count
       }
     )
+    this._productwishlistServices.GetWishlistByUserId(localStorage.getItem('userId')).subscribe(
+      data2 => {
+        this.wishlistID=data2.id;
+        this._productwishlistServices.getAllProductWishlists().subscribe((data: any) => {
+          data.forEach(product => {
+            if (product.wishlistID == data2.id) {
+              this.productwishList.push(product);
+            }
+          });
+        });
+      })
     this.CurrentUser = new Users(localStorage.getItem('username'),'','','','');
     this.UserService.getIdByUserName(localStorage.getItem('username')).subscribe((
       data =>{

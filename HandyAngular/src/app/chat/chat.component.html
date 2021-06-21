@@ -1,15 +1,31 @@
 <app-header-after-login></app-header-after-login>
-<div class="container">
-    <div class="content container-fluid ">
-          <div class="row"  >                   
-            <div class="col-sm-12 col-xs-12 chat" style="overflow: hidden; outline: none;" tabindex="5001">
-              <div class="col-inside-lg decor-default"  >
+
+<div class="container" style="background-color: #dbdbdb;padding-top: 40px;padding-bottom: 40px;margin-bottom: 40px;"> 
+    <div class="content container-fluid bootstrap snippets bootdey">
+      <div class="row row-broken">
+        <div class="col-sm-3 col-xs-12" >
+          <div class="col-inside-lg decor-default chat" style="height: 100%;overflow: hidden; outline: none;" tabindex="5000">
+            <div class="chat-users">
+              <h6>Online</h6>
+                <div class="user" *ngFor="let mObj of map | keyvalue" [ngClass]="mObj.key === msgDto.user ? 'hide' : 'show'" >
+                    <div class="avatar">
+                    <img src="../../assets/images/avt1.png" alt="User name">
+                    <div class="status online"></div>
+                    </div>
+                    <div  class="name">{{mObj.key}}</div>
+                    <div class="mood">{{mObj.value}}</div>
+                </div>
+            </div>
+          </div> 
+        </div>                 
+        <div class="col-sm-9 col-xs-12 chat" style="background-color: #fff;overflow: hidden; outline: none;" tabindex="5001">
+            <div class="col-inside-lg decor-default"  >
                 <div class="chat-body" >
                   <h6>Chat</h6>
                     <div class="answer" *ngFor="let mObj of msgInboxArray" [ngClass]="mObj.user === msgDto.user ? 'left' : 'right'">
                         <div class="avatar">
                         <img src="../../assets/images/avt1.png" alt="User name">
-                        <div class="status offline"></div>
+                        <div class="status online"></div>
                         </div>
                         <div class="name" >{{mObj.user}}</div>
                         <div class="text">
@@ -28,3 +44,10 @@
           </div>
         </div>
      </div>
+     <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.nicescroll/3.6.8-fix/jquery.nicescroll.min.js"></script>
+     <script type="text/javascript">
+      $(function(){
+          $(".chat").niceScroll();
+      })
+      </script>

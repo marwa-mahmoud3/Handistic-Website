@@ -28,7 +28,6 @@ constructor(private productWishlistService:ProductWishlistService,private _produ
 }
 
 ngOnInit(): void {
-  this.loadCategories();
   this.getProductsPerPage(1); 
   this._productsService.GetTopSales().subscribe(data=>{
     this.productsCount=data.length;
@@ -56,27 +55,6 @@ AddToWishList(id){
 }
 
 
-
-loadCategories()
-{
-  this.categoryService.getCategories().subscribe((data:any)=>{
-    this.categories = data;
-    this.categories.forEach(category => {
-        this.productservices.getCountOfProducts(category.id).subscribe((data=>{
-        if(data>0){
-          //console.log(this.currentCategoryId);
-          if(this.currentCategoryId==0){
-            this.setCrrentCategoryId(category);
-          }
-          this.CategoryList.push(category); 
-          console.log(this.CategoryList);
-          this.CountProducts.push(data);
-        }
-        }));
-     });
-  });
-}
-
 public createImgPath = (serverPath: string) => {
   return `https://localhost:44339/${serverPath}`;
 }
@@ -101,14 +79,13 @@ getPriceAfterDiscount(prouct:Product){
  return Math.ceil(res);
 }
 
-//pagination 
 hasProducts:boolean = false;
 errorMsg: string;
 productsPerPage: Product[];
-pageSize: number = 1;
+pageSize: number = 8;
 productsCount= 0;
 currentPageNumber: number = 1;
-numberOfPages: number; // categoriesCount / pageSize
+numberOfPages: number; 
 selectedCategoryId: number;
 currentCategoryId:number=0
 currentCategory:Category;
@@ -121,29 +98,25 @@ setCrrentCategoryId(category){
 this.currentCategoryId=category.id;
 this.currentCategory=category;
 this.getSelectedPage(1);
-/*this.productservices.getCategoryProducts(category.id).subscribe((data=>{
-this.productsCount=data.length;*/
-//this.numberOfPages=Math.ceil(this.productsCount / this.pageSize);
-//}//))
+
 }
 getProductsPerPage(currentPageNumber: number) {
-this.productservices.getBestSellingPagination(this.pageSize, currentPageNumber).subscribe(
-  data => {
-    console.log(data);
-    this.productsPerPage = data
-    console.log(data);
-    this.currentPageNumber = currentPageNumber;
-    if(data.length != 0)
-      this.hasProducts = true;
-    else
-      this.hasProducts = false;
-
-  },
-  error => {
-    this.errorMsg = error;
+  this.productservices.getBestSellingPagination(this.pageSize, currentPageNumber).subscribe(
+    data => {
+      this.productsPerPage = data
+      this.currentPageNumber = currentPageNumber;
+      if(data.length != 0)
+        this.hasProducts = true;
+      else
+        this.hasProducts = false;
+  
+    },
+    error => {
+      this.errorMsg = error;
+    }
+  )
   }
-)
-}
+  
 
 getSelectedPage(currentPageNumber: number) {
   this.getProductsPerPage(currentPageNumber);

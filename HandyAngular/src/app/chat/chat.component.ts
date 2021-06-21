@@ -24,8 +24,11 @@ export class ChatComponent implements OnInit {
   msgDto: MessageModel = new MessageModel();
   msgInboxArray: MessageModel[] = [];
   CurrentUser :Users
+  Messages:{[id:string]:string}={};
+  MessagesList:MessageModel[]=[]
+  map = new Map<string, string>();
   send(): void {
-
+   
       if(this.msgDto) {
         if(this.msgDto.user.length == 0){
           window.alert("field is required");
@@ -35,6 +38,8 @@ export class ChatComponent implements OnInit {
           this.msgDto.msgText = '';
         }
       }
+     
+
   }
 
   addToInbox(obj: MessageModel) {
@@ -42,6 +47,10 @@ export class ChatComponent implements OnInit {
     newObj.user = obj.user;
     newObj.msgText = obj.msgText;
     this.msgInboxArray.push(newObj);
+    if(this.map[newObj.user]!=newObj.msgText)
+      {
+        this.map.set(newObj.user,newObj.msgText ); 
+      }
 
   }
 }

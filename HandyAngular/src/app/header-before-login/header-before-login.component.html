@@ -1,7 +1,6 @@
 <div class="header" style="background-color: #000;color: #fff;height: 50px;">
     <div class="container-fluid">
-        <div class="header-desktop ">
-            <div class=" header-menu-desktop d-flex justify-content-between">
+        <div class="header-menu-desktop d-flex justify-content-between">
                 <div>
                     <div class="menu">
                         <ul style="margin-top: 10px;">
@@ -16,293 +15,108 @@
                         </ul>
                     </div>
                 </div>
-
             </div>
-        </div>
     </div>
 </div>
-<!--end header desktop-->
-<!--header mobile-->
-<div class="header">
-    <div class="container-fluid search-header">
-
-    </div>
-    <div class="container-fluid">
-        <div class="header-mobile">
-            <div class="header-menu-mobile d-flex justify-content-between">
-                <div>
-                    <button><span class="lnr lnr-menu click-mobile"></span></button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="menu-mobile">
-        <div>
-            <div class="menu">
-                <ul>
-                    <li><a routerLink="/Login">Create Shop</a></li>
-                </ul>
-            </div>
-        </div>
-        <div>
-            <div class="header-right menu">
-                <ul class="list-inline" style="margin-top: 5px;">
-                    <li><a href="about.html">MY Profile</a>
-                        <ul>
-                            <li><a href="about.html">About Us</a></li>
-                            <li><a href="what-we-offer.html">What We Offer</a></li>
-                            <li><a href="our-team.html">Our Team</a></li>
-                            <li><a href="comming-soon.html">Comming Soon</a></li>
-                            <li><a href="error-page.html">Error Page</a></li>
-                        </ul>
-                    </li>
-                    <li href="/Login"><a>Login</a></li>
-                </ul>
-            </div>
-        </div>
-    </div>
-</div>
-<!--end header mobile-->
-<div class="header" style="height: 70px;">
-    <div class="container-fluid search-header">
-        <form (ngSubmit)="goToSearchPage(searchBar.value)">       
-                <div class="input-group" style="width: 93%;"  >
+    <div class="header">
+        <div class="container-fluid search-header">
+            <form class="justify-content-center" (ngSubmit)="goToSearchPage(searchBar.value)">       
+                <div class="input-group" style="width: 85%;"  >
                     <input class="form-control" style="outline: none;" type="text" placeholder="Search" #searchBar>
                     <div class="input-group-append" style="margin-top: 20px;">
                         <span type="submit"  class="input-group-text btn" style="background-color: #ffa6a8;"> 
                             <i  style="color: #fff;" class="fas fa-search"></i>
                         </span>
                     </div>
-                </div>
-            <span style="margin-top: 3px;" class="close-search remove">X</span>               
-        </form>
-    </div>
-    <div class="container-fluid">
-        <div class="header-desktop ">
-            <div class=" header-menu-desktop d-flex justify-content-between">
-                <div>
-                    <div class="logo">
-                        <a routerLink="/Home" style="text-decoration: none;">
-                            <h2 style="color: black;">Handistic</h2>
-                        </a>
-                        <div id="circle"></div>
-                    </div>
-                </div>
-                <div>
-                    <div class="menu">
-                        <ul>
-                            <li><a routerLink="/Home">home</a></li>
-                            <li><a routerLink="/Login">Store</a></li>
-                            <li><a routerLink="/Login">Offers</a></li>
-                            <li><a routerLink="/Login">Best Selling</a></li>
-                            <li><a routerLink="/AboutUS">About Us</a></li>
-                            <li><a routerLink="/Login">contact</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div>
-                    <div class="header-right">
-                        <ul class="list-inline">
-                            <li>
-                                <a href="javascript:void(0)" class="search-header1"><img
-                                        src="../../assets/imager/home/search-header.png" alt=""
-                                        style="width: 20px;height: 20px;margin-top: -10px;"></a>
-                            </li>
-                            <li><a href="/Login" class="cart-index">
-                                    <img src="../../assets/imager/home/bag-2.png" alt=""
-                                        style="width: 16px;height: 22px;margin-top: -10px;">
-                                    <div class="number-cart" >
-                                        0
-                                    </div>
-                                </a>
-                            <li>
-                                <a href="/Login"><i class="far fa-heart" style="font-size: 22px;Color: #555"></i></a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
+                </div>     
+                <span style="width: 10%;" style="margin-top: 3px;" class="close-search remove">X</span>               
+            </form>
         </div>
-    </div>
-</div>
-<!--end header desktop-->
-<!--header mobile-->
-<div class="header">
-    <div class="container-fluid search-header">
-     
-    </div>
-    <div class="container-fluid">
-        <div class="header-mobile">
-            <div class="header-menu-mobile d-flex justify-content-between">
-                <div>
-                    <button><span class="lnr lnr-menu click-mobile"></span></button>
-                </div>
-                <div class="logo">
-                    <a routerLink="/Home">
-                        <h2 style="color: black;">Handy</h2>
-                    </a>
-                    <div id="circle"></div>
+        <div class="container-fluid">
+            <div class="header-desktop ">
+                <div class=" header-menu-desktop d-flex justify-content-between">
                     <div>
-                        <div class="row header-right">
-                            <ul class="list-inline">
-                                <li><a href="#" class="cart-index">
-                                        <img src="../../assets/imager/home/bag-2.png" alt=""
-                                            style="width: 16px;height: 22px;margin-top: -10px;">
-                                        <div class="number-cart">
-                                            2
-                                        </div>
-                                    </a>
-                                    <div class="widget_shopping_cart">
-                                        <div class="widget_shopping_cart_content">
-                                            <ul class="woocommerce-mini-cart cart_list product_list_widget ">
-                                                <li class="woocommerce-mini-cart-item mini_cart_item clearfix">
-                                                    <a class="product-image" href="#">
-                                                        <img src="https://via.placeholder.com/80x70.jpg" alt="cart-1">
-                                                    </a>
-                                                    <a class="product-title" href="#">Skin recreation</a>
-
-                                                    <span class="woocommerce-Price-amount amount">
-                                                        <span class="woocommerce-Price-currencySymbol">$</span>
-                                                        56
-                                                    </span>
-                                                    <span class="quantity">
-                                                        Qty: 1
-                                                    </span>
-                                                    <a href="#" class="remove">
-                                                        <span class="lnr lnr-cross"></span>
-                                                    </a>
-                                                </li>
-                                                <li class="woocommerce-mini-cart-item mini_cart_item clearfix">
-                                                    <a class="product-image" href="#">
-                                                        <img src="https://via.placeholder.com/80x70.jpg" alt="cart-2">
-                                                    </a>
-                                                    <a class="product-title" href="#">Face cream</a>
-
-                                                    <span class="woocommerce-Price-amount amount">
-                                                        <span class="woocommerce-Price-currencySymbol">$</span>
-                                                        48
-                                                    </span>
-                                                    <span class="quantity">
-                                                        Qty: 2
-                                                    </span>
-                                                    <a href="#" class="remove">
-                                                        <span class="lnr lnr-cross"></span>
-                                                    </a>
-                                                </li>
-                                            </ul>
-                                            <p class="woocommerce-mini-cart__total total">
-                                                <span>Order Total:</span>
-                                                <span class="woocommerce-Price-amount amount">
-                                                    <span class="woocommerce-Price-currencySymbol">$</span>
-                                                    200
-                                                </span>
-                                            </p>
-                                            <p class="woocommerce-mini-cart__buttons buttons">
-                                                <a href="#" class="button wc-forward au-btn btn-small">VIEW CART &
-                                                    CHECKOUT</a>
-                                            </p>
-                                        </div>
-                                    </div>
-                                </li>
+                        <div class="logo">
+                            <a routerLink="/Home" style="text-decoration: none;"><h2 style="color: black;">Handistic</h2></a>
+                            <div id="circle"></div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="menu">
+                            <ul>
+                                <li><a routerLink="/Home">home</a></li>
+                                <li><a routerLink="/Login">Store</a></li>
+                                <li><a routerLink="/Login">Offers</a></li>
+                                <li><a routerLink="/Login">Best Selling</a></li>
+                                <li><a routerLink="/Login">contact</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="header-right">
+                            <ul class="list-inline" >
                                 <li>
-                                    <a href="javascript:void(0)" class="search-header1"><img
-                                            src="../../assets/imager/home/search-header.png" alt=""
-                                            style="width: 20px;height: 20px;margin-top: -10px;"></a>
-                                </li>
-                                <li><a href="javascript:void(0)" class="introduce1"><img
-                                            src="../../assets/imager/home/control-introduce.png" alt=""
-                                            style="width: 16px;height: 16px;margin-top: -10px;"></a>
+                                    <a href="javascript:void(0)" class="search-header1"><img src="../../assets/imager/home/search-header.png" alt="" style="width: 20px;height: 20px;margin-top: -10px;"></a>
+                                </li> 
+                                <li><a routerLink="/Login" class="cart-index">
+                                    <img src="../../assets/imager/home/bag-2.png" alt=""
+                                         style="width: 16px;height: 22px;margin-top: -10px;">
+                                </a> 
+                                </li>                          
+                                <li >
+                                    <a  routerLink="/Login" >
+                                        <i class="far fa-heart"style="font-size: 22px;Color: #555"></i>
+                                    </a>
                                 </li>
                             </ul>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="introduce">
-                <div class="content-introduce">
-                    <h3>follow instagram</h3>
-                    <p>@Ura.cosmetic_beauty</p>
-                    <div class="img-controduce">
-                        <img src="https://via.placeholder.com/150" alt="">
-                        <img src="https://via.placeholder.com/150" alt="">
-                        <img src="https://via.placeholder.com/150" alt="">
-                        <img src="https://via.placeholder.com/150" alt="">
-                        <img src="https://via.placeholder.com/150" alt="">
-                        <img src="https://via.placeholder.com/150" alt="">
+        </div>
+    </div>
+    <!--end header desktop-->
+    <!--header mobile-->
+    <div class="header">
+        <div class="container-fluid">
+            <div class="header-mobile">
+                <div class="header-menu-mobile d-flex justify-content-between">
+                    <div>
+                        <button><span style="font-size: 25px;" class="fas fa-bars click-mobile"></span></button>
                     </div>
-                    <h4>newsletter</h4>
-                    <p>Subcribe to our newsletter</p>
-                    <input type="text" placeholder="Email">
-                    <button class="bt"><i class="fas fa-angle-right"></i></button>
-                    <div class="icon-introduce">
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-facebook"></i></a>
-                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    <div class="logo" style="margin-top: 20px;">
+                        <a routerLink="/Home" style="text-decoration: none;"><h2 style="color: black;">Handistic</h2></a>
+                        <div id="circle"></div>
                     </div>
-                    <span class="lnr lnr-cross close-introduce"></span>
+                    <div style="margin-top: 20px;">
+                        <div class="row header-right">
+                            <ul class="list-inline">
+                                <li>
+                                    <a href="javascript:void(0)" class="search-header1"><img src="../../assets/imager/home/search-header.png" alt="" style="width: 20px;height: 20px;margin-top: -10px;"></a>
+                                </li> 
+                                <li><a routerLink="/Login" class="cart-index">
+                                    <img src="../../assets/imager/home/bag-2.png" alt=""
+                                         style="width: 16px;height: 22px;margin-top: -10px;">
+                                </a> 
+                                </li> 
+                                <li >
+                                    <a  routerLink="/Login" >
+                                        <i class="far fa-heart"style="font-size: 22px;Color: #555"></i>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
             </div>
             <div class="menu-mobile">
                 <ul>
-                    <li><a href="index.html" class="menu-active">home</a><span
-                            class="lnr lnr-chevron-down drop-link"></span>
-                        <ul class="drop-menu">
-                            <li><a href="index.html">Home Page_v1</a></li>
-                            <li><a href="index2.html">Home Page_v2</a></li>
-                            <li><a href="index3.html">Home Page_v3</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="about.html">page</a><span class="lnr lnr-chevron-down drop-link"></span>
-                        <ul class="drop-menu">
-                            <li><a href="about.html">About Us</a></li>
-                            <li><a href="what-we-offer.html">What We Offer</a></li>
-                            <li><a href="our-team.html">Our Team</a></li>
-                            <li><a href="comming-soon.html">Comming Soon</a></li>
-                            <li><a href="error-page.html">Error Page</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="product-list.html">shop</a><span class="lnr lnr-chevron-down drop-link"></span>
-                        <ul class="drop-menu">
-                            <li><a href="product-list.html">Product List</a></li>
-                            <li><a href="product-single.html">Product Single</a></li>
-                            <li><a href="shop-2-colum.html">Layouts</a><span
-                                    class="lnr lnr-chevron-down drop-link"></span>
-                                <ul class="drop-menu">
-                                    <li><a href="shop-2-colum.html">2 Colums</a></li>
-                                    <li><a href="shop-3-colum.html">3 Colums</a></li>
-                                    <li><a href="shop-4-colum.html">4 Colums</a></li>
-
-                                </ul>
-                            </li>
-                            <li><a href="cart.html">Shop Page</a><span class="lnr lnr-chevron-down drop-link"></span>
-                                <ul class="drop-menu">
-                                    <li><a href="cart.html">Cart</a></li>
-                                    <li><a href="wishlist.html">Wish List</a></li>
-                                    <li><a href="checkout.html">Check Out</a></li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </li>
-                    <li><a href="blog-single.html">blog</a><span class="lnr lnr-chevron-down drop-link"></span>
-                        <ul class="drop-menu">
-                            <li><a href="blog-masonry.html">Masonry</a></li>
-                            <li><a href="blog-standard-right-siderbar.html">Standard</a><span
-                                    class="lnr lnr-chevron-down drop-link"></span>
-                                <ul class="drop-menu">
-                                    <li><a href="blog-standard-right-siderbar.html">Right Sidebar</a></li>
-                                    <li><a href="blog-standard-left-siderbar.html">Left Sidebar</a></li>
-                                    <li><a href="blog-standard-no-sliderbar.html">No Sidebar</a></li>
-                                </ul>
-                            </li>
-                            <li><a href="blog-single.html">Single</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="contact-us.html">contact</a></li>
-                    <!-- <li><a href="/Login">Login</a></li> -->
+                    <li><a style="text-decoration: none;" routerLink="/Home">home</a></li>
+                    <li><a style="text-decoration: none;" routerLink="/Login">Store</a></li>
+                    <li><a style="text-decoration: none;" routerLink="/Login">Offers</a></li>
+                    <li><a style="text-decoration: none;" routerLink="/Login">Best Selling</a></li>
+                    <li><a style="text-decoration: none;" routerLink="/Login">contact</a></li>
                 </ul>
             </div>
         </div>
     </div>
-    <!--end header mobile-->

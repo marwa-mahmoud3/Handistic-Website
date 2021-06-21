@@ -1,6 +1,6 @@
 <div class="header" style="background-color: #000;height: 50px;">
     <div class="container-fluid">
-        <div class="header-desktop ">
+        <div class="">
             <div class=" header-menu-desktop d-flex justify-content-between">              
                 <div>
                     <div class="menu">
@@ -19,8 +19,6 @@
                                     <li style="padding: 0px;margin: 0px;" (click)="logout()"><a class="btn" style="background: #000;">Logout</a></li>
                                 </ul>
                             </li>
-                            <!-- <li>
-                            </li> -->
                         </ul>
                     </div>
                 </div>
@@ -29,354 +27,276 @@
         </div>
     </div>
 </div>
-<!--end header desktop-->
-<!--header mobile-->
-<div class="header">
-    <div class="container-fluid search-header">
-    </div>
-    <div class="container-fluid">
-        <div class="header-mobile">
-            <div class="header-menu-mobile d-flex justify-content-between">
-                <div>
-                    <button><span class="lnr lnr-menu click-mobile"></span></button>
-                </div>
-                </div>
-            </div>
-        </div>
-       
-        <div class="menu-mobile">
-            <div>
-                <div class="menu">
-                    <ul>
-                        <li><a routerLink="/">Create Shop</a></li>
-                    </ul>
-                </div>
-            </div>
-            <div>
-                <div class="header-right menu">
-                    <ul class="list-inline" style="margin-top: 5px;">
-                        <li><a href="about.html">MY Profile</a>
-                            <ul style="height: 170px;width: 150px;">
-                                <li style="padding: 0px;margin: 0px;" (click)="goToProfile()"><a>My Profile</a></li>
-                                <li style="padding: 0px;margin: 0px;" ><a href="about.html">Settings</a></li>
-                                <li style="padding: 0px;margin: 0px;" (click)="logout()"><a class="btn" style="background: #000;">Logout</a></li>
-                            </ul>
-                        </li>
-                    </ul>
-                </div>
-        </div>
-    </div>
-</div>
-<div class="header" style="height: 70px;">
-    <div class="container-fluid search-header">
-        <form>
-            <input type="text" placeholder="Search">
-            <span class="close-search">X</span>
-        </form>
-    </div>
-    <div class="container-fluid">
-        <div class="header-desktop ">
-            <div class=" header-menu-desktop d-flex justify-content-between">
-                <div>
-                    <div class="logo">
+    <div class="header">
+        <div class="container-fluid">
+            <div class="header-mobile">
+                <div class="header-menu-mobile d-flex justify-content-between">
+                    <div>
+                        <button><span style="font-size: 25px;" class="fas fa-bars click-mobile"></span></button>
+                    </div>
+                    <div class="logo" style="margin-top: 20px;">
                         <a routerLink="/profile" style="text-decoration: none;"><h2 style="color: black;">Handistic</h2></a>
                         <div id="circle"></div>
                     </div>
-                </div>
-                <div>
-                    <div class="menu">
-                        <ul>
-                            <li><a routerLink="/profile">home</a></li>
-                            <li><a routerLink="/HandmadeProducts">Store</a></li>
-                            <li><a routerLink="/Offers" >Offers</a></li>
-                            <li><a routerLink="/bestSelleing">Best Selling</a></li>
-                            <li><a routerLink="/AboutUS" >About Us</a></li>
-                            <li><a routerLink="/ContactUs">contact</a></li>
-                        </ul>
-                    </div>
-                </div>  
-                <div>
-                    <div class="header-right" >
-                        <ul class="list-inline"  >
-                            <li><a  class="cart-index" style="width: 100%;">
-                                     <i class="far fa-bell" style="font-size: 22px;"></i>
+                    <div style="margin-top: 0px;">
+                        <div class="row header-right">
+                            <ul class="list-inline">
+                                <li><a  class="cart-index" style="width: 100%;">
+                                    <i class="far fa-bell" style="font-size: 22px;"></i>
+                               </a>
+                               <div id="count">{{Counter}}</div>
+                               <div class="widget_shopping_cart" style="width:300px" >
+                                   <div class="widget_shopping_cart_content" style="padding-top: 5px;margin-top:5px">
+                                     <ul *ngFor="let item of NotificationList| slice:0:3;let i =index" class="woocommerce-mini-cart cart_list product_list_widget " style="padding: 0px;margin:0px"   >                                        
+                                           <li *ngIf="getReadboolean(i)"  class="woocommerce-mini-cart-item mini_cart_item clearfix" style="width: 100%;height: 100px;margin-bottom: 5px;">
+                                                   <a class="product-image" href="#">
+                                                       <img src="../../assets/images/user.png" style="border-radius: 50%;width: 60px;height: 70px;margin-left: 15px;"alt="cart-2">
+                                                   </a>
+                                                   <a class="product-title" href="#">{{users[i]}}</a>
+                                                   <span  class="woocommerce-Price-amount amount" style="font-weight: normal; font-size: small;left: 32%;margin-top: 7px;">
+                                                       {{item.notificationBody}} ....
+                                                   </span>
+                                                   <a  (click)="MakeRead(item.id)" routerLink="/orderDetails/{{item.id}}" class="woocommerce-Price-amount amount btn" style="margin-top: 30px;margin-left: 90px;
+                                                   font-size: 13px;background-color: none;
+                                                   color: #074d6d;outline: none;border: none;
+                                                   text-decoration: underline;">
+                                                       Details
+                                                   </a>
+                                                   <a href="#" class="remove">
+                                                       <span class="lnr lnr-cross"></span>
+                                                   </a>
+                                               </li>
+                                               <li *ngIf="!getReadboolean(i)"  style="background-color: #e1f2fa;width: 100%;height: 100px;margin-bottom: 7px;">
+                                                   <a class="product-image" href="#">
+                                                       <img src="../../assets/images/user.png" style="border-radius: 50%;margin-left: 15px;width: 60px;height: 70px"alt="cart-2">
+                                                   </a>
+                                                   <a class="product-title" href="#">{{users[i]}}</a>
+                                                   <span  class="woocommerce-Price-amount amount" style="font-weight: normal; font-size: small;left: 32%;margin-top: 5px;">
+                                                       {{item.notificationBody}} ....
+                                                   </span>
+                                                   <a  (click)="MakeRead(item.id)" routerLink="/orderDetails/{{item.id}}" class="woocommerce-Price-amount amount btn" style="margin-top: 30px;margin-left: 90px;
+                                                   font-size: 13px;background-color: none;
+                                                   color: #074d6d;outline: none;border: none;
+                                                   text-decoration: underline;">
+                                                       Details
+                                                   </a>
+                                                   <a href="#" class="remove">
+                                                       <span class="lnr lnr-cross"></span>
+                                                   </a>
+                                               </li>                                            
+                                       </ul>
+                                       <p class="woocommerce-mini-cart__buttons buttons" style="margin-top: 30px;">
+                                           <a routerLink="/notification" class="button wc-forward au-btn btn-small">
+                                               SHOW MORE</a>
+                                       </p>
+                                       </div>
+                                </div>
+                            </li>
+                                <li><a routerLink="/Cart" class="cart-index">
+                                    <img src="../../assets/imager/home/bag-2.png" alt=""
+                                         style="width: 16px;height: 22px;margin-top: -10px;">
+                                    <div id="count">
+                                        {{cartItemList.length}}
+                                    </div>
                                 </a>
-                                <div id="count">{{Counter}}</div>
-                                <div class="widget_shopping_cart" style="width:300px" >
-                                    <div class="widget_shopping_cart_content" style="padding-top: 5px;margin-top:5px">
-                                      <ul *ngFor="let item of NotificationList| slice:0:3;let i =index" class="woocommerce-mini-cart cart_list product_list_widget " style="padding: 0px;margin:0px"   >                                        
-                                            <li *ngIf="getReadboolean(i)"  class="woocommerce-mini-cart-item mini_cart_item clearfix" style="width: 100%;height: 100px;margin-bottom: 5px;">
-                                                    <a class="product-image" href="#">
-                                                        <img src="../../assets/images/user.png" style="border-radius: 50%;width: 60px;height: 70px;margin-left: 15px;"alt="cart-2">
-                                                    </a>
-                                                    <a class="product-title" href="#">{{users[i]}}</a>
-                                                    <span  class="woocommerce-Price-amount amount" style="font-weight: normal; font-size: small;left: 32%;margin-top: 7px;">
-                                                        {{item.notificationBody}} ....
+                                    <div class="widget_shopping_cart">
+                                        <div class="widget_shopping_cart_content">
+                                         
+                                            <ul class="woocommerce-mini-cart cart_list product_list_widget ">
+                                                <li class="woocommerce-mini-cart-item mini_cart_item clearfix"
+                                                 *ngFor="let item of cartItemList | slice:0:3; let i= index ">
+                                                    <a class="product-image">
+                                                        <img [src]="createImgPath(productCartList[i].productImagePath)" width="60px" height="60px">
+                                                        <a class="product-title">{{getProductName(i)}}</a>
+                                                        <span class="float-right">
+                                                            <span class="woocommerce-Price-currencySymbol">$</span>
+                                                            {{item.unitPrice}}
                                                     </span>
-                                                    <a  (click)="MakeRead(item.id)" routerLink="/orderDetails/{{item.id}}" class="woocommerce-Price-amount amount btn" style="margin-top: 30px;margin-left: 90px;
-                                                    font-size: 13px;background-color: none;
-                                                    color: #074d6d;outline: none;border: none;
-                                                    text-decoration: underline;">
-                                                        Details
+                                                    <span class="quantity" style="margin-left:-20px;">
+                                                        Qty: {{item.quantity}}
+                                                    </span>
                                                     </a>
-                                                    <a href="#" class="remove">
+                                                   
+                                                    <a href="#" class="">
                                                         <span class="lnr lnr-cross"></span>
                                                     </a>
                                                 </li>
-                                                <li *ngIf="!getReadboolean(i)"  style="background-color: #e1f2fa;width: 100%;height: 100px;margin-bottom: 7px;">
-                                                    <a class="product-image" href="#">
-                                                        <img src="../../assets/images/user.png" style="border-radius: 50%;margin-left: 15px;width: 60px;height: 70px"alt="cart-2">
-                                                    </a>
-                                                    <a class="product-title" href="#">{{users[i]}}</a>
-                                                    <span  class="woocommerce-Price-amount amount" style="font-weight: normal; font-size: small;left: 32%;margin-top: 5px;">
-                                                        {{item.notificationBody}} ....
+                                            </ul>
+                                            <p class="woocommerce-mini-cart__total total">
+                                                <span>Order Total:</span>
+                                                <span class="woocommerce-Price-amount amount">
+                                                    <span class="woocommerce-Price-currencySymbol">$</span>
+                                                    {{getTotalPrice()}}
+                                                </span>
+                                            </p>
+                                            <p class="woocommerce-mini-cart__buttons buttons">
+                                                <a routerLink="/Cart" class="button wc-forward au-btn btn-small">VIEW CART &
+                                                    CHECKOUT</a>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </li>
+                                 
+                                <li >
+                                    <a  routerLink="/Wishlist" >
+                                        <i class="far fa-heart"style="font-size: 22px;Color: #555"></i>
+                                    </a>
+                                    <div id="count">
+                                        {{productwishList.length}}
+                                    </div>
+                                </li>                   
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="menu-mobile" >
+                <ul>
+                    <li><a style="text-decoration: none;" routerLink="/profile">home</a></li>
+                    <li><a style="text-decoration: none;" routerLink="/HandmadeProducts">Store</a></li>
+                    <li><a style="text-decoration: none;" routerLink="/Offers">Offers</a></li>
+                    <li><a style="text-decoration: none;" routerLink="/bestSelleing">Best Selling</a></li>
+                    <li><a style="text-decoration: none;" routerLink="/ContactUs">contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="header">
+        <div class="container-fluid">
+            <div class="header-desktop ">
+                <div class=" header-menu-desktop d-flex justify-content-between">
+                    <div>
+                        <div class="logo">
+                            <a routerLink="/profile" style="text-decoration: none;"><h2 style="color: black;">Handistic</h2></a>
+                            <div id="circle"></div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="menu">
+                            <ul>
+                                <li><a routerLink="/profile">home</a></li>
+                                <li><a routerLink="/HandmadeProducts">Store</a></li>
+                                <li><a routerLink="/Offers" >Offers</a></li>
+                                <li><a routerLink="/bestSelleing">Best Selling</a></li>
+                                <li><a routerLink="/ContactUs">contact</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div >
+                        <div class="header-right">
+                            <ul class="list-inline">
+                                <li><a  class="cart-index" style="width: 100%;">
+                                    <i class="far fa-bell" style="font-size: 22px;"></i>
+                               </a>
+                               <div id="count">{{Counter}}</div>
+                               <div class="widget_shopping_cart" style="width:300px" >
+                                   <div class="widget_shopping_cart_content" style="padding-top: 5px;margin-top:5px">
+                                     <ul *ngFor="let item of NotificationList| slice:0:3;let i =index" class="woocommerce-mini-cart cart_list product_list_widget " style="padding: 0px;margin:0px"   >                                        
+                                           <li *ngIf="getReadboolean(i)"  class="woocommerce-mini-cart-item mini_cart_item clearfix" style="width: 100%;height: 100px;margin-bottom: 5px;">
+                                                   <a class="product-image" href="#">
+                                                       <img src="../../assets/images/user.png" style="border-radius: 50%;width: 60px;height: 70px;margin-left: 15px;"alt="cart-2">
+                                                   </a>
+                                                   <a class="product-title" href="#">{{users[i]}}</a>
+                                                   <span  class="woocommerce-Price-amount amount" style="font-weight: normal; font-size: small;left: 32%;margin-top: 7px;">
+                                                       {{item.notificationBody}} ....
+                                                   </span>
+                                                   <a  (click)="MakeRead(item.id)" routerLink="/orderDetails/{{item.id}}" class="woocommerce-Price-amount amount btn" style="margin-top: 30px;margin-left: 90px;
+                                                   font-size: 13px;background-color: none;
+                                                   color: #074d6d;outline: none;border: none;
+                                                   text-decoration: underline;">
+                                                       Details
+                                                   </a>
+                                                   <a href="#" class="remove">
+                                                       <span class="lnr lnr-cross"></span>
+                                                   </a>
+                                               </li>
+                                               <li *ngIf="!getReadboolean(i)"  style="background-color: #e1f2fa;width: 100%;height: 100px;margin-bottom: 7px;">
+                                                   <a class="product-image" href="#">
+                                                       <img src="../../assets/images/user.png" style="border-radius: 50%;margin-left: 15px;width: 60px;height: 70px"alt="cart-2">
+                                                   </a>
+                                                   <a class="product-title" href="#">{{users[i]}}</a>
+                                                   <span  class="woocommerce-Price-amount amount" style="font-weight: normal; font-size: small;left: 32%;margin-top: 5px;">
+                                                       {{item.notificationBody}} ....
+                                                   </span>
+                                                   <a  (click)="MakeRead(item.id)" routerLink="/orderDetails/{{item.id}}" class="woocommerce-Price-amount amount btn" style="margin-top: 30px;margin-left: 90px;
+                                                   font-size: 13px;background-color: none;
+                                                   color: #074d6d;outline: none;border: none;
+                                                   text-decoration: underline;">
+                                                       Details
+                                                   </a>
+                                                   <a href="#" class="remove">
+                                                       <span class="lnr lnr-cross"></span>
+                                                   </a>
+                                               </li>                                            
+                                       </ul>
+                                       <p class="woocommerce-mini-cart__buttons buttons" style="margin-top: 30px;">
+                                           <a routerLink="/notification" class="button wc-forward au-btn btn-small">
+                                               SHOW MORE</a>
+                                       </p>
+                                       </div>
+                                </div>
+                            </li>
+                                <li><a routerLink="/Cart" class="cart-index">
+                                    <img src="../../assets/imager/home/bag-2.png" alt=""
+                                         style="width: 16px;height: 22px;margin-top: -10px;">
+                                    <div id="count">
+                                        {{cartItemList.length}}
+                                    </div>
+                                </a>
+                                    <div class="widget_shopping_cart">
+                                        <div class="widget_shopping_cart_content">
+                                         
+                                            <ul class="woocommerce-mini-cart cart_list product_list_widget ">
+                                                <li class="woocommerce-mini-cart-item mini_cart_item clearfix"
+                                                 *ngFor="let item of cartItemList | slice:0:3; let i= index ">
+                                                    <a class="product-image">
+                                                        <img [src]="createImgPath(productCartList[i].productImagePath)" width="60px" height="60px">
+                                                        <a class="product-title">{{getProductName(i)}}</a>
+                                                        <span class="float-right">
+                                                            <span class="woocommerce-Price-currencySymbol">$</span>
+                                                            {{item.unitPrice}}
                                                     </span>
-                                                    <a  (click)="MakeRead(item.id)" routerLink="/orderDetails/{{item.id}}" class="woocommerce-Price-amount amount btn" style="margin-top: 30px;margin-left: 90px;
-                                                    font-size: 13px;background-color: none;
-                                                    color: #074d6d;outline: none;border: none;
-                                                    text-decoration: underline;">
-                                                        Details
+                                                    <span class="quantity" style="margin-left:-20px;">
+                                                        Qty: {{item.quantity}}
+                                                    </span>
                                                     </a>
-                                                    <a href="#" class="remove">
+                                                   
+                                                    <a href="#" class="">
                                                         <span class="lnr lnr-cross"></span>
                                                     </a>
-                                                </li>                                            
-                                        </ul>
-                                        <p class="woocommerce-mini-cart__buttons buttons" style="margin-top: 30px;">
-                                            <a routerLink="/notification" class="button wc-forward au-btn btn-small">
-                                                SHOW MORE</a>
-                                        </p>
+                                                </li>
+                                            </ul>
+                                            <p class="woocommerce-mini-cart__total total">
+                                                <span>Order Total:</span>
+                                                <span class="woocommerce-Price-amount amount">
+                                                    <span class="woocommerce-Price-currencySymbol">$</span>
+                                                    {{getTotalPrice()}}
+                                                </span>
+                                            </p>
+                                            <p class="woocommerce-mini-cart__buttons buttons">
+                                                <a routerLink="/Cart" class="button wc-forward au-btn btn-small">VIEW CART &
+                                                    CHECKOUT</a>
+                                            </p>
                                         </div>
-                                 </div>
-                             </li>
-                            <li><a routerLink="/Cart" class="cart-index">
-                                <img src="../../assets/imager/home/bag-2.png" alt=""
-                                     style="width: 16px;height: 22px;margin-top: -10px;">
-                                <div class="number-cart">
-                                    {{cartItemList.length}}
-                                </div>
-                            </a>
-                                <div class="widget_shopping_cart">
-                                    <div class="widget_shopping_cart_content">
-                                        <ul class="woocommerce-mini-cart cart_list product_list_widget ">
-                                            <li class="woocommerce-mini-cart-item mini_cart_item clearfix"
-                                             *ngFor="let item of cartItemList | slice:0:3; let i= index ">
-                                                <a class="product-image">
-                                                    <img [src]="createImgPath(getProductPathImg(i))" width="60px" height="60px">
-                                                    <a class="product-title">{{getProductName(i)}}</a>
-                                                    <span class="float-right">
-														<span class="woocommerce-Price-currencySymbol">$</span>
-														{{item.unitPrice}}
-                                                </span>
-                                                <span class="quantity" style="margin-left:-20px;">
-													Qty: {{item.quantity}}
-												</span>
-                                                </a>
-                                               
-                                                <a href="#" class="remove">
-                                                    <span class="lnr lnr-cross"></span>
-                                                </a>
-                                            </li>
-                                        </ul>
-                                        <p class="woocommerce-mini-cart__total total">
-                                            <span>Order Total:</span>
-                                            <span class="woocommerce-Price-amount amount">
-												<span class="woocommerce-Price-currencySymbol">$</span>
-												{{getTotalPrice()}}
-											</span>
-                                        </p>
-                                        <p class="woocommerce-mini-cart__buttons buttons">
-                                            <a routerLink="/Cart" class="button wc-forward au-btn btn-small">VIEW CART &
-                                                CHECKOUT</a>
-                                        </p>
                                     </div>
-                                </div>
-                            </li>
-                 
-                            <li >
-                                <a  routerLink="/Wishlist" ><i class="far fa-heart"style="font-size: 22px;Color: #555"></i></a>
-                            </li>                   
-                        </ul>
-                    </div>
-                </div>                
-            </div>
-        </div>
-    </div>
-</div>
-<!--end header desktop-->
-<!--header mobile-->
-<div class="header">
-    <div class="container-fluid search-header">
-        <form>
-            <input type="text" placeholder="Search">
-            <span class="close-search">X</span>
-        </form>
-    </div>
-    <div class="container-fluid">
-        <div class="header-mobile">
-            <div class="header-menu-mobile d-flex justify-content-between">
-                <div>
-                    <button><span class="lnr lnr-menu click-mobile"></span></button>
-                </div>
-                <div class="logo">
-                    <a routerLink="/Home"><h2 style="color: black;">Handy</h2></a>
-                    <div id="circle"></div>              
-                <div>
-                    <div class="row header-right">
-                        <ul class="list-inline">
-                            <li><a href="#" class="cart-index">
-                                <img src="../../assets/imager/home/bag-2.png" alt=""
-                                     style="width: 16px;height: 22px;margin-top: -10px;">
-                                <div class="number-cart">
-                                    2
-                                </div>
-                            </a>
-                                <div class="widget_shopping_cart">
-                                    <div class="widget_shopping_cart_content">
-                                        <ul class="woocommerce-mini-cart cart_list product_list_widget ">
-                                            <li class="woocommerce-mini-cart-item mini_cart_item clearfix">
-                                                <a class="product-image" href="#">
-                                                    <img src="https://via.placeholder.com/80x70.jpg" alt="cart-1">
-                                                </a>
-                                                <a class="product-title" href="#">Skin recreation</a>
-
-                                                <span class="woocommerce-Price-amount amount">
-														<span class="woocommerce-Price-currencySymbol">$</span>
-														56
-                                                </span>
-                                                <span class="quantity">
-													Qty: 1
-												</span>
-                                                <a href="#" class="remove">
-                                                    <span class="lnr lnr-cross"></span>
-                                                </a>
-                                            </li>
-                                            <li class="woocommerce-mini-cart-item mini_cart_item clearfix">
-                                                <a class="product-image" href="#">
-                                                    <img src="https://via.placeholder.com/80x70.jpg" alt="cart-2">
-                                                </a>
-                                                <a class="product-title" href="#">Face cream</a>
-
-                                                <span class="woocommerce-Price-amount amount">
-														<span class="woocommerce-Price-currencySymbol">$</span>
-														48
-													</span>
-                                                <span class="quantity">
-													Qty: 2
-												</span>
-                                                <a href="#" class="remove">
-                                                    <span class="lnr lnr-cross"></span>
-                                                </a>
-                                            </li>
-                                        </ul>
-                                        <p class="woocommerce-mini-cart__total total">
-                                            <span>Order Total:</span>
-                                            <span class="woocommerce-Price-amount amount">
-												<span class="woocommerce-Price-currencySymbol">$</span>
-												200
-											</span>
-                                        </p>
-                                        <p class="woocommerce-mini-cart__buttons buttons">
-                                            <a href="#" class="button wc-forward au-btn btn-small">VIEW CART &
-                                                CHECKOUT</a>
-                                        </p>
+                                </li>
+                                 
+                                <li >
+                                    <a  routerLink="/Wishlist" >
+                                        <i class="far fa-heart"style="font-size: 22px;Color: #555"></i>
+                                    </a>
+                                    <div id="count">
+                                        {{productwishList.length}}
                                     </div>
-                                </div>
-                            </li>
-                            <li>
-                                <a href="javascript:void(0)" class="search-header1"><img src="../../assets/imager/home/search-header.png" alt="" style="width: 20px;height: 20px;margin-top: -10px;"></a>
-                            </li>
-                            <li><a href="javascript:void(0)" class="introduce1"><img
-                                    src="../../assets/imager/home/control-introduce.png" alt=""
-                                    style="width: 16px;height: 16px;margin-top: -10px;"></a>
-                            </li>
-                        </ul>
+                                </li>                   
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="introduce">
-            <div class="content-introduce">
-                <h3>follow instagram</h3>
-                <p>@Ura.cosmetic_beauty</p>
-                <div class="img-controduce">
-                    <img src="https://via.placeholder.com/150" alt="">
-                    <img src="https://via.placeholder.com/150" alt="">
-                    <img src="https://via.placeholder.com/150" alt="">
-                    <img src="https://via.placeholder.com/150" alt="">
-                    <img src="https://via.placeholder.com/150" alt="">
-                    <img src="https://via.placeholder.com/150" alt="">
-                </div>
-                <h4>newsletter</h4>
-                <p>Subcribe to our newsletter</p>
-                <input type="text" placeholder="Email">
-                <button class="bt"><i class="fas fa-angle-right"></i></button>
-                <div class="icon-introduce">
-                    <a href="#"><i class="fab fa-twitter"></i></a>
-                    <a href="#"><i class="fab fa-facebook"></i></a>
-                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                    <a href="#"><i class="fab fa-instagram"></i></a>
-                </div>
-                <span class="lnr lnr-cross close-introduce"></span>
-            </div>
-        </div>
-        <div class="menu-mobile">
-            <ul>
-                <li><a href="index.html" class="menu-active">home</a><span
-                        class="lnr lnr-chevron-down drop-link"></span>
-                    <ul class="drop-menu">
-                        <li><a href="index.html">Home Page_v1</a></li>
-                        <li><a href="index2.html">Home Page_v2</a></li>
-                        <li><a href="index3.html">Home Page_v3</a></li>
-                    </ul>
-                </li>
-                <li><a href="about.html">page</a><span class="lnr lnr-chevron-down drop-link"></span>
-                    <ul class="drop-menu">
-                        <li><a href="about.html">About Us</a></li>
-                        <li><a href="what-we-offer.html">What We Offer</a></li>
-                        <li><a href="our-team.html">Our Team</a></li>
-                        <li><a href="comming-soon.html">Comming Soon</a></li>
-                        <li><a href="error-page.html">Error Page</a></li>
-                    </ul>
-                </li>
-                <li><a href="product-list.html">shop</a><span class="lnr lnr-chevron-down drop-link"></span>
-                    <ul class="drop-menu">
-                        <li><a href="product-list.html">Product List</a></li>
-                        <li><a href="product-single.html">Product Single</a></li>
-                        <li><a href="shop-2-colum.html">Layouts</a><span class="lnr lnr-chevron-down drop-link"></span>
-                            <ul class="drop-menu">
-                                <li><a href="shop-2-colum.html">2 Colums</a></li>
-                                <li><a href="shop-3-colum.html">3 Colums</a></li>
-                                <li><a href="shop-4-colum.html">4 Colums</a></li>
-
-                            </ul>
-                        </li>
-                        <li><a href="cart.html">Shop Page</a><span class="lnr lnr-chevron-down drop-link"></span>
-                            <ul class="drop-menu">
-                                <li><a href="cart.html">Cart</a></li>
-                                <li><a href="wishlist.html">Wish List</a></li>
-                                <li><a href="checkout.html">Check Out</a></li>
-                            </ul>
-                        </li>
-                    </ul>
-                </li>
-                <li><a href="blog-single.html">blog</a><span class="lnr lnr-chevron-down drop-link"></span>
-                    <ul class="drop-menu">
-                        <li><a href="blog-masonry.html">Masonry</a></li>
-                        <li><a href="blog-standard-right-siderbar.html">Standard</a><span
-                                class="lnr lnr-chevron-down drop-link"></span>
-                            <ul class="drop-menu">
-                                <li><a href="blog-standard-right-siderbar.html">Right Sidebar</a></li>
-                                <li><a href="blog-standard-left-siderbar.html">Left Sidebar</a></li>
-                                <li><a href="blog-standard-no-sliderbar.html">No Sidebar</a></li>
-                            </ul>
-                        </li>
-                        <li><a href="blog-single.html">Single</a></li>
-                    </ul>
-                </li>
-                <li><a href="contact-us.html">contact</a></li>
-                <!-- <li><a href="/Login">Login</a></li> -->
-            </ul>
-        </div>
     </div>
-</div>
+              
+
+
+                   

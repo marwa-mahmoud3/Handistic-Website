@@ -58,7 +58,7 @@ const routes: Routes = [
   {path:"orderDetails/:id",component:OrderDetailsComponent},
   {path:"notify",component:ClientNotifyComponent},
   {path:"bestSelleing",component:BestsellingComponent},
-  {path:"chat",component:ChatComponent},
+  {path:"Chat",component:ChatComponent},
   {path:"searchResult/:searchKey",component:SearchResultComponent}
 
 ];

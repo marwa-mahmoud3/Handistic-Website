@@ -1,3 +1,5 @@
+import { ProductWishlist } from 'src/app/Models/ProductWishlist';
+import { ProductWishlistService } from './../Services/ProductWishlistService';
 import { Notification } from './../Models/Notification';
 import { NotificationService } from './../Services/notification.service';
 import { Component, OnInit } from '@angular/core';
@@ -23,14 +25,26 @@ export class SellerNavbarComponent implements OnInit {
   constructor(private apiservice : ApiService ,private route:ActivatedRoute,private userservice:UserService,
     private router: Router ,private sellerService : sellerService,private UserService:UserService,
      private CartService:CartService,private ProductsService:ProductsService,
-     private notify:NotificationService) { }
+     private notify:NotificationService,private _productwishlistServices:ProductWishlistService) { }
   cartItemList:CartItem[]=[];
   productCartList:Product[]=[];
   Counter :number
   IsRead : boolean[]=[]
+  productwishList: ProductWishlist[] = [];
+  wishlistID:number;
   ngOnInit(): void {
     this.GetNotifactions();
-   
+    this._productwishlistServices.GetWishlistByUserId(localStorage.getItem('userId')).subscribe(
+      data2 => {
+        this.wishlistID=data2.id;
+        this._productwishlistServices.getAllProductWishlists().subscribe((data: any) => {
+          data.forEach(product => {
+            if (product.wishlistID == data2.id) {
+              this.productwishList.push(product);
+            }
+          });
+        });
+      })
     this.notify.notReadedCount(localStorage.getItem('userId')).subscribe(
       count=>{
          this.Counter = count

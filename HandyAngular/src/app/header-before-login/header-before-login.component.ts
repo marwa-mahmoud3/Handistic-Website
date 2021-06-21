@@ -13,7 +13,6 @@ export class HeaderBeforeLoginComponent implements OnInit {
   ngOnInit(): void {
   }
   goToSearchPage(searchKey){
-    console.log(searchKey);
     this.router.navigate([`searchResult/${searchKey}`])
   }
 }

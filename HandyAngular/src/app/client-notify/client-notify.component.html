@@ -1,7 +1,7 @@
 <app-user-navbar></app-user-navbar>
-<div class="container " style="padding-bottom: 80px;">
+<div class="container-fluid " style="padding-bottom: 80px;">
 <div class="row justify-content-center" >
-    <div class="" style="padding-top: 5px;margin-top:5px;border:1px solid #d8dadb;width: 80%;">
+    <div class="col-md-12 col-sm-12 col-lg-10" style="padding-top: 5px;margin-top:5px;border:1px solid #d8dadb;width: 80%;">
       <ul *ngFor="let item of NotificationList;let i =index" class="woocommerce-mini-cart cart_list product_list_widget " style="padding: 0px;margin:0px"   >                                        
             <li *ngIf="getReadboolean(i)"  class="woocommerce-mini-cart-item mini_cart_item clearfix" style="width: 100%;height: 100px;margin-bottom: 5px;">
                     <a >

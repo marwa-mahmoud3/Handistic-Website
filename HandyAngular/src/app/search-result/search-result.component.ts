@@ -50,7 +50,6 @@ export class SearchResultComponent implements OnInit {
         })
         this.productservices.getProductsBySearchPagination(this.currentKeyWord, this.pageSize, 1).subscribe(
           data => {
-            console.log(this.currentKeyWord);
             this.productsPerPage = data
             this.currentPageNumber = 1;
           },

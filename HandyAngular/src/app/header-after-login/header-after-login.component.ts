@@ -26,7 +26,6 @@ export class HeaderAfterLoginComponent implements OnInit {
      private _productwishlistServices:ProductWishlistService) { }
   cartItemList:CartItem[]=[];
   productCartList:Product[]=[];
-  productwish: ProductWishlist[] = [];
   productwishList: ProductWishlist[] = [];
   wishlistID:number;
   ngOnInit(): void {
@@ -34,16 +33,13 @@ export class HeaderAfterLoginComponent implements OnInit {
       data2 => {
         this.wishlistID=data2.id;
         this._productwishlistServices.getAllProductWishlists().subscribe((data: any) => {
-          this.productwish = data;
-          this.productwish.forEach(product => {
+          data.forEach(product => {
             if (product.wishlistID == data2.id) {
               this.productwishList.push(product);
             }
           });
         });
-
-      }
-    )
+      })
     this.shopService.ShopByUserId(localStorage.getItem('userId')).subscribe(
       (data) => {
         localStorage.setItem('shopId',data.id) 
@@ -113,7 +109,6 @@ public uploadFinished = (event) => {
 }
 
 goToSearchPage(searchKey){
-  console.log(searchKey);
   this.router.navigate([`searchResult/${searchKey}`])
 }
 }

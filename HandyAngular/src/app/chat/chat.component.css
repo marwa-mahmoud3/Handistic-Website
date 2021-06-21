@@ -21,7 +21,6 @@ body{
 .chat-users .user {
     position: relative;
     padding: 0 0 0 50px;
-    display: block;
     cursor: pointer;
     margin: 0 0 20px;
 }
@@ -223,7 +222,12 @@ body{
 .chat input::-webkit-input-placeholder {
    color: #fff;
 }
-
+.hide{
+    display: none;
+}
+.show{
+    display: block;
+}
 .chat input:-moz-placeholder { /* Firefox 18- */
    color: #fff;  
 }

@@ -10,8 +10,8 @@ import { Observable, Subject } from 'rxjs';
 export class ChatService {
 
    private  connection: any = new signalR.HubConnectionBuilder().withUrl("https://localhost:44339/chathub")  
-                                         .configureLogging(signalR.LogLevel.Information)
-                                         .build();
+                            .configureLogging(signalR.LogLevel.Information).build();
+                            
    readonly POST_URL = "https://localhost:44339/api/chat/send"
 
   private receivedMessageObject: MessageModel = new MessageModel();
@@ -25,14 +25,10 @@ export class ChatService {
    this.start();                 
   }
 
-
-  // Strart the connection
   public async start() {
     try {
       await this.connection.start();
-      console.log("connected");
     } catch (err) {
-      console.log(err);
       setTimeout(() => this.start(), 5000);
     } 
   }
@@ -43,12 +39,8 @@ export class ChatService {
     this.sharedObj.next(this.receivedMessageObject);
  }
 
-  /* ****************************** Public Mehods **************************************** */
-
-  // Calls the controller method
   public broadcastMessage(msgDto: any) {
-    this.http.post(this.POST_URL, msgDto).subscribe(data => console.log(data));
-    // this.connection.invoke("SendMessage1", msgDto.user, msgDto.msgText).catch(err => console.error(err));    // This can invoke the server method named as "SendMethod1" directly.
+    this.http.post(this.POST_URL, msgDto).subscribe();
   }
 
   public retrieveMappedObject(): Observable<MessageModel> {
