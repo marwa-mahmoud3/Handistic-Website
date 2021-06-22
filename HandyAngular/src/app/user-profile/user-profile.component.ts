@@ -1,4 +1,3 @@
-import { city } from './../Models/city';
 import { UserService } from 'src/app/Services/user.service';
 import { Users } from './../Models/Users';
 import { Component, OnInit } from '@angular/core';

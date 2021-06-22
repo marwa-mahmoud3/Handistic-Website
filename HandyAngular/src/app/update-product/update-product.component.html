@@ -1,8 +1,8 @@
 <app-header-after-login></app-header-after-login>
         
-<div class="container" style="padding-top: 10px; padding-bottom: 50px;">
+<div class="container" style=" padding-bottom: 50px;">
     <div class="row justify-content-center content-my-account">
-        <div  class="col-md-5 col-sm-12 col-6 content-my-account-right" style="padding-top:200px;">
+        <div  class="col-md-12 col-sm-12 col-lg-5 content-my-account-right" style="padding-top:30px;">
             <img [src]="createImgPath(currentProduct.productImagePath) " style="width: 100%;height: 300px;">
             <p style="margin-left: 10px;">{{currentProduct.details}} </p>
             <div class="infor-product content-product" >
@@ -16,8 +16,7 @@
             </div>
         </div>
         
-        <div class="col-md-7 col-sm-12 col-6 content-my-account-right">
-            <h2 style="padding-bottom: 20px;">Update Product</h2>
+        <div class="col-md-12 col-sm-12 col-lg-7 content-my-account-right">
             <form #ProductData="ngForm" (ngSubmit)="OnSubmit(ProductData)">
                 <div *ngIf="showSuccess; else thenfaild">
                     <div class="alert alert-success" role="alert">
@@ -35,7 +34,7 @@
                 <input type="text" [(ngModel)]="currentProduct.shopId" hidden id="shopId" name="shopId">
                 <input type="text" [(ngModel)]="currentProduct.userName" hidden id="userName" name="userName">
                 <div class="row">
-                    <div class="col-lg-12 col-md-4">
+                    <div class="col-lg-12 col-md-12 col-sm-12">
                         <label class="label">Product Name<span class="star">*</span> </label>
                         <div class="">
                             <input class="form-control" type="text" placeholder=" Enter your frist name"
@@ -48,7 +47,7 @@
                     </div>
                 </div>
                 <div class="row" style="margin-top: 50px;">
-                    <div class="col-lg-12 col-md-4">
+                    <div class="col-lg-12 col-md-12 col-sm-12">
                         <label class="label">Details<span class="star">*</span> </label>
                         <div class="input-group">
                             <textarea class="form-control" type="text" placeholder="Enter your Product Details"
@@ -61,7 +60,7 @@
                     </div>
                 </div>
                 <div class="row" style="margin-top: 50px;">
-                    <div class="col-lg-4 col-md-4">
+                    <div class="col-lg-4 col-md-4 col-sm-12">
                         <label class="label">Product Price<span class="star">*</span> </label>
                         <div class="input-group">
                             <input class="form-control" type="number" placeholder="your Product Price"
@@ -72,7 +71,7 @@
                         <small class="text-danger" [class.d-none]="unitPrice.untouched || unitPrice.valid">Product Price
                             is required</small>
                     </div>
-                    <div class="col-lg-4 col-md-4">
+                    <div class="col-lg-4 col-md-4 col-sm-12">
                         <label class="label">Quantity<span class="star">*</span> </label>
                         <div class="input-group">
                             <input class="form-control" type="number" placeholder="your Product Quantity"
@@ -83,7 +82,7 @@
                         <small class="text-danger" [class.d-none]="quantity.untouched || quantity.valid">Product
                             Quantity is required</small>
                     </div>
-                    <div class="col-lg-4 col-md-4">
+                    <div class="col-lg-4 col-md-4 col-sm-12">
                         <label class="label">Product Discount<span class="star">*</span> </label>
                         <div class="input-group">
                             <input class="form-control" type="number" placeholder="your Product Discount"
@@ -96,7 +95,7 @@
                     </div>
                 </div>
                 <div class="row" style="margin-top: 50px;">
-                    <div class="col-lg-6 col-md-4">
+                    <div class="col-lg-5 col-md-12 col-sm-12 ">
                         <label class="label">Product Size<span class="star">*</span> </label>
                         <div class="input-group">
                             <input class="form-control" type="text" placeholder="Enter your Product Size"
@@ -107,7 +106,7 @@
                         <small class="text-danger" [class.d-none]="size.untouched || size.valid">Product size is
                             required</small>
                     </div>
-                    <div class="col-lg-6 col-md-4">
+                    <div class="col-lg-7 col-md-12 col-sm-12">
                         <label class="label">Choose Your Products Category<span class="star">*</span></label>
                         <div class="input-group">
                             <select class="form-control form-select-lg"

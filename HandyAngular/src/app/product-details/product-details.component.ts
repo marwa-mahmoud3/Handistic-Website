@@ -1,5 +1,5 @@
-import { AddReview } from './../Models/AddReview';
-import { AddReviewService } from './../Services/AddReviewService';
+import { AddReview } from '../Models/ProductReview';
+import { AddReviewService } from '../Services/ReviewService';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Category } from '../Models/Category';

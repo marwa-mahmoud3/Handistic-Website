@@ -1,4 +1,4 @@
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { ProductWishlistService } from './../Services/ProductWishlistService';
 import { ProductsService } from '../Services/ProductsService';
 import { CategoryService } from './../Services/CategoryService';
@@ -24,13 +24,23 @@ export class HandmadeProductComponent implements OnInit {
   item :number;
   CountProducts :ProductsCount[] =[]
   user:any;
-  constructor(private productWishlistService:ProductWishlistService,private router :Router,
+  CurrentCatgoryId
+  constructor(private productWishlistService:ProductWishlistService,private route:ActivatedRoute,private router :Router,
     private UserService:UserService, private productservices: ProductsService,private categoryService : CategoryService,private CartService:CartService) {
   }
 
   ngOnInit(): void {
+    this.CurrentCatgoryId= this.route.snapshot.paramMap.get('id')
     this.getProductsPerPage(1); 
-    this.setCrrentCategoryId(this.currentCategoryId)
+    this.getSelectedPage(1);
+    this.productservices.getCountOfProducts(this.route.snapshot.paramMap.get('id')).subscribe((data=>{
+    this.productsCount=data;
+   this.numberOfPages=Math.ceil(this.productsCount / this.pageSize);
+  
+    }))
+    this.categoryService.getCategoryByID(this.route.snapshot.paramMap.get('id')).subscribe((data=>{
+      this.CurrentCategory=data
+    }))
     this.loadCategories();
     this.UserService.getIdByUserName(localStorage.getItem('username')).subscribe((
       data =>{
@@ -44,7 +54,9 @@ export class HandmadeProductComponent implements OnInit {
         this.productWishlistService.GetWishlistByUserId(this.user.id).subscribe(
           product=>{
             this.productWishlist = new ProductWishlist(id,product.id);
-            this.productWishlistService.CreateProductWishlist(this.productWishlist).subscribe( 
+            this.productWishlistService.CreateProductWishlist(this.productWishlist).subscribe( (data=>{
+              location.reload()
+            })           
             );
           }
         )  
@@ -75,7 +87,7 @@ export class HandmadeProductComponent implements OnInit {
 
   AddItemToCart(productId:number){
   this.CartService.addItemToCart(this.user.id,productId,null).subscribe();
-  // location.reload();
+  location.reload();
   }
 
 
@@ -91,25 +103,17 @@ export class HandmadeProductComponent implements OnInit {
   currentPageNumber: number = 1;
   numberOfPages: number; 
   selectedCategoryId: number;
-  currentCategoryId:number=1;
   currentCategory:Category;
   
 
   
 setCrrentCategoryId(categoryId){
-  this.currentCategoryId=categoryId;
-  this.getSelectedPage(1);
-  this.productservices.getCountOfProducts(categoryId).subscribe((data=>{
-  this.productsCount=data;
- this.numberOfPages=Math.ceil(this.productsCount / this.pageSize);
-
-  }))
-  this.categoryService.getCategoryByID(categoryId).subscribe((data=>{
-    this.CurrentCategory=data
-  }))
+  this.router.routeReuseStrategy.shouldReuseRoute = () => false;
+  this.router.onSameUrlNavigation = 'reload';
+  this.router.navigate([`/HandmadeProducts/${categoryId}`]);
 }
   getProductsPerPage(currentPageNumber: number) {
-    this.productservices.getProductsByCategoryPaging(this.currentCategoryId,this.pageSize, currentPageNumber).subscribe(
+    this.productservices.getProductsByCategoryPaging(this.CurrentCatgoryId,this.pageSize, currentPageNumber).subscribe(
       data => {
         this.productsPerPage = data
         this.currentPageNumber = currentPageNumber;

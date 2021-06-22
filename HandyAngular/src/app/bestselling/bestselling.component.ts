@@ -1,4 +1,4 @@
-import { Route, Router } from '@angular/router';
+import { Route, Router, ActivatedRoute } from '@angular/router';
 import { CartService } from './../Services/CartService';
 import { CategoryService } from './../Services/CategoryService';
 import { UserService } from 'src/app/Services/user.service';
@@ -24,7 +24,7 @@ user:any;
 
 constructor(private productWishlistService:ProductWishlistService,private _productsService :ProductsService
   ,private UserService: UserService, private productservices: ProductsService,
-  private router:Router,private categoryService : CategoryService,private CartService:CartService) {
+  private router:Router,private CartService:CartService) {
 }
 
 ngOnInit(): void {
@@ -46,7 +46,11 @@ AddToWishList(id){
       this.productWishlistService.GetWishlistByUserId(this.user.id).subscribe(
         product=>{
           this.productWishlist = new ProductWishlist(id,product.id);
-          this.productWishlistService.CreateProductWishlist(this.productWishlist).subscribe( 
+          this.productWishlistService.CreateProductWishlist(this.productWishlist).subscribe((data=>{
+            this.router.routeReuseStrategy.shouldReuseRoute = () => false;
+            this.router.onSameUrlNavigation = 'reload';
+            this.router.navigate([`/bestSelleing/`])
+          }) 
           );
         }
       )  
@@ -59,19 +63,12 @@ public createImgPath = (serverPath: string) => {
   return `https://localhost:44339/${serverPath}`;
 }
 public response: {dbPath: ''};
-allproduct =null
-onCreate()
-{
-  this.allproduct = {
-    productImagePath :this.response.dbPath,
-  }
-}
-public uploadFinished = (event) => {
-  this.response = event;
-}
 
 AddItemToCart(productId:number){
 this.CartService.addItemToCart(this.user.id,productId,null).subscribe();
+  this.router.routeReuseStrategy.shouldReuseRoute = () => false;
+  this.router.onSameUrlNavigation = 'reload';
+  this.router.navigate([`/bestSelleing/`]);
 }
 getPriceAfterDiscount(prouct:Product){
  let res=prouct.unitPrice;

@@ -2578,7 +2578,7 @@ i {
 .deal-day {
 	background-image:    url("../../assets/imager/CommingSoon.jpg");
 	background-position: center center;
-	background-size:     cover;
+	background-size:     100% 600px;
 	background-repeat:   no-repeat;
 }
 

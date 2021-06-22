@@ -1,7 +1,7 @@
 <app-header-after-login></app-header-after-login>
 <div class="container " style="margin-bottom: 50px;">
     <div class="row content-blog">
-        <div class="col-4">
+        <div class="col-lg-4 col-sm-12">
             <h2>Billing Details</h2>
             <br>
            <ul>
@@ -14,12 +14,9 @@
              <li>Email: {{BillingItem.email}}</li>
              <li>User Profile: <a href="/profile" style="text-decoration: underline;color:#ffa6a8">{{CurrentUser.userName}}</a></li>
            </ul>
-            <span >
-                <!-- <button style="padding-left: 10px;">Start</button> -->
-                <button (click)="Delivered()">Delivered</button>
-            </span>
+            <button (click)="Delivered()" style="margin-bottom: 50px;">Delivered</button>
         </div>
-        <div class="col-8">
+        <div class="col-lg-8 col-sm-12">
             <div class="content-blog-right">
               <div class="blog" *ngFor="let product of ProductsList" style="padding-bottom: 20px;">
                 <div class="item-blog">

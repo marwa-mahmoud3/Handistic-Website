@@ -13,14 +13,11 @@ import { FooterComponent } from './footer/footer.component';
 import { ResetPasswordComponent } from './authentication/reset-password/reset-password.component';
 import { ForgetpasswordComponent } from './authentication/forgetpassword/forgetpassword.component';
 import { EmailConfirmationComponent } from './authentication/email-confirmation/email-confirmation.component';
-import { SiteReiewsComponent } from './home/site-reiews/site-reiews.component';
 import { HomeDealsComponent } from './home/home-deals/home-deals.component';
-import { HomeDiscountsComponent } from './home/home-discounts/home-discounts.component';
 import { HomeNewsComponent } from './home/home-news/home-news.component';
 import { HomeSliderComponent } from './home/home-slider/home-slider.component';
 import { HomeComponent } from './home/home/home.component';
 import { ProfileComponent } from './profile/profile.component';
-import { TopbarComponent } from './topbar/topbar.component';
 import { HandmadeProductComponent } from './handmade-product/handmade-product.component';
 import { CreateShopComponent } from './create-shop/create-shop.component';
 import { OurServicesComponent } from './home/our-services/our-services.component';
@@ -44,6 +41,8 @@ import { ClientNotifyComponent } from './client-notify/client-notify.component';
 import { BestsellingComponent } from './bestselling/bestselling.component';
 import { ChatComponent } from './chat/chat.component';
 import { SearchResultComponent } from './search-result/search-result.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { CategoryComponent } from './category/category.component';
 
 @NgModule({
   declarations: [
@@ -56,16 +55,12 @@ import { SearchResultComponent } from './search-result/search-result.component';
     EmailConfirmationComponent,
     HomeComponent,
     HomeDealsComponent,
-    HomeDiscountsComponent,
     HomeNewsComponent,
     HomeSliderComponent,
-    SiteReiewsComponent,
     ProfileComponent,
-    TopbarComponent,
     HandmadeProductComponent,
     OurServicesComponent,
     CreateShopComponent,
-    TopbarComponent,
     HeaderBeforeLoginComponent,
     HeaderAfterLoginComponent,
     UserProfileComponent,
@@ -87,6 +82,8 @@ import { SearchResultComponent } from './search-result/search-result.component';
     BestsellingComponent,
     ChatComponent,
     SearchResultComponent,
+    DashboardComponent,
+    CategoryComponent
   ],
   imports: [
     BrowserModule,

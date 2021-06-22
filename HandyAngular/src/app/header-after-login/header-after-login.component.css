@@ -33,3 +33,9 @@
     border: #ffa6a8;
     color: white;
 }
+.show{
+    display: block;
+}
+.hide{
+    display: none;
+}

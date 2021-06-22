@@ -60,7 +60,7 @@ export class OrderDetailsComponent implements OnInit {
 
   ClientNotify
   client
-  Body:string="Your Order Has been delivered , you can add a review on this order now."
+  Body:string="Your Order Has been delivered , you can add a review now."
   Delivered()
   {
     this.userService.getIdByUserName(this.CurrentUser.userName).subscribe((data=>{  

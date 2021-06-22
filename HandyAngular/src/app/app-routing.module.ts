@@ -28,6 +28,8 @@ import { HomeSliderComponent } from './home/home-slider/home-slider.component';
 import { HomeComponent } from './home/home/home.component';
 import { ProfileComponent } from './profile/profile.component';
 import { CartComponent } from './cart/cart.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { CategoryComponent } from './category/category.component';
 
 
 const routes: Routes = [
@@ -41,7 +43,7 @@ const routes: Routes = [
   {path:"Slider",component:HomeSliderComponent},
   {path:"News",component:HomeNewsComponent},
   {path:"profile",component:ProfileComponent},
-  {path: "HandmadeProducts",component:HandmadeProductComponent},
+  {path: "HandmadeProducts/:id",component:HandmadeProductComponent},
   {path:"CreateShop",component:CreateShopComponent},
   {path: "SellerProfile" , component:SellerProfileComponent},
   {path :"UserProfile" , component:UserProfileComponent},
@@ -50,7 +52,7 @@ const routes: Routes = [
   {path : "ContactUs" ,component:ContactUSComponent},
   {path : "AboutUS" ,component:AboutUSComponent},
   {path :"Checkout" ,component:CheckoutComponent},
-  {path :"Offers" ,component:OffersComponent},
+  {path :"Offers/:id" ,component:OffersComponent},
   {path :"EditProduct/:id" ,component:UpdateProductComponent},
   {path :"ProductDetails/:id" ,component:ProductDetailsComponent},
   {path :"AddReview/:billingid" ,component:AddReviewComponent},
@@ -59,7 +61,9 @@ const routes: Routes = [
   {path:"notify",component:ClientNotifyComponent},
   {path:"bestSelleing",component:BestsellingComponent},
   {path:"Chat",component:ChatComponent},
-  {path:"searchResult/:searchKey",component:SearchResultComponent}
+  {path:"searchResult/:searchKey",component:SearchResultComponent},
+  {path:"dashboard" ,component :DashboardComponent},
+  {path :"CategoryProducts/:id",component:CategoryComponent}
 
 ];
 

@@ -1,13 +1,16 @@
+import { SellerReviewService } from './../Services/SellerReview';
+import { NgForm } from '@angular/forms';
 import { NotificationService } from './../Services/notification.service';
 import { ActivatedRoute } from '@angular/router';
 import { BillingDetailsService } from './../Services/BillingDetailsService';
 import { UserService } from './../Services/user.service';
-import { AddReviewService } from './../Services/AddReviewService';
+import { AddReviewService } from '../Services/ReviewService';
 import { CategoryService } from './../Services/CategoryService';
 import { Product } from './../Models/Product';
 import { Component, OnInit } from '@angular/core';
 import { OrderService } from '../Services/OrderService';
-import { AddReview } from '../Models/AddReview';
+import { AddReview } from '../Models/ProductReview';
+import { SellerReview } from '../Models/SellerReview';
 
 @Component({
   selector: 'app-add-review',
@@ -17,7 +20,7 @@ import { AddReview } from '../Models/AddReview';
 export class AddReviewComponent implements OnInit {
 
   constructor(private UserService:UserService,private orderService:OrderService,private categoryservice:CategoryService,protected route :ActivatedRoute
-    ,private AddReviewService :AddReviewService,private BillingDetailsService:BillingDetailsService,
+    ,private AddReviewService :AddReviewService,private BillingDetailsService:BillingDetailsService,private SellerReviewService:SellerReviewService,
     private NotifyService:NotificationService) { }
   ProductList : Product[]=[]
   CategoryList:string[]=[]
@@ -31,12 +34,14 @@ export class AddReviewComponent implements OnInit {
   list1:number[]=[]
   CurrentBilling
   CurrentSeller
+  SellerReview
   ngOnInit(): void {
       this.BillingDetailsService.getBillingById(this.route.snapshot.paramMap.get('billingid')).subscribe((data=>{
       this.CurrentBilling= data
       this.NotifyService.GetByBillingId(this.route.snapshot.paramMap.get('billingid')).subscribe(
         (seller=>{
           this.CurrentSeller =seller
+          this.SellerReview =new SellerReview(localStorage.getItem('userId'),'',this.CurrentSeller.sellerId,this.Rating)
           this.UserService.getUserNameByUserId(this.CurrentSeller.sellerId).subscribe((u=>{
             this.CurrentSeller =u
             this.orderService.GetOrderItems(this.CurrentBilling.orderId,this.CurrentSeller.userName).subscribe(
@@ -152,5 +157,19 @@ export class AddReviewComponent implements OnInit {
   public uploadFinished = (event) => {
     this.response = event;
   } 
+  InsertSellerReview(form:NgForm)
+  {
+    this.SellerReviewService.AddReview(form.value).subscribe(
+      (data=>{
+        form.reset();
+        this.AddReview = false;
+        this.AddReview1 = false;
+        this.AddReview2 = false;
+        this.AddReview3 = false;
+        this.AddReview4 = false;
+       location.reload();
+      })
+    )
+  }
    
 }

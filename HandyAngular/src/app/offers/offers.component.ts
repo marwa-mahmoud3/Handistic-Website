@@ -1,3 +1,4 @@
+import { ActivatedRoute, Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { Category } from '../Models/Category';
 import { Product } from '../Models/Product';
@@ -18,13 +19,16 @@ export class OffersComponent implements OnInit {
   filterTerm: string;
   categories: Category[] = [];
   CategoryList : Category[] = [];
- 
+  currentCategoryId
   CountProducts :number []=[]
   user:any;
-  constructor(private productWishlistService:ProductWishlistService,private UserService: UserService, private productservices: ProductsService,private categoryService : CategoryService,private CartService:CartService) {
+  constructor(private productWishlistService:ProductWishlistService,private route:ActivatedRoute,
+    private router:Router,
+    private UserService: UserService, private productservices: ProductsService,private categoryService : CategoryService,private CartService:CartService) {
   }
 
   ngOnInit(): void {
+    this.currentCategoryId= this.route.snapshot.paramMap.get('id')
     this.loadCategoriesWithDiscount();
     this.getProductsPerPage(1); 
     this.UserService.getIdByUserName(localStorage.getItem('username')).subscribe((
@@ -41,7 +45,9 @@ export class OffersComponent implements OnInit {
         this.productWishlistService.GetWishlistByUserId(this.user.id).subscribe(
           product=>{
             this.productWishlist = new ProductWishlist(id,product.id);
-            this.productWishlistService.CreateProductWishlist(this.productWishlist).subscribe( 
+            this.productWishlistService.CreateProductWishlist(this.productWishlist).subscribe((data=>{
+              location.reload()
+            })
             );
           }
         )  
@@ -63,6 +69,7 @@ export class OffersComponent implements OnInit {
             }
             this.CategoryList.push(category); 
             this.CountProducts.push(data);
+           
           }
           }));
        });
@@ -87,7 +94,8 @@ export class OffersComponent implements OnInit {
 
   AddItemToCart(productId:number){
   this.CartService.addItemToCart(this.user.id,productId,null).subscribe();
-  }
+  location.reload()
+}
   getPriceAfterDiscount(prouct:Product){
    let res=prouct.unitPrice;
    res-=prouct.unitPrice*(prouct.discount/100.0);
@@ -103,7 +111,7 @@ productsCount= 0;
 currentPageNumber: number = 1;
 numberOfPages: number; // categoriesCount / pageSize
 selectedCategoryId: number;
-currentCategoryId:number=0
+
 currentCategory:Category;
 
 
@@ -117,6 +125,7 @@ this.getSelectedPage(1);
 this.productservices.getOfferdProductsByCategory(category.id).subscribe((data=>{
 this.productsCount=data;
 this.numberOfPages=Math.ceil(this.productsCount / this.pageSize);
+this.router.navigate[`/Offers/${this.currentCategoryId}`]
 }))
 }
 getProductsPerPage(currentPageNumber: number) {

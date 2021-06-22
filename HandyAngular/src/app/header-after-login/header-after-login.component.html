@@ -13,8 +13,9 @@
                     <div class="header-right menu" style="margin-top: 15px;">
                         <ul class="list-inline" style="margin-top: 0px;padding-top: 0px;">
                             <li><a style="background: #000;color:#fff"><i  style="color:#fff; font-size: 15px;" class="fas fa-user"> </i> {{CurrentUser.userName}}</a>
-                                <ul style="height: 170px;width: 150px;">
+                                <ul style="width: 150px;">
                                     <li style="padding: 0px;margin: 0px;" (click)="goToProfile()"><a>My Profile</a></li>
+                                    <li [ngClass]="IsSeller ? 'show' : 'hide'" style="padding: 0px;margin: 0px;" routerLink="/dashboard"><a>Dashboard</a></li>
                                     <li style="padding: 0px;margin: 0px;" ><a href="about.html">Settings</a></li>
                                     <li style="padding: 0px;margin: 0px;" (click)="logout()"><a class="btn" style="background: #000;">Logout</a></li>
                                 </ul>
@@ -38,7 +39,7 @@
                         <a routerLink="/profile" style="text-decoration: none;"><h2 style="color: black;">Handistic</h2></a>
                         <div id="circle"></div>
                     </div>
-                    <div style="margin-top: 20px;">
+                    <div style="margin-top: 0px;">
                         <div class="row header-right">
                             <ul class="list-inline">
                                 <li>
@@ -105,8 +106,8 @@
             <div class="menu-mobile">
                 <ul>
                     <li><a style="text-decoration: none;" routerLink="/profile">home</a></li>
-                    <li><a style="text-decoration: none;" routerLink="/HandmadeProducts">Store</a></li>
-                    <li><a style="text-decoration: none;" routerLink="/Offers">Offers</a></li>
+                    <li><a style="text-decoration: none;" routerLink="/HandmadeProducts/1">Store</a></li>
+                    <li><a style="text-decoration: none;" routerLink="/Offers/0">Offers</a></li>
                     <li><a style="text-decoration: none;" routerLink="/bestSelleing">Best Selling</a></li>
                     <li><a style="text-decoration: none;" routerLink="/ContactUs">contact</a></li>
                 </ul>
@@ -140,8 +141,8 @@
                         <div class="menu">
                             <ul>
                                 <li><a routerLink="/profile">home</a></li>
-                                <li><a routerLink="/HandmadeProducts">Store</a></li>
-                                <li><a routerLink="/Offers" >Offers</a></li>
+                                <li><a routerLink="/HandmadeProducts/1">Store</a></li>
+                                <li><a routerLink="/Offers/0" >Offers</a></li>
                                 <li><a routerLink="/bestSelleing">Best Selling</a></li>
                                 <li><a routerLink="/ContactUs">contact</a></li>
                             </ul>

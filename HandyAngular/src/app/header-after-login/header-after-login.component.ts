@@ -28,7 +28,18 @@ export class HeaderAfterLoginComponent implements OnInit {
   productCartList:Product[]=[];
   productwishList: ProductWishlist[] = [];
   wishlistID:number;
+  IsSeller :boolean
   ngOnInit(): void {
+    this.UserService.getIdByUserName(localStorage.getItem('username')).subscribe(
+      data => {
+        this.user = data;
+        this.sellerService.CheckSellerORNot(this.user.id).subscribe(
+          data=>{
+            this.answer =data;
+            if(this.answer)
+              this.IsSeller=true;
+          })
+        })
     this._productwishlistServices.GetWishlistByUserId(localStorage.getItem('userId')).subscribe(
       data2 => {
         this.wishlistID=data2.id;

@@ -1,0 +1,137 @@
+<app-seller-navbar></app-seller-navbar>
+<div class="container-fluid" >
+<div class="row" style="height: 400px;" >
+<div class="col-12 title text-center flex-column" style="background-image: url(../../assets/imager/CommingSoon.jpg);background-size: 100% 90%;">
+   <h2 style="margin-top: 10%;">{{Currentshop}}</h2>
+</div>
+</div>
+<div class="container">
+    <div class="row content-blog">
+        <div class="col-md-12 col-lg-3 col-sm-12" style="margin-bottom: 50px;">
+            <div class="content-blog-left">
+                <div class="author-blog">
+                    <img src="../../assets/images/user.png" alt="">
+                    <h3 > {{username}} </h3>
+                    <small>{{email}}</small>
+                    <p>Sed ut perspiciatis unde omnis iste natus error sit volupta.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-12 col-lg-8 col-sm-12">
+            <div class="content-blog-right">
+                <div *ngIf="success; else elseSucess">
+                    <div class="alert alert-success" role="alert">
+                      Product Added
+                    </div>
+                  </div>
+                  <ng-template #elseSucess></ng-template>
+                <form #ProductData="ngForm" (ngSubmit)="SaveProduct(ProductData)">
+                    <input type="text" [(ngModel)]="product.shopId" hidden   id="shopId" name="shopId"> 
+                    <input type="text" [(ngModel)]="product.userName" hidden   id="userName" name="userName"> 
+                    <div class="row">
+                        <div class="col-lg-12 ">
+                            <label class="label">Product Name<span class="star"> *</span> </label>
+                            <div class="">
+                                <input  class="form-control" type="text" placeholder=" Enter your frist name" [class.is-invalid]="productName.invalid && productName.touched " [class.is-invalid]="productName.invalid && productName.touched" required #productName="ngModel" [(ngModel)]="product.productName" name="productName"> 
+                            </div>
+                            <small class="text-danger"[class.d-none]="productName.untouched || productName.valid">Product Name is required</small>
+                        </div>
+                    </div>
+                    <div class="row" style="margin-top: 50px;">
+                        <div class="col-lg-12 ">
+                            <label class="label">Details<span class="star"> *</span> </label>
+                            <div class="input-group">
+                                <textarea class="form-control" type="text" placeholder="Enter your Product Details" [class.is-invalid]="details.invalid && details.touched " [class.is-invalid]="details.invalid && details.touched" required #details="ngModel" [(ngModel)]="product.details" name="details"> </textarea>
+                            </div>
+                            <small class="text-danger"[class.d-none]="details.untouched || details.valid">Product Details is required</small>
+                        </div>
+                    </div>
+                    <div class="row" style="margin-top: 50px;">
+                        <div class="col-lg-4 col-md-4 col-sm-12">
+                            <label class="label">Product Price<span class="star"> *</span> </label>
+                            <div class="input-group">
+                                <input class="form-control" type="number" placeholder="your Product Price" [class.is-invalid]="unitPrice.invalid && unitPrice.touched " [class.is-invalid]="unitPrice.invalid && unitPrice.touched" required #unitPrice="ngModel" [(ngModel)]="product.unitPrice" name="unitPrice">
+                            </div>
+                            <small class="text-danger"[class.d-none]="unitPrice.untouched || unitPrice.valid">Product Price is required</small>
+                        </div>
+                        <div class="col-lg-4 col-md-4 col-sm-12">
+                            <label class="label">Quantity<span class="star"> *</span> </label>
+                            <div class="input-group">
+                                <input class="form-control" type="number" placeholder="your Product Quantity" [class.is-invalid]="quantity.invalid && quantity.touched " [class.is-invalid]="quantity.invalid && quantity.touched" required #quantity="ngModel" [(ngModel)]="product.quantity" name="quantity">
+                            </div>
+                            <small class="text-danger"[class.d-none]="quantity.untouched || quantity.valid">Product Quantity is required</small>
+                        </div>
+                        <div class="col-lg-4 col-md-4 col-sm-12">
+                            <label class="label">Discount<span class="star"> *</span> </label>
+                            <div class="input-group" >
+                                <input class="form-control" type="number" placeholder="your Product Discount" [class.is-invalid]="discount.invalid && discount.touched " [class.is-invalid]="discount.invalid && discount.touched" required #discount="ngModel" [(ngModel)]="product.discount" name="discount">
+                            </div>
+                            <small class="text-danger"[class.d-none]="discount.untouched || discount.valid">Product Discount is required</small>
+                        </div>
+                    </div>
+                    <div class="row" style="margin-top: 50px;">
+                        <div class="col-lg-6 col-md-6 col-sm-12">
+                            <label class="label">Product Size<span class="star"> *</span> </label>
+                            <div class="input-group">
+                                <input class="form-control" type="text" placeholder="Enter your Product Size" [class.is-invalid]="size.invalid && size.touched " [class.is-invalid]="size.invalid && size.touched" required #size="ngModel" [(ngModel)]="product.size" name="size">
+                            </div>
+                            <small class="text-danger"[class.d-none]="size.untouched || size.valid">Product size is required</small>
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-12">
+                            <label class="label">Choose Your Products Category<span class="star"> *</span></label>
+                            <div class="input-group">
+                                <select  class="form-control form-select-lg" [class.is-invalid]="categoryId.invalid && categoryId.touched " [class.is-invalid]="categoryId.invalid && categoryId.touched" required #categoryId="ngModel" [(ngModel)]="product.categoryId" name="categoryId">
+                                    <option *ngFor="let Category of CategoryList" value={{Category.id}} >{{Category.name}}</option>
+                                </select>
+                            </div>
+                            <small class="text-danger" [class.d-none]="categoryId.untouched || categoryId.valid">Product Category is required</small>
+                        </div>
+                    </div>
+                   <div class="row" style="margin-top: 50px;">
+                        <div class="col-lg-12 ">
+                            <label class="label" >Upload Product Image<span class="star"> *</span></label>
+                            <!-- Upload image input-->
+
+                            <div class="input-group mb-3 px-2 py-2 rounded-pill bg-white shadow-sm">
+                                <input id="upload" type="file"  class="form-control border-0" #file type="file" multiple (change)="uploadFile(file.files)"
+                                [class.is-invalid]="productImagePath.invalid && productImagePath.touched " [class.is-invalid]="productImagePath.invalid && productImagePath.touched" required #productImagePath="ngModel" [(ngModel)]="product.productImagePath" name="productImagePath">
+                            </div>
+                            <small style="margin-left: 15px;" class="text-danger"[class.d-none]="productImagePath.untouched || productImagePath.valid">Id Card Image is required</small>
+                        </div>
+                        
+                    </div>
+                    <div class="row justify-content-center">
+                        <button [disabled]="!ProductData.valid" type="submit" >Save</button>
+                    </div>
+                </form>  
+              
+                <div class="blog">
+                    <div class="item-blog"  *ngFor="let allproduct of productList">
+                        <img [src]="createImgPath(allproduct.productImagePath)" style="height: 400px;" alt="">
+                        <a href="" ><i class="far fa-heart"></i></a>&nbsp; Like 10 &nbsp;&nbsp;&nbsp;&nbsp; <i class="far fa-calendar-alt"></i> &nbsp; April 12, 2019
+                        <h2>{{allproduct.productName}}</h2>
+                        <h3>{{allproduct.unitPrice}}$</h3>
+                        <p>{{allproduct.details}}</p>
+                        <button class="btn float-left" ><a href="/EditProduct/{{allproduct.id}}" style="color: #fff;">UPDATE</a></button>
+                        <button class="btn float-left " style="color: #fff;" (click)="deleteProduct(allproduct.id)">Delete</button>
+                        <div class="float-right">
+                            <table>
+                                <tr>
+                                    <td><a href=""><i class="fab fa-twitter"></i></a></td>
+                                    <td><a href=""><i class="fab fa-facebook"></i></a></td>
+                                    <td><a href=""><i class="fab fa-instagram"></i></a></td>
+                                </tr>
+                            </table>
+                        </div>
+
+                    </div>
+                </div>
+                <ul class="pagination justify-content-center">
+                    <li class="page-item"><a class="page-link" href="#">1</a></li>
+                    <li class="page-item"><a class="page-link" href="#">2</a></li>
+                    <li class="page-item"><a class="page-link" href="#"> > </a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

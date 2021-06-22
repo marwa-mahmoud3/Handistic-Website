@@ -32,7 +32,18 @@ export class SellerNavbarComponent implements OnInit {
   IsRead : boolean[]=[]
   productwishList: ProductWishlist[] = [];
   wishlistID:number;
+  IsSeller :boolean
   ngOnInit(): void {
+    this.UserService.getIdByUserName(localStorage.getItem('username')).subscribe(
+      data => {
+        this.user = data;
+        this.sellerService.CheckSellerORNot(this.user.id).subscribe(
+          data=>{
+            this.answer =data;
+            if(this.answer)
+              this.IsSeller=true;
+          })
+        })
     this.GetNotifactions();
     this._productwishlistServices.GetWishlistByUserId(localStorage.getItem('userId')).subscribe(
       data2 => {

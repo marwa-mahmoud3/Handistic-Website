@@ -33,7 +33,18 @@ export class UserNavbarComponent implements OnInit {
   IsRead : boolean[]=[]
   productwishList: ProductWishlist[] = [];
   wishlistID:number;
+  IsSeller :boolean
   ngOnInit(): void {
+    this.UserService.getIdByUserName(localStorage.getItem('username')).subscribe(
+      data => {
+        this.user = data;
+        this.sellerService.CheckSellerORNot(this.user.id).subscribe(
+          data=>{
+            this.answer =data;
+            if(this.answer)
+              this.IsSeller=true;
+          })
+        })
     this.GetNotifactions();
     this.ClientNotify.notReadedCount(localStorage.getItem('userId')).subscribe(
       count=>{
@@ -95,6 +106,7 @@ export class UserNavbarComponent implements OnInit {
       this.ClientNotify.changetoRead(id,this.newNotify).subscribe()
     }))
   }
+  
   getReadboolean(idx){
     return this.IsRead[idx];
   }

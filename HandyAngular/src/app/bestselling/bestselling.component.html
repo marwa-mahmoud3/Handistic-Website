@@ -17,10 +17,9 @@
         <div class="row">
             <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                 <div class="row product">
-                    <div class="col-md-4 col-sm-6 col-12" *ngFor="let product of productsPerPage |filter:filterTerm">
+                    <div class="col-md-4 col-sm-6 col-12" *ngFor="let product of productsPerPage ">
                         <div class="card">
-                            <div class="card-img-top"
-                                style="background-image: url('');background-size: 100% 100%;background: no-repeat;">
+                            <div class="card-img-top">
                                 <a href="product-single.html" class="wp-post-image">
                                     <img [src]="createImgPath(product.productImagePath)" style="height: 250px;">
                                 </a>
