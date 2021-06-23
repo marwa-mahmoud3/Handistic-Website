@@ -1,6 +1,9 @@
 
 export class MessageModel {
-    public user: string = '';
-    public msgText: string = '';
-  }
+  constructor(  
+      public user: string ,
+      public msgText: string ,
+      public connectionId:string,
+  ){}
+}
   

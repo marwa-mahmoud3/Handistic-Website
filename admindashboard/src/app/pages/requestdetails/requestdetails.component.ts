@@ -31,14 +31,12 @@ export class RequestdetailsComponent implements OnInit {
   updateAcceptRequest() {
     this.currentrequest.isAccepted=true;
     this.requestservice.updateRequest(this.currentrequest.id , this.currentrequest).subscribe()
-    this.requestservice.deleteRequest(this.currentrequest.id).subscribe()
     this.sellerservices.addseller(this.currentrequest).subscribe()
+    this.requestservice.deleteRequest(this.currentrequest.id).subscribe()
     this.router.navigate(['/request'])
   }
   RejectRequest() {
-    this.currentrequest.isAccepted=false;
-    this.requestservice.updateRequest(this.currentrequest.id , this.currentrequest).subscribe()
-    this.sellerservices.deleteSeller(this.currentrequest.userId).subscribe()
+    this.requestservice.RejectRequest(this.currentrequest.id).subscribe()
     this.router.navigate(['/request'])
   }
   

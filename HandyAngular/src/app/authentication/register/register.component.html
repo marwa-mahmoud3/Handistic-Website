@@ -15,7 +15,7 @@
                 </div>
                 <div class="form-holder">
                     <p>Email address <span>*</span></p>
-                    <input type="text" class="form-control"  [class.is-invalid]="email.invalid && email.touched " [class.is-invalid]="email.invalid && email.touched " required #email="ngModel" [(ngModel)]="userModel.email" name="email">
+                    <input type="text" class="form-control" pattern="[^@]+@[^@]+.[a-zA-Z]{2,20}"  [class.is-invalid]="email.invalid && email.touched " [class.is-invalid]="email.invalid && email.touched " required #email="ngModel" [(ngModel)]="userModel.email" name="email">
                     <small class="text-danger"[class.d-none]="email.untouched || email.valid">Email address is required</small>
                 </div>
                 <div class="form-holder">

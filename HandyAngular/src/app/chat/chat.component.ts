@@ -21,7 +21,7 @@ export class ChatComponent implements OnInit {
     }))                                               
   }
 
-  msgDto: MessageModel = new MessageModel();
+  msgDto: MessageModel = new MessageModel('','','');
   msgInboxArray: MessageModel[] = [];
   CurrentUser :Users
   Messages:{[id:string]:string}={};
@@ -43,7 +43,7 @@ export class ChatComponent implements OnInit {
   }
 
   addToInbox(obj: MessageModel) {
-    let newObj = new MessageModel();
+    let newObj = new MessageModel('','','');
     newObj.user = obj.user;
     newObj.msgText = obj.msgText;
     this.msgInboxArray.push(newObj);

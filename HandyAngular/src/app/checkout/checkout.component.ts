@@ -91,21 +91,18 @@ export class CheckoutComponent implements OnInit {
         this.UserService.getIdByUserName(pro.userName).subscribe((u=>{
           this.seller = u
           this.notify = new Notification(this.notificationBody,this.Billings.id,this.seller.id,localStorage.getItem('userId'))
-          this.CreateNotify(this.notify)      
+          if(this.Notifications[this.notify.sellerId]!=this.notify.billingId)
+            {
+              this.Notifications[this.notify.sellerId]=this.notify.billingId
+              this.notificationService.createNotification(this.notify).subscribe();
+            }      
           }))
         }))
       })
      this.CartService.crearCart(localStorage.getItem('userId')).subscribe()                   
     }))        
   }
-  CreateNotify(notify)
-  {
-    if(this.Notifications[notify.sellerId]!=notify.billingId)
-    {
-      this.Notifications[notify.sellerId]=notify.billingId
-      this.notificationService.createNotification(this.notify).subscribe();
-    }
-  }
+
   goToStore()
   {
     this.router.navigate(["/profile"])

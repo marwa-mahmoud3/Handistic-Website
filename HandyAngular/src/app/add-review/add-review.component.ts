@@ -25,7 +25,7 @@ export class AddReviewComponent implements OnInit {
   ProductList : Product[]=[]
   CategoryList:string[]=[]
   product :Product
-  Rating =1
+  Rating =0
   ProductsId :number[] =[]
   currentPoductId:number=0
   CountReviews :number[]=[]
@@ -34,15 +34,15 @@ export class AddReviewComponent implements OnInit {
   list1:number[]=[]
   CurrentBilling
   CurrentSeller
+  Seller
   SellerReview
   ngOnInit(): void {
       this.BillingDetailsService.getBillingById(this.route.snapshot.paramMap.get('billingid')).subscribe((data=>{
       this.CurrentBilling= data
       this.NotifyService.GetByBillingId(this.route.snapshot.paramMap.get('billingid')).subscribe(
         (seller=>{
-          this.CurrentSeller =seller
-          this.SellerReview =new SellerReview(localStorage.getItem('userId'),'',this.CurrentSeller.sellerId,this.Rating)
-          this.UserService.getUserNameByUserId(this.CurrentSeller.sellerId).subscribe((u=>{
+          this.Seller =seller
+          this.UserService.getUserNameByUserId(this.Seller.sellerId).subscribe((u=>{
             this.CurrentSeller =u
             this.orderService.GetOrderItems(this.CurrentBilling.orderId,this.CurrentSeller.userName).subscribe(
               (data:any)=>{
@@ -66,7 +66,6 @@ export class AddReviewComponent implements OnInit {
               })
         })
       )
-      
       }))
    
     }))
@@ -76,6 +75,9 @@ export class AddReviewComponent implements OnInit {
  func(idx){
    this.ReviewObject =new AddReview(localStorage.getItem('userId'),'',this.ProductsId[idx],this.Rating)
  }
+ fun(sellerId){
+  this.SellerReview =new SellerReview(localStorage.getItem('userId'),'',sellerId,this.Rating)
+}
  satrs(index)
  {
     this.list=[]

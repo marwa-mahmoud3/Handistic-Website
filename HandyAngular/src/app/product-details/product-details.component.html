@@ -49,12 +49,12 @@
                                             <div class="comment-content">
                                                 <div class="row">
                                                     <div class="col-md-2">
-                                                        <img src="../../assets/images/user.png" style="width:100px;height: 100px;">
+                                                        <img src="../../assets/images/user.png" style="width:100px;height: 100px;border-radius: 50%;">
                                                     </div>
                                                     <div class="col-md-8">
                                                         <div class="comment-body">
                                                             <div class="comment-author">
-                                                                <span class="author">{{UsersList[i]}}</span>
+                                                                <span style="color: #000;font-weight: bold;" class="author">{{UsersList[i]}}</span>
                                                                 <p>
                                                                     <span *ngFor="let num of list2" >
                                                                       <i class="fas fa-star"></i>
@@ -65,8 +65,7 @@
                                                                    
                                                                 </p>
                                                             </div>
-                                                            <!-- <span class="comment-time">March 28, 2020</span> -->
-                                                            <p>{{item.content}}</p>
+                                                            <p style="color: #000;">{{item.content}}</p>
                                                         </div>
                                                     </div>
                                                 </div>

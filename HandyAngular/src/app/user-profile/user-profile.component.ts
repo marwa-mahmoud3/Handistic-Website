@@ -1,3 +1,4 @@
+import { ActivatedRoute } from '@angular/router';
 import { UserService } from 'src/app/Services/user.service';
 import { Users } from './../Models/Users';
 import { Component, OnInit } from '@angular/core';
@@ -9,14 +10,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UserProfileComponent implements OnInit {
 
-  constructor(private UserService:UserService) { }
+  constructor(private UserService:UserService,private route:ActivatedRoute) { }
    users =null
    user =null
   ngOnInit(): void {
-    this.UserService.getIdByUserName(localStorage.getItem('username')).subscribe((
+    this.UserService.getIdByUserName(this.route.snapshot.paramMap.get('userName')).subscribe((
       data =>{
         this.user=data
-        this.users= new Users(localStorage.getItem('username'),this.user.email,this.user.city,this.user.password,'')
+        this.users= new Users(this.route.snapshot.paramMap.get('userName'),this.user.email,this.user.city,this.user.password,'')
       }
     ))
   }

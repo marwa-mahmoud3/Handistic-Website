@@ -20,7 +20,7 @@ import { ProductWishlist } from '../Models/ProductWishlist';
 export class HeaderAfterLoginComponent implements OnInit {
   public User :Users;
   public CurrentUser 
-  constructor(private apiservice : ApiService ,private route:ActivatedRoute,private userservice:UserService,
+  constructor(private apiservice : ApiService ,
     private router: Router ,private sellerService : sellerService,private UserService:UserService,
      private CartService:CartService,private ProductsService:ProductsService,private shopService:ShopService,
      private _productwishlistServices:ProductWishlistService) { }
@@ -90,9 +90,9 @@ export class HeaderAfterLoginComponent implements OnInit {
           data=>{
             this.answer =data;
             if(this.answer)
-              this.router.navigate(["/SellerProfile"]);
+               this.router.navigate([`/SellerProfile/${this.user.userName}`]);
             else 
-              this.router.navigate(["/UserProfile"]);
+              this.router.navigate([`/UserProfile/${this.user.userName}`]);
           })
         });
   }

@@ -8,7 +8,7 @@
             <div class="text-center" style="padding-bottom: 10px;padding-top: 10px;">
                 <img src="../../assets/images/user.png" style="border-radius: 50%;width: 100px;height: 180;">
             </div>
-            <h5 class="text-center"><a>{{CurrentSeller.userName}}</a></h5>
+            <h5 class="text-center"><a routerLink="/SellerProfile/{{CurrentSeller.userName}}" style="color:#000">{{CurrentSeller.userName}}</a></h5>
                 <p class="comment-notes">
                     <br>
                     <span>Add a review</span>
@@ -38,9 +38,10 @@
                         </span>                                                
                     </p>
                 </div>
-                <input type="number" hidden value="{{SellerReview.rating}}" #rating="ngModel" name="rating" [(ngModel)]="SellerReview.rating" >
-                <input type="text" hidden value="{{SellerReview.userId}}" #userId="ngModel" name="userId" [(ngModel)]="SellerReview.userId" >
-                <input type="text" hidden  value="{{SellerReview.sellerId}}"  #sellerId="ngModel" name="sellerId" [(ngModel)]="SellerReview.sellerId" >
+                {{fun(Seller.sellerId)}}
+                <input type="number" hidden value="{{Rating}}" #rating="ngModel" name="rating" [(ngModel)]="SellerReview.rating" >
+                <input type="text" hidden  value="{{Seller.sellerId}}" #userId="ngModel" name="userId" [(ngModel)]="SellerReview.userId" >
+                <input type="text" hidden   value="{{SellerReview.sellerId}}"  #sellerId="ngModel" name="sellerId" [(ngModel)]="SellerReview.sellerId" >
                 <p class="comment-form-comment">
                     <textarea id="comment" class="form-control" name="content" #content="ngModel" required placeholder="Write Your Review..." [(ngModel)]="SellerReview.content"></textarea>
                 </p>

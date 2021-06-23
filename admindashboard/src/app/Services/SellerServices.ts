@@ -10,6 +10,8 @@ export class SellertServices {
 
   constructor(private http: HttpClient) { }
   url_request='https://localhost:44339/api/Sellers';
+  url_userName='https://localhost:44339/api/Users/GetNameByUserId';
+
   ngOnInit() {          
   }
   addseller(seller : Seller)
@@ -19,13 +21,20 @@ export class SellertServices {
   getSellers(){ 
     return this.http.get(this.url_request)
   }
-  deleteSeller(UserId): Observable<any> {
-    return this.http.delete(`${this.url_request}/UserId?userId=${UserId}`);
+  deleteSeller(UserId,UserName): Observable<any> {
+    return this.http.delete(`${this.url_request}/UserId?userId=${UserId}&UserName=${UserName}`);
   }
   updateSeller(id,seller): Observable<any> {
     return this.http.put(`${this.url_request}/${id}`,seller);
   }
   getSellerByID(id): Observable<any> {
     return this.http.get(`${this.url_request}/${id}`);
+  }
+  getIdByUserName(userName) { 
+    return this.http.get(`${this.url_userName}/${userName}`);
+  }
+  AddSellerToBlackList(seller):Observable<any>{
+    let url=`https://localhost:44339/api/BlackList/AddSeller`
+    return this.http.post(url,seller);
   }
 }

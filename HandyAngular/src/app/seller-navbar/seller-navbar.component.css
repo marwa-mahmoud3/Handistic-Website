@@ -22,3 +22,9 @@
     margin-top: -35px;
     margin-left: 11px;
 }
+.show{
+    display: block;
+}
+.hide{
+    display: none;
+}

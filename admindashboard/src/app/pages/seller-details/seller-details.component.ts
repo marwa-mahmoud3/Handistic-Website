@@ -1,4 +1,3 @@
-import { Seller } from './../../Models/Seller';
 import { RequestServices } from './../../Services/RequestServices';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -23,19 +22,20 @@ export class SellerDetailsComponent implements OnInit {
         this.currentseller=seller;
       })
   }
-
+   user:any
   deleteSeller() {
-    this.sellerservices.deleteSeller(this.currentseller.sellerId).subscribe()
-    this.requestservies.deleteRequestByUserId(this.currentseller.sellerId).subscribe()
+    this.sellerservices.getIdByUserName(this.currentseller.sellerId).subscribe(data=>{
+      this.user=data
+      this.sellerservices.deleteSeller(this.currentseller.sellerId,this.user.userName).subscribe()
+    })    
     this.router.navigate(['/sellers'])  
   }
   
   blockSeller() {
     this.currentseller.blocksNumber= this.currentseller.blocksNumber+1;
     if(this.currentseller.blocksNumber==3)
-    { 
-      this.sellerservices.deleteSeller(this.currentseller.sellerId).subscribe()
-      this.requestservies.deleteRequestByUserId(this.currentseller.sellerId).subscribe()
+    { this.sellerservices.AddSellerToBlackList(this.currentseller).subscribe();
+      this.deleteSeller();
       this.router.navigate(['/sellers'])
     }
     else if(this.currentseller.blocksNumber<3)
@@ -43,7 +43,6 @@ export class SellerDetailsComponent implements OnInit {
       this.sellerservices.updateSeller(this.currentseller.id , this.currentseller).subscribe()
     }
   }
-  
   
   public createImgPath = (serverPath: string) => {
     return `https://localhost:44339/${serverPath}`;

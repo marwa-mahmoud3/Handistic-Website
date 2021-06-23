@@ -122,9 +122,9 @@ export class SellerNavbarComponent implements OnInit {
           data=>{
             this.answer =data;
             if(this.answer)
-              this.router.navigate(["/SellerProfile"]);
+              this.router.navigate([`/SellerProfile/${this.user.userName}`]);
             else 
-              this.router.navigate(["/UserProfile"]);
+              this.router.navigate([`/UserProfile/${this.user.userName}`]);
           })
         });
   }

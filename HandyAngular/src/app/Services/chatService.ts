@@ -14,7 +14,7 @@ export class ChatService {
                             
    readonly POST_URL = "https://localhost:44339/api/chat/send"
 
-  private receivedMessageObject: MessageModel = new MessageModel();
+  private receivedMessageObject: MessageModel = new MessageModel('','','');
   private sharedObj = new Subject<MessageModel>();
 
   constructor(private http: HttpClient) { 
@@ -22,6 +22,8 @@ export class ChatService {
       await this.start();
     });
    this.connection.on("ReceiveOne", (user, message) => { this.mapReceivedMessage(user, message); });
+   console.log(this.connection)
+   sessionStorage.setItem('conectionId', this.connection.connectionId);
    this.start();                 
   }
 
@@ -40,7 +42,9 @@ export class ChatService {
  }
 
   public broadcastMessage(msgDto: any) {
-    this.http.post(this.POST_URL, msgDto).subscribe();
+    let connectionId = sessionStorage.getItem('conectionId');
+    let msg=new MessageModel(msgDto.user,msgDto.msgText,connectionId)
+    this.http.post(this.POST_URL, msg).subscribe();
   }
 
   public retrieveMappedObject(): Observable<MessageModel> {
