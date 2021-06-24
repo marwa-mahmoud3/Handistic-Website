@@ -85,23 +85,7 @@ export class ClientNotifyComponent implements OnInit {
   }
   user =null;
  
-  answer ;
-  goToProfile()
-  {
-    this.UserService.getIdByUserName(localStorage.getItem('username')).subscribe(
-      data => {
-        this.user = data;
-        this.sellerService.CheckSellerORNot(this.user.id).subscribe(
-          data=>{
-            this.answer =data;
-            if(this.answer)
-              this.router.navigate([`/SellerProfile/${this.user.userName}`]);
-            else 
-              this.router.navigate([`/UserProfile/${this.user.userName}`]);
-          })
-        });
-  }
-  
+
 getProductName(idx){
   return this.productCartList[idx].productName;
 }

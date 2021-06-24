@@ -71,4 +71,10 @@ GetTopSales():Observable<any>{
   getCountBySearch(keyWord:string):Observable<any>{
     return this.http.get(`https://localhost:44339/api/Product/CountProductsBySearch/${keyWord}`);
   }
+  GetAllProductsBySellerName(sellerName):Observable<any>{
+    return this.http.get(`https://localhost:44339/api/Product/GetAllProductsBySellerName/${sellerName}`);
+  }
+  getSellerProductsPagination(sellerName:string ,pageSize:number,pageNumber:number):Observable<any>{
+    return this.http.get(`https://localhost:44339/api/Product/GetSellerProductsPagination/${sellerName}/${pageSize}/${pageNumber}`);
+  } 
 }

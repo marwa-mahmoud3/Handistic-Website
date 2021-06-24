@@ -31,4 +31,9 @@ export class BlackListService {
   {
     return this.http.get(`${this.url_BlackList}/GetById?id=${id}`);
   }
+  unBlock(id):Observable<any>
+  {
+    let url=`https://localhost:44339/api/BlackList?id=${id}`
+    return this.http.delete(url);
+  }
 }

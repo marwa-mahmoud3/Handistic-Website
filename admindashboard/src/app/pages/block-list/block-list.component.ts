@@ -13,6 +13,8 @@ export class BlockListComponent implements OnInit {
   sellers:Seller[]=[];
   sellerList:Seller[]=[];
   Currentseller =null;
+  filterTerm: string;
+
   ngOnInit(): void {
     this.GetAllsellers();
   }

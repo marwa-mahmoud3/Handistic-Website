@@ -97,6 +97,7 @@ export class CreateShopComponent implements OnInit {
       this.Success=true;
       this.Error = false;
       this.router.navigate(['/profile'])
+      window.scrollTo(0,0)
   },error => {
     this.Error = true;
     this.errorMessage = error;

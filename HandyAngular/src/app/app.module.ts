@@ -43,6 +43,7 @@ import { ChatComponent } from './chat/chat.component';
 import { SearchResultComponent } from './search-result/search-result.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { CategoryComponent } from './category/category.component';
+import { ClientsComponent } from './clients/clients.component';
 
 @NgModule({
   declarations: [
@@ -83,7 +84,8 @@ import { CategoryComponent } from './category/category.component';
     ChatComponent,
     SearchResultComponent,
     DashboardComponent,
-    CategoryComponent
+    CategoryComponent,
+    ClientsComponent
   ],
   imports: [
     BrowserModule,

@@ -12,7 +12,7 @@ import { Users } from '../Models/Users';
 export class UserService {
 
   constructor(private http: HttpClient) { }
-  url_Register='https://localhost:44339/api/Auth/Register?isAdmin=true';
+  url_Register='https://localhost:44339/api/Auth/Register?isAdmin=false';
   url_Login='https://localhost:44339/api/Auth/Login';
   url_confirm="https://localhost:44339/api/Auth/EmailConfrimation";
   url_reset='https://localhost:44339/api/Auth/ResetPassword';
@@ -44,6 +44,11 @@ export class UserService {
   }
   getUserNameByUserId(userId): Observable<any> { 
     let url=`https://localhost:44339/api/Users/GetNameByUserId/${userId}`;
+    return this.http.get(url);
+  }
+  getAllUsers()
+  {
+    let url=`https://localhost:44339/api/Users/GetAllUsers`;
     return this.http.get(url);
   }
 }

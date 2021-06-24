@@ -22,8 +22,6 @@ export class ChatService {
       await this.start();
     });
    this.connection.on("ReceiveOne", (user, message) => { this.mapReceivedMessage(user, message); });
-   console.log(this.connection)
-   sessionStorage.setItem('conectionId', this.connection.connectionId);
    this.start();                 
   }
 

@@ -85,7 +85,10 @@ getProductPathImg(idx){
 }
 GoToCheckOut(){
   if(this.cartItemList.length>0)
-    this.router.navigate(["/Checkout"])
+    {
+      this.router.navigate(["/Checkout"])
+      window.scrollTo(0,0)
+    }
 }
 getTotalPriceForCart(){
  let total=0;

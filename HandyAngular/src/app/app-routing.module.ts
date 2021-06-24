@@ -1,3 +1,4 @@
+import { ClientsComponent } from './clients/clients.component';
 import { SearchResultComponent } from './search-result/search-result.component';
 import { ChatComponent } from './chat/chat.component';
 import { BestsellingComponent } from './bestselling/bestselling.component';
@@ -63,7 +64,9 @@ const routes: Routes = [
   {path:"Chat",component:ChatComponent},
   {path:"searchResult/:searchKey",component:SearchResultComponent},
   {path:"dashboard" ,component :DashboardComponent},
-  {path :"CategoryProducts/:id",component:CategoryComponent}
+  {path :"CategoryProducts/:id",component:CategoryComponent},
+  {path :"Clients",component:ClientsComponent}
+
 
 ];
 
