@@ -1,3 +1,5 @@
+import { BlockListDetailsComponent } from './pages/block-list-details/block-list-details.component';
+import { BlockListComponent } from './pages/block-list/block-list.component';
 import { SellersComponent } from './pages/sellers/sellers.component';
 import { HomeComponent } from './pages/home/home.component';
 import { UpdateCategoryComponent } from './pages/update-category/update-category.component';
@@ -25,6 +27,8 @@ const routes: Routes = [
   {path:'requestdetails/:id',component:RequestdetailsComponent},
   {path:'sellerdetails/:id',component:SellerDetailsComponent},
   {path:'sellers',component:SellersComponent},
+  {path:"BlackList",component:BlockListComponent},
+  {path:"blackListDetails/:id",component:BlockListDetailsComponent}
 ];
 
 @NgModule({

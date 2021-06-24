@@ -33,8 +33,5 @@ export class SellertServices {
   getIdByUserName(userName) { 
     return this.http.get(`${this.url_userName}/${userName}`);
   }
-  AddSellerToBlackList(seller):Observable<any>{
-    let url=`https://localhost:44339/api/BlackList/AddSeller`
-    return this.http.post(url,seller);
-  }
+
 }

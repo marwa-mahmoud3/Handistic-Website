@@ -18,6 +18,7 @@ import { SellersComponent } from './pages/sellers/sellers.component';
 import { RequestsComponent } from './pages/requests/requests.component';
 import { SellerDetailsComponent } from './pages/seller-details/seller-details.component';
 import { BlockListComponent } from './pages/block-list/block-list.component';
+import { BlockListDetailsComponent } from './pages/block-list-details/block-list-details.component';
 
 @NgModule({
   declarations: [
@@ -35,6 +36,7 @@ import { BlockListComponent } from './pages/block-list/block-list.component';
     RequestsComponent,
     SellerDetailsComponent,
     BlockListComponent,
+    BlockListDetailsComponent,
   ],
   imports: [
     BrowserModule,

@@ -26,7 +26,7 @@
             </thead>
             <tbody>
             <tr *ngFor="let product of products" >
-                <td><button (click)=" RemoveProductFromWishlist(product.id);" routerLink="/Wishlist" class="remove">X</button></td>
+                <td><button (click)=" RemoveProductFromWishlist(product.id);" href="/Wishlist" class="remove">X</button></td>
                 <td><img [src]="createImgPath(product.productImagePath)" style="width: 80px;height: 70px;" alt=""></td>
                 <td>{{product.productName}} </td>
                 <td>{{product.unitPrice}}</td>

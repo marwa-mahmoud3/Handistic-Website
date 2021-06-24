@@ -47,12 +47,12 @@
                     <div class="row product">
                         <div class="col-xl-2 col-lg-2 col-md-6 col-sm-6 col-xs-6 col-12" *ngFor="let category of CategoryList | slice:0:6">
                             <div class="card" >
-                                <a routerLink="/CategoryProducts/{{category.id}}">
+                                <a href="/CategoryProducts/{{category.id}}">
                                     <img [src]="createImgPath(category.categoryImagePath)" style="border-radius: 50%;width:90%;height:170px;border: 5px solid #ffa6a8;" alt="">          
                                 </a>
                                 <div class="card-body">
                                     <p class="woocommerce-loop-product__title" style="font-size: 15px;">
-                                        <a routerLink="/CategoryProducts/{{category.id}}" style="text-decoration: none;">
+                                        <a href="/CategoryProducts/{{category.id}}" style="text-decoration: none;">
                                         {{category.name}}</a>
                                     </p>
                                 </div>
@@ -65,12 +65,12 @@
                     <div class="row product">
                         <div class="col-xl-2 col-lg-2 col-md-6 col-sm-6 col-xs-6 col-12" *ngFor="let category of CategoryList | slice:6:12">
                             <div class="card" >
-                                <a routerLink="/CategoryProducts/{{category.id}}">
+                                <a href="/CategoryProducts/{{category.id}}">
                                     <img [src]="createImgPath(category.categoryImagePath)" style="border-radius: 50%;width:90%;height:170px;border: 5px solid #ffa6a8;" alt="">          
                                 </a>
                                 <div class="card-body">
                                     <p class="woocommerce-loop-product__title" style="font-size: 15px;">
-                                        <a routerLink="/CategoryProducts/{{category.id}}" style="text-decoration: none;">
+                                        <a href="/CategoryProducts/{{category.id}}" style="text-decoration: none;">
                                         {{category.name}}</a>
                                     </p>
                                 </div>

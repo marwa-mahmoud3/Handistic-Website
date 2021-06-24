@@ -29,7 +29,7 @@
             </thead>
             <tbody>
                 <tr *ngFor="let item of cartItemList; let i= index">
-                    <td><button (click)="RemoveItemFromCart(item.productId)" routerLink="/Cart" class="remove">X</button></td>               
+                    <td><button (click)="RemoveItemFromCart(item.productId)" href="/Cart" class="remove">X</button></td>               
                     <td style="float: left;margin-left: 50px;"><img [src]="createImgPath(getProductPathImg(i))" style="width: 80px;height: 70px;" ></td>
                     <td>{{getProductName(i)}}</td>
                     <td>{{productPriceAfterDiscount[item.productId]}}</td>

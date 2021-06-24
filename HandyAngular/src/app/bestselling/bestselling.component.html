@@ -30,7 +30,7 @@
                                         <span class="fa fa-cart-plus"></span>
                                     </button>
                                     <button style="margin-top: 55%;" type="button" class="btn click-quick-view"
-                                        routerLink="/ProductDetails/{{product.id}}">
+                                    href="/ProductDetails/{{product.id}}">
                                         <span class="fa fa-search-plus"></span>
                                     </button>
                                     <button  style="margin-top: 55%;" class="btn" (click)="AddToWishList(product.id)">
@@ -39,7 +39,7 @@
                                 </div>
                             </div>
                             <div class="card-body">
-                                <p class="card-title"><a class="float-left" routerLink="/SellerProfile/{{product.userName}}" >Added by {{product.userName}} </a>
+                                <p class="card-title"><a class="float-left" href="/SellerProfile/{{product.userName}}" >Added by {{product.userName}} </a>
                                 </p><br>
 
                                 <p class="woocommerce-loop-product__title"><a>

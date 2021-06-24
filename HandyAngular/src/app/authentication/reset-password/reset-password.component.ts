@@ -25,6 +25,7 @@ export class ResetPasswordComponent implements OnInit {
     this.userservice.resetpassword(form.value).subscribe((data:any)=>{
       if(!data.error)
         this.router.navigate(["/Login"]);
+        window.scrollTo(0, 0); 
     },error => {
       this.showError = true;
       this.errorMessage = error;

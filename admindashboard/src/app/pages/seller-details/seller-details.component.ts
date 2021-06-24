@@ -1,3 +1,5 @@
+import { Seller } from './../../Models/Seller';
+import { BlackListService } from './../../Services/BlackListService';
 import { RequestServices } from './../../Services/RequestServices';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -11,7 +13,7 @@ import { SellertServices } from 'src/app/Services/SellerServices';
 export class SellerDetailsComponent implements OnInit {
 
   currentseller = null;
-  constructor(private sellerservices:SellertServices ,private requestservies: RequestServices, private router:Router , private route:ActivatedRoute) { }
+  constructor(private sellerservices:SellertServices , private BlackListService : BlackListService,private requestservies: RequestServices, private router:Router , private route:ActivatedRoute) { }
 
   ngOnInit(): void {
     this.getSellerDetails(this.route.snapshot.paramMap.get('id'));
@@ -30,17 +32,17 @@ export class SellerDetailsComponent implements OnInit {
     })    
     this.router.navigate(['/sellers'])  
   }
-  
   blockSeller() {
     this.currentseller.blocksNumber= this.currentseller.blocksNumber+1;
+    this.sellerservices.updateSeller(this.currentseller.id , this.currentseller).subscribe()
     if(this.currentseller.blocksNumber==3)
-    { this.sellerservices.AddSellerToBlackList(this.currentseller).subscribe();
-      this.deleteSeller();
-      this.router.navigate(['/sellers'])
-    }
-    else if(this.currentseller.blocksNumber<3)
-    {
-      this.sellerservices.updateSeller(this.currentseller.id , this.currentseller).subscribe()
+    { 
+      this.BlackListService.AddSellerToBlackList(this.currentseller).subscribe()
+      this.sellerservices.getIdByUserName(this.currentseller.sellerId).subscribe(data=>{
+        this.user=data
+        this.sellerservices.deleteSeller(this.currentseller.sellerId,this.user.userName).subscribe()
+      })    
+      this.router.navigate(['/sellers'])  
     }
   }
   

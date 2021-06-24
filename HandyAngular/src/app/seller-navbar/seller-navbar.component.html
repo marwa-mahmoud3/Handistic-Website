@@ -5,7 +5,7 @@
                 <div>
                     <div class="menu">
                         <ul style="margin-top: 5px;">
-                            <li><a class="btn" routerLink="/CreateShop" style="background: #000;color:#fff">Create Shop</a></li>
+                            <li><a class="btn" href="/CreateShop" style="background: #000;color:#fff">Create Shop</a></li>
                         </ul>
                     </div>
                 </div>
@@ -36,7 +36,7 @@
                         <button><span style="font-size: 25px;" class="fas fa-bars click-mobile"></span></button>
                     </div>
                     <div class="logo" style="margin-top: 20px;">
-                        <a routerLink="/profile" style="text-decoration: none;"><h2 style="color: black;">Handistic</h2></a>
+                        <a href="/profile" style="text-decoration: none;"><h2 style="color: black;">Handistic</h2></a>
                         <div id="circle"></div>
                     </div>
                     <div style="margin-top: 0px;">
@@ -57,7 +57,7 @@
                                                    <span  class="woocommerce-Price-amount amount" style="font-weight: normal; font-size: small;left: 32%;margin-top: 7px;">
                                                        {{item.notificationBody}} ....
                                                    </span>
-                                                   <a  (click)="MakeRead(item.id)" routerLink="/orderDetails/{{item.id}}" class="woocommerce-Price-amount amount btn" style="margin-top: 30px;margin-left: 90px;
+                                                   <a  (click)="MakeRead(item.id)" href="/orderDetails/{{item.id}}" class="woocommerce-Price-amount amount btn" style="margin-top: 30px;margin-left: 90px;
                                                    font-size: 13px;background-color: none;
                                                    color: #074d6d;outline: none;border: none;
                                                    text-decoration: underline;">
@@ -75,7 +75,7 @@
                                                    <span  class="woocommerce-Price-amount amount" style="font-weight: normal; font-size: small;left: 32%;margin-top: 5px;">
                                                        {{item.notificationBody}} ....
                                                    </span>
-                                                   <a  (click)="MakeRead(item.id)" routerLink="/orderDetails/{{item.id}}" class="woocommerce-Price-amount amount btn" style="margin-top: 30px;margin-left: 90px;
+                                                   <a  (click)="MakeRead(item.id)" href="/orderDetails/{{item.id}}" class="woocommerce-Price-amount amount btn" style="margin-top: 30px;margin-left: 90px;
                                                    font-size: 13px;background-color: none;
                                                    color: #074d6d;outline: none;border: none;
                                                    text-decoration: underline;">
@@ -87,13 +87,13 @@
                                                </li>                                            
                                        </ul>
                                        <p class="woocommerce-mini-cart__buttons buttons" style="margin-top: 30px;">
-                                           <a routerLink="/notification" class="button wc-forward au-btn btn-small">
+                                           <a href="/notification" class="button wc-forward au-btn btn-small">
                                                SHOW MORE</a>
                                        </p>
                                        </div>
                                 </div>
                             </li>
-                                <li><a routerLink="/Cart" class="cart-index">
+                                <li><a href="/Cart" class="cart-index">
                                     <img src="../../assets/imager/home/bag-2.png" alt=""
                                          style="width: 16px;height: 22px;margin-top: -10px;">
                                     <div id="count">
@@ -131,7 +131,7 @@
                                                 </span>
                                             </p>
                                             <p class="woocommerce-mini-cart__buttons buttons">
-                                                <a routerLink="/Cart" class="button wc-forward au-btn btn-small">VIEW CART &
+                                                <a href="/Cart" class="button wc-forward au-btn btn-small">VIEW CART &
                                                     CHECKOUT</a>
                                             </p>
                                         </div>
@@ -139,7 +139,7 @@
                                 </li>
                                  
                                 <li >
-                                    <a  routerLink="/Wishlist" >
+                                    <a  href="/Wishlist" >
                                         <i class="far fa-heart"style="font-size: 22px;Color: #555"></i>
                                     </a>
                                     <div id="count">
@@ -153,11 +153,11 @@
             </div>
             <div class="menu-mobile" >
                 <ul>
-                    <li><a style="text-decoration: none;" routerLink="/profile">home</a></li>
-                    <li><a style="text-decoration: none;" routerLink="/HandmadeProducts">Store</a></li>
-                    <li><a style="text-decoration: none;" routerLink="/Offers/0">Offers</a></li>
-                    <li><a style="text-decoration: none;" routerLink="/bestSelleing">Best Selling</a></li>
-                    <li><a style="text-decoration: none;" routerLink="/ContactUs">contact</a></li>
+                    <li><a style="text-decoration: none;" href="/profile">home</a></li>
+                    <li><a style="text-decoration: none;" href="/HandmadeProducts">Store</a></li>
+                    <li><a style="text-decoration: none;" href="/Offers/0">Offers</a></li>
+                    <li><a style="text-decoration: none;" href="/bestSelleing">Best Selling</a></li>
+                    <li><a style="text-decoration: none;" href="/ContactUs">contact</a></li>
                 </ul>
             </div>
         </div>
@@ -168,18 +168,18 @@
                 <div class=" header-menu-desktop d-flex justify-content-between">
                     <div>
                         <div class="logo">
-                            <a routerLink="/profile" style="text-decoration: none;"><h2 style="color: black;">Handistic</h2></a>
+                            <a href="/profile" style="text-decoration: none;"><h2 style="color: black;">Handistic</h2></a>
                             <div id="circle"></div>
                         </div>
                     </div>
                     <div>
                         <div class="menu">
                             <ul>
-                                <li><a routerLink="/profile">home</a></li>
-                                <li><a routerLink="/HandmadeProducts/1">Store</a></li>
-                                <li><a routerLink="/Offers/0" >Offers</a></li>
-                                <li><a routerLink="/bestSelleing">Best Selling</a></li>
-                                <li><a routerLink="/ContactUs">contact</a></li>
+                                <li><a href="/profile">home</a></li>
+                                <li><a href="/HandmadeProducts/1">Store</a></li>
+                                <li><a href="/Offers/0" >Offers</a></li>
+                                <li><a href="/bestSelleing">Best Selling</a></li>
+                                <li><a href="/ContactUs">contact</a></li>
                             </ul>
                         </div>
                     </div>
@@ -201,7 +201,7 @@
                                                    <span  class="woocommerce-Price-amount amount" style="font-weight: normal; font-size: small;left: 32%;margin-top: 7px;">
                                                        {{item.notificationBody}} ....
                                                    </span>
-                                                   <a  (click)="MakeRead(item.id)" routerLink="/orderDetails/{{item.id}}" class="woocommerce-Price-amount amount btn" style="margin-top: 30px;margin-left: 90px;
+                                                   <a  (click)="MakeRead(item.id)" href="/orderDetails/{{item.id}}" class="woocommerce-Price-amount amount btn" style="margin-top: 30px;margin-left: 90px;
                                                    font-size: 13px;background-color: none;
                                                    color: #074d6d;outline: none;border: none;
                                                    text-decoration: underline;">
@@ -219,7 +219,7 @@
                                                    <span  class="woocommerce-Price-amount amount" style="font-weight: normal; font-size: small;left: 32%;margin-top: 5px;">
                                                        {{item.notificationBody}} ....
                                                    </span>
-                                                   <a  (click)="MakeRead(item.id)" routerLink="/orderDetails/{{item.id}}" class="woocommerce-Price-amount amount btn" style="margin-top: 30px;margin-left: 90px;
+                                                   <a  (click)="MakeRead(item.id)" href="/orderDetails/{{item.id}}" class="woocommerce-Price-amount amount btn" style="margin-top: 30px;margin-left: 90px;
                                                    font-size: 13px;background-color: none;
                                                    color: #074d6d;outline: none;border: none;
                                                    text-decoration: underline;">
@@ -231,13 +231,13 @@
                                                </li>                                            
                                        </ul>
                                        <p class="woocommerce-mini-cart__buttons buttons" style="margin-top: 30px;">
-                                           <a routerLink="/notification" class="button wc-forward au-btn btn-small">
+                                           <a href="/notification" class="button wc-forward au-btn btn-small">
                                                SHOW MORE</a>
                                        </p>
                                        </div>
                                 </div>
                             </li>
-                                <li><a routerLink="/Cart" class="cart-index">
+                                <li><a href="/Cart" class="cart-index">
                                     <img src="../../assets/imager/home/bag-2.png" alt=""
                                          style="width: 16px;height: 22px;margin-top: -10px;">
                                     <div id="count">
@@ -275,7 +275,7 @@
                                                 </span>
                                             </p>
                                             <p class="woocommerce-mini-cart__buttons buttons">
-                                                <a routerLink="/Cart" class="button wc-forward au-btn btn-small">VIEW CART &
+                                                <a href="/Cart" class="button wc-forward au-btn btn-small">VIEW CART &
                                                     CHECKOUT</a>
                                             </p>
                                         </div>
@@ -283,7 +283,7 @@
                                 </li>
                                  
                                 <li >
-                                    <a  routerLink="/Wishlist" >
+                                    <a  href="/Wishlist" >
                                         <i class="far fa-heart"style="font-size: 22px;Color: #555"></i>
                                     </a>
                                     <div id="count">

@@ -12,7 +12,7 @@
              <li>PostCode: {{BillingItem.postCode}}</li>
              <li>Phone: {{BillingItem.phone}}</li>
              <li>Email: {{BillingItem.email}}</li>
-             <li>User Profile: <a routerLink="/UserProfile/{{CurrentUser.userName}}" style="text-decoration: underline;color:#ffa6a8">{{CurrentUser.userName}}</a></li>
+             <li>User Profile: <a href="/UserProfile/{{CurrentUser.userName}}" style="text-decoration: underline;color:#ffa6a8">{{CurrentUser.userName}}</a></li>
            </ul>
             <button (click)="Delivered()" style="margin-bottom: 50px;">Delivered</button>
         </div>

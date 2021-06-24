@@ -37,6 +37,7 @@ export class RegisterComponent implements OnInit {
       if(data.Succeeded == true)
       this.reserform(form);
       this.router.navigate(["/EmailConfirmation"]);
+      window.scrollTo(0, 0); 
     },error => {
       this.showError = true;
       this.errorMessage = error;

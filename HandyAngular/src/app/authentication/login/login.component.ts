@@ -1,7 +1,7 @@
 import { ShopService } from './../../Services/shopService';
 import { Component, OnInit } from '@angular/core';
 import {NgForm} from '@angular/forms';
-import {  ActivatedRoute, Router, RouterLink } from '@angular/router';
+import { Router } from '@angular/router';
 import { ConfirmEmail } from 'src/app/Models/ConfirmEmail';
 import { UserService } from '../../Services/user.service';
 import { LoginUsers } from '../../Models/Login';
@@ -15,7 +15,7 @@ import { LoginUsers } from '../../Models/Login';
     isLoginError : boolean =false;
     fieldTextType: boolean;
     repeatFieldTextType: boolean; 
-    constructor(private userservice:UserService,private router: Router ,private route:ActivatedRoute,private shopService:ShopService) { }
+    constructor(private userservice:UserService,private router: Router ,private shopService:ShopService) { }
     email= new ConfirmEmail('');
     ngOnInit() {
       this.reserform();
@@ -39,6 +39,7 @@ import { LoginUsers } from '../../Models/Login';
         this.reserform(form);
         this.userservice.getUserByEmail(this.loginuser.email).subscribe((user=>{
           this.router.navigate(['/profile'])
+          window.scrollTo(0, 0); 
           localStorage.setItem('username',user.userName)
             localStorage.setItem('userId',user.id)
             this.shopService.ShopByUserId(user.id).subscribe(
