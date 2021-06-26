@@ -1,5 +1,4 @@
-import { ActivatedRoute } from '@angular/router';
-import { Users } from './../Models/Users';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ClientNotifyService } from './../Services/ClientNotifyService';
 import { UserService } from 'src/app/Services/user.service';
 import { Product } from './../Models/Product';
@@ -18,7 +17,7 @@ import { Notification } from '../Models/Notification';
 export class OrderDetailsComponent implements OnInit {
 
   constructor(private notify:NotificationService,private BillingDetailsService:BillingDetailsService,
-    private orderService:OrderService,private ClientNotifyService:ClientNotifyService,
+    private orderService:OrderService,private ClientNotifyService:ClientNotifyService,private router :Router,
     private productservice :ProductsService,private userService:UserService,private route:ActivatedRoute) { }
   BillingItem
   ProductsList : Product[]=[]
@@ -57,7 +56,11 @@ export class OrderDetailsComponent implements OnInit {
   public createImgPath = (serverPath: string) => {
     return `https://localhost:44339/${serverPath}`;
   }
-
+  goToHome()
+  {
+    this.router.navigate["/profile"]
+    window.scrollTo(0,0)
+  }
   ClientNotify
   client
   Body:string="Your Order Has been delivered , you can add a review now."
@@ -67,6 +70,8 @@ export class OrderDetailsComponent implements OnInit {
       this.client =data
     this.ClientNotify = new Notification(this.Body,this.BillingItem.id,localStorage.getItem('userId'),this.client.id)
     this.ClientNotifyService.createNotification(this.ClientNotify).subscribe()
+    this.router.navigate["/profile"]
+    window.scrollTo(0,0)    
     }))
   }
 }

@@ -1,6 +1,6 @@
 <app-header-after-login></app-header-after-login>
 <div class="title-page"
-     style="background-color: #F1EEF1">
+     style="background-color:aliceblue">
     <div class="container">
         <div class="row">
             <div class=" col-md-6 inner-title-page">
@@ -22,14 +22,14 @@
                     <div class="col-md-6 col-sm-12 col-12">
                         <label class="label">First name<span> *</span></label>
                         <div class="input-group">
-                            <input placeholder=" Enter First Name" type="text" class="form-control" name="firstName"  [class.is-invalid]="firstName.invalid && firstName.touched " [class.is-invalid]="firstName.invalid && firstName.touched " required #firstName="ngModel" [(ngModel)]="BillingData.firstName" >
+                            <input value="{{Billing.firstName}}" placeholder=" Enter First Name" type="text" class="form-control" name="firstName"  [class.is-invalid]="firstName.invalid && firstName.touched " [class.is-invalid]="firstName.invalid && firstName.touched " required #firstName="ngModel" [(ngModel)]="Billing.firstName" >
                         </div>
                         <small class="text-danger" [class.d-none]="firstName.untouched || firstName.valid">First Name is required</small>
                     </div>
                     <div class="col-md-6 col-sm-12 col-12">
                         <label class="label">Last name<span> *</span></label>
                         <div class="input-group">
-                            <input placeholder=" Enter Last Name" type="text" class="form-control" name="lastName"   [class.is-invalid]="lastName.invalid && lastName.touched " [class.is-invalid]="lastName.invalid && lastName.touched " required #lastName="ngModel" [(ngModel)]="BillingData.lastName" >
+                            <input value="{{Billing.lastName}}" placeholder=" Enter Last Name" type="text" class="form-control" name="lastName"   [class.is-invalid]="lastName.invalid && lastName.touched " [class.is-invalid]="lastName.invalid && lastName.touched " required #lastName="ngModel" [(ngModel)]="Billing.lastName" >
                         </div>
                         <small class="text-danger"[class.d-none]="lastName.untouched || lastName.valid">Last Name is required</small>
                     </div>
@@ -38,7 +38,7 @@
                     <div class="col-md-12 mb-3">
                         <label class="label">Sreet<span> *</span></label>
                         <div class="input-group">
-                            <input placeholder=" Enter Your Street" type="text" class="form-control"  name="street"   [class.is-invalid]="street.invalid && street.touched " [class.is-invalid]="street.invalid && street.touched " required #street="ngModel" [(ngModel)]="BillingData.street" >
+                            <input value="{{Billing.street}}" placeholder=" Enter Your Street" type="text" class="form-control"  name="street"   [class.is-invalid]="street.invalid && street.touched " [class.is-invalid]="street.invalid && street.touched " required #street="ngModel" [(ngModel)]="Billing.street" >
                         </div>
                         <small class="text-danger"[class.d-none]="street.untouched || street.valid">Street is required</small>                
                     </div>
@@ -54,7 +54,7 @@
                     <div class="col-md-6  mb-3">
                         <label class="label">Postcode/Zip<span> *</span></label>
                         <div class="input-group">
-                            <input placeholder=" Enter Postcode" type="number" class="form-control" name="postcode"  [class.is-invalid]="postcode.invalid && postcode.touched " [class.is-invalid]="postcode.invalid && postcode.touched " required #postcode="ngModel" [(ngModel)]="BillingData.postcode" >
+                            <input value="{{Billing.postcode}}" placeholder=" Enter Postcode" type="number" class="form-control" name="postcode"  [class.is-invalid]="postcode.invalid && postcode.touched " [class.is-invalid]="postcode.invalid && postcode.touched " required #postcode="ngModel" [(ngModel)]="Billing.postcode" >
                         </div>
                         <small class="text-danger" [class.d-none]="postcode.untouched || postcode.valid">PostCode is required</small>
                     </div>
@@ -64,7 +64,7 @@
                     <div class="col-md-12 ">
                         <label class="label">Phone<span> *</span></label>
                         <div class="input-group">
-                            <input placeholder=" Enter your Phone" type="text" class="form-control" name="phone"  [class.is-invalid]="phone.invalid && phone.touched " [class.is-invalid]="phone.invalid && phone.touched " required #phone="ngModel" [(ngModel)]="BillingData.phone">
+                            <input value="{{Billing.phone}}" placeholder=" Enter your Phone" type="text" class="form-control" name="phone"  [class.is-invalid]="phone.invalid && phone.touched " [class.is-invalid]="phone.invalid && phone.touched " required #phone="ngModel" [(ngModel)]="Billing.phone">
                         </div>
                         <small class="text-danger" [class.d-none]="phone.untouched || phone.valid">Phone is required</small>
                     </div>

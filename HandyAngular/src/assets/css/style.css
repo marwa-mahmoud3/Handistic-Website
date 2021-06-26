@@ -2895,14 +2895,14 @@ i {
 .content-review-homepage {
 	width:      100%;
 	background: white;
-	margin-top: 250px;
+	margin-top: 200px;
 	position:   relative;
 }
 
 .content-review-homepage img {
 	width:         150px;
 	height:        150px;
-	left:          43%;
+	left:          45%;
 	position:      absolute;
 	top:           -30%;
 	border-radius: 50%;

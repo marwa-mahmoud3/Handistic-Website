@@ -21,4 +21,9 @@ export class BillingDetailsService {
     let url=`https://localhost:44339/api/BillingDetails/${id}`;
     return this.http.get(url)
   }
+  getLastUserBilling(userId)
+  {
+    let url=`https://localhost:44339/api/BillingDetails/GetLastBillingDetails?UserId=${userId}`;
+    return this.http.get(url)
+  }
 }

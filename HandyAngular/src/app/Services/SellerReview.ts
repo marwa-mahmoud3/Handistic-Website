@@ -31,4 +31,9 @@ export class SellerReviewService {
       let url=`https://localhost:44339/api/SellerReviews/GetAllReviewOnSeller/${sellerId}`;
       return this.http.get(url)
   }
+  getAll()
+  {
+    let url=`https://localhost:44339/api/SellerReviews`;
+      return this.http.get(url)
+  }
 }

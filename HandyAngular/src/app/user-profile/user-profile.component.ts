@@ -1,3 +1,4 @@
+import { sellerService } from './../Services/sellerService';
 import { ActivatedRoute } from '@angular/router';
 import { UserService } from 'src/app/Services/user.service';
 import { Users } from './../Models/Users';
@@ -13,7 +14,13 @@ export class UserProfileComponent implements OnInit {
   constructor(private UserService:UserService,private route:ActivatedRoute) { }
    users =null
    user =null
+   answer
+   flag:boolean = false
   ngOnInit(): void {
+    if(localStorage.getItem('shopId')!=null)
+    { 
+      this.flag =true
+    }   
     this.UserService.getIdByUserName(this.route.snapshot.paramMap.get('userName')).subscribe((
       data =>{
         this.user=data

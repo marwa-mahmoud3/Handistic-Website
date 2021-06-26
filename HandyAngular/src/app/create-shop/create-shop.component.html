@@ -40,9 +40,7 @@
                         <div class="col-lg-6 col-md-4">
                             <label class="label">Choose Your Goverorate<span class="star">*</span></label>
                             <div class="input-group">
-                                <select  class="form-control form-select-lg" [class.is-invalid]="governorate.invalid && governorate.touched " [class.is-invalid]="governorate.invalid && governorate.touched" required #governorate="ngModel" [(ngModel)]="request.governorate" name="governorate">
-                                    <option *ngFor="let city of CityList " value="{{city.name}}">{{city.name}}</option>
-                                </select>
+                                <input value="{{request.governorate}}" class="form-control form-select-lg" [class.is-invalid]="governorate.invalid && governorate.touched " [class.is-invalid]="governorate.invalid && governorate.touched" required #governorate="ngModel" [(ngModel)]="request.governorate" name="governorate">
                             </div>
                             <small class="text-danger"[class.d-none]="governorate.untouched || governorate.valid">Governorate is required</small>
                         </div>

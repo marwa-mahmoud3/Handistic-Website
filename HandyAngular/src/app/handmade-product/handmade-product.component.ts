@@ -9,6 +9,7 @@ import { Category } from '../Models/Category';
 import { ProductsCount } from '../Models/ProductsCount';
 import { UserService } from 'src/app/Services/user.service';
 import { ProductWishlist } from '../Models/ProductWishlist';
+import { AddReviewService } from '../Services/ReviewService';
 
 
 @Component({
@@ -22,10 +23,9 @@ export class HandmadeProductComponent implements OnInit {
   CategoryList : Category[] = [];
   products: Product [] = [];
   item :number;
-  CountProducts :ProductsCount[] =[]
   user:any;
   CurrentCatgoryId
-  constructor(private productWishlistService:ProductWishlistService,private route:ActivatedRoute,private router :Router,
+  constructor(private productWishlistService:ProductWishlistService,private reviewService:AddReviewService,private route:ActivatedRoute,private router :Router,
     private UserService:UserService, private productservices: ProductsService,private categoryService : CategoryService,private CartService:CartService) {
   }
 
@@ -33,6 +33,7 @@ export class HandmadeProductComponent implements OnInit {
     this.CurrentCatgoryId= this.route.snapshot.paramMap.get('id')
     this.getProductsPerPage(1); 
     this.getSelectedPage(1);
+    
     this.productservices.getCountOfProducts(this.route.snapshot.paramMap.get('id')).subscribe((data=>{
     this.productsCount=data;
    this.numberOfPages=Math.ceil(this.productsCount / this.pageSize);
@@ -64,23 +65,27 @@ export class HandmadeProductComponent implements OnInit {
     )
   }
  
-  CurrentCategory = new Category(1,"Clothes",'')
+  CurrentCategory = new Category(1,"Accessories",'')
+  CountProducts:{[id:number]:number}={};
+
   loadCategories()
   {    
-    this.CountProducts=[]
     this.categoryService.getCategories().subscribe((data:any)=>{
       data.forEach(category => {
           this.CategoryList.push(category); 
           this.productservices.getCountOfProducts(category.id).subscribe(
             (item =>{
-                this.CountProducts.push(item);
+              if(this.CountProducts[category.id]!= Number(item))
+              {
+                this.CountProducts[category.id]= Number(item)
+              }
             })        
           )
        });
     });
     
   }
- 
+
   public createImgPath = (serverPath: string) => {
     return `https://localhost:44339/${serverPath}`;
   }
@@ -105,8 +110,7 @@ export class HandmadeProductComponent implements OnInit {
   selectedCategoryId: number;
   currentCategory:Category;
   
-
-  
+Reviews:{[id:number]:number}={};
 setCrrentCategoryId(categoryId){
   this.router.routeReuseStrategy.shouldReuseRoute = () => false;
   this.router.onSameUrlNavigation = 'reload';
@@ -116,6 +120,17 @@ setCrrentCategoryId(categoryId){
     this.productservices.getProductsByCategoryPaging(this.CurrentCatgoryId,this.pageSize, currentPageNumber).subscribe(
       data => {
         this.productsPerPage = data
+        data.forEach(element => {
+          this.reviewService.averagerRating(element.id).subscribe(
+            num=>
+            {
+              if(this.Reviews[element.id]!= Number(num))
+              {
+                this.Reviews[element.id]= Number(num)
+              }
+            }
+          )
+        });
         this.currentPageNumber = currentPageNumber;
         if(data.length != 0)
           this.hasProducts = true;

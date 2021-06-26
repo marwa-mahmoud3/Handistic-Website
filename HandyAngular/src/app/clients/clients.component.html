@@ -1,4 +1,5 @@
-<app-header-after-login></app-header-after-login>
+<app-header-after-login *ngIf="IsLogin"></app-header-after-login>
+<app-header-before-login *ngIf="!IsLogin"></app-header-before-login>
 <div class="container">
     <div id="form" class="row justify-content-center" style="height: 110px;margin-top: 50px;">
         <div class="col-10">

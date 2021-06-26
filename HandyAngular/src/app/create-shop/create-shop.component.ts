@@ -1,3 +1,4 @@
+import { UserService } from './../Services/user.service';
 import { Router } from '@angular/router';
 import { ShopService } from '../Services/shopService';
 import { shop } from './../Models/shop';
@@ -16,17 +17,21 @@ import {Output, EventEmitter } from '@angular/core';
 })
 export class CreateShopComponent implements OnInit {
   @Output() public onUploadFinished = new EventEmitter();
-  constructor(private userRequestService : userRequest,private router: Router,
+  constructor(private userRequestService : userRequest,private router: Router,private userservice:UserService,
   private shopservice: ShopService ,private cityservice:CityService,private http: HttpClient) { }
   public ShowLink:boolean =true;
   public ShowImage:boolean;
   public secondform:boolean;
   public firstform:boolean=true;
   public Currentuser;
-  request = new RequestModel(localStorage.getItem('userId'),'','','','','','','','');
+  request 
   currentShop =new shop(localStorage.getItem('userId'),'',[])
+  request2
   ngOnInit(): void {
     this.GetAllCities();  
+    this.userservice.getIdByUserName(localStorage.getItem('username')).subscribe((data:any)=>{
+      this.request =new RequestModel(localStorage.getItem('userId'),'','','',data.city,'','','','');
+    })
   }    
   
   ShowLinkData()

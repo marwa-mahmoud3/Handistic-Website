@@ -31,23 +31,39 @@ export class CheckoutComponent implements OnInit {
   SecondForm:boolean;
   public Billing 
   Notifications:{[id:string]:number}={};
+  LastBilling:BillingDetails
  ngOnInit(): void {
-   this.UserService.getIdByUserName(localStorage.getItem('username')).subscribe((
-     data =>{
-       this.user=data
-       this.Billing= new BillingDetails('','','',this.user.city,null,'',this.user.email,this.user.id)
-       this.CartService.getUserCartItems(this.user.id).subscribe((
-        data=>{
-          this.cartItemList=data;
-          data.forEach(item => {
-            this.ProductsService.getProductById(item.productId).subscribe((data:any) =>{
-              this.productCartList.push(data);
-            })
-          });
-        }
-      ))
+   this.BillingDetailsservice.getLastUserBilling(localStorage.getItem('userId')).subscribe((e:any)=>{
+     console.log(e)
+     if(e!=null)
+     {
+       this.LastBilling = e
+      this.Billing= new BillingDetails(this.LastBilling.firstName,this.LastBilling.lastName,this.LastBilling.street,this.LastBilling.city,
+        this.LastBilling.postcode,this.LastBilling.phone,this.LastBilling.email,this.LastBilling.userId)
      }
-   )) 
+     else
+     {
+      this.UserService.getIdByUserName(localStorage.getItem('username')).subscribe((
+        data =>{
+          this.user=data
+          this.Billing= new BillingDetails('','','',this.user.city,null,'',this.user.email,this.user.id)
+        }))
+     }
+     this.UserService.getIdByUserName(localStorage.getItem('username')).subscribe((
+      data =>{
+        this.user=data
+        this.CartService.getUserCartItems(this.user.id).subscribe((
+          data=>{
+            this.cartItemList=data;
+            data.forEach(item => {
+              this.ProductsService.getProductById(item.productId).subscribe((data:any) =>{
+                this.productCartList.push(data);
+              })
+            });
+          }
+        ))
+      }))
+   })
  }
  
 
@@ -95,8 +111,6 @@ export class CheckoutComponent implements OnInit {
           if(this.Notifications[this.notify.sellerId]!=this.notify.billingId)
             {
               this.Notifications[this.notify.sellerId]=this.notify.billingId
-              // console.log(this.notify)
-              // console.log("************")
               this.notificationService.createNotification(this.notify).subscribe();
             }      
           }))

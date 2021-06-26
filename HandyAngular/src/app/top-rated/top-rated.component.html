@@ -1,0 +1,166 @@
+<app-header-after-login *ngIf="IsLogin"></app-header-after-login>
+<app-header-before-login *ngIf="!IsLogin"></app-header-before-login>
+<div class="title-page"
+    style="background-position: center right;background-size: 60% 120%;background-repeat: no-repeat;background-color: aliceblue;">
+    <div class="container">
+        <div class="row">
+            <div class=" col-md-6 inner-title-page">
+                <h1>Top Rated</h1>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container" style="margin-bottom: 120px;">
+    
+    <div class="product-out">
+        <div id="demo" class="carousel slide" data-ride="carousel">
+            <!-- Indicators -->
+            <ul class="carousel-indicators">
+                <li data-target="#demo" data-slide-to="0" class="active"></li>
+                <li *ngIf="flag" data-target="#demo" data-slide-to="1"></li>
+                <li *ngIf="flag1" data-target="#demo" data-slide-to="2"></li>
+            </ul>
+            <!-- The slideshow -->
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <div class="row product">
+                        <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6 col-xs-6 col-12" *ngFor="let product of productList | slice:0:8;let i=index">
+                            <div class="card">
+                                <div class="card-img-top">
+                                    <img class="image-cover" [src]="createImgPath(product.productImagePath)" style="height:250px" alt="product">
+                                    <div style="position: absolute;right: 0px;margin-top: -200px;background-color: rgb(18, 0, 82);padding: 3px 8px">
+                                        <span style="color: #fff;">{{Reviews[productList[i].id]}}&nbsp;</span>
+                                        <li style="color: #e7d215;font-size: 15px;" class="fas fa-star"></li>
+                                    </div>
+                                    <p *ngIf="!hasDiscount(product)" class="onnew">New</p>
+                                    <p *ngIf="hasDiscount(product)" class="onsale">Sale</p>   
+                                    <div class="icon-product" >
+                                        <button style=" margin-top:65%;" class="btn" (click)="AddItemToCart(product.id)">
+                                            <span class="fa fa-cart-plus"></span>
+                                        </button>
+                                        <button style=" margin-top:65%;" type="button" class="btn click-quick-view" routerLink="/ProductDetails/{{product.id}}" >
+                                            <span class="fa fa-search-plus" ></span>
+                                        </button>
+                                        <button style=" margin-top:65%;" class="btn" (click)="AddToWishList(product.id)" >
+                                            <span class="fas fa-heart"> </span>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="card-body">
+                                    <p class="woocommerce-loop-product__title">
+                                        <a style="text-decoration: none;">
+                                        {{product.productName}}</a></p>
+                                    <span class="price">
+                                        <del *ngIf="hasDiscount(product)">
+                                            <span class="woocommerce-Price-amount amount">
+                                                <span class="woocommerce-Price-currencySymbol">$</span>{{product.unitPrice}}
+    
+                                            </span>
+                                        </del>
+                                        <ins>
+                                            <span class="woocommerce-Price-amount amount">
+                                               <span class="woocommerce-Price-currencySymbol">$</span>{{getPriceAfterDiscount(product)}}
+                                            </span>
+                                        </ins>
+                                </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div> 
+                </div>
+                <div class="carousel-item " *ngIf="flag1">
+                    <div class="row product">
+                        <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6 col-xs-6 col-12" *ngFor="let product of productList | slice:8:12;let i =index">
+                            <div class="card">
+                                <div class="card-img-top">
+                                    <img class="image-cover" [src]="createImgPath(product.productImagePath)" style="height:250px" alt="product">
+                                    <div style="position: absolute;right: 0px;margin-top: -200px;background-color: rgb(18, 0, 82);padding: 3px 8px">
+                                        <span style="color: #fff;">{{Reviews[productList[i+8].id]}}&nbsp;</span>
+                                        <li style="color: #e7d215;font-size: 15px;" class="fas fa-star"></li>
+                                    </div>
+                                    <p *ngIf="!hasDiscount(product)" class="onnew">New</p>
+                                    <p *ngIf="hasDiscount(product)" class="onsale">Sale</p>   
+                                    <div class="icon-product" >
+                                        <button style=" margin-top:65%;" class="btn" (click)="AddItemToCart(product.id)">
+                                            <span class="fa fa-cart-plus"></span>
+                                        </button>
+                                        <button style=" margin-top:65%;" type="button" class="btn click-quick-view" routerLink="/ProductDetails/{{product.id}}" >
+                                            <span class="fa fa-search-plus" ></span>
+                                        </button>
+                                        <button style=" margin-top:65%;" class="btn" (click)="AddToWishList(product.id)" >
+                                            <span class="fas fa-heart"> </span>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="card-body">
+                                    <p class="woocommerce-loop-product__title">
+                                        <a style="text-decoration: none;">
+                                        {{product.productName}}</a></p>
+                                    <span class="price">
+                                        <del *ngIf="hasDiscount(product)">
+                                            <span class="woocommerce-Price-amount amount">
+                                                <span class="woocommerce-Price-currencySymbol">$</span>{{product.unitPrice}}
+    
+                                            </span>
+                                        </del>
+                                        <ins>
+                                            <span class="woocommerce-Price-amount amount">
+                                               <span class="woocommerce-Price-currencySymbol">$</span>{{getPriceAfterDiscount(product)}}
+                                            </span>
+                                        </ins>
+                                </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-item " *ngIf="flag">
+                    <div class="row product">
+                        <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6 col-xs-6 col-12" *ngFor="let product of productList | slice:12:24;let i=index">
+                            <div class="card">
+                                <div class="card-img-top">
+                                    <img class="image-cover" [src]="createImgPath(product.productImagePath)" style="height:250px" alt="product">
+                                    <div style="position: absolute;right: 0px;margin-top: -200px;background-color: rgb(18, 0, 82);padding: 3px 8px">
+                                        <span style="color: #fff;">{{Reviews[productList[i+12].id]}}&nbsp;</span>
+                                        <li style="color: #e7d215;font-size: 15px;" class="fas fa-star"></li>
+                                    </div>
+                                    <p *ngIf="!hasDiscount(product)" class="onnew">New</p>
+                                    <p *ngIf="hasDiscount(product)" class="onsale">Sale</p>   
+                                    <div class="icon-product" >
+                                        <button style=" margin-top:65%;" class="btn" (click)="AddItemToCart(product.id)">
+                                            <span class="fa fa-cart-plus"></span>
+                                        </button>
+                                        <button style=" margin-top:65%;" type="button" class="btn click-quick-view" routerLink="/ProductDetails/{{product.id}}" >
+                                            <span class="fa fa-search-plus" ></span>
+                                        </button>
+                                        <button style=" margin-top:65%;" class="btn" (click)="AddToWishList(product.id)" >
+                                            <span class="fas fa-heart"> </span>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="card-body">
+                                    <p class="woocommerce-loop-product__title">
+                                        <a style="text-decoration: none;">
+                                        {{product.productName}}</a></p>
+                                    <span class="price">
+                                        <del *ngIf="hasDiscount(product)">
+                                            <span class="woocommerce-Price-amount amount">
+                                                <span class="woocommerce-Price-currencySymbol">$</span>{{product.unitPrice}}
+    
+                                            </span>
+                                        </del>
+                                        <ins>
+                                            <span class="woocommerce-Price-amount amount">
+                                               <span class="woocommerce-Price-currencySymbol">$</span>{{getPriceAfterDiscount(product)}}
+                                            </span>
+                                        </ins>
+                                </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

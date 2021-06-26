@@ -24,7 +24,6 @@ export class ChatComponent implements OnInit {
   msgDto: MessageModel = new MessageModel('','','');
   msgInboxArray: MessageModel[] = [];
   CurrentUser :Users
-  Messages:{[id:string]:string}={};
   MessagesList:MessageModel[]=[]
   map = new Map<string, string>();
   send(): void {

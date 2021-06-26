@@ -1,38 +1,39 @@
-import { AddReviewService } from './../../Services/ReviewService';
-import { ProductWishlistService } from './../../Services/ProductWishlistService';
-import { UserService } from 'src/app/Services/user.service';
-import { CartService } from './../../Services/CartService';
 import { Component, OnInit } from '@angular/core';
 import { Product } from 'src/app/Models/Product';
-import { ProductsService } from 'src/app/Services/ProductsService';
 import { ProductWishlist } from 'src/app/Models/ProductWishlist';
-
+import { ProductsService } from 'src/app/Services/ProductsService';
+import { ProductWishlistService } from 'src/app/Services/ProductWishlistService';
+import { AddReviewService } from 'src/app/Services/ReviewService';
+import { UserService } from 'src/app/Services/user.service';
+import { CartService } from './../../Services/CartService';
 @Component({
-  selector: 'app-home-news',
-  templateUrl: './home-news.component.html',
-  styleUrls: ['./home-news.component.css']
+  selector: 'app-customize-product',
+  templateUrl: './customize-product.component.html',
+  styleUrls: ['./customize-product.component.css']
 })
-export class HomeNewsComponent implements OnInit {
+export class CustomizeProductComponent implements OnInit {
+
   products : Product[]=[]
   productList : Product[]=[]
   user:any;
-  flag :boolean
     constructor(private _productsService:ProductsService,private CartService:CartService,
-      private reviewService:AddReviewService,
-      private UserService:UserService,private productWishlistService:ProductWishlistService) { }
+      private UserService:UserService,private productWishlistService:ProductWishlistService,
+      private reviewService:AddReviewService) { }
     ngOnInit(): void {
-      this.getBest();
       this.UserService.getIdByUserName(localStorage.getItem('username')).subscribe((
         data =>{
           this.user=data}))
-    }
-Reviews:{[id:number]:number}={};
-
-  getBest(){
-    this._productsService.GetTopSales().subscribe(
-      (products: any) => {
-        products.forEach(p => {
-          this.productList.push(p);
+        this._productsService.getCustomizedProducts(localStorage.getItem('userId')).subscribe(data2=>{
+          this.productList=data2;
+          if(this.productList.length >8)
+              {
+                this.flag=true
+              }
+              if(this.productList.length >4)
+              {
+                this.flag1=true
+              }
+          data2.forEach(p => {
             this.reviewService.averagerRating(p.id).subscribe(
               num=>
               {
@@ -41,23 +42,26 @@ Reviews:{[id:number]:number}={};
                   this.Reviews[p.id]= Number(num)
                 }
             }) 
-        })
-      },
-  );
-  if(this.productList.length >8)
-   {
-     this.flag=true
-   }
-   if(this.productList.length >4)
-   {
-     this.flag=false
-   }
+          })
+          
+        })      
+    }
+    flag:boolean
+    flag1 :boolean
+    Reviews:{[id:number]:number}={};
 
-}
 public createImgPath = (serverPath: string) => {
   return `https://localhost:44339/${serverPath}`;
 }
 
+getPriceAfterDiscount(prouct:Product){
+  let res=prouct.unitPrice;
+  res-=prouct.unitPrice*(prouct.discount/100.0);
+  return Math.ceil(res);
+ }
+ hasDiscount(product:Product){
+  return product.discount>0;
+}
 AddItemToCart(productId:number){
   this.CartService.addItemToCart(this.user.id,productId,null).subscribe();
   location.reload();
@@ -77,12 +81,4 @@ AddItemToCart(productId:number){
       }
     )
   }
-  hasDiscount(product:Product){
-    return product.discount>0;
-  }
-  getPriceAfterDiscount(prouct:Product){
-    let res=prouct.unitPrice;
-    res-=prouct.unitPrice*(prouct.discount/100.0);
-    return Math.ceil(res);
-   }
 }

@@ -1,3 +1,4 @@
+import { TopRatedComponent } from './top-rated/top-rated.component';
 import { ClientsComponent } from './clients/clients.component';
 import { SearchResultComponent } from './search-result/search-result.component';
 import { ChatComponent } from './chat/chat.component';
@@ -31,6 +32,7 @@ import { ProfileComponent } from './profile/profile.component';
 import { CartComponent } from './cart/cart.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { CategoryComponent } from './category/category.component';
+import { RecommendedProductsComponent } from './recommended-products/recommended-products.component';
 
 
 const routes: Routes = [
@@ -65,7 +67,9 @@ const routes: Routes = [
   {path:"searchResult/:searchKey",component:SearchResultComponent},
   {path:"dashboard" ,component :DashboardComponent},
   {path :"CategoryProducts/:id",component:CategoryComponent},
-  {path :"Clients",component:ClientsComponent}
+  {path :"Clients",component:ClientsComponent},
+  {path :"topRated",component:TopRatedComponent},
+  {path:"recommendedProduct",component:RecommendedProductsComponent}
 
 
 ];

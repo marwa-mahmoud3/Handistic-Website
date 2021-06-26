@@ -1,3 +1,4 @@
+import { AddReviewService } from './../Services/ReviewService';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { Category } from '../Models/Category';
@@ -23,7 +24,7 @@ export class OffersComponent implements OnInit {
   CountProducts :number []=[]
   user:any;
   constructor(private productWishlistService:ProductWishlistService,private route:ActivatedRoute,
-    private router:Router,
+    private router:Router,private reviewService:AddReviewService,
     private UserService: UserService, private productservices: ProductsService,private categoryService : CategoryService,private CartService:CartService) {
   }
 
@@ -68,8 +69,10 @@ export class OffersComponent implements OnInit {
               this.setCrrentCategoryId(category);
             }
             this.CategoryList.push(category); 
-            this.CountProducts.push(data);
-           
+            if(this.CountProducts[category.id]!= Number(data))
+            {
+              this.CountProducts[category.id]= Number(data)
+            }       
           }
           }));
        });
@@ -128,10 +131,21 @@ this.numberOfPages=Math.ceil(this.productsCount / this.pageSize);
 this.router.navigate[`/Offers/${this.currentCategoryId}`]
 }))
 }
+Reviews:{[id:number]:number}={};
 getProductsPerPage(currentPageNumber: number) {
   this.productservices.getOfferedByCategoryPaging(this.currentCategoryId,this.pageSize, currentPageNumber).subscribe(
     data => {
       this.productsPerPage = data
+      data.forEach(element => {
+        this.reviewService.averagerRating(element.id).subscribe(
+          num=>
+          {
+            if(this.Reviews[element.id]!= Number(num))
+            {
+              this.Reviews[element.id]= Number(num)
+            }
+          })
+        }) 
       this.currentPageNumber = currentPageNumber;
       if(data.length != 0)
         this.hasProducts = true;

@@ -1,4 +1,5 @@
-<app-user-navbar></app-user-navbar>
+<app-user-navbar *ngIf="!flag"></app-user-navbar>
+<app-seller-navbar *ngIf="flag"></app-seller-navbar>
 <div class="main-body" style="margin-top: 0px;padding: top 0px;" >
     <div class="row gutters-sm">
       <div class="col-md-12 mb-3">

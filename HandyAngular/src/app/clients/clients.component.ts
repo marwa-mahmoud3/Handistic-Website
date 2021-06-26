@@ -12,8 +12,13 @@ import { Component, OnInit } from '@angular/core';
 export class ClientsComponent implements OnInit {
   UserList: Users[] = []
   filterTerm: string;
+  IsLogin:boolean
   constructor(private UserService: UserService, private sellerService: sellerService, private router: Router) { }
   ngOnInit(): void {
+    if(localStorage.getItem('username')!=null)
+    {
+      this.IsLogin=true
+    }
     this.UserService.getAllUsers().subscribe((data: any) => {
       data.forEach(element => {
         this.UserList.push(element)

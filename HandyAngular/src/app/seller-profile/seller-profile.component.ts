@@ -1,3 +1,4 @@
+import { sellerService } from './../Services/sellerService';
 import { CartService } from './../Services/CartService';
 import { SellerReviewService } from './../Services/SellerReview';
 import { SellerReview } from './../Models/SellerReview';
@@ -35,7 +36,13 @@ export class SellerProfileComponent implements OnInit {
   CountReviews :number
   ReviewsList : SellerReview[]=[]
   UsersList :string []=[]
- ngOnInit(): void {
+  answer
+  flag:boolean =false
+  ngOnInit(): void {
+    if(localStorage.getItem('shopId')!=null)
+    { 
+      this.flag =true
+    }  
   this.getProductsPerPage(1); 
   this._productsService.GetAllProductsBySellerName(this.route.snapshot.paramMap.get('userName')).subscribe(data=>{
   this.productsCount=data.length;

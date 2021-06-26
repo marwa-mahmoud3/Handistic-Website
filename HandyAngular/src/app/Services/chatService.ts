@@ -22,6 +22,8 @@ export class ChatService {
       await this.start();
     });
    this.connection.on("ReceiveOne", (user, message) => { this.mapReceivedMessage(user, message); });
+   console.log(this.connection)
+   localStorage.setItem('conectionId', this.connection.connectionId);
    this.start();                 
   }
 
@@ -40,7 +42,7 @@ export class ChatService {
  }
 
   public broadcastMessage(msgDto: any) {
-    let connectionId = sessionStorage.getItem('conectionId');
+    let connectionId = localStorage.getItem('conectionId');
     let msg=new MessageModel(msgDto.user,msgDto.msgText,connectionId)
     this.http.post(this.POST_URL, msg).subscribe();
   }

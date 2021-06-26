@@ -77,4 +77,8 @@ GetTopSales():Observable<any>{
   getSellerProductsPagination(sellerName:string ,pageSize:number,pageNumber:number):Observable<any>{
     return this.http.get(`https://localhost:44339/api/Product/GetSellerProductsPagination/${sellerName}/${pageSize}/${pageNumber}`);
   } 
+  getCustomizedProducts(userId:string):Observable<any>{
+    let url=`https://localhost:44339/api/Product/GetCustomizedProducts/${userId}`;
+    return this.http.get(url);
+  }
 }

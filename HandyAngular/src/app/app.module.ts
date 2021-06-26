@@ -44,6 +44,10 @@ import { SearchResultComponent } from './search-result/search-result.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { CategoryComponent } from './category/category.component';
 import { ClientsComponent } from './clients/clients.component';
+import { HomeTopRatedComponent } from './home/home-top-rated/home-top-rated.component';
+import { TopRatedComponent } from './top-rated/top-rated.component';
+import { CustomizeProductComponent } from './home/customize-product/customize-product.component';
+import { RecommendedProductsComponent } from './recommended-products/recommended-products.component';
 
 @NgModule({
   declarations: [
@@ -85,7 +89,11 @@ import { ClientsComponent } from './clients/clients.component';
     SearchResultComponent,
     DashboardComponent,
     CategoryComponent,
-    ClientsComponent
+    ClientsComponent,
+    HomeTopRatedComponent,
+    TopRatedComponent,
+    CustomizeProductComponent,
+    RecommendedProductsComponent
   ],
   imports: [
     BrowserModule,

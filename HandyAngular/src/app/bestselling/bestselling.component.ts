@@ -1,3 +1,4 @@
+import { AddReviewService } from './../Services/ReviewService';
 import { Route, Router, ActivatedRoute } from '@angular/router';
 import { CartService } from './../Services/CartService';
 import { CategoryService } from './../Services/CategoryService';
@@ -21,13 +22,17 @@ categories: Category[] = [];
 CategoryList : Category[] = [];
 CountProducts :number []=[]
 user:any;
-
+IsLogin:boolean
 constructor(private productWishlistService:ProductWishlistService,private _productsService :ProductsService
   ,private UserService: UserService, private productservices: ProductsService,
-  private router:Router,private CartService:CartService) {
+  private router:Router,private CartService:CartService,private reviewService:AddReviewService) {
 }
 
 ngOnInit(): void {
+  if(localStorage.getItem('username')!=null)
+  {
+    this.IsLogin=true
+  }
   this.getProductsPerPage(1); 
   this._productsService.GetTopSales().subscribe(data=>{
     this.productsCount=data.length;
@@ -97,10 +102,21 @@ this.currentCategory=category;
 this.getSelectedPage(1);
 
 }
+Reviews:{[id:number]:number}={};
 getProductsPerPage(currentPageNumber: number) {
   this.productservices.getBestSellingPagination(this.pageSize, currentPageNumber).subscribe(
     data => {
       this.productsPerPage = data
+      data.forEach(element => {
+        this.reviewService.averagerRating(element.id).subscribe(
+          num=>
+          {
+            if(this.Reviews[element.id]!= Number(num))
+            {
+              this.Reviews[element.id]= Number(num)
+            }
+          })
+        }) 
       this.currentPageNumber = currentPageNumber;
       if(data.length != 0)
         this.hasProducts = true;

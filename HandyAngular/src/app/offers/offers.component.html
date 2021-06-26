@@ -20,29 +20,24 @@ style="background-image: url('../../../assets/images/sale.jpg');background-posit
                     <div class="col-md-6 col-sm-12 col-12">
                         <p>By Category : {{currentCategory.name}}</p>
                     </div>
-                    <div class="col-md-6 col-sm-12 col-12">
-                        <select class="float-right">
-                            <option>Default sorting</option>
-                            <option>Sort by average rating</option>
-                            <option>Sort by latest</option>
-                            <option>Sort by price: low to high</option>
-                            <option>Sort by price: high to low</option>
-                        </select>
-                    </div>
                 </div>
                 <div class="row product">
-                    <div class="col-md-4 col-sm-6 col-12" *ngFor="let product of productsPerPage |filter:filterTerm">
+                    <div class="col-md-4 col-sm-6 col-12" *ngFor="let product of productsPerPage |filter:filterTerm;let i=index">
                         <div class="card">
                             <div class="card-img-top" style="background-image: url('');background-size: 100% 100%;background: no-repeat;">
-                                <a href="product-single.html" class="wp-post-image">
+                                <a class="wp-post-image">
                                     <img [src]="createImgPath(product.productImagePath)" style="height: 250px;">
+                                    <div style="position: absolute;right: 0px;margin-top: -200px;background-color: rgb(18, 0, 82);padding: 3px 8px">
+                                        <span style="color: #fff;">{{Reviews[productsPerPage[i].id]}}&nbsp;</span>
+                                        <li style="color: #e7d215;font-size: 15px;" class="fas fa-star"></li>
+                                    </div>
                                 </a>
                                 <p class="onsale">Sale</p>
                                 <div class="icon-product">
                                     <button class="btn" (click)="AddItemToCart(product.id)">
                                         <span class="fa fa-cart-plus"></span>
                                     </button>
-                                    <button type="button" class="btn click-quick-view" href="/ProductDetails/{{product.id}}" >
+                                    <button type="button" class="btn click-quick-view" routerLink="/ProductDetails/{{product.id}}" >
                                         <span class="fa fa-search-plus" ></span>
                                     </button>
                                     <button class="btn" (click)="AddToWishList(product.id)" >
@@ -101,13 +96,6 @@ style="background-image: url('../../../assets/images/sale.jpg');background-posit
                         <input type="text" placeholder="Search" class="float-left" [(ngModel)]="filterTerm">
                         <button class="btn float-right"><i style="color: #fff;" class="fas fa-search"></i></button>
                     </div>
-                    <div class="filter-price">
-                        <h2>Filter By Price</h2>
-
-                        <p></p>
-                        <span class="float-left">Price: $6 - $54</span>
-                        <button class="btn float-right">FILTER</button>
-                    </div>
                     
                     <div class="category-blog">
                         <h2>Categories</h2>
@@ -118,7 +106,7 @@ style="background-image: url('../../../assets/images/sale.jpg');background-posit
                            </a>
                         </div>
                         <div style="display: inline-block;" >
-                            <a *ngFor="let category of CategoryList;let i=index">({{CountProducts[i]}})</a>
+                            <a  *ngFor="let category of CategoryList;let i=index">&nbsp;&nbsp; ({{CountProducts[category.id]}}) </a>
                         </div>
                     </div>
                     
