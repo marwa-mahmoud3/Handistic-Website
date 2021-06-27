@@ -8,11 +8,11 @@
                         <br>    
                         <img src="../../assets/images/user.png" style="border-radius: 50%;width: 60px;height: 70px;margin-left: 15px;"alt="cart-2">
                     </a>
-                    <a  style="color: #000;text-decoration: none;padding-left: 10px;font-size: 20px;" href="#">{{users[i]}}</a>
+                    <a  style="color: #000;text-decoration: none;padding-left: 10px;font-size: 20px;" href="#">{{users[item.id]}}</a>
                     <span  class="woocommerce-Price-amount amount" style="font-weight: normal; font-size: 15px;left: 32%;margin-top: 7px;">
                         {{item.notificationBody}} ....
                     </span>
-                    <a href="/AddReview/{{item.billingId}}" (click)="MakeRead(item.id)" class="woocommerce-Price-amount amount " style="margin-top: 30px;
+                    <a routerLink="/AddReview/{{item.billingId}}/{{users[item.id]}}" (click)="MakeRead(item.id)" class="woocommerce-Price-amount amount " style="margin-top: 30px;
                     font-size: 15px;right:0px;float: right;
                     text-decoration: underline;color: #074d6d;margin-right: 10px;">
                         Details 
@@ -26,11 +26,11 @@
                         <br>    
                         <img src="../../assets/images/user.png" style="border-radius: 50%;margin-left: 15px;width: 60px;height: 70px"alt="cart-2">
                     </a>
-                    <a  style="color: #000;text-decoration: none;padding-left: 10px;font-size: 20px;" href="#">{{users[i]}}</a>
+                    <a  style="color: #000;text-decoration: none;padding-left: 10px;font-size: 20px;" href="#">{{users[item.id]}}</a>
                     <span  class="woocommerce-Price-amount amount" style="font-weight: normal; font-size: 15px;left: 32%;margin-top: 5px;">
                         {{item.notificationBody}} ....
                     </span>
-                    <a href="/AddReview/{{item.billingId}}" (click)="MakeRead(item.id)" class="woocommerce-Price-amount amount " style="margin-top: 30px;
+                    <a routerLink="/AddReview/{{item.billingId}}/{{users[item.id]}}" (click)="MakeRead(item.id)" class="woocommerce-Price-amount amount " style="margin-top: 30px;
                     font-size: 15px;
                     color: #074d6d;right:0px;
                     text-decoration: underline;float: right;margin-right: 10px;">

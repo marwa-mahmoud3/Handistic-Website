@@ -63,14 +63,14 @@
                 <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
                     <ol class="carousel-indicators">
                         <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-                        <li *ngFor="let item of list|slice:1:list.length;let i=index" data-target="#carouselExampleIndicators"
+                        <li *ngFor="let review of SellerReviewList|slice:1:SellerReviewList.length;let i=index" data-target="#carouselExampleIndicators"
                             data-slide-to="{{i}}"></li>
                     </ol>
                     <div class="carousel-inner">
                         <div class="carousel-item active" *ngFor="let review of SellerReviewList | slice:0:1;let i= index">
                             <div class="content-review-homepage">
                                 <img src="../../../assets/images/user.png"  alt="">
-                                <h3 >{{usersList[i]}}</h3>
+                                <h3 routerLink="/SellerProfile/{{usersList[review.id]}}" >{{usersList[review.id]}}</h3>
                                 <p>
                                     <span> 
                                        <i class="fas fa-star"></i>
@@ -88,7 +88,7 @@
                         <div class="carousel-item" *ngFor="let review of SellerReviewList | slice:1:SellerReviewList.length;let i= index">
                             <div class="content-review-homepage">
                                 <img src="../../../assets/images/user.png"  alt="">
-                                <h3 >{{usersList[i]}}</h3>
+                                <h3 routerLink="/SellerProfile/{{usersList[review.id]}}">{{usersList[review.id]}}</h3>
                                 <p>
                                     <span> 
                                        <i class="fas fa-star"></i>

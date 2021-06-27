@@ -24,7 +24,7 @@ getById(id){
 getNotifyByuserId(userId)
 {
   let url=`https://localhost:44339/api/ClientNotify/GetClientNotifyByuserId/${userId}`;
-return this.http.get(url);
+  return this.http.get(url);
 }
 createNotification(data): Observable<any> {
  return this.http.post(this.url, data);

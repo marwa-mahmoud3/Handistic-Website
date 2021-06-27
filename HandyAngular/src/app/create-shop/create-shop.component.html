@@ -83,7 +83,7 @@
                         </div> 
                       
                         <div *ngIf="ShowLink; else elseBlock" class="col-lg-6 col-md-4 " style="padding-top: 20px;" id="link-div">
-                            <label class="label">Upload image of product<span class="star">*</span> </label>
+                            <label class="label">Your Profile Link<span class="star">*</span> </label>
                             <div class="input-group">
                                 <input class="form-control" type="text" placeholder="Enter your Link for Your Products" 
                                 [class.is-invalid]="link.invalid && link.touched " [class.is-invalid]="link.invalid && link.touched" required #link="ngModel" name="link" [(ngModel)]="request.link"> 

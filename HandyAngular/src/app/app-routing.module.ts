@@ -58,7 +58,7 @@ const routes: Routes = [
   {path :"Offers/:id" ,component:OffersComponent},
   {path :"EditProduct/:id" ,component:UpdateProductComponent},
   {path :"ProductDetails/:id" ,component:ProductDetailsComponent},
-  {path :"AddReview/:billingid" ,component:AddReviewComponent},
+  {path :"AddReview/:billingid/:SellerName" ,component:AddReviewComponent},
   {path :"notification" ,component:NotificationComponent},
   {path:"orderDetails/:id",component:OrderDetailsComponent},
   {path:"notify",component:ClientNotifyComponent},

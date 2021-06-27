@@ -29,7 +29,19 @@ export class ClientNotifyComponent implements OnInit {
   Counter :number
   IsRead : boolean[]=[]
   ngOnInit(): void {
-    this.GetNotifactions();
+    this.notify.getNotifyByuserId(localStorage.getItem('userId')).subscribe((data:any)=>{
+      console.log("sdfsdf")
+     data.forEach(element => {
+      this.NotificationList.push(element)
+      this.IsRead.push(element.isRead)
+      this.userservice.getUserNameByUserId(element.sellerId).subscribe((item=>{
+        if(this.users[element.id]!= item.userName )
+        {
+          this.users[element.id]=item.userName
+        }
+      }))
+     });    
+    })    
     this.notify.notReadedCount(localStorage.getItem('userId')).subscribe(
       count=>{
          this.Counter = count
@@ -56,20 +68,9 @@ export class ClientNotifyComponent implements OnInit {
     this.apiservice.logout();
     localStorage.clear()
   }
-  users =[] 
+  users:{[id:number]:string}={};
   NotificationList :Notification[]=[]
-  GetNotifactions()
-  {
-    this.notify.getNotifyByuserId(localStorage.getItem('userId')).subscribe((data:any)=>{
-     data.forEach(element => {
-      this.NotificationList.push(element)
-      this.IsRead.push(element.isRead)
-      this.userservice.getUserNameByUserId(element.sellerId).subscribe((item=>{
-        this.users.push(item.userName)
-      }))
-     });    
-    })
-  }
+
   newNotify
   MakeRead(id)
   {

@@ -1,3 +1,4 @@
+import { AddReviewService } from './../Services/ReviewService';
 import { Component, OnInit } from '@angular/core';
 import { Product } from '../Models/Product';
 import { ProductsService } from '../Services/ProductsService';
@@ -20,7 +21,7 @@ export class SearchResultComponent implements OnInit {
   user: any;
   IsLogin :boolean
   constructor(private productWishlistService: ProductWishlistService,
-    private UserService: UserService, private productservices: ProductsService,
+    private UserService: UserService, private productservices: ProductsService,private reviewService:AddReviewService,
     private CartService: CartService, private route: ActivatedRoute,private router:Router
   ) {
   }
@@ -37,6 +38,7 @@ export class SearchResultComponent implements OnInit {
       data => {
         this.user = data
       }))
+      this.getSelectedPage(1);
     this.route.paramMap.subscribe(
       params => {
         this.currentKeyWord = params.get('searchKey');
@@ -107,17 +109,30 @@ export class SearchResultComponent implements OnInit {
   //pagination 
   errorMsg: string;
   productsPerPage: Product[];
-  pageSize: number = 2;
+  pageSize: number = 8;
   productsCount = 0
   currentPageNumber: number = 1;
   numberOfPages: number;
   currentKeyWord: string;
   hasProducts: boolean = false;
 
+  Reviews:{[id:number]:number}={};
 
   getProductsPerPage(currentPageNumber: number) {
-    this.productservices.getProductsBySearchPagination(this.currentKeyWord, this.pageSize, currentPageNumber).subscribe(
+    this.productservices.getProductsBySearchPagination(this.route.snapshot.paramMap.get('searchKey'), this.pageSize, currentPageNumber).subscribe(
       data => {
+        console.log("sdasfsddf")
+        data.forEach(element => {
+          this.reviewService.averagerRating(element.id).subscribe(
+            num=>
+            {
+              if(this.Reviews[element.id]!= Number(num))
+              {
+                this.Reviews[element.id]= Number(num)
+              }
+            }
+          )
+        })
         this.productsPerPage = data
         this.currentPageNumber = currentPageNumber;
       },

@@ -94,7 +94,7 @@ SaveProduct(form : NgForm)
     this.productService.deleteById(id).subscribe();
     this.router.routeReuseStrategy.shouldReuseRoute = () => false;
     this.router.onSameUrlNavigation = 'reload';
-    this.router.navigate(["/Wishlist"]);  
+    this.router.navigate(["/dashboard"]);  
   }
   public uploadFile = (files) => {
     if (files.length === 0) {

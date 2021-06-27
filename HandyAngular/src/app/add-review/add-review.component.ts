@@ -37,13 +37,16 @@ export class AddReviewComponent implements OnInit {
   Seller
   SellerReview
   ngOnInit(): void {
+    this.UserService.getIdByUserName(this.route.snapshot.paramMap.get('SellerName')).subscribe(
+      (data:any)=>{
+        this.SellerReview =new SellerReview(localStorage.getItem('userId'),'',data.id,this.Rating)
+      })
       this.BillingDetailsService.getBillingById(this.route.snapshot.paramMap.get('billingid')).subscribe((data=>{
       this.CurrentBilling= data
-      this.NotifyService.GetByBillingId(this.route.snapshot.paramMap.get('billingid')).subscribe(
+      this.UserService.getIdByUserName(this.route.snapshot.paramMap.get('SellerName')).subscribe(
         (seller=>{
           this.Seller =seller
-          this.UserService.getUserNameByUserId(this.Seller.sellerId).subscribe((u=>{
-            this.CurrentSeller =u
+            this.CurrentSeller = seller
             this.orderService.GetOrderItems(this.CurrentBilling.orderId,this.CurrentSeller.userName).subscribe(
               (data:any)=>{
                  data.forEach(element => {
@@ -67,17 +70,13 @@ export class AddReviewComponent implements OnInit {
         })
       )
       }))
-   
-    }))
   }
 
   public ReviewObject 
  func(idx){
    this.ReviewObject =new AddReview(localStorage.getItem('userId'),'',this.ProductsId[idx],this.Rating)
  }
- fun(sellerId){
-  this.SellerReview =new SellerReview(localStorage.getItem('userId'),'',sellerId,this.Rating)
-}
+ 
  satrs(index)
  {
     this.list=[]
@@ -159,9 +158,11 @@ export class AddReviewComponent implements OnInit {
   public uploadFinished = (event) => {
     this.response = event;
   } 
-  InsertSellerReview(form:NgForm)
+  InsertSellerReview(form)
   {
-    this.SellerReviewService.AddReview(form.value).subscribe(
+    this.SellerReview.rating = this.Rating
+    console.log(this.SellerReview)
+    this.SellerReviewService.AddReview(this.SellerReview).subscribe(
       (data=>{
         form.reset();
         this.AddReview = false;

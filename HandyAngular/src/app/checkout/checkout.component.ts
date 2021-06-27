@@ -116,8 +116,7 @@ export class CheckoutComponent implements OnInit {
           }))
         }))
       })
-     this.CartService.crearCart(localStorage.getItem('userId')).subscribe()                   
-    }))        
+    }))  
   }
 
   goToStore()

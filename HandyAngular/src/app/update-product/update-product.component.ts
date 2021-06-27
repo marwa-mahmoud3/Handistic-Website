@@ -19,11 +19,9 @@ export class UpdateProductComponent implements OnInit {
               private route:ActivatedRoute,
               private categoryservice:CategoryService,
               private http: HttpClient ) { }
-
+              
   prodctId:number;
-  ngOnInit(): void {
-    this.prodctId=+ this.route.snapshot.paramMap.get('id');
-    this.getCategory(this.prodctId)
+  ngOnInit(): void {       
     this.getProduct(this.route.snapshot.paramMap.get('id'));
     this.GetAllCategories();    
   }
@@ -38,7 +36,7 @@ export class UpdateProductComponent implements OnInit {
   @Output() public onUploadFinished = new EventEmitter();
 
   updateProduct(): void {
-    this.productservices.update(this.prodctId,this.currentProduct)
+    this.productservices.update(this.route.snapshot.paramMap.get('id'),this.currentProduct)
       .subscribe((data:any)=>{
         this.showSuccess=true;
         this.showError = false;
@@ -76,7 +74,7 @@ ProductData : Product
       this.List= this.currentProduct.productImagePath.split('\\');
       this.index = this.currentProduct.productImagePath.split('\\').length
       this.currentProduct.productImagePath = "Resources/images/"+this.List[this.index-1];
-      this.productservices.update(this.prodctId,this.currentProduct)
+      this.productservices.update(this.route.snapshot.paramMap.get('id'),this.currentProduct)
         .subscribe((data:any)=>{
           this.showSuccess=true;
           this.showError = false;
@@ -86,12 +84,7 @@ ProductData : Product
           this.showSuccess=false;
         })
     }
-    category:Category
-    getCategory(id): void {
-      this.categoryservice.getCategoryByID(id).subscribe((data=>{
-          this.category=data;
-      }));        
-    }
+    
   public uploadFile = (files) => {
     if (files.length === 0) {
       return;

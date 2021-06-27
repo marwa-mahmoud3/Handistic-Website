@@ -83,7 +83,7 @@ export class SellerNavbarComponent implements OnInit {
     localStorage.clear()
   }
  
-  users =[] 
+  users:{[id:number]:string}={};
   NotificationList :Notification[]=[]
   GetNotifactions()
   {
@@ -93,7 +93,10 @@ export class SellerNavbarComponent implements OnInit {
       this.NotificationList.push(element)
       this.IsRead.push(element.isRead)
       this.userservice.getUserNameByUserId(element.userId).subscribe((item=>{
-        this.users.push(item.userName)
+        if(this.users[element.id]!= item.userName )
+        {
+          this.users[element.id]=item.userName
+        }      
       }))
      });    
     }))

@@ -38,9 +38,8 @@
                         </span>                                                
                     </p>
                 </div>
-                {{fun(Seller.sellerId)}}
-                <input type="number" hidden value="{{Rating}}" #rating="ngModel" name="rating" [(ngModel)]="SellerReview.rating" >
-                <input type="text" hidden  value="{{Seller.sellerId}}" #userId="ngModel" name="userId" [(ngModel)]="SellerReview.userId" >
+                <input type="number" hidden  value="{{Rating}}" #rating="ngModel" name="rating" [(ngModel)]="SellerReview.rating" >
+                <input type="text" hidden  value="{{CurrentSeller.userId}}" #userId="ngModel" name="userId" [(ngModel)]="SellerReview.userId" >
                 <input type="text" hidden   value="{{SellerReview.sellerId}}"  #sellerId="ngModel" name="sellerId" [(ngModel)]="SellerReview.sellerId" >
                 <p class="comment-form-comment">
                     <textarea id="comment" class="form-control" name="content" #content="ngModel" required placeholder="Write Your Review..." [(ngModel)]="SellerReview.content"></textarea>

@@ -1,13 +1,18 @@
 <app-header-before-login *ngIf="IsLogin"></app-header-before-login>
 <app-header-after-login *ngIf="!IsLogin"></app-header-after-login>
-<div class="container" style="margin-top: 50px;">
-    <div class="row">
-        <div class="col-12">
-            <h3 >Search results for: <span style="color: #ffa6a8;font-size: 20px;">{{currentKeyWord}}</span></h3>
-            <div class="row productsContainer products" id="searchResultsContainer" *ngIf="hasProducts">
+<div class="title-page"
+    style="background-position: center right;background-size: 60% 120%;background-repeat: no-repeat;background-color: aliceblue;">
+    <div class="container">
+        <div class="row">
+            <div class=" col-md-6 inner-title-page">
+                <h1 style="font-size: 40px;" >Search results for: <span style="color: #ffa6a8;font-size: 20px;">{{currentKeyWord}}</span></h1>
+                <div class="row productsContainer products" id="searchResultsContainer" *ngIf="hasProducts">
+                </div>            
             </div>
         </div>
     </div>
+</div>
+<div class="container" style="margin-top: 50px;">
     <div class="row" style="margin-top: 40px;">
         <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12 col-12">
             <div class="alert alert-danger" *ngIf="!hasProducts" style="width: 100%;" role="alert">Sorry no match
@@ -20,12 +25,16 @@
             <div class="row product" style="margin-top: 20px;">
 
                 <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 col-xs-12 col-12"
-                    *ngFor="let product of productsPerPage |filter:filterTerm">
+                    *ngFor="let product of productsPerPage |filter:filterTerm;let i=index">
                     <div class="card">
                         <div class="card-img-top">
                             <a href="product-single.html" class="wp-post-image">
                                 <img class="image-cover" [src]="createImgPath(product.productImagePath)"
                                     style="height:250px;">
+                                    <div style="position: absolute;right: 0px;margin-top: -200px;background-color: rgb(18, 0, 82);padding: 3px 8px">
+                                        <span style="color: #fff;">{{Reviews[productsPerPage[i].id]}}&nbsp;</span>
+                                        <li style="color: #e7d215;font-size: 15px;" class="fas fa-star"></li>
+                                    </div>
                             </a>
                             <p class="onnew">New</p>
                             <p *ngIf="!hasDiscount(product)" class="onnew">New</p>

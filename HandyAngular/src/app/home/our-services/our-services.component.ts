@@ -13,30 +13,28 @@ export class OurServicesComponent implements OnInit {
 
   constructor(private SellerReviewService:SellerReviewService,private UserService : UserService) { }
   SellerReviewList : SellerReview[]=[]
-  list : number[]=[]
-  usersList :Users[]=[]
+  usersList:{[id:number]:string}={};
   rating:boolean[]=[]
   map = new Map<string, number>();
   ngOnInit(): void {
     this.SellerReviewService.getAll().subscribe((data:any)=>{
       data.forEach(element => {
         this.SellerReviewService.averagerRating(element.sellerId).subscribe(avg=>{
-           if(Math.ceil(Number(avg)) == 5 && !this.map.has(element.sellerId))
-           {  
+           if(Math.ceil(Number(avg)) == 5 && this.map[element.sellerId] != element.rating)
+           { 
              this.SellerReviewList.push(element)
-             this.map.set(element.sellerId,element.rating); 
+             this.map[element.sellerId] =element.rating; 
            }
         })   
         this.UserService.getUserNameByUserId(element.sellerId).subscribe(
           item=>{
-            this.usersList.push(item.userName)
+            if(this.usersList[element.id]!= item.userName )
+            {
+              this.usersList[element.id]=item.userName
+            }           
           }
         )
       });
-    for(var i=1;i<=this.SellerReviewList.length;i++)
-    {
-       this.list.push(i)
-    }
   }) 
  }
 }

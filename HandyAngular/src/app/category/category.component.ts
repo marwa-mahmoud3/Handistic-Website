@@ -1,3 +1,4 @@
+import { AddReviewService } from './../Services/ReviewService';
 import { CategoryService } from './../Services/CategoryService';
 import { CartService } from './../Services/CartService';
 import { UserService } from 'src/app/Services/user.service';
@@ -25,7 +26,7 @@ export class CategoryComponent implements OnInit {
   constructor(private productWishlistService: ProductWishlistService,
     private UserService: UserService, private productservices: ProductsService,
     private CartService: CartService, private route: ActivatedRoute,private router:Router,
-    private _categoryService : CategoryService
+    private _categoryService : CategoryService,private reviewService:AddReviewService,
   ) {
   }
 
@@ -37,6 +38,7 @@ export class CategoryComponent implements OnInit {
     else{
       this.IsLogin =true;
     }
+    this.getSelectedPage(1);
     this.UserService.getIdByUserName(localStorage.getItem('username')).subscribe((
       data => {
         this.user = data
@@ -115,18 +117,30 @@ export class CategoryComponent implements OnInit {
   //pagination 
   errorMsg: string;
   productsPerPage: Product[];
-  pageSize: number = 4;
+  pageSize: number = 8;
   productsCount = 0
   currentPageNumber: number = 1;
   numberOfPages: number;
   currentCategoryId: number;
   hasProducts: boolean = false;
 
+  Reviews:{[id:number]:number}={};
 
   getProductsPerPage(currentPageNumber: number) {
-    this.productservices.getProductsByCategoryPaging(this.currentCategoryId, this.pageSize, currentPageNumber).subscribe(
+    this.productservices.getProductsByCategoryPaging(Number(this.route.snapshot.paramMap.get('id')), this.pageSize, currentPageNumber).subscribe(
       data => {
         this.productsPerPage = data
+        data.forEach(element => {
+          this.reviewService.averagerRating(element.id).subscribe(
+            num=>
+            {
+              if(this.Reviews[element.id]!= Number(num))
+              {
+                this.Reviews[element.id]= Number(num)
+              }
+            }
+          )
+        })
         this.currentPageNumber = currentPageNumber;
       },
       error => {

@@ -2,7 +2,6 @@ import { ProductWishlistService } from './../Services/ProductWishlistService';
 import { BillingDetailsService } from './../Services/BillingDetailsService';
 import { ClientNotifyService } from './../Services/ClientNotifyService';
 import { Notification } from './../Models/Notification';
-import { NotificationService } from './../Services/notification.service';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CartItem } from '../Models/CartItem';
@@ -35,6 +34,20 @@ export class UserNavbarComponent implements OnInit {
   wishlistID:number;
   IsSeller :boolean
   ngOnInit(): void {
+    this.ClientNotify.getNotifyByuserId(localStorage.getItem('userId')).subscribe((data:any)=>{
+      console.log("dfsdfd")
+      data.forEach(element => {
+      this.NotificationList.push(element)
+      this.IsRead.push(element.isRead)
+      this.userservice.getUserNameByUserId(element.sellerId).subscribe((item=>{
+        if(this.users[element.id]!= item.userName )
+        {
+          this.users[element.id]=item.userName
+        } 
+      }))
+     }); 
+        
+    })
     this.UserService.getIdByUserName(localStorage.getItem('username')).subscribe(
       data => {
         this.user = data;
@@ -45,7 +58,7 @@ export class UserNavbarComponent implements OnInit {
               this.IsSeller=true;
           })
         })
-    this.GetNotifactions();
+        
     this.ClientNotify.notReadedCount(localStorage.getItem('userId')).subscribe(
       count=>{
          this.Counter = count
@@ -83,20 +96,9 @@ export class UserNavbarComponent implements OnInit {
     this.apiservice.logout();
     localStorage.clear()
   }
-  users =[] 
+  users:{[id:number]:string}={};
   NotificationList :Notification[]=[]
-  GetNotifactions()
-  {
-    this.ClientNotify.getNotifyByuserId(localStorage.getItem('userId')).subscribe((data:any)=>{
-      data.forEach(element => {
-      this.NotificationList.push(element)
-      this.IsRead.push(element.isRead)
-      this.userservice.getUserNameByUserId(element.sellerId).subscribe((item=>{
-        this.users.push(item.userName)
-      }))
-     });    
-    })
-  }
+ 
   newNotify 
   MakeRead(id)
   {
