@@ -35,7 +35,6 @@ export class UserNavbarComponent implements OnInit {
   IsSeller :boolean
   ngOnInit(): void {
     this.ClientNotify.getNotifyByuserId(localStorage.getItem('userId')).subscribe((data:any)=>{
-      console.log("dfsdfd")
       data.forEach(element => {
       this.NotificationList.push(element)
       this.IsRead.push(element.isRead)
