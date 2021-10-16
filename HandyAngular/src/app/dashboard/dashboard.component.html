@@ -77,7 +77,7 @@
                             </div>
                             <small class="text-danger"[class.d-none]="size.untouched || size.valid">Product size is required</small>
                         </div>
-                        <div class="col-lg-6 col-md-6 col-sm-12">
+                        <div class="col-lg-12 col-md-12 col-sm-12">
                             <label class="label">Choose Your Products Category<span class="star"> *</span></label>
                             <div class="input-group">
                                 <select  class="form-control form-select-lg" [class.is-invalid]="categoryId.invalid && categoryId.touched " [class.is-invalid]="categoryId.invalid && categoryId.touched" required #categoryId="ngModel" [(ngModel)]="product.categoryId" name="categoryId">

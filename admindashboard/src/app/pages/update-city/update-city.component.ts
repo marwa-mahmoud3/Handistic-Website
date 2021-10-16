@@ -36,7 +36,7 @@ export class UpdateCityComponent implements OnInit {
         })
   }
 
-  OnSubmit(){
+    OnSubmit(){
     this.updateCity();
   }
 
