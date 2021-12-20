@@ -110,7 +110,7 @@ namespace HandyAPI
                 o.MultipartBodyLengthLimit = int.MaxValue;
                 o.MemoryBufferThreshold = int.MaxValue;
             });
-          //  services.AddCors(); //you have to add this, and useCors
+            services.AddCors(); //you have to add this, and useCors
             services.AddControllers();
             services.AddSignalR();            // Add this service too
 

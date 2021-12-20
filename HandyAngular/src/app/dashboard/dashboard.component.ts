@@ -106,6 +106,7 @@ SaveProduct(form : NgForm)
     this.http.post('https://localhost:44339/api/Upload', formData, {reportProgress: true, observe: 'events'})
     .subscribe()
    }
+   
   public createImgPath = (serverPath: string) => {
     return `https://localhost:44339/${serverPath}`;
   }
