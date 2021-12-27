@@ -104,12 +104,6 @@ namespace HandyAPI
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "Handastic", Version = "v1" });
             });
 
-            services.Configure<FormOptions>(o =>
-            {
-                o.ValueLengthLimit = int.MaxValue;
-                o.MultipartBodyLengthLimit = int.MaxValue;
-                o.MemoryBufferThreshold = int.MaxValue;
-            });
             services.AddCors(); //you have to add this, and useCors
             services.AddControllers();
             services.AddSignalR();            // Add this service too
