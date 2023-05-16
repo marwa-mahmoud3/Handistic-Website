@@ -1,4 +1,4 @@
-# Hadastic Online Shop
+# Handistic Online Shop
 
 This video to see all Features to this website : https://www.linkedin.com/posts/marwa-mahmoud123_iti-graduation-project-handistic-online-activity-6815441033325752320-8OyL 
  
