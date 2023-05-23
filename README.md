@@ -1,6 +1,6 @@
 # Handistic Online Shop
 
-Technologies used : Asp .Net Core, Restful API, Angular, Sql
+Technologies used : Asp .Net API, Angular, Sql
 
 This video to see all Features to this website : https://www.linkedin.com/posts/marwa-mahmoud123_iti-graduation-project-handistic-online-activity-6815441033325752320-8OyL 
  
